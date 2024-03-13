@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header className="flex flex-col md:flex-row items-center justify-between gap-4">
         <h1 className="text-2xl  md>text-3xl font-bold">
-           Good Morning, <span className="text-primary-300">Ronald</span>
+           Good Morning, <span className="text-primary-300">Ximena</span>
         </h1>
 
         <form className="w-full md:w-auto">

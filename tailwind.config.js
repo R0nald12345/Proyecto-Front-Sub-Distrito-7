@@ -9,7 +9,13 @@ export default {
           300: "#2BA007",
           900: "#1A5508",
         } 
-      }
+      },
+      fontFamily:{
+        'new-font': ['Ubuntu', 'sans-serif'],
+      },
+      fontWeight:{
+        'new-bold': 700,
+      },
     },
   },
   plugins: [],
