@@ -1,207 +1,359 @@
 import axios from 'axios'
 import {useState,useEffect} from 'react'
 import { obtenerDatosUnidadEducativa, obtenerTipoColegio } from '../../../apiServices/apiServices'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useParams } from 'react-router-dom'
+import jsPDF from 'jspdf'
+
+import 'jspdf-autotable'
+import FotosMultiple from './FotosParaFormulario/FotosMultiple'
+import MapaMostrar from '../Mapas/MapaMostrar'
 
 
 const FormDataPublica = () => {
 
-    const [tipoColegio, setTipoColegio] = useState([]);
-    const [colegiosPublicos, setColegiosPublicos] = useState([]);
+    const { id } = useParams();
 
+    
+
+    const [nombreUE, setNombreUE] = useState("");
+    const [direccionUE, setDireccionUE] = useState("");
+    const [descripcionHistoria, setDescripcionHistoria] = useState("");
+   
+    const [horaGestion, setHoraGestion] = useState("");
+    const [nroGestion, setNroGestion] = useState("");
+    const [nombreDirectorGestion, setNombreDirectorGestion] = useState("");
+    const [imagenGestion, setImagenGestion] = useState(null);
+    
+    const [tipoColegio, setTipoColegio] = useState("");
+    const [tipoInfraestructura, setTipoInfraestructura] = useState("");
+    const [tipoTurno, setTipoTurno] = useState("");
+
+    const [coordenadaX, setCoordenadaX] = useState(0);
+    const [coordenadaY, setCoordenadaY] = useState(0);
+
+    const [cantidadDesayuno, setCantidadDesayuno] = useState(0);
+    const [nombreDesayuno, setNombreDesayuno] = useState("");
+    const [fechaDesayuno, setFechaDesayuno] = useState(0);
+    const [nombreEntregaDesayuno, setNombreEntregaDesayuno] = useState("");
+
+    const [fotoGeneral, setFotoGeneral] = useState(null);
+    const [foto, setFoto] = useState(null);
+    
     const navigate = useNavigate();
 
-    
 
     useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const data = await obtenerTipoColegio();
-            setTipoColegio(data);
-            } catch (error) {
-                console.error("Error al obtener datos del tipo de colegio:", error);
-                // Aquí podrías realizar alguna acción de manejo de errores, como mostrar un mensaje al usuario
-            }
-        };
-    
-    fetchData();
-    }, []);
+      const fetchingExtraDatoId= async(id)=>{
+        try{
+            const baseUrl = import.meta.env.VITE_BASE_URL;
+            const url = baseUrl + `/unidadeseducativas/+${id}`;
+            const datosUE = await axios.get(url);
+            // console.log(datosTipoColegio.data.nombre);
+            setNombreUE(datosUE.data.nombre);
+            setDireccionUE(datosUE.data.direccion);
+            setCoordenadaX(datosUE.data.coordenada_x);
+            setCoordenadaY(datosUE.data.coordenada_y);
+            setDescripcionHistoria(datosUE.data.historia);
+            setImagenGestion(datosUE.data.gestion.juntaescolar);
+            setNombreDirectorGestion(datosUE.data.gestion.director);
+            setHoraGestion(datosUE.data.gestion.horario);
+            setNroGestion(datosUE.data.gestion.numero);
 
+            setTipoTurno(datosUE.data.turno.nombre);
+            setTipoColegio(datosUE.data.tipocolegio.nombre);
+            setTipoInfraestructura(datosUE.data.infraestructura.nombre);
 
-    useEffect(() => {
-      const seleccionUnidadEducativa = async()=>{
-            try{
-                const datos = await obtenerDatosUnidadEducativa()
-                setColegiosPublicos(datos);
-            }catch(error){
-                console.log("Error al obtener datos de los Colegios",error);
-            }
+            // console.log(coordenadaX);
+            
+        }catch(error){
+            console.log('Error al cargar Datos de Formulario por Id',error);
+        }
       }
-      seleccionUnidadEducativa();
-      
+      fetchingExtraDatoId(id);
     }, [])
-
-    const colegiosPublicosFiltrados = colegiosPublicos.filter(colegio => colegio.idTipocolegio === 1);
- 
-    // useEffect(() => {
-    //     const seleccionUnidadPublica = async () => {
-    //         try {
-    //             // Filtrar los colegios que son públicos
-    //             const colegiosPublicos = tipoColegio.filter(colegio => colegio. === "Publico");
+    
+    
+    useEffect(() => {
+        const fetchingExtraerDatosDesayuno=async(id)=>{
+            try{
+                const baseUrl = import.meta.env.VITE_BASE_URL;
+                const url = baseUrl + '/desayunos';
+                const datosDesayuno = await axios.get(url);
+                setCantidadDesayuno(datosDesayuno.data[id].cantidad);
+                setFechaDesayuno(datosDesayuno.data[id].fecha);
+                setNombreEntregaDesayuno(datosDesayuno.data[id].nombreEntrega);
+                setNombreDesayuno(datosDesayuno.data[id].nombre);
                 
-    //             // Actualizar el estado con los colegios públicos
-    //             setColegiosPublicos(colegiosPublicos);
-    //           } catch(error) {
-    //               console.error("Error al filtrar colegios públicos:", error);
-    //               // Aquí podrías realizar alguna acción de manejo de errores, como mostrar un mensaje al usuario
-    //           }
-    //     };
-      
-    
-    // }, [])
-    
+            }catch(error){  
+                console.log('Sucedio un error al extraer datos de  Desayunos ', error);
+            }
 
-      
-    // seleccionUnidadEducativa();
-    
-    console.log(tipoColegio);
-    console.log('----------------');
-    console.log(colegiosPublicosFiltrados);
+        }
 
+        fetchingExtraerDatosDesayuno(id);
+    }, [ ])
+
+
+    //
+    
+    const generarPDF = () => {
+        const doc = new jsPDF();
+        
+        // doc.setMargins(1, 1); // Configurar los márgenes antes de agregar contenido al PDF
+        doc.setFontSize(12);
+        // doc.setTextColor('justify'); // Justificar el texto
+        
+
+        // const maxWidth = 175;
+        // const lines = doc.splitTextToSize(`${descripcionHistoria}`, maxWidth);
+        
+        doc.text('Informe',95, 20);
+
+        //Crear una tabla para los detalles de los factura
+
+        const columns1 = ['Nombre','Direccion'];
+        const data1 = [[nombreUE,direccionUE]];
+
+        doc.autoTable({
+            startY: 30,
+            head:[columns1],
+            body: data1,
+        })
+
+        const columns2 = ['Historia Unidad Educativa'];
+        const data2 = [[descripcionHistoria]];
+
+        doc.autoTable({
+            startY: 50,
+            head:[columns2],
+            body: data2,
+        })
+        
+        const columns3 = ['Tipo Colegio','Tipo Turno','Tipo InfraEstructura'];
+        const data3 = [[tipoColegio,tipoTurno,tipoInfraestructura]];
+        
+        doc.autoTable({
+            startY:120,
+            head:[columns3],
+            body: data3,
+        })
+        
+        const columns4 = ['Horario','Numero','Director'];
+        const data4 = [[horaGestion,nroGestion,nombreDirectorGestion]];
+        
+        doc.autoTable({
+            startY:140,
+            head:[columns4],
+            body: data4,
+        });
+
+        const columns5 = ['Nombre Comida','Fecha','Nombre Entrega', 'Cantidad'];
+        const data5 = [[nombreDesayuno,fechaDesayuno,nombreEntregaDesayuno,cantidadDesayuno]];
+        
+        doc.autoTable({
+            startY:160,
+            head:[columns5],
+            body: data5,
+        })
+
+        doc.save(`factura_${1}.pdf`);
+
+    };
     
     return (
         <div className='flex justify-center items-center'>
-          <form className='bg-gray-100/50 rounded-xl shadow-xl w-[65%] p-8'>
-            {/* Parte Superior */}
-            <section className='flex h-40'>
-                <div className='bg-red-200 w-1/4'>
-                    <img/>
-                    foto
-                </div>
-    
-                <div className='w-1/2 mx-5'>
-                    <p className='uppercase font-semibold text-gray-600 mt-1'>Nombre</p>
-                    <input
-                        type='text'
-                        className='py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2'
-                        placeholder='Nombre de la UE'
+          <form className='bg-gray-100/50 rounded-xl shadow-xl w-[100%] p-8'>
+
+            {/* parte Superior */}
+            <section className='w-full flex gap-5'>
+                {/* Parte Lateral angosto Izquierdp*/}
+                <section className='w-1/3'>
+                    <FotosMultiple
+                        id={id}
                     />
-    
-                    <p className='uppercase font-semibold text-gray-600'>Dirección</p>
-                    <input
-                        type='text'
-                        className='py-1 rounded-xl pl-3 mb-4 w-full border border-gray-400 border-2'
-                        placeholder='Indica la Direccion de la UE'
-                    />
-                </div>
-                <div className='bg-red-300 w-1/4 flex flex-col items-center p-1'>
-                    <p className='uppercase font-semibold text-gray-600 mt-1'>
-                        Puntos (Cordenadas)
-                    </p>
-                    <section className='w-full flex flex-col justify-between'>
-                        <div className='bg-green-400 h-20  rounded-xl'>
-                            Mapa
-                        </div>
-                        <button className='bg-primary-100/80 text-white font-semibold w-full py-2 rounded-xl mt-2'>Ampliar</button>
-                    </section>
-    
-                </div>
-            </section>
-    
-            {/* HIstoria y Gestio */}
-            <section className='flex justify-center gap-5'>
-                <section className='w-1/2'>
-                    <p className='uppercase font-semibold text-gray-600 mt-6 mb-1 text-center'>Historia</p>
-                    <section className='border border-black/50 rounded-lg px-5 py-3'>
-                        <p className='uppercase font-semibold text-gray-600 mt-1'>Nombre</p>
-                        <input
-                            type='text'
-                            className='py-1 rounded-xl pl-3 mb-2 w-full border-gray-400 border-2'
-                            placeholder='Título de la Historia'
-                        />
-                        <p className='uppercase font-semibold text-gray-600 mt-1'>Fecha</p>
-                        <input
-                            type='date'
-                            className='py-1 rounded-xl pl-3 mb-2 w-full border-gray-400 border-2'
-                            placeholder='Título de la Historia'
-                        />
-                        <p className='uppercase font-semibold text-gray-600 mt-1'>Descripcion</p>
-                        <textarea 
-                            className='w-full border border-gray-400 border-2 rounded-xl py-1 px-2'
-                            placeholder='Agerar un contexto de la Historia '
+
+                     {/* Historia */}
+                    <div className='h-3/5'>
+                        
+                        <p className='uppercase font-semibold text-gray-600 mt-1'>Historia</p>
+                        <p 
+                            className='w-full border border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-200 overflow-y-scroll'
+                            style={{height:'368px'}}
                         >
-    
-                        </textarea>
-    
-                    </section>
-                </section>
-                <section className='w-1/2'>
-                <p className='uppercase font-semibold text-gray-600 mt-6 mb-1 text-center'>Gestión</p>
-                <section className='border border-black/50 rounded-lg px-5 py-3'>
-                    <div className='flex justify-between gap-1'>
-                        <div className='w-1/2'>
-                            <p className='uppercase font-semibold text-gray-600 mt-1'>Horario</p>
-                            <input
-                                type='time'
-                                className='py-1 rounded-xl pl-3 mb-2 w-full border-gray-400 border-2'
-                            />
+                            {descripcionHistoria}
+                        </p>
 
-                        </div>
-                        <div className='w-1/2'>
-                            <p className='uppercase font-semibold text-gray-600 mt-1'>Número</p>
-                            <input
-                                type='number'
-                                className='py-1 rounded-xl pl-3 mb-2 w-full border-gray-400 border-2'
-                                placeholder='Introduce Nro'
-                            />
-                        </div>
                     </div>
-                    <p className='uppercase font-semibold text-gray-600 mt-1'>Director</p>
-                    <input
-                        type='text'
-                        className='py-1 rounded-xl pl-3 mb-2 w-full border-gray-400 border-2'
-                        placeholder='Nombre del Director'
-                    />
-                    <p className='uppercase font-semibold text-gray-600 mt-1'>Junta Escolar</p>
-                    <textarea 
-                        placeholder='Agrear un contexto sobre la junta escolar'
-                        className='w-full border border-gray-400 border-2 rounded-xl py-1 px-2'>
 
-                    </textarea>
 
-                </section>
-            </section>
-    
-                
-            </section>
+                </section>  
 
-            <section className="flex gap-8 mt-5">
-            <div className="w-1/3">
-                <p className="text-center mb-2 font-semibold">Tipo Colegio</p>
-                <p className='w-full rounded-xl py-1 pl-2 font-semibold   bg-white'>Privado</p>
-            </div>
+                {/* Parte Lateral Ancha Derecho*/}
+                <section className='w-2/3'>
+                    {/* Parte Superior*/}
+                    <section className='flex h-40 gap-5 '>
+                        <div className='w-3/5'>
+                            <p className='uppercase font-semibold text-gray-600'>Nombre</p>
+                            {/* <input
+                                type='text'
+                                className='py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2'
+                                placeholder='Nombre de la UE'
+                            /> */}
 
-            <div className="w-1/3">
-                <p className="text-center mb-2 font-semibold">Tipo Infraestrcutura</p>
-                <p className='w-full rounded-xl py-1 pl-2 font-semibold bg-white'>Escuela</p>
-            </div>
+                            <p className='py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200 mb-1'>
+                                {nombreUE}
+                            </p>
             
-            <div className="w-1/3">
-                <p className="text-center mb-2 font-semibold">Tipo Turno</p>
-                <p className='w-full rounded-xl py-1 pl-2 font-semibold bg-white'>Noche</p>
-            </div>
-           
-        </section>
+                            <p className='uppercase font-semibold text-gray-600'>Dirección</p>
+                            <p className='py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200'
+                               style={{height:'60px'}} 
+                            >
+                                {direccionUE}
+                            </p>
+                        </div>
+
+                        <div className='w-2/5 flex flex-col'>
+                            <div className='flex gap-3 mb-7'>
+                                <div className="w-1/2">
+                                    <p className="font-semibold text-gray-600 uppercase">Tipo Colegio</p>
+                                    <p className='py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200'>
+                                        {tipoColegio}
+                                    </p>
+                                </div>
+
+                                <div className="w-1/2">
+                                    <p className="font-semibold text-gray-600 uppercase">Tipo Turno</p>
+                                    <p className='py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200'>
+                                        {tipoTurno}
+                                    </p>
+                                </div>
+                                
+                            </div>
+
+                                <div className="">
+                                    <p className="font-semibold text-gray-600 uppercase">Tipo Infraestrcutura</p>
+                                    <p className='py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200'>
+                                        {tipoInfraestructura}
+                                    </p>
+                                </div>
+                        </div>
+                        
+                    </section>
+
+                    <section className=' w-full flex gap-5'>
+                        
+                        <div className='w-[45%]'>
+                            <p className='uppercase font-semibold text-gray-600 mt-5 mb-1 text-center'>Gestión</p>
+                            <section className='border border-black/50 rounded-lg px-5 py-3'>
+                                <div className='flex gap-5'>
+                                    <div className='w-1/2'>
+                                        <p className='uppercase font-semibold text-gray-600 mt-1'>Horario</p>
+                                        <p 
+                                            className='w-full border border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100'
+                                        >
+                                            {horaGestion}
+                                        </p>
+
+                                    </div>
+                                    <div className='w-1/2'>
+                                        <p className='uppercase font-semibold text-gray-600 mt-1'>Número</p>
+                                        <p 
+                                            className='w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100'
+                                        >
+                                            {nroGestion}
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                    <div>
+                                        <p className='uppercase font-semibold text-gray-600 mt-1'>Director</p>
+                                        <p 
+                                            className='w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100'
+                                        >
+                                            {nombreDirectorGestion}
+                                        </p>
+                                    </div>
+
+                                    <div>
+
+                                        <p className='uppercase font-semibold text-gray-600 mt-1'>Junta Escolar</p>
+                                        <img
+                                            src={imagenGestion}
+                                            className='w-full border-2 rounded-xl  border-gray-400 object-cover'
+                                            style={{ height: '260px' }}    
+                                        /> 
+                                    </div>
+
+                            </section>
+
+
+
+                        </div>
+
+
+                        <div className='w-[55%] flex-col mt-1'>
+
+
+                            <div className=' h-[70%]'
+                                 style={{height:'360px'}}
+                            >
+                                <div className=' h-[120%] md:h-[115%]'
+                                    //  style={{height:'350Px'}}
+                                >
+                                    <h3 className='uppercase font-semibold text-gray-600 mt-3 text-center'>
+                                        Puntos (Cordenadas)
+                                    </h3>
+                                    <div className=' h-64 rounded-xl mt-1'
+                                    >
+                                        <MapaMostrar
+                                            datoX = {coordenadaX}
+                                            datoY = {coordenadaY}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className='h-[30%]'>
+                                    <button 
+                                        className='bg-primary-100/80 text-white font-semibold w-full py-3 rounded-xl mt-2'
+                                        onClick={()=>navigate(`/unidadeducativa/masdetalles/${id}`)}
+                                    >
+                                        
+                                        Observar mas Detalles
+                                    </button>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </section>
+            
+                </section>
+
+            </section>
 
     
             {/* Seleccion debajo */}
-            <button
-                onClick={()=>navigate('/unidadeducativa')}
-                type='submit'
-                className='w-full bg-primary-300 rounded-xl text-white uppercase py-3 text-2xl font-semibold mt-5 hover:bg-primary-900/90'
-            >
-                Regresar
-            </button>
+            <div className='flex gap-5'>
+
+                <button 
+                    onClick={generarPDF}
+                    className='w-1/3 bg-red-600 rounded-xl text-white uppercase font-semibold text-2xl mt-5 py-3 hover:bg-red-900'
+                >
+                    Generar PDF
+                </button>
+
+                <button
+                    onClick={()=>navigate('/unidadeducativa')}
+                    type='submit'
+                    className='w-2/3 bg-primary-300 rounded-xl text-white uppercase py-3 text-2xl font-semibold mt-5 hover:bg-primary-900/90'
+                >
+                    Regresar
+                </button>
+
+            </div>
           </form>
         </div>
       )

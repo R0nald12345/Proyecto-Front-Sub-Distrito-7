@@ -139,11 +139,14 @@ const FormularioAgregarPublica = () => {
         <section className="flex gap-8 mt-5">
             <div className="w-1/3">
                 <p className="text-center mb-2 font-semibold">Tipo Colegio</p>
+
                 <select className="w-full rounded-xl py-1 pl-2 font-semibold">
                     {opctionTipoColegio.map(option =>(
                         <option value={option.value}>{option.label}</option>
                     ))}
                 </select>
+
+                
             </div>
 
             <div className="w-1/3">

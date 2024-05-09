@@ -13,15 +13,14 @@ import Inicio from "./pages/Inicio/Inicio";
 // import EducativaPrivada from "./pages/UnidadesEducativas/Privada/EducativaPrivada";
 import CentroSalud from "./pages/CentrosSalud/CentroSalud";
 import CentroRecreativo from "./pages/CentrosRecreativos/CentroRecreativo";
-// import ListaGeneralPublica from "./pages/UnidadesEducativas/Publico/ListaGeneralPublica";
 import FormularioAgregarPublica from "./pages/UnidadesEducativas/Publico/FormularioAgregarPublica";
-// import ListaGeneralPrivada from "./pages/UnidadesEducativas/Privada/ListaGeneralPrivada";
-// import FormularioAgregarPrivada from "./pages/UnidadesEducativas/Privada/FormularioAgregarPrivada";
 import FormDataPublica from "./pages/UnidadesEducativas/Publico/FormDataPublica";
-// import ListaGeneralConvenio from "./pages/UnidadesEducativas/Convenio/ListaGeneralConvenio";
 import OficinaDistritalPrincipal from "./pages/OficinaDistrital/OficinaDistritalPrincipal";
 import TelefonoUrgencia from "./pages/TelefonoUrgencia/TelefonoUrgencia";
 import ListaGeneralUE from "./pages/UnidadesEducativas/Publico/ListaGeneralUE";
+import FormAgregarUE from "./pages/UnidadesEducativas/FormAgregarNuevo/FormAgregarUE";
+import FormEditarUE from "./pages/UnidadesEducativas/FormEditar/FormEditarUE";
+import FormDataPublicaExtra from "./pages/UnidadesEducativas/Publico/FormDataPublicaExtra";
 // import UnidadEducativa from "./pages/UnidadesEducativas/UnidadEducativa";
 function App() {
  
@@ -33,30 +32,30 @@ function App() {
               <Route index element={<MainBienvenida/>} /> 
               <Route path="auth" element={<VentanaLogin/>} /> 
             </Route> 
-
             {/* Para Dashboard Completo */}
             <Route path="/" element={<LayoutAdmin/>} >
               <Route index element={<Inicio/>}/>
 
               {/* OficinaDistritalPrincipal */}
               <Route path="oficinadistrital" element={<OficinaDistritalPrincipal/>} />
-            	
 
               {/* TelefonoUrgencia */}
               <Route path="telefonourgencia" element={<TelefonoUrgencia/>} />
 
-
               {/* Rutas de Unidades Educativas */}
               <Route path="unidadeducativa" element={<ListaGeneralUE/>} />
-              <Route path="unidadeducativa/agregarnuevo" element={<FormularioAgregarPublica/>} />
+
+              {/* <Route path="unidadeducativa/agregarnuevo" element={<FormularioAgregarPublica/>} /> Formulario Antiguo*/}
+              <Route path="unidadeducativa/agregarnuevo" element={<FormAgregarUE/>} />
              
 
-              {/* <Route path="unidad/educativa/privada/agregarnuevo" element={<FormularioAgregarPrivada/>} /> */}
-
-              <Route path="unidadeducativa/detalles" element={<FormDataPublica/>} />
+              <Route path="unidadeducativa/detalles/:id" element={<FormDataPublica/>} />
+              <Route path="unidadeducativa/masdetalles/:id" element={<FormDataPublicaExtra/>} />
+              <Route path="unidadeducativa/modificar/:id" element={<FormEditarUE/>} />
 
               <Route path="centrosalud" element={<CentroSalud/>}/>
               <Route path="centrorecreativo" element={<CentroRecreativo/>}/>
+              
               {/* <Route index element={Vena}/> */}
 
             </Route> 

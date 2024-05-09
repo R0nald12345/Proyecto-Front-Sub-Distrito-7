@@ -54,7 +54,7 @@ const Sidebar = () => {
 
   return (
     <>
-        <div className={`xl:h-[100vh] overflow-y-scroll fixed xl:static w-[80%] md:w-[40%] lg:w-[30%] xl:w-auto h-full  top-0 bg-primary-300
+        <div className={`xl:h-[100vh] overflow-y-scroll fixed xl:static w-[80%] md:w-[40%] lg:w-[30%] xl:w-auto h-full  top-0 bg-green-800
                         p-4 flex flex-col justify-between z-50 ${showMenu ? "left-0": "-left-full"} transition-all`}>
             <div>
                 <h1 className='text-center text-2xl font-bold text-white mb-10'>

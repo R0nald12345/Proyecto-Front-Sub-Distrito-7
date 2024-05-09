@@ -6,7 +6,7 @@ import subalcaldiadistrito7 from '../components/ComponentsInitial/img/subalcaldi
 const LayoutAdmin = () => {
     return (
         // <div className='min-h-screen grid grid-cols-1 md:grid-cols-6 bg-slate-200'>
-        <div className='min-h-screen grid grid-cols-1 md:grid-cols-6 flex justify-center items-center bg-center bg-cover bg-blend-overlay bg-black/50'
+        <div className='min-h-screen grid grid-cols-1 xl:grid-cols-6 flex justify-center items-center bg-center bg-cover bg-blend-overlay bg-black/50'
                   style={{backgroundImage: `url(${subalcaldiadistrito7})`}}>
         {/* <div className='h-screen flex justify-center items-center bg-center bg-cover bg-blend-overlay bg-black/50'
                   style={{backgroundImage: `url(${subalcaldiadistrito7})`}}> */}

@@ -1,19 +1,75 @@
-import React from 'react'
+import {useEffect,useState} from 'react'
 
-import { ImWhatsapp } from "react-icons/im";
-import { RiDeleteBin5Line } from "react-icons/ri";
-import { BiEditAlt } from "react-icons/bi";
-import { IoEyeSharp } from "react-icons/io5";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 import {useNavigate} from 'react-router-dom'
 
+import axios from "axios";
+import ListaUE from '../ListaUE';
+
+import { obtenerTipoColegio } from '../../../apiServices/apiServices';
+
+
+
 const ListaGeneralUE = () => {
     const navigate = useNavigate();
 
+
+    const [datosUnidadEducativa, setDatosUnidadEducativa] = useState([]);
+    const [turno, setTurno] = useState([]);
+
+    const [turnoSeleccionado, setTurnoSeleccionado] = useState("");
+
+    const [infraEstructura, setInfraEstructura] = useState([]);
+
+    useEffect(() => {
+      const fetching = async () => {
+        try{
+          const baseUrl = import.meta.env.VITE_BASE_URL;
+          const url = baseUrl + '/unidadeseducativas';
+          const res = await axios.get(url);
+          setDatosUnidadEducativa(res.data)
+        }catch(error){
+          console.log(error);
+        }
+      };
+      fetching();
+    }, []);
+
+    
+    useEffect(() => {
+      const fetchingTurno=async()=>{
+        try{
+            const baseUrl = import.meta.env.VITE_BASE_URL;
+            const url = baseUrl + '/turnos';
+            const datosTipoColegio = await axios.get(url);
+            setTurno( datosTipoColegio.data);
+          }catch(error){
+          console.log('Error al obtener Datos Tipo Colegio',error);
+        }
+      };
+      fetchingTurno();
+    }, []);
+    
     const changeRutaNuevoFormulario=()=>{
         navigate('/unidadeducativa/agregarnuevo');
     }
+
+   
+
+    useEffect(() => {
+      const fetchingEstructura = async()=>{
+        try{
+          const baseUrl = import.meta.env.VITE_BASE_URL;
+          const url = baseUrl + '/infraestructuras';
+          const datosInfraEstructura =await axios.get(url);
+          setInfraEstructura(datosInfraEstructura.data);
+        }catch(error){
+          console.log('Error al obtener Datos InfraEstructura', error);
+        }
+      }
+      fetchingEstructura();
+    }, [])
 
 
     const changeFormDetails=()=>{
@@ -30,11 +86,16 @@ const ListaGeneralUE = () => {
         {label: 'Escuela', value: 2},
     ];
 
-  const opctionTurno = [
-      {label: 'Mañana', value: 1},
-      {label: 'Turno', value: 2},
-      {label: 'Noche', value: 3},
-  ];
+    const opctionTurno = [
+        {label: 'Mañana', value: 1},
+        {label: 'Turno', value: 2},
+        {label: 'Noche', value: 3},
+    ];
+
+
+    const handleTurno = (event)=>{
+      setTurnoSeleccionado(event.target.value);
+    }
 
     return (
         <div className='flex flex-col items-center justify-center'>
@@ -56,9 +117,11 @@ const ListaGeneralUE = () => {
               <div className='col-span-3 flex items-center gap-2'>
                 <p className='font-new-font font-new-bold text-white'>Ordenar por</p>
                 {/* <span className='bg-gray-300 rounded-xl py-1 px-2 border border-1 border-black'>NombreDrop</span> */}
-                <select className="w-full rounded-xl py-1 pl-2 font-semibold bg-gray-300">
+                <select 
+
+                  className="w-full rounded-xl py-1 pl-2 font-semibold bg-gray-300">
                     {opctionBusqueda.map(option =>(
-                        <option value={option.value}>{option.label}</option>
+                        <option value={option.label} key={option.value}>{option.label}</option>
                     ))}
                 </select>
               </div>
@@ -69,9 +132,10 @@ const ListaGeneralUE = () => {
             <div className='col-span-2 flex items-center gap-2'>
                 <p className=' font-new-font font-new-bold text-white'>Tipo</p>
                 {/* <span className=' bg-gray-300 rounded-xl py-1 px-2 border border-1 border-black'>NombreDrop</span> */}
-                <select className="w-full rounded-xl py-1 pl-2 font-semibold bg-gray-300">
-                    {opctionTipoInfraEstructura.map(option =>(
-                        <option value={option.value}>{option.label}</option>
+                <select 
+                    className="w-full rounded-xl py-1 pl-2 font-semibold bg-gray-300">
+                    {infraEstructura.map(option =>(
+                        <option value={option.nombre} key={option.id}>{option.nombre}</option>
                     ))}
                 </select>
               </div>
@@ -79,9 +143,11 @@ const ListaGeneralUE = () => {
               <div className='col-span-2 flex items-center gap-2'>
                 <p className='font-new-font font-new-bold text-white'>Turno</p>
                 {/* <span className='bg-gray-300 rounded-xl py-1 px-2 border border-1 border-black'>NombreDrop</span> */}
-                <select className="w-full rounded-xl py-1 pl-2 font-semibold bg-gray-300">
-                    {opctionTurno.map(option =>(
-                        <option value={option.value}>{option.label}</option>
+                <select 
+                    
+                    className="w-full rounded-xl py-1 pl-2 font-semibold bg-gray-300">
+                    {turno.map(option =>(
+                        <option value={option.nombre} key={option.id}>{option.nombre}</option>
                     ))}
                 </select>
               </div>
@@ -113,103 +179,20 @@ const ListaGeneralUE = () => {
             </section>
     
             <section className='w-full'>
+              {
+                datosUnidadEducativa.map((element)=>{
+                  return(
+                    <ListaUE
+                      key={element.id}
+                      id = {element.id}
+                      nombreUE={element.nombre} 
+                      nombreDirector={element.gestion.director} 
+                      turno ={element.turno.nombre}
+                    />
 
-
-
-
-              <ul className='grid grid-cols-11 gap-5 rounded-xl mb-3 bg-white shadow-xl'>
-                <li className=" font-semibold text-start col-span-3 px-3 py-2">
-                    <div className='flex items-center gap-3'>
-                      <img 
-                        src='https://img.freepik.com/vector-gratis/escuela-diseno-ilustracion-vectorial_24640-45977.jpg'
-                        className='w-9 h-8 rounded-full object-cover'
-                      />
-                      Paz Union
-    
-                    </div>
-                </li>
-                <li className=" font-semibold text-start col-span-3 px-3 py-2 flex items-center ">Juan David Lopez</li>
-                <li className=" font-semibold text-start col-span-2 px-3 py-2 flex items-center ">Tarde</li>
-                <li className='col-span-3 flex justify-between items-center '>
-                  <div className='flex justify-between w-full px-2'>
-                    <div className='w-1/2 flex gap-3 '>
-                      <IoEyeSharp 
-                        onClick={changeFormDetails}
-                        className="text-3xl p-1 rounded-lg bg-black text-white" />
-                      <BiEditAlt className="text-3xl p-1 rounded-xl bg-green-900 text-white" />
-    
-                    </div>
-    
-                    <div className='w-1/2 flex justify-end gap-3'>
-                      <ImWhatsapp className="text-3xl text-green-600" />
-                      <RiDeleteBin5Line className="text-3xl text-red-700" />
-    
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <ul className='grid grid-cols-11 gap-5 rounded-xl mb-3 bg-white shadow-xl'>
-                <li className=" font-semibold text-start col-span-3 px-3 py-2">
-                    <div className='flex items-center gap-3'>
-                      <img 
-                        src='https://img.freepik.com/vector-gratis/escuela-diseno-ilustracion-vectorial_24640-45977.jpg'
-                        className='w-9 h-8 rounded-full object-cover'
-                      />
-                      Paz Union
-    
-                    </div>
-                </li>
-                <li className=" font-semibold text-start col-span-3 px-3 py-2 flex items-center ">Juan David Lopez</li>
-                <li className=" font-semibold text-start col-span-2 px-3 py-2 flex items-center ">Tarde</li>
-                <li className='col-span-3 flex justify-between items-center '>
-                  <div className='flex justify-between w-full px-2'>
-                    <div className='w-1/2 flex gap-3 '>
-                      <IoEyeSharp 
-                        onClick={changeFormDetails}
-                        className="text-3xl p-1 rounded-lg bg-black text-white" />
-                      <BiEditAlt className="text-3xl p-1 rounded-xl bg-green-900 text-white" />
-    
-                    </div>
-    
-                    <div className='w-1/2 flex justify-end gap-3'>
-                      <ImWhatsapp className="text-3xl text-green-600" />
-                      <RiDeleteBin5Line className="text-3xl text-red-700" />
-    
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <ul className='grid grid-cols-11 gap-5 rounded-xl mb-3 bg-white shadow-xl'>
-                <li className=" font-semibold text-start col-span-3 px-3 py-2">
-                    <div className='flex items-center gap-3'>
-                      <img 
-                        src='https://img.freepik.com/vector-gratis/escuela-diseno-ilustracion-vectorial_24640-45977.jpg'
-                        className='w-9 h-8 rounded-full object-cover'
-                      />
-                      Paz Union
-    
-                    </div>
-                </li>
-                <li className=" font-semibold text-start col-span-3 px-3 py-2 flex items-center ">Juan David Lopez</li>
-                <li className=" font-semibold text-start col-span-2 px-3 py-2 flex items-center ">Tarde</li>
-                <li className='col-span-3 flex justify-between items-center '>
-                  <div className='flex justify-between w-full px-2'>
-                    <div className='w-1/2 flex gap-3 '>
-                      <IoEyeSharp 
-                        onClick={changeFormDetails}
-                        className="text-3xl p-1 rounded-lg bg-black text-white" />
-                      <BiEditAlt className="text-3xl p-1 rounded-xl bg-green-900 text-white" />
-    
-                    </div>
-    
-                    <div className='w-1/2 flex justify-end gap-3'>
-                      <ImWhatsapp className="text-3xl text-green-600" />
-                      <RiDeleteBin5Line className="text-3xl text-red-700" />
-    
-                    </div>
-                  </div>
-                </li>
-              </ul>
+                  );
+                })
+              }
               
             </section>
     
