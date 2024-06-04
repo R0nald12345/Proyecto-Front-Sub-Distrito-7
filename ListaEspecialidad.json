@@ -1,0 +1,22 @@
+{
+    "ListaEspecialidad": 
+    [
+        {
+            "idEspecialidad":"1",
+            "encargado":"Dr Fong"
+        },
+        {
+            "idEspecialidad":"2",
+            "encargado":"Dr Suarez"
+        },
+        {
+            "idEspecialidad":"3",
+            "encargado":"Dr Juan Alvares"
+        },
+        {
+            "idEspecialidad":"4",
+            "encargado":"Dr Suarez"
+        }
+    ]
+
+}

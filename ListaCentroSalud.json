@@ -1,0 +1,65 @@
+{
+    "listaCentroSalud":
+    [
+        {
+            "id":1,
+            "nombre":"Hospita 1",
+            "coordenada_X":"134",
+            "coordenada_Y":"1341346",
+            "direccion": "Av. Cumavi Barrio Salazar 1",
+            "uv" : "3458931",
+            "horario": "6am - 12pm",
+            "nivel": 1,
+            "VideoURL": "https://www.youtube.com/watch?v=i_umn3VT0Ro&t=5550s",
+            "paginaWebUrl":"https://www.youtube.com/@buscandoelcodigo3350"
+        },
+        {
+            "id":2,
+            "nombre":"Hospita 2",
+            "coordenada_X":"132565674",
+            "coordenada_Y":"2567625",
+            "direccion" : "Av. Cumavi Barrio Salazar",
+            "uv" : "345893",
+            "horario" : "6am - 12pm",
+            "nivel" : 2,
+            "VideoURL" : "https://www.youtube.com/watch?v=i_umn3VT0Ro&t=5550s",
+            "paginaWebUrl":"https://www.youtube.com/@buscandoelcodigo3350"
+        },
+        {
+            "id":3,
+            "nombre":"Hospita 3",
+            "coordenada_X":"134",
+            "coordenada_Y":"1345",
+            "direccion": "Av. Cumavi Barrio Salazar",
+            "uv" : "345893",
+            "horario": "6am - 12pm",
+            "nivel": 2,
+            "VideoURL": "https://www.youtube.com/watch?v=i_umn3VT0Ro&t=5550s",
+            "paginaWebUrl":"https://www.youtube.com/@buscandoelcodigo3350"
+        },
+        {
+            "id":4,
+            "nombre":"Hospita 4",
+            "coordenada_X":"134",
+            "coordenada_Y":"1.5345",
+            "direccion": "Av. Cumavi Barrio Salazar",
+            "uv" : "345893",
+            "horario": "6am - 12pm",
+            "nivel": 2,
+            "VideoURL": "https://www.youtube.com/watch?v=i_umn3VT0Ro&t=5550s",
+            "paginaWebUrl":"https://www.youtube.com/@buscandoelcodigo3350"
+        },
+        {
+            "id":5,
+            "nombre":"Hospita 5",
+            "coordenada_X":"134",
+            "coordenada_Y":"1345",
+            "direccion": "Av. Cumavi Barrio 32",
+            "uv" : "345893",
+            "horario": "6am - 12pm",
+            "nivel": 2,
+            "VideoURL": "https://www.youtube.com/watch?v=i_umn3VT0Ro&t=5550s",
+            "paginaWebUrl":"https://www.youtube.com/@buscandoelcodigo3350"
+        }
+    ]
+}
