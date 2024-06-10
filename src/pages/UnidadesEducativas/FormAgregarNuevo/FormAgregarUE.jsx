@@ -8,8 +8,11 @@ import {useDropzone} from 'react-dropzone'
 import FormMantenimiento from './FormMantenimiento'
 import FormTipoApoyo from './FormTipoApoyo'
 import MapaAgregar from '../Mapas/MapaAgregar'
+<<<<<<< HEAD
 import { useEffect } from 'react'
 import { createDatoGeneralUE } from '../../../apiServices/UnidadesEducativas/apiServicesTiposUnidadesEducativas'
+=======
+>>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
 // import FormApoyo from './FormApoyo'
 
 const FormAgregarUE = () => {
@@ -17,6 +20,7 @@ const FormAgregarUE = () => {
     const navigate = useNavigate();
 
     const [nombre, setNombre] = useState("")
+<<<<<<< HEAD
     const [coordenada_x, setCoordenada_x] = useState(0);
     const [coordenada_y, setCoordenada_y] = useState(0);
     const [direccion, setDireccion] = useState("");	
@@ -29,6 +33,9 @@ const FormAgregarUE = () => {
     const [idTurno, setIdTurno] = useState(0);
     const [idGestion, setIdGestion] = useState(0);
 
+=======
+    const [direccion, setDireccion] = useState("")
+>>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
 
 
     const onDrop = useCallback(acceptedFiles => {
@@ -61,6 +68,7 @@ const FormAgregarUE = () => {
         console.log(data);
     }
 
+<<<<<<< HEAD
     useEffect(() => {
         const createDatosUE = async () => {
             await createDatoGeneralUE({
@@ -82,6 +90,8 @@ const FormAgregarUE = () => {
     }, [])
     
 
+=======
+>>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
     return (
         <div className='flex justify-center items-center'>
           <form 
@@ -128,10 +138,14 @@ const FormAgregarUE = () => {
                             <div className=' rounded-xl mt-1 h-[60%]'
                                 // style={{height:''}}
                             >
+<<<<<<< HEAD
                                 <MapaAgregar
                                     setCoordenada_x={setCoordenada_x}
                                     setCoordenada_y={setCoordenada_y}
                                 />
+=======
+                                <MapaAgregar/>
+>>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
                             
                              </div>
                             
@@ -159,7 +173,11 @@ const FormAgregarUE = () => {
                                     type='text'
                                     className='py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200 mb-1'
                                     value={nombre}
+<<<<<<< HEAD
                                     onChange={()=>setNombre()}
+=======
+                                    onChange={handleNombre}
+>>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
                                 /> 
                                     
                 
@@ -169,7 +187,11 @@ const FormAgregarUE = () => {
                                     className='py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200'
                                     value={direccion}
                                     style={{height:'60px'}} 
+<<<<<<< HEAD
                                     onChange={()=>setDireccion()}
+=======
+                                    onChange={handleDireccion}
+>>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
                                 />
                             </div>
 
@@ -203,7 +225,11 @@ const FormAgregarUE = () => {
                                     <h3 className='uppercase font-semibold text-gray-600 mt-1'>Historia</h3>
                                     <textarea
                                         className='w-full mt-1 border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-200 overflow-y-scroll'
+<<<<<<< HEAD
                                         onChange={()=>setHistoria()}
+=======
+                                        // style={{height:'408px'}}
+>>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
                                     >
                                         
                                     </textarea>                                         
