@@ -59,20 +59,12 @@ const MapaMostrar = ({datoX, datoY}) => {
 
     return (
         <>
-<<<<<<< HEAD
         <div className='bg-black/40 rounded-tl-xl rounded-tr-xl text-white text-center'>
-=======
-        <div className='bg-black/40 rounded-xl text-white text-center'>
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
             {/* Lng:{coords.lng}| lat: {coords.lat} | zoom:{coords.zoom} */}
             Lng:{datoX}| lat: {datoY} | zoom:{13}
         </div>
             <div
-<<<<<<< HEAD
                 className='h-[100%] w-full rounded-bl-xl rounded-br-xl' 
-=======
-                className='h-[140%] w-full bg-red-600' 
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
                 ref={mapaDiv}
             />
 
