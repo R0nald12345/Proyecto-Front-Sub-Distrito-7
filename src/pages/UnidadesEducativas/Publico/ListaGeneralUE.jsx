@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 import axios from "axios";
 import ListaUE from '../ListaUE';
 
-import { obtenerTipoColegio } from '../../../apiServices/apiServices';
+// import { obtenerTipoColegio } from '../../../apiServices/apiServices';
 import { getDatoGeneralUE } from '../../../apiServices/UnidadesEducativas/apiServicesTiposUnidadesEducativas';
 
 
@@ -29,11 +29,13 @@ const ListaGeneralUE = () => {
           const response = await getDatoGeneralUE();
           setDatosUnidadEducativa(response)
         }catch(error){
-          console.log(error);
+          console.log("Error en Componente ListaGeneral fetchingDatosGeneralUE",error);
         }
       };
       fetchingDatosGeneralUE();
     }, []);
+
+    // console.log(datosUnidadEducativa.data);
 
     
     useEffect(() => {
@@ -50,25 +52,26 @@ const ListaGeneralUE = () => {
       fetchingTurno();
     }, []);
     
+
     const changeRutaNuevoFormulario=()=>{
         navigate('/unidadeducativa/agregarnuevo');
     }
 
    
 
-    useEffect(() => {
-      const fetchingEstructura = async()=>{
-        try{
-          const baseUrl = import.meta.env.VITE_BASE_URL;
-          const url = baseUrl + '/infraestructuras';
-          const datosInfraEstructura =await axios.get(url);
-          setInfraEstructura(datosInfraEstructura.data);
-        }catch(error){
-          console.log('Error al obtener Datos InfraEstructura', error);
-        }
-      }
-      fetchingEstructura();
-    }, [])
+    // useEffect(() => {
+    //   const fetchingEstructura = async()=>{
+    //     try{
+    //       const baseUrl = import.meta.env.VITE_BASE_URL;
+    //       const url = baseUrl + '/infraestructuras';
+    //       const datosInfraEstructura =await axios.get(url);
+    //       setInfraEstructura(datosInfraEstructura.data);
+    //     }catch(error){
+    //       console.log('Error al obtener Datos InfraEstructura', error);
+    //     }
+    //   }
+    //   fetchingEstructura();
+    // }, [])
 
 
     const changeFormDetails=()=>{
@@ -182,12 +185,11 @@ const ListaGeneralUE = () => {
                 datosUnidadEducativa.map((element)=>{
                   return(
                     <ListaUE
-                      key={element.id}
+                      // key={element.id}
                       id = {element.id}
                       nombreUE={element.nombre} 
                       nombreDirector={element.idGestion.director} 
                       turno={element.idTurno.nombre}
-                      
                     />
 
                   );

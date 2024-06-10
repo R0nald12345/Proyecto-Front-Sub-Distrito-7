@@ -1,7 +1,6 @@
 // apiServices.js
 import axios from "axios";
 
-<<<<<<< HEAD
 export const getDatoGeneralUE = async () => {
     try {
         const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -65,8 +64,6 @@ export const createDatoGeneralUE = async ({
 //----------
 
 
-=======
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
 export const TiposColegio = async () => {
     try {
         const baseUrl = import.meta.env.VITE_BASE_URL;

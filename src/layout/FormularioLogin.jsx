@@ -6,16 +6,12 @@ import { FaLock } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
 import { FaEyeSlash } from "react-icons/fa";
 import { login } from '../apiServices/UnidadesEducativas/apiServicesTiposUnidadesEducativas';
-<<<<<<< HEAD
 import Swal from 'sweetalert2';
-=======
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
 
 const FormularioLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState(false);
   const [password, setPassword] = useState(false);
-<<<<<<< HEAD
 
   const navigate = useNavigate();
 
@@ -48,55 +44,21 @@ const FormularioLogin = () => {
             });
             navigate('/');
         }
-=======
-  
-
-  const navigate = useNavigate();
-
-
-  
-  const fetchingLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const data = await login(email, password);
-  
-      if (data && data.error) {
-        console.log('Error en el inicio de sesión:', data.error); // Manejar el error de inicio de sesión
-      } else {
-        navigate('/');
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
       }
     } catch (error) {
       console.log('Error en front para loging', error);
     }
   };
   
-<<<<<<< HEAD
-=======
-  
-
-
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
   return (
     <>
       <div className=' w-[80%] md:w-1/2 bg-white/50 block xl:flex justify-center rounded-lg'>
           <form 
             onSubmit={(e)=>fetchingLogin(e)}
             className=' rounded-lg xl:w-1/2 p-5'>
-<<<<<<< HEAD
             <p className='font-bold text-4xl text-center mb-5'>Iniciar Sesión</p>
             <p className='font-bold text-xl'>Correo Electrónico</p>
             <div className="relative mb-4">
-=======
-            
-            
-            <p className='font-bold text-4xl text-center mb-5'>Iniciar Sesión</p>
-
-            <p className='font-bold text-xl'>Correo Electrónico</p>
-
-            <div className="relative mb-4">
-            
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
               <IoCardSharp className="absolute top-1/2 -translate-y-1/2 left-2 text-primary" />
               <input
                 onChange={(e)=>setEmail(e.target.value)}
@@ -105,11 +67,6 @@ const FormularioLogin = () => {
                 placeholder="Correo electrónico"
               />
             </div>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
             <p className='font-bold text-xl'>Contraseña</p>
             <div className="relative mb-8">
               <FaLock className="absolute top-1/2 -translate-y-1/2 left-2 text-primary" />
@@ -131,36 +88,21 @@ const FormularioLogin = () => {
                 />
               )}
             </div>
-<<<<<<< HEAD
             <input 
               type='submit' 
               className='bg-primary-300 text-white w-full font-semibold uppercase rounded-lg py-3 cursor-pointer'
             />
-=======
-
-            <p className='text-center font-semibold mb-2'>Olvidaste tu contraseña</p>
-
-            <input 
-              type='submit' 
-              className='bg-primary-300 text-white w-full font-semibold uppercase rounded-lg py-3'
-            />
-
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
           </form>
 
           <div className='bg-primary-100/80 xl:w-1/2 flex justify-center items-center px-10 rounded-lg rounded-tl-[100px] rounded-tr-[100px]  xl:rounded-tr-[0px] xl:rounded-bl-[100px] ' >
             <div className='flex flex-col items-center'>
               <h2 className='text-white font-extrabold text-3xl mb-3'>Hola!</h2>
               <p className='text-white mb-3 text-center'>Registrate con tus datos personales para usar todas las funciones del sitio</p>
-<<<<<<< HEAD
               <input 
                 className='text-white border-2 py-3 px-10 rounded-xl cursor-pointer'
                 type='submit'
                 value='Crear Cuenta'
               />
-=======
-              <button className='text-white border-2 py-3 px-10 rounded-xl'>Registrarse</button>
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
 
             </div>
           </div>
