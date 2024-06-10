@@ -9,17 +9,17 @@ const Navegacion = () => {
     <>
         <div className='px-5 w-full block py-2 xl:flex items-center justify-center'>
 
-            <h3 className='text-white uppercase text-2xl font-semibold text-center xl:w-3/5 mb-2'>
+            <h3 className='text-white uppercase text-2xl md:text-3xl font-semibold text-center xl:w-3/5 mb-2'>
               Página de Administración
             </h3>  
 
 
-            {/* Navegacion Menu */}
+            {/* Navegacion Menu
             <nav className='text-white flex justify-center gap-5'>
                 <Link to="/">Home</Link>
                 <Link to="auth">Login</Link>
                 <Link to="/">Signup</Link>
-            </nav>
+            </nav> */}
 
 
 

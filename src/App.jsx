@@ -29,10 +29,12 @@ function App() {
       <>
         <Router> {/* Envuelve todo dentro del componente Router */}
           <Routes>
+            
             <Route path="/inicio" element={<Principal/>}>
               <Route index element={<MainBienvenida/>} /> 
               <Route path="auth" element={<VentanaLogin/>} /> 
-            </Route> 
+            </Route>
+            
             {/* Para Dashboard Completo */}
             <Route path="/" element={<LayoutAdmin/>} >
               <Route index element={<Inicio/>}/>
@@ -41,10 +43,12 @@ function App() {
               <Route path="oficinadistrital" element={<OficinaDistritalPrincipal/>} />
 
               {/* TelefonoUrgencia */}
-              <Route path="telefonourgencia" element={<TelefonoUrgencia/>} />
+              <Route path="telefonourgencia" element={<TelefonoUrgencia/>}/>
+
 
               {/* Rutas de Unidades Educativas */}
               <Route path="unidadeducativa" element={<ListaGeneralUE/>} />
+
 
               {/* <Route path="unidadeducativa/agregarnuevo" element={<FormularioAgregarPublica/>} /> Formulario Antiguo*/}
               <Route path="unidadeducativa/agregarnuevo" element={<FormAgregarUE/>} />

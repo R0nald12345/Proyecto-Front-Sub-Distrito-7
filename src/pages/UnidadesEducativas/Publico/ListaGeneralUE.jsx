@@ -100,7 +100,7 @@ const ListaGeneralUE = () => {
         <div className='flex flex-col items-center justify-center'>
           
           {/* Parte Superrior */}
-          <section className='grid grid-cols-12 flex justify-center p-2 mb-10'>
+          <section className='grid-cols-12 flex justify-center p-2 mb-10'>
     
             <section className='col-span-4 flex gap-12 pl-2 pr-3'>
               {/* Boton */}
@@ -167,13 +167,13 @@ const ListaGeneralUE = () => {
           </section>
     
           {/* //Parte de la Listas de Colegios */}
-          <main className="flex flex-col justify-center mt-10 w-3/5 ">
+          <main className="flex flex-col justify-center mt-10 md:w-[80%] sm:w-[100%] ">
             <section className='w-full'>
-                <ul className='grid grid-cols-11 bg-white gap-5 mb-3 rounded-xl shadow-lg'>
-                  <li className=" font-semibold text-start col-span-3 px-3 py-2 ">Nombre</li>
-                  <li className=" font-semibold text-start col-span-3 px-3 py-2 ">Nombre Director</li>
-                  <li className=" font-semibold text-start col-span-2 px-3 py-2 ">Turno</li>
-                  <li className=" font-semibold text-center col-span-3 px-2 py-2">Acciones</li>
+                <ul className='grid grid-cols-11 bg-white gap-1 mb-3 rounded-xl shadow-lg'>
+                  <li className=" font-semibold text-start col-span-4 px-3 py-2 ">Nombre</li>
+                  <li className=" font-semibold text-start col-span-4 px-3 py-2 ">Nombre Director</li>
+                  <li className=" font-semibold text-center col-span-1 px-2 py-2 ">Mañana</li>
+                  <li className=" font-semibold text-center col-span-2 px-2 py-2 ">Acciones</li>
                 </ul>
             </section>
     
