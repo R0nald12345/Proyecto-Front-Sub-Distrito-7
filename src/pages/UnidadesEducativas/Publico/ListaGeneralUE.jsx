@@ -8,10 +8,7 @@ import axios from "axios";
 import ListaUE from '../ListaUE';
 
 import { obtenerTipoColegio } from '../../../apiServices/apiServices';
-<<<<<<< HEAD
 import { getDatoGeneralUE } from '../../../apiServices/UnidadesEducativas/apiServicesTiposUnidadesEducativas';
-=======
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
 
 
 
@@ -27,28 +24,15 @@ const ListaGeneralUE = () => {
     const [infraEstructura, setInfraEstructura] = useState([]);
 
     useEffect(() => {
-<<<<<<< HEAD
       const fetchingDatosGeneralUE = async () => {
         try{
           const response = await getDatoGeneralUE();
           setDatosUnidadEducativa(response)
-=======
-      const fetching = async () => {
-        try{
-          const baseUrl = import.meta.env.VITE_BASE_URL;
-          const url = baseUrl + '/unidadeseducativas';
-          const res = await axios.get(url);
-          setDatosUnidadEducativa(res.data)
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
         }catch(error){
           console.log(error);
         }
       };
-<<<<<<< HEAD
       fetchingDatosGeneralUE();
-=======
-      fetching();
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
     }, []);
 
     
@@ -116,11 +100,7 @@ const ListaGeneralUE = () => {
         <div className='flex flex-col items-center justify-center'>
           
           {/* Parte Superrior */}
-<<<<<<< HEAD
           <section className='grid-cols-12 flex justify-center p-2 mb-10'>
-=======
-          <section className='grid grid-cols-12 flex justify-center p-2 mb-10'>
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
     
             <section className='col-span-4 flex gap-12 pl-2 pr-3'>
               {/* Boton */}
@@ -187,7 +167,6 @@ const ListaGeneralUE = () => {
           </section>
     
           {/* //Parte de la Listas de Colegios */}
-<<<<<<< HEAD
           <main className="flex flex-col justify-center mt-10 md:w-[80%] sm:w-[100%] ">
             <section className='w-full'>
                 <ul className='grid grid-cols-11 bg-white gap-1 mb-3 rounded-xl shadow-lg'>
@@ -195,15 +174,6 @@ const ListaGeneralUE = () => {
                   <li className=" font-semibold text-start col-span-4 px-3 py-2 ">Nombre Director</li>
                   <li className=" font-semibold text-center col-span-1 px-2 py-2 ">Mañana</li>
                   <li className=" font-semibold text-center col-span-2 px-2 py-2 ">Acciones</li>
-=======
-          <main className="flex flex-col justify-center mt-10 w-3/5 ">
-            <section className='w-full'>
-                <ul className='grid grid-cols-11 bg-white gap-5 mb-3 rounded-xl shadow-lg'>
-                  <li className=" font-semibold text-start col-span-3 px-3 py-2 ">Nombre</li>
-                  <li className=" font-semibold text-start col-span-3 px-3 py-2 ">Nombre Director</li>
-                  <li className=" font-semibold text-start col-span-2 px-3 py-2 ">Turno</li>
-                  <li className=" font-semibold text-center col-span-3 px-2 py-2">Acciones</li>
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
                 </ul>
             </section>
     
@@ -215,14 +185,9 @@ const ListaGeneralUE = () => {
                       key={element.id}
                       id = {element.id}
                       nombreUE={element.nombre} 
-<<<<<<< HEAD
                       nombreDirector={element.idGestion.director} 
                       turno={element.idTurno.nombre}
                       
-=======
-                      nombreDirector={element.gestion.director} 
-                      turno ={element.turno.nombre}
->>>>>>> 89dd2e3cdb5e5ae54d807149a70d02891a8f2999
                     />
 
                   );
