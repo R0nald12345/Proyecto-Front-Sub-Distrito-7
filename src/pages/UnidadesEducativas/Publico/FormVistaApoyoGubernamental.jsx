@@ -47,7 +47,7 @@ const FormVistaApoyoGubernamental = ({id}) => {
                 ))}
             </select>
 
-            <section className='border border-black/50 rounded-lg px-5 py-3'>
+            <section className='border border-black/50 rounded-lg px-2 py-3'>
               <div className='w-full'>
                   <ul className='w-full flex bg-white gap-5 mb-3 rounded-xl shadow-lg'>
                     <li className=" font-semibold text-start w-1/3  px-3 py-2 ">Fecha</li>

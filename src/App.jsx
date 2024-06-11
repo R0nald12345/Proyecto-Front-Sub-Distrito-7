@@ -68,11 +68,8 @@ function App() {
               
               {/* <Route index element={Vena}/> */}
 
-
             </Route> 
-
               {/* <Route index element={<Principal/>} /> */}
-
           </Routes>
         </Router>
           

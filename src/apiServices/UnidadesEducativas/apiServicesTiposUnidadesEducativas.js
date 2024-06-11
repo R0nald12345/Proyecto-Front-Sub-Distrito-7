@@ -8,7 +8,7 @@ export const getDatoGeneralUE = async () => {
         const datosTipoColegio = await axios.get(url);
         return datosTipoColegio.data;
     } catch (error) {
-        console.log('Error no se pudo obtener los Datos', error);
+        console.log('Error no se pudo obtener los Datos Backend ApiServices/UnidadesEducativass', error);
     }
 }
 

@@ -8,7 +8,7 @@ const Principal = () => {
     return (
         <div>
             {/* flex items-center */}
-            <header className='h-20 flex items-center  md:h-20 bg-primary-900'>
+            <header className='h-20 flex items-center  md:h-20 bg-green-700'>
                 {/* Navegacion contenedor */}
                 <Navegacion/>
             </header>  
