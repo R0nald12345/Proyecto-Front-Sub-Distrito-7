@@ -64,7 +64,7 @@ const MapaMostrar = ({datoX, datoY}) => {
             Lng:{datoX}| lat: {datoY} | zoom:{13}
         </div>
             <div
-                className='h-[100%] w-full rounded-bl-xl rounded-br-xl' 
+                className='h-[128%] w-full rounded-bl-xl rounded-br-xl' 
                 ref={mapaDiv}
             />
 

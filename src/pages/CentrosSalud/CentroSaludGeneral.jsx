@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { getListaGeneralCentroSalud } from '../../apiServices/centroSalud/apiGeneralCentroSalud';
+// import { getListaGeneralCentroSalud } from '../../apiServices/centroSalud/apiGeneralCentroSalud';
 import ListaCentroSalud from './ListaCentroSalud';
 // import { getListaGeneralCentroSalud } from '../../apiServices/CentroSalud/apiCentroSalud';
 
@@ -16,18 +16,18 @@ const CentroSaludGeneral = () => {
   // const [infraEstructura, setInfraEstructura] = useState([]);
   
 
-  useEffect(() => {
-    const getDatosListaCentroSalud=async()=>{
-      try{
-        const responsive = await getListaGeneralCentroSalud();
-        console.log(listaCentroSalud);
-        setListaCentroSalud(responsive);
-      }catch{
-        console.log('Error al Consumir en componente ApiGetDatoListaCentroSalud');
-      }
-    }
-    getDatosListaCentroSalud();
-  }, [])
+  // useEffect(() => {
+  //   const getDatosListaCentroSalud=async()=>{
+  //     try{
+  //       const responsive = await getListaGeneralCentroSalud();
+  //       console.log(listaCentroSalud);
+  //       setListaCentroSalud(responsive);
+  //     }catch{
+  //       console.log('Error al Consumir en componente ApiGetDatoListaCentroSalud');
+  //     }
+  //   }
+  //   getDatosListaCentroSalud();
+  // }, [])
   
   
   const opctionBusqueda = [
@@ -90,7 +90,7 @@ const CentroSaludGeneral = () => {
               </ul>
           </section>
   
-          <section className='w-full'>
+          {/* <section className='w-full'>
             {
               listaCentroSalud.map((element)=>{
                 return(
@@ -107,7 +107,7 @@ const CentroSaludGeneral = () => {
               })
             }
             
-          </section>
+          </section> */}
           
   
         </main>

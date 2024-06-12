@@ -9,7 +9,7 @@ import FormMantenimiento from './FormMantenimiento'
 import FormTipoApoyo from './FormTipoApoyo'
 import MapaAgregar from '../Mapas/MapaAgregar'
 import { useEffect } from 'react'
-import { createDatoGeneralUE } from '../../../apiServices/UnidadesEducativas/apiServicesTiposUnidadesEducativas'
+import { createDatoGeneralUE } from '../../../api/UnidadesEducativas'
 // import FormApoyo from './FormApoyo'
 
 const FormAgregarUE = () => {

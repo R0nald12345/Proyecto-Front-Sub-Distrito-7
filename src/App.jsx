@@ -24,23 +24,26 @@ import TelefonoUrgencia from "./pages/TelefonoUrgencia/TelefonoUrgencia";
 import ListaGeneralUE from "./pages/UnidadesEducativas/Publico/ListaGeneralUE";
 import FormAgregarUE from "./pages/UnidadesEducativas/FormAgregarNuevo/FormAgregarUE";
 import FormEditarUE from "./pages/UnidadesEducativas/FormEditar/FormEditarUE";
-import FormDataPublicaExtra from "./pages/UnidadesEducativas/Publico/FormDataPublicaExtra";
 
 import CentroSaludGeneral from "./pages/CentrosSalud/CentroSaludGeneral";
+import Encabezado_ApoyoGubernamental from "./components/Encabezado_Listas/UnidadesEducativas/Encabezado_ApoyoGubernamental";
+import Encabezado_Desayuno from "./components/Encabezado_Listas/UnidadesEducativas/Encabezado_Desayuno";
+import Encabezado_Mantenimiento from "./components/Encabezado_Listas/UnidadesEducativas/Encabezado_Mantenimiento";
+import Encabezado_ApoyoSocial from "./components/Encabezado_Listas/UnidadesEducativas/Encabezado_ApoyoSocial";
 
 // import UnidadEducativa from "./pages/UnidadesEducativas/UnidadEducativa";
 function App() {
- 
+
   return(
       <>
         <Router> {/* Envuelve todo dentro del componente Router */}
           <Routes>
-            
+
             <Route path="/inicio" element={<Principal/>}>
-              <Route index element={<MainBienvenida/>} /> 
-              <Route path="auth" element={<VentanaLogin/>} /> 
+              <Route index element={<MainBienvenida/>} />
+              <Route path="auth" element={<VentanaLogin/>} />
             </Route>
-            
+
             {/* Para Dashboard Completo */}
             <Route path="/" element={<LayoutAdmin/>} >
               <Route index element={<Inicio/>}/>
@@ -58,21 +61,23 @@ function App() {
 
               {/* <Route path="unidadeducativa/agregarnuevo" element={<FormularioAgregarPublica/>} /> Formulario Antiguo*/}
               <Route path="unidadeducativa/agregarnuevo" element={<FormAgregarUE/>} />
-             
+
               <Route path="unidadeducativa/detalles/:id" element={<FormDataPublica/>} />
-              <Route path="unidadeducativa/masdetalles/:id" element={<FormDataPublicaExtra/>} />
+
+              <Route path="unidadeducativa/desayuno/:id" element={<Encabezado_Desayuno/>} />
+              <Route path="unidadeducativa/mantenimiento/:id" element={<Encabezado_Mantenimiento/>} />
+              <Route path="unidadeducativa/apoyo-gubernamental/:id" element={<Encabezado_ApoyoGubernamental/>} />
+              <Route path="unidadeducativa/apoyo-social/:id" element={<Encabezado_ApoyoSocial/>} />
+
               <Route path="unidadeducativa/modificar/:id" element={<FormEditarUE/>} />
 
               <Route path="centrosalud" element={<CentroSaludGeneral/>}/>
               <Route path="centrorecreativo" element={<CentroRecreativo/>}/>
-              
-              {/* <Route index element={Vena}/> */}
-
-            </Route> 
+            </Route>
               {/* <Route index element={<Principal/>} /> */}
           </Routes>
         </Router>
-          
+
       </>
   )
 }

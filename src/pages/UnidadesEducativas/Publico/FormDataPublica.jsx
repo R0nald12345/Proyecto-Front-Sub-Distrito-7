@@ -33,12 +33,7 @@ const FormDataPublica = () => {
   const [fechaDesayuno, setFechaDesayuno] = useState(0);
   const [nombreEntregaDesayuno, setNombreEntregaDesayuno] = useState("");
 
-  const [fotoGeneral, setFotoGeneral] = useState(null);
-  const [foto, setFoto] = useState(null);
-
   const [datoGeneralUE, setDatoGeneralUE] = useState([]);
-
-  useState;
 
   const navigate = useNavigate();
 
@@ -89,7 +84,6 @@ const FormDataPublica = () => {
     };
     fetchingDatosGeneralUE();
   }, []);
-
 
   const generarPDF = () => {
     const doc = new jsPDF();
@@ -176,7 +170,7 @@ const FormDataPublica = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <form className="bg-gray-100/50 rounded-xl shadow-xl w-[80%] p-8">
+      <form className="bg-gray-100/50 rounded-xl shadow-xl w-[95%] p-8">
         {/* parte Superior */}
         <section className="w-full flex gap-5">
           {/* Parte Lateral angosto Izquierdp*/}
@@ -271,7 +265,6 @@ const FormDataPublica = () => {
                   Gestión
                 </p>
                 <section className="flex gap-8 border border-black/50 rounded-lg px-3 py-3">
-
                   <section className="flex-col gap-5 w-[40%] ">
                     <div className="w-full mt-1">
                       <p className="uppercase font-semibold text-gray-600 mt-1">
@@ -314,26 +307,69 @@ const FormDataPublica = () => {
               </div>
 
               <div className="mt-1">
-                    <h3 className="uppercase font-semibold text-gray-600 mt-3 text-center">
-                      Puntos (Cordenadas)
-                    </h3>
-                    <div className=" h-52 rounded-xl mt-1">
-                      <MapaMostrar datoX={coordenadaX} datoY={coordenadaY} />
-                    </div>
+                <h3 className="uppercase font-semibold text-gray-600 mt-3 text-center">
+                  Puntos (Cordenadas)
+                </h3>
+                <div className=" h-52 rounded-xl mt-1">
+                  <MapaMostrar datoX={coordenadaX} datoY={coordenadaY} />
+                </div>
               </div>
             </section>
           </section>
         </section>
 
+        <section className="flex w-full mt-3 gap-5">
+          <section className="w-1/2">
+
+            <p className="uppercase font-semibold text-gray-600 mt-2 mb-1 text-center">
+              Informacion de :
+            </p>
+
+            <div className="flex justify-around w-full border border-black/50 rounded-md mt-2 py-3">
+              <button
+                className="bg-primary-100 text-xl text-white font-semibold px-5 py-2 rounded-xl"
+                onClick={() => navigate(`/unidadeducativa/desayuno/${id}`)}
+              >
+                Desayuno
+              </button>
+
+              <button
+                className="bg-primary-100 text-xl text-white font-semibold px-5 py-2 rounded-xl"
+                onClick={() => navigate(`/unidadeducativa/mantenimiento/${id}`)}
+              >
+                Mantenimiento
+              </button>
+            </div>
+          </section>
+
+          <section className="w-1/2">
+            <p className="uppercase font-semibold text-gray-600 mt-2 mb-1 text-center">
+              Tipo de Apoyo
+            </p>
+            <div className="flex justify-around w-full border border-black/50 rounded-md mt-2 py-3">
+              <button
+                className="bg-primary-100 text-xl text-white font-semibold px-5 py-2 rounded-xl"
+                onClick={() => navigate(`/unidadeducativa/apoyo-social/${id}`)}
+              >
+                Social
+              </button>
+
+              <button
+                className="bg-primary-100 text-xl text-white font-semibold px-5 py-2 rounded-xl"
+                onClick={() =>
+                  navigate(`/unidadeducativa/apoyo-gubernamental/${id}`)
+                }
+              >
+                Gubernamental
+              </button>
+            </div>
+
+          </section>
+
+        </section>
+
         {/* Seleccion debajo */}
         <div className="flex gap-3">
-          <button
-            onClick={generarPDF}
-            className="w-1/4 bg-red-600 rounded-xl text-white uppercase font-semibold text-2xl mt-5 py-3 hover:bg-red-900"
-          >
-            Generar PDF
-          </button>
-
           <button
             onClick={() => navigate("/unidadeducativa")}
             type="submit"
@@ -341,11 +377,12 @@ const FormDataPublica = () => {
           >
             Regresar
           </button>
+
           <button
-            className="bg-primary-300 text-white font-semibold w-1/4 rounded-xl h-14 py-3 mt-5  uppercase"
-            onClick={() => navigate(`/unidadeducativa/masdetalles/${id}`)}
+            onClick={generarPDF}
+            className="w-1/2 bg-red-600 rounded-xl text-white uppercase font-semibold text-2xl mt-5 py-3 hover:bg-red-900"
           >
-            Observar Detalles
+            Generar PDF
           </button>
         </div>
       </form>

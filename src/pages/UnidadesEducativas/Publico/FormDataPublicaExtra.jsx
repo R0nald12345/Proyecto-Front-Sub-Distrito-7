@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react'
-import FormVistaMantenimiento from './FormVistaMantenimiento';
-import FormVistaApoyoGubernamental from './FormVistaApoyoGubernamental';
-import FormVistaDesayunoApoyoSocial from './FormVistaDesayunoApoyoSocial';
 import {useParams} from 'react-router-dom'
+import Encabezado_Mantenimiento from '../../../components/Encabezado_Listas/UnidadesEducativas/Encabezado_Mantenimiento';
+import Encabezado_ApoyoGubernamental from '../../../components/Encabezado_Listas/UnidadesEducativas/Encabezado_ApoyoGubernamental';
+import Encabezado_ApoyoSocial from '../../../components/Encabezado_Listas/UnidadesEducativas/Encabezado_ApoyoSocial';
+import Encabezado_Desayuno from '../../../components/Encabezado_Listas/UnidadesEducativas/Encabezado_Desayuno';
 
 const FormDataPublicaExtra = () => {
   const { id } = useParams();
@@ -14,7 +14,7 @@ const FormDataPublicaExtra = () => {
         <section className='flex justify-between gap-5'>
 
           <section className='w-[50%]'>
-            <FormVistaApoyoGubernamental
+            <Encabezado_ApoyoGubernamental
               id = {id}
             />           
           </section>
@@ -28,7 +28,13 @@ const FormDataPublicaExtra = () => {
         <section className='flex'>
 
           <section className='mt-5'>
-            <FormVistaDesayunoApoyoSocial
+            <Encabezado_ApoyoSocial
+              id={id}
+            />
+          </section>
+
+          <section className='mt-5'>
+            <Encabezado_Desayuno
               id={id}
             />
           </section>
@@ -36,7 +42,7 @@ const FormDataPublicaExtra = () => {
 
 
           <section className='mt-5'>
-            <FormVistaMantenimiento
+            <Encabezado_Mantenimiento
               id={id}
             />
           </section>

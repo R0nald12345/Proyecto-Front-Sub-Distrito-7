@@ -1,14 +1,16 @@
-import { obtenerTipoColegio } from "../../../apiServices/apiServices";
+// import { obtenerTipoColegio } from "../../../apiServices/apiServices";
 
 import {useState,useEffect} from 'react'
+
+
 const FormularioAgregarPublica = () => {
 
     const [tipoColegio, setTipoColegio] = useState([])
 
-    useEffect(() => {
-      setTipoColegio(obtenerTipoColegio());
-      console.log(tipoColegio);
-    }, [])
+    // useEffect(() => {
+    //   setTipoColegio(obtenerTipoColegio());
+    //   console.log(tipoColegio);
+    // }, [])
 
     // const [api, setApi] = useState(data);
 
@@ -51,7 +53,7 @@ const FormularioAgregarPublica = () => {
                 <p className='uppercase font-semibold text-gray-600'>Dirección</p>
                 <input
                     type='text'
-                    className='py-1 rounded-xl pl-3 mb-4 w-full border border-gray-400 border-2'
+                    className='py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2'
                     placeholder='Indica la Direccion de la UE'
                 />
             </div>
@@ -88,7 +90,7 @@ const FormularioAgregarPublica = () => {
                     />
                     <p className='uppercase font-semibold text-gray-600 mt-1'>Descripcion</p>
                     <textarea 
-                        className='w-full border border-gray-400 border-2 rounded-xl py-1 px-2'
+                        className='w-full border-gray-400 border-2 rounded-xl py-1 px-2'
                         placeholder='Agerar un contexto de la Historia '
                     >
 
@@ -126,7 +128,7 @@ const FormularioAgregarPublica = () => {
                     <p className='uppercase font-semibold text-gray-600 mt-1'>Junta Escolar</p>
                     <textarea 
                         placeholder='Agrear un contexto sobre la junta escolar'
-                        className='w-full border border-gray-400 border-2 rounded-xl py-1 px-2'>
+                        className='w-full border-gray-400 border-2 rounded-xl py-1 px-2'>
 
                     </textarea>
 
@@ -171,7 +173,7 @@ const FormularioAgregarPublica = () => {
 
         {/* Seleccion debajo */}
         <button
-                type='submit'
+                // type='submit'
                 className='w-full bg-primary-300 rounded-xl text-white uppercase py-3 text-2xl font-semibold mt-5 hover:bg-primary-900/90'
             >
                 AGREGAR

@@ -5,7 +5,7 @@ import { IoCardSharp } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
 import { FaEyeSlash } from "react-icons/fa";
-import { login } from '../apiServices/UnidadesEducativas/apiServicesTiposUnidadesEducativas';
+import { login } from '../api/UnidadesEducativas';
 import Swal from 'sweetalert2';
 
 const FormularioLogin = () => {

@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react'
 import axios from 'axios'
-import { obtenerDatosUnidadEducativa } from '../../../apiServices/apiServices';
+// import { obtenerDatosUnidadEducativa } from '../../../apiServices/apiServices';
 
 const FormEditarGestion = ({id}) => {
     const [horaGestion, setHoraGestion] = useState("");
@@ -9,22 +9,22 @@ const FormEditarGestion = ({id}) => {
     const [imagenGestion, setImagenGestion] = useState(null);
     const [datoGeneral, setDatoGeneral] = useState([]);
 
-    useEffect(() => {
-        const fetchingExtraDatoId= async(id)=>{
-          try{
-              const baseUrl = import.meta.env.VITE_BASE_URL;
-              const url = baseUrl + `/unidadeseducativas/+${id}`;
-              const datosUE = await axios.get(url);
-              setImagenGestion(datosUE.data.gestion.juntaescolar);
-              setNombreDirectorGestion(datosUE.data.gestion.director);
-              setHoraGestion(datosUE.data.gestion.horario);
-              setNroGestion(datosUE.data.gestion.numero);
-          }catch(error){
-              console.log('Error al cargar Datos de Formulario por Id',error);
-          }
-        }
-        fetchingExtraDatoId(id);
-    }, [])
+    // useEffect(() => {
+    //     const fetchingExtraDatoId= async(id)=>{
+    //       try{
+    //           const baseUrl = import.meta.env.VITE_BASE_URL;
+    //           const url = baseUrl + `/unidadeseducativas/+${id}`;
+    //           const datosUE = await axios.get(url);
+    //           setImagenGestion(datosUE.data.gestion.juntaescolar);
+    //           setNombreDirectorGestion(datosUE.data.gestion.director);
+    //           setHoraGestion(datosUE.data.gestion.horario);
+    //           setNroGestion(datosUE.data.gestion.numero);
+    //       }catch(error){
+    //           console.log('Error al cargar Datos de Formulario por Id',error);
+    //       }
+    //     }
+    //     fetchingExtraDatoId(id);
+    // }, [])
 
   
     const handleHoraChange = (e) => {

@@ -4,11 +4,9 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 
 import {useNavigate} from 'react-router-dom'
 
-import axios from "axios";
 import ListaUE from '../ListaUE';
 
-// import { obtenerTipoColegio } from '../../../apiServices/apiServices';
-import { getDatoGeneralUE } from '../../../apiServices/UnidadesEducativas/apiServicesTiposUnidadesEducativas';
+import { getDatoGeneralUE } from '../../../api/UnidadesEducativas';
 
 
 
@@ -38,19 +36,19 @@ const ListaGeneralUE = () => {
     // console.log(datosUnidadEducativa.data);
 
     
-    useEffect(() => {
-      const fetchingTurno=async()=>{
-        try{
-            const baseUrl = import.meta.env.VITE_BASE_URL;
-            const url = baseUrl + '/turnos';
-            const datosTipoColegio = await axios.get(url);
-            setTurno( datosTipoColegio.data);
-          }catch(error){
-          console.log('Error al obtener Datos Tipo Colegio',error);
-        }
-      };
-      fetchingTurno();
-    }, []);
+    // useEffect(() => {
+    //   const fetchingTurno=async()=>{
+    //     try{
+    //         const baseUrl = import.meta.env.VITE_BASE_URL;
+    //         const url = baseUrl + '/turnos';
+    //         const datosTipoColegio = await axios.get(url);
+    //         setTurno( datosTipoColegio.data);
+    //       }catch(error){
+    //       console.log('Error al obtener Datos Tipo Colegio',error);
+    //     }
+    //   };
+    //   fetchingTurno();
+    // }, []);
     
 
     const changeRutaNuevoFormulario=()=>{
