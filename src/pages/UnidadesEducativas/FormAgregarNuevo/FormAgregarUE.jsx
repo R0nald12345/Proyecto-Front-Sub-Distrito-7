@@ -5,7 +5,6 @@ import FormAgregarDesayuno from './FormAgregarDesayuno'
 import {Form, useNavigate} from 'react-router-dom'
 
 import {useDropzone} from 'react-dropzone'
-import FormMantenimiento from './FormMantenimiento'
 import FormTipoApoyo from './FormTipoApoyo'
 import MapaAgregar from '../Mapas/MapaAgregar'
 import { useEffect } from 'react'

@@ -56,6 +56,7 @@ function App() {
 
 
               {/* Rutas de Unidades Educativas */}
+              
               <Route path="unidadeducativa" element={<ListaGeneralUE/>} />
 
 

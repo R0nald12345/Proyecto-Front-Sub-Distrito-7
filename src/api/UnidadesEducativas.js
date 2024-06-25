@@ -129,3 +129,226 @@ export const login = async (email, password) => {
     }
   };
   
+
+  // D  E  S  A  Y  U  N  O  S
+
+  export const getDesayunosListaGeneral=async()=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + '/desayunos';
+        const response = await axios.get(baseURL);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api getDesayunoListaGeneral', e);
+    }
+  }
+
+  export const crearNuevoDesayuno=async(nombre,cantidad, nombreEntrega,fecha, idUnidadEducativa )=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + `/desayunos`;
+        const datos = {nombre,cantidad, nombreEntrega, fecha,idUnidadEducativa};
+        const response = await axios.post(baseURL,datos);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api newDesayuno', e);
+    }
+  }
+
+  export const actualizarDesayuno = async (nombre, cantidad, nombreEntrega, fecha, idUnidadEducativa) => {
+    try {
+      const url = import.meta.env.VITE_BASE_URL;
+      const baseURL = `${url}/desayunos/${idUnidadEducativa}`;
+      const datos = { nombre, cantidad, nombreEntrega, fecha, idUnidadEducativa };
+      const response = await axios.put(baseURL, datos);
+      return response.data;
+    } catch (e) {
+      console.log('Error en el API actualizarDesayuno', e);
+    }
+  };
+
+  export const deleteDesayunoID=async(id)=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + `/desayunos/${id}`;
+        const response = await axios.delete(baseURL);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api deleteDesayunoListaGeneral', e);
+    }
+  }
+
+
+  // M  A  N  T  E  N  I  M  I  E  N  T  O  S
+
+  export const getMantenimientosListaGeneral=async()=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + '/mantenimientos';
+        const response = await axios.get(baseURL);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api getMantenimientosListaGeneral', e);
+    }
+  }
+  
+
+export const crearNuevoMantenimiento = async ( titulo, encargado, empresa, fecha, idUnidadEducativa) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = `${url}/mantenimientos`;
+    const datos = {titulo, fecha, encargado, empresa ,idUnidadEducativa};
+    const response = await axios.post(baseURL, datos);
+    return response.data;
+  } catch (e) {
+    console.log('Error en el API crearNuevoMantenimiento', e);
+  }
+};
+
+ 
+
+  export const modificarMantenimiento = async (id, titulo, encargado, empresa, fecha,idUnidadEducativa) => {
+    try {
+      const url = import.meta.env.VITE_BASE_URL;
+      const baseURL = url + `/mantenimientos/${id}`;
+      const datos = { titulo, encargado, empresa, fecha,idUnidadEducativa };
+      const response = await axios.put(baseURL, datos);
+      return response.data;
+    } catch (e) {
+      console.log('Error en el API modificarMantenimiento', e);
+      throw e; // Vuelve a lanzar el error para que pueda ser manejado por el código que llama a esta función
+    }
+  };
+  
+  export const deleteMantenimientoID=async(id)=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + `/mantenimientos/${id}`;
+        const response = await axios.delete(baseURL);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api deleteMantenimientosListaGeneral', e);
+    }
+  }
+
+
+
+
+
+  
+  // A  P  O  Y  O    S  O  C  I  A  L
+
+  export const getApoyoSocialListaGeneral=async()=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + '/apoyossociales';
+        const response = await axios.get(baseURL);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api getApoyoSocialListaGeneral', e);
+    }
+  }
+
+  export const newApoyoSocial=async(nombre,cantidad, nombreEntrega, fecha,idUnidadEducativa)=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + `/apoyossociales`;
+        const datos = {nombre,cantidad, nombreEntrega, fecha,idUnidadEducativa};
+        const response = await axios.post(baseURL,datos);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api newApoyoSocial',e);
+    }
+  }
+
+  export const actualizarApoyoSocial=async(id,datos)=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + `/apoyossociales/${id}`;
+        const response = await axios.put(baseURL,datos);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api actualizarApoyoSocial', e);
+    }
+  }
+
+
+  export const deleteApoyoSocialID=async(id)=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + `/apoyossociales/${id}`;
+        const response = await axios.delete(baseURL);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api deleteApoyoSocialListaGeneral', e);
+    }
+  }
+
+
+
+
+
+
+  // A  P  O  Y  O    G  U  B  E  R  N  A  M  E  N  T  A  L
+
+  export const getCategoriaListaGeneral=async()=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + '/categorias';
+        const response = await axios.get(baseURL);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api getApoyoGubernamentalListaGeneral', e);
+    }
+  }
+
+
+  export const getApoyoGubernamentalListaGeneral=async()=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + '/apoyosgubernamentales';
+        const response = await axios.get(baseURL);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api getApoyoGubernamentalListaGeneral', e);
+    }
+  }
+
+  export const newApoyoGubernamental = async( cantidad, nombreEntrega, fecha, idUnidadEducativa,  idCategoria )=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + `/apoyosgubernamentales`;
+        const datos = {cantidad, nombreEntrega, fecha, idUnidadEducativa, idCategoria}
+        const response = await axios.post(baseURL,datos);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api newApoyoGubernamental', e);
+    }
+  }
+
+
+
+  export const actualizarApoyoGubernamental=async(id,datos)=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + `/apoyosgubernamentales/${id}`;
+        const response = await axios.put(baseURL,datos);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api actualizarApoyoGubernamental', e);
+    }
+  }
+
+  export const deleteApoyoGubernamentalID=async(id)=>{  
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + `/apoyosgubernamentales/${id}`;
+        const response = await axios.delete(baseURL);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api deleteApoyoGubernamentalListaGeneral', e);
+    }
+  }
+
+
+

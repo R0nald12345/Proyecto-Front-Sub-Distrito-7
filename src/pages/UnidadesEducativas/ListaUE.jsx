@@ -1,4 +1,6 @@
 import axios from 'axios'
+import Swal from 'sweetalert2';
+
 
 import React, { useEffect } from 'react'
 import { useNavigate} from 'react-router-dom'
@@ -7,6 +9,7 @@ import { ImWhatsapp } from "react-icons/im";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import { IoEyeSharp } from "react-icons/io5";
+import { deleteMantenimientoID } from '../../api/UnidadesEducativas';
 // import { fetchModule } from 'vite';
 
 const ListaUE = ({id,nombreUE,nombreDirector,turno}) => {
