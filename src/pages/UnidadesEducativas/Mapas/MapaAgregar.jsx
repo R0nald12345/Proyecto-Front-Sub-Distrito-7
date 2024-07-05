@@ -77,10 +77,10 @@ const MapaAgregar = ({ setCoordenada_x, setCoordenada_y }) => {
 
     return (
         <>
-            <div className='bg-black/40 rounded-xl text-white text-center'>
+            <div className='bg-black/40 rounded-tl-xl rounded-tr-xl text-white text-center'>
                 Lng:{markerCoords.lng} | Lat: {markerCoords.lat} | Zoom: {13}
             </div>
-            <div className='h-[140%] w-full bg-red-600' ref={mapaDiv} />
+            <div className='h-[140%] rounded-br-xl rounded-bl-xl w-full bg-red-600' ref={mapaDiv} />
         </>
     );
 }

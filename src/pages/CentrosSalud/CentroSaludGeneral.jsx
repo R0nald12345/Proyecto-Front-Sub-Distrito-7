@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import { FaMagnifyingGlass } from "react-icons/fa6";
 // import { getListaGeneralCentroSalud } from '../../apiServices/centroSalud/apiGeneralCentroSalud';
 import ListaCentroSalud from './ListaCentroSalud';
-// import { getListaGeneralCentroSalud } from '../../apiServices/CentroSalud/apiCentroSalud';
+import { getDatoCentroSalud } from '../../api/CentroSalud';
 
 const CentroSaludGeneral = () => {
   const navigate = useNavigate();
@@ -16,35 +16,36 @@ const CentroSaludGeneral = () => {
   // const [infraEstructura, setInfraEstructura] = useState([]);
   
 
-  // useEffect(() => {
-  //   const getDatosListaCentroSalud=async()=>{
-  //     try{
-  //       const responsive = await getListaGeneralCentroSalud();
-  //       console.log(listaCentroSalud);
-  //       setListaCentroSalud(responsive);
-  //     }catch{
-  //       console.log('Error al Consumir en componente ApiGetDatoListaCentroSalud');
-  //     }
-  //   }
-  //   getDatosListaCentroSalud();
-  // }, [])
+  useEffect(() => {
+    const getDatosListaCentroSalud=async()=>{
+      try{
+        const responsive = await getDatoCentroSalud();
+        console.log('Lista de Centro de Salud');
+        console.log( listaCentroSalud);
+        setListaCentroSalud(responsive);
+      }catch{
+        console.log('Error al Consumir en componente ApiGetDatoListaCentroSalud');
+      }
+    }
+    getDatosListaCentroSalud();
+  }, [])
   
   
-  const opctionBusqueda = [
-    {label: 'Ascendente', value: 1},
-    {label: 'Descende', value: 2},
-  ];
+  // const opctionBusqueda = [
+  //   {label: 'Ascendente', value: 1},
+  //   {label: 'Descende', value: 2},
+  // ];
 
-  const opctionTipoInfraEstructura = [
-      {label: 'Modulo', value: 1},
-      {label: 'Escuela', value: 2},
-  ];
+  // const opctionTipoInfraEstructura = [
+  //     {label: 'Modulo', value: 1},
+  //     {label: 'Escuela', value: 2},
+  // ];
 
-  const opctionTurno = [
-      {label: 'Mañana', value: 1},
-      {label: 'Turno', value: 2},
-      {label: 'Noche', value: 3},
-  ];
+  // const opctionTurno = [
+  //     {label: 'Mañana', value: 1},
+  //     {label: 'Turno', value: 2},
+  //     {label: 'Noche', value: 3},
+  // ];
 
   const handleTurno = (event)=>{
     setTurnoSeleccionado(event.target.value);
@@ -90,24 +91,24 @@ const CentroSaludGeneral = () => {
               </ul>
           </section>
   
-          {/* <section className='w-full'>
+          <section className='w-full'>
             {
               listaCentroSalud.map((element)=>{
                 return(
-                  <ListaCentroSalud
+                  <listaCentroSalud
                     // key={element.id}
-                    id = {element.id}
-                    nombre={element.nombre} 
-                    direccion={element.direccion} 
-                    nivel ={element.nivel}
-                    hora = {element.horario}
+                    // id = {element.id}
+                    // nombre={element.nombre} 
+                    // direccion={element.direccion} 
+                    // nivel ={element.nivel}
+                    // hora = {element.horario}
                     // turno ={element.direccion}
                   />
                 );
               })
             }
             
-          </section> */}
+          </section>
           
   
         </main>

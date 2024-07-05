@@ -50,21 +50,9 @@ export const createDatoGeneralUE = async ({
 }
 
 
-// export const deleteDatoGeneral = async () => {
-//     try {
-//         const baseUrl = import.meta.env.VITE_BASE_URL;
-//         const url = baseUrl + '/unidadeseducativas';
-//         const datosTipoColegio = await axios.get(url);
-//         return datosTipoColegio.data;
-//     } catch (error) {
-//         console.log('Error no se pudo obtener los Datos', error);
-//     }
-// }
+//************  TiposColegio ************
 
-//----------
-
-
-export const TiposColegio = async () => {
+export const getDatoGeneralTiposColegio = async () => {
     try {
         const baseUrl = import.meta.env.VITE_BASE_URL;
         const url = baseUrl + '/tipocolegios';
@@ -75,30 +63,44 @@ export const TiposColegio = async () => {
     }
 }
 
-export const TiposInfraestructura = async () => {
+
+//************  TiposTunos ************
+
+
+
+export const getDatoGeneralTiposTurno = async () => {
     try {
-        const baseUrl = import.meta.env.VITE_BASE_URL;
-        const url = baseUrl + '/infraestructuras';
-        const datosTipoInfraestructura = await axios.get(url);
-        return datosTipoInfraestructura.data;
+      const baseUrl = import.meta.env.VITE_BASE_URL;
+      const url = baseUrl + '/turnos';
+      const datosTipoTurno = await axios.get(url);
+      return datosTipoTurno.data;
     } catch (error) {
+      console.log('Error no se pudo obtener los Datos de los Tipos Turnos', error);
+    }
+  }
+  
+  
+  //************ Tipos InfraEstrcutura ************
+  
+  
+  export const getDatoGeneralTiposInfraestructura = async () => {
+    try {
+      const baseUrl = import.meta.env.VITE_BASE_URL;
+          const url = baseUrl + '/infraestructuras';
+          const datosTipoInfraestructura = await axios.get(url);
+          return datosTipoInfraestructura.data;
+      } catch (error) {
         console.log('Error no se pudo obtener los Datos de los Tipos Infraestructura', error);
+      }
     }
-}
+  
+  
 
-export const TiposTurno = async () => {
-    try {
-        const baseUrl = import.meta.env.VITE_BASE_URL;
-        const url = baseUrl + '/turnos';
-        const datosTipoTurno = await axios.get(url);
-        console.log(datosTipoTurno.data);
-        return datosTipoTurno.data;
-    } catch (error) {
-        console.log('Error no se pudo obtener los Datos de los Tipos Turnos', error);
-    }
-}
 
-////////// Login //////////////
+
+
+//************ LOGIN ************!/
+  
 
 
 export const login = async (email, password) => {
@@ -130,6 +132,8 @@ export const login = async (email, password) => {
   };
   
 
+
+
   // D  E  S  A  Y  U  N  O  S
 
   export const getDesayunosListaGeneral=async()=>{
@@ -154,6 +158,7 @@ export const login = async (email, password) => {
         console.log('Error en el Api newDesayuno', e);
     }
   }
+
 
   export const actualizarDesayuno = async (nombre, cantidad, nombreEntrega, fecha, idUnidadEducativa) => {
     try {
@@ -232,9 +237,6 @@ export const crearNuevoMantenimiento = async ( titulo, encargado, empresa, fecha
   }
 
 
-
-
-
   
   // A  P  O  Y  O    S  O  C  I  A  L
 
@@ -285,12 +287,7 @@ export const crearNuevoMantenimiento = async ( titulo, encargado, empresa, fecha
   }
 
 
-
-
-
-
   // A  P  O  Y  O    G  U  B  E  R  N  A  M  E  N  T  A  L
-
   export const getCategoriaListaGeneral=async()=>{
     try{
         const url = import.meta.env.VITE_BASE_URL;
@@ -351,4 +348,29 @@ export const crearNuevoMantenimiento = async ( titulo, encargado, empresa, fecha
   }
 
 
+  // G E S T I O N E S
+
+  export const newGestion = async( numero, horario, director, juntaescolar)=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + `/gestiones`;
+        const datos = { numero, horario, director, juntaescolar}
+        const response = await axios.post(baseURL, datos);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api newGestion', e);
+    }
+  }
+
+
+  export const actualizarGestion =async(id,datos )=>{
+    try{
+        const url = import.meta.env.VITE_BASE_URL;
+        const baseURL =  url + '/gestiones';
+        const response = await axios.put(id, datos);
+        return response.data;
+    }catch(e){
+        console.log('Error en el Api actualizarGestion', e);
+    }
+  }
 

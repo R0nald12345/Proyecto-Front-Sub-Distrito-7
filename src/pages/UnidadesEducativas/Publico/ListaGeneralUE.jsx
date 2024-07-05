@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-
 import { FaMagnifyingGlass } from "react-icons/fa6";
-
 import { useNavigate } from "react-router-dom";
-
 import ListaUE from "../ListaUE";
 
 import { getDatoGeneralUE } from "../../../api/UnidadesEducativas";
@@ -30,7 +27,7 @@ const ListaGeneralUE = () => {
   }, []);
 
   const changeRutaNuevoFormulario = () => {
-    navigate("/unidadeducativa/agregarnuevo");
+    navigate("/inicio/unidadeducativa/agregarnuevo");
   };
 
   const handleFiltroCambio = (e)=>{
@@ -99,7 +96,7 @@ const ListaGeneralUE = () => {
                 // key={element.id}
                 id={element.id}
                 nombreUE={element.nombre}
-                nombreDirector={element.idGestion.director}
+                // nombreDirector={element.idGestion.director}
                 turno={element.idTurno.nombre}
               />
             );

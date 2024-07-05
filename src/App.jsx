@@ -30,6 +30,11 @@ import Encabezado_ApoyoGubernamental from "./components/Encabezado_Listas/Unidad
 import Encabezado_Desayuno from "./components/Encabezado_Listas/UnidadesEducativas/Encabezado_Desayuno";
 import Encabezado_Mantenimiento from "./components/Encabezado_Listas/UnidadesEducativas/Encabezado_Mantenimiento";
 import Encabezado_ApoyoSocial from "./components/Encabezado_Listas/UnidadesEducativas/Encabezado_ApoyoSocial";
+import ListaGeneralCentroTuristicos from "./pages/CentroTuristicos/ListaGeneralCentroTuristicos";
+import AgregarCentroTuristicos from "./pages/CentroTuristicos/AgregarCentroTuristicos";
+import ListaGeneralCentroDeportivo from "./pages/CentroDeportivo/ListaGeneralCentroDeportivo";
+import AgregarCentroDeportivo from "./pages/CentroDeportivo/AgregarCentroDeportivo";
+import DetallesCentroDeportivo from "./pages/CentroDeportivo/DetallesCentroDeportivo";
 
 // import UnidadEducativa from "./pages/UnidadesEducativas/UnidadEducativa";
 function App() {
@@ -39,13 +44,13 @@ function App() {
         <Router> {/* Envuelve todo dentro del componente Router */}
           <Routes>
 
-            <Route path="/inicio" element={<Principal/>}>
+            <Route path="/" element={<Principal/>}>
               <Route index element={<MainBienvenida/>} />
               <Route path="auth" element={<VentanaLogin/>} />
             </Route>
 
             {/* Para Dashboard Completo */}
-            <Route path="/" element={<LayoutAdmin/>} >
+            <Route path="/inicio" element={<LayoutAdmin/>} >
               <Route index element={<Inicio/>}/>
 
               {/* OficinaDistritalPrincipal */}
@@ -56,7 +61,6 @@ function App() {
 
 
               {/* Rutas de Unidades Educativas */}
-              
               <Route path="unidadeducativa" element={<ListaGeneralUE/>} />
 
 
@@ -74,6 +78,18 @@ function App() {
 
               <Route path="centrosalud" element={<CentroSaludGeneral/>}/>
               <Route path="centrorecreativo" element={<CentroRecreativo/>}/>
+
+              <Route path="centro_turisticos" element={<ListaGeneralCentroTuristicos/>}/>
+              <Route path="centro_turisticos/agregarnuevo" element={<AgregarCentroTuristicos/>}/>
+
+              <Route path="centro_deportivo" element={<ListaGeneralCentroDeportivo/>}/>
+              <Route path="centro_deportivo/agregarnuevo" element={<AgregarCentroDeportivo/>}/>
+              <Route path="centro_deportivo/detalles/:id" element={<DetallesCentroDeportivo/>}/>
+             
+              {/* <Route path="centro_turisticos/agregarnuevo" element={<AgregarCentroTuristicos/>}/> */}
+
+
+
             </Route>
               {/* <Route index element={<Principal/>} /> */}
           </Routes>

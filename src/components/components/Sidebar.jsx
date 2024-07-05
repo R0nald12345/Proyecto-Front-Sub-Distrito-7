@@ -30,16 +30,10 @@ const Sidebar = () => {
         navigate('centrosalud');
     }
 
-    // const rutaUnidadEducativaPublica=()=>{
-    //     navigate('unidad/educativa/publica');
-    // }
 
-    // const rutaUnidadEducativaPrivada=()=>{
-    //     navigate('unidad/educativa/privada');
-    // }
 
     const rutaUnidadEducativaConvenio=()=>{
-        navigate('/unidadeducativa');
+        navigate('/inicio/unidadeducativa');
     }
 
     const rutaOficinaDistrital=()=>{
@@ -60,7 +54,7 @@ const Sidebar = () => {
                 <h1 className='text-center text-2xl font-bold text-white mb-10'>
                     Administración
                 </h1>
-                <ul className='text-white text-gray-300'>
+                <ul className='text-white'>
                     <li className='mb-3'>
                         <Link to="/" 
                         className={` flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors
@@ -171,12 +165,12 @@ const Sidebar = () => {
                             <MdHealthAndSafety className='text-primary'/> Centros Salud
                         </Link>
                     </li>
-                    <li className='mb-3'>
+                    <li className='mb-3' onClick={()=>navigate('centro_deportivo')}>
                         <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
                             <MdOutlineSportsKabaddi className='text-primary'/> Centros Deportivos
                         </Link>
                     </li>
-                    <li className='mb-3'>
+                    <li className='mb-3' onClick={()=>navigate('centro_turisticos')}>
                         <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
                             <PiMountainsFill className='text-primary'/> Puntos Turísticos
                         </Link>
@@ -202,7 +196,7 @@ const Sidebar = () => {
             <nav>
 
                 <Link 
-                    to="/inicio" 
+                    to="/auth" 
                     className='text-white  flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50  transition-colors text-1xl font-semibold'>
                         <CiLogout className='text-primary'/> Cerrar Sesion
                 </Link>

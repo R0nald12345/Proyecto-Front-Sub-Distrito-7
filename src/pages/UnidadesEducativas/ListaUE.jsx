@@ -17,11 +17,11 @@ const ListaUE = ({id,nombreUE,nombreDirector,turno}) => {
     const navigate = useNavigate();
 
     const changeFormDetails=(id)=>{
-        navigate(`/unidadeducativa/detalles/${id}`);
+        navigate(`/inicio/unidadeducativa/detalles/${id}`);
     }
 
     const changeRutaEditarFormulario=(id)=>{
-      navigate(`/unidadeducativa/modificar/${id}`);
+      navigate(`/inicio/unidadeducativa/modificar/${id}`);
     }
 
 
