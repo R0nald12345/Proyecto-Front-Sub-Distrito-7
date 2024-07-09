@@ -6,6 +6,7 @@ import ListaCentroSalud from './ListaCentroSalud';
 import { getDatoCentroSalud } from '../../api/CentroSalud';
 
 const CentroSaludGeneral = () => {
+
   const navigate = useNavigate();
 
 
@@ -15,13 +16,12 @@ const CentroSaludGeneral = () => {
   // const [turnoSeleccionado, setTurnoSeleccionado] = useState("");
   // const [infraEstructura, setInfraEstructura] = useState([]);
   
-
   useEffect(() => {
     const getDatosListaCentroSalud=async()=>{
       try{
         const responsive = await getDatoCentroSalud();
-        console.log('Lista de Centro de Salud');
-        console.log( listaCentroSalud);
+        // console.log('Lista de Centro de Salud');
+        // console.log( listaCentroSalud);
         setListaCentroSalud(responsive);
       }catch{
         console.log('Error al Consumir en componente ApiGetDatoListaCentroSalud');

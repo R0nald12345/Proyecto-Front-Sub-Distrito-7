@@ -35,6 +35,7 @@ import AgregarCentroTuristicos from "./pages/CentroTuristicos/AgregarCentroTuris
 import ListaGeneralCentroDeportivo from "./pages/CentroDeportivo/ListaGeneralCentroDeportivo";
 import AgregarCentroDeportivo from "./pages/CentroDeportivo/AgregarCentroDeportivo";
 import DetallesCentroDeportivo from "./pages/CentroDeportivo/DetallesCentroDeportivo";
+import NuevoUsuario from "./pages/AgregarUsuario/NuevoUsuario";
 
 // import UnidadEducativa from "./pages/UnidadesEducativas/UnidadEducativa";
 function App() {
@@ -43,7 +44,6 @@ function App() {
       <>
         <Router> {/* Envuelve todo dentro del componente Router */}
           <Routes>
-
             <Route path="/" element={<Principal/>}>
               <Route index element={<MainBienvenida/>} />
               <Route path="auth" element={<VentanaLogin/>} />
@@ -85,6 +85,8 @@ function App() {
               <Route path="centro_deportivo" element={<ListaGeneralCentroDeportivo/>}/>
               <Route path="centro_deportivo/agregarnuevo" element={<AgregarCentroDeportivo/>}/>
               <Route path="centro_deportivo/detalles/:id" element={<DetallesCentroDeportivo/>}/>
+              <Route path="agregarUsuario" element={<NuevoUsuario/>}/>
+
              
               {/* <Route path="centro_turisticos/agregarnuevo" element={<AgregarCentroTuristicos/>}/> */}
 

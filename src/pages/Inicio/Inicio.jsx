@@ -15,18 +15,18 @@ const Inicio = () => {
               {/* <Header/> */}
               {/* Seccion 1 */}
 
-              <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mt-10 gap-8">
+              {/* <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mt-10 gap-8">
               {/* <section> */}
                 {/* Card 1 */}
-                <div className="bg-primary-100 p-8 rounded-xl text-gray-300 flex flex-col gap-6">
+              {/*  <div className="bg-primary-100 p-8 rounded-xl text-gray-300 flex flex-col gap-6">
                   <RiLineChartLine className="text-7xl"/>
                   <h4 className="text-3xl">Inversión en Colegios y Modulos</h4>
                     {/* <AiFillEuroCircle/> 8,350 */}
-                    <span className="text-5xl text-white">&euro; 8,350</span>
+                    {/* <span className="text-5xl text-white">&euro; 8,350</span>
                     <span className="py-1 px-3 bg-primary-900/50 rounded-full">+10% desde mes pasado</span>
-                </div>
+                </div>  */}
                 {/* Card 2 */}
-                <div className="p-4 bg-white rounded-xl flex flex-col justify-between gap-4 drop-shadow-2xl">
+                {/* <div className="p-4 bg-white rounded-xl flex flex-col justify-between gap-4 drop-shadow-2xl">
                   
                   <div className="flex items-center gap-4 bg-primary-100/30 rounded-xl p-4">
                     <span className=" bg-primary-100  text-gray-300 text-2xl font-semibold p-4 rounded-xl">98</span>
@@ -50,9 +50,9 @@ const Inicio = () => {
                       </div>
                   </div>
     
-                </div>
+                </div> */}
                 {/* Card 3 */}
-                <div className="col-span-1 md:col-span-2 flex flex-col justify-between">
+                {/* <div className="col-span-1 md:col-span-2 flex flex-col justify-between">
                   <h1 className="text-2xl font-bold mb-8">Tipos de Colegios</h1>
                   <div className="bg-white p-8  rounded-xl shadow-2xl">
     
@@ -78,19 +78,18 @@ const Inicio = () => {
                       <div className="flex justify-end">
                           <a href="#" className="hover:text-primary-300 transition-colors hover:underline">Ver mas detalles</a>
                       </div>
-                  
                   </div>
                 </div>
-              </section>
+              </section> */}
     
               {/* section 2 */}
-              <section className="grid grid-cols-1 md:grid-cols-2 mt-10 gap-8">
+              {/* <section className="grid grid-cols-1 md:grid-cols-2 mt-10 gap-8">
                   <div >
                     <h1 className="text-2xl font-bold mb-8">Nombre de los Directores</h1>
                  
                     <div className="bg-white p-8 rounded-xl shadow-2xl mb-8">
                          {/* Card 1 */}
-                        <div className="grid grid-cols-1 xl:grid-cols-4 items-center gap-4 mb-4">
+                        {/* <div className="grid grid-cols-1 xl:grid-cols-4 items-center gap-4 mb-4">
                             <div className="col-span-2 flex items-center gap-4">
                               <img src="https://img.freepik.com/foto-gratis/joven-barbudo-camiseta-blanca_273609-7198.jpg"
                                         className="w-14 h-14 object-cover rounded-xl"
@@ -106,9 +105,9 @@ const Inicio = () => {
                             <div>
                               <span className="font-bold">$euro; 1,200.87</span>
                             </div>
-                        </div>
+                        </div> */} 
                           {/* Card 2 */}
-                        <div className="grid grid-cols-1 xl:grid-cols-4 items-center gap-4 mb-4">
+                        {/* <div className="grid grid-cols-1 xl:grid-cols-4 items-center gap-4 mb-4">
                             <div className="col-span-2 flex items-center gap-4">
                               <img src="https://img.freepik.com/foto-gratis/joven-barbudo-camiseta-blanca_273609-7198.jpg"
                                         className="w-14 h-14 object-cover rounded-xl"
@@ -182,7 +181,7 @@ const Inicio = () => {
     
                     </div>
                   </div>
-              </section>
+              </section> */}
     
     
             {/* </main> */}

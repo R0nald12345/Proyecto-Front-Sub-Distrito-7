@@ -15,6 +15,7 @@ import { GiPoliceOfficerHead } from "react-icons/gi";
 import { FaPersonShelter } from "react-icons/fa6";
 import { BsBusFrontFill } from "react-icons/bs";
 import { CiLogout } from "react-icons/ci";
+import { FaPersonCirclePlus } from "react-icons/fa6";
 
 const Sidebar = () => {
     const navigate = useNavigate();
@@ -54,14 +55,14 @@ const Sidebar = () => {
                 <h1 className='text-center text-2xl font-bold text-white mb-10'>
                     Administración
                 </h1>
+
                 <ul className='text-white'>
                     <li className='mb-3'>
-                        <Link to="/" 
+                        <Link to="/inicio" 
                         className={` flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors
                                     ${ location.pathname ==='/' && 'bg-primary-900/50 text-white'}`}>
                             <FaRegChartBar className='text-primary'/> Inicio
                         </Link>
-
                     </li>
 
                     <li 
@@ -190,6 +191,12 @@ const Sidebar = () => {
                             <BsBusFrontFill className='text-primary'/> Parada Micros
                         </Link>
                     </li>
+
+                    <li className='mb-3' onClick={()=>navigate('agregarUsuario')}> 
+                        <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
+                            <FaPersonCirclePlus className='text-primary'/> Registrar Usuario
+                        </Link>
+                    </li>
                     
                 </ul>
             </div>
@@ -206,7 +213,7 @@ const Sidebar = () => {
 
         <button 
             onClick={()=>setshowMenu(!showMenu)}
-            className='xl:hidden fixed bottom-4 right-4 bg-primary text-black p-3 rounded-full z-50'>
+            className='xl:hidden fixed bottom-4 right-4 bg-green-900 text-black p-3 rounded-full z-50'>
                 {showMenu?<IoCloseSharp/>:<SlMenu/>}
             
         </button>
