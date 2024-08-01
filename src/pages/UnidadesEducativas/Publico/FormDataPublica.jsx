@@ -9,8 +9,12 @@ import MapaMostrar from "../Mapas/MapaMostrar";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
+import {getDatoGeneralUEid} from '../../../api/UnidadesEducativas'
+import { createURLFotos } from "../../../api/ArchivoFotos";
+
 const FormDataPublica = () => {
   const { id } = useParams();
+console.log(id);
 
   const [nombreUE, setNombreUE] = useState("");
   const [direccionUE, setDireccionUE] = useState("");
@@ -35,55 +39,116 @@ const FormDataPublica = () => {
 
   const [datoGeneralUE, setDatoGeneralUE] = useState([]);
 
+  const [images, setImages] = useState([]);
+  const [imagesURL, setImagesURL] = useState([]);
+
   const navigate = useNavigate();
 
+
   useEffect(() => {
-    const fetchingExtraDatoId = async (id) => {
+    const fetchingExtraDatoId = async () => {
       try {
-        const baseUrl = import.meta.env.VITE_BASE_URL;
-        const url = baseUrl + `/unidadeseducativas/+${id}`;
-        const datosUE = await axios.get(url);
-        // console.log(datosTipoColegio.data.nombre);
-        setNombreUE(datosUE.data.nombre);
-        setDireccionUE(datosUE.data.direccion);
-        setCoordenadaX(datosUE.data.coordenada_x);
-        setCoordenadaY(datosUE.data.coordenada_y);
-        setDescripcionHistoria(datosUE.data.historia);
-        setImagenGestion(datosUE.data.idGestion.juntaescolar);
-        setNombreDirectorGestion(datosUE.data.idGestion.director);
-        setHoraGestion(datosUE.data.idGestion.horario);
-        setNroGestion(datosUE.data.idGestion.numero);
-        console.log(datosUE.data);
+        const response = await getDatoGeneralUEid(id);
+  
+        console.log(response);
+  
+        setNombreUE(response.nombre);
+        setDireccionUE(response.direccion);
+        setCoordenadaX(response.coordenada_x);
+        setCoordenadaY(response.coordenada_y);
+        setDescripcionHistoria(response.historia);
+  
+        setNombreDirectorGestion(response.gestion.director);
+        setNroGestion(response.gestion.director);
+        setHoraGestion(response.gestion.director);
+        setTipoTurno(response.idTurno.nombre);
+        setTipoInfraestructura(response.idInfraestructura.nombre);
+        setTipoColegio(response.idTipoColegio.nombre);
+        setImages(response.fotos);
+      
+  
+        // const formattedImages = response.fotos.map( photo => {
+        //   // Verifica si la URL es absoluta o necesita ser transformada
+        //   const isAbsoluteUrl = photo.url.startsWith('http');
+        //   const imageUrl = isAbsoluteUrl ? photo.url : `${import.meta.env.VITE_BASE_URL}/${photo.url}`;
+        //   return {
+        //     original: `${imageUrl}/1018/1000/600`,
+        //     thumbnail: `${imageUrl}/1015/250/150`,
+        //   };
+        // });
+  
+        // console.log('Formatted Images:', formattedImages);
+        // setImages(formattedImages);
 
-        setTipoTurno(datosUE.data.idTurno.nombre);
-
-        setTipoColegio(datosUE.data.idTipoColegio.nombre);
-        setTipoInfraestructura(datosUE.data.idInfraestructura.nombre);
-
-        console.log("------------------");
-        console.log(datosUE.data.idTipoColegio.nombre);
-        console.log(datosUE.data.idInfraestructura.nombre);
-
-        // console.log(coordenadaX);
       } catch (error) {
         console.log("Error al cargar Datos de Formulario por Id", error);
       }
     };
-    fetchingExtraDatoId(id);
+  
+    fetchingExtraDatoId();
   }, []);
+ 
+
+  // useEffect(() => {
+  //   const fetchingExtraFotosURL = async () => {
+  //     try {
+  //       const response = await createURLFotos(images);
+  
+  //       console.log('image URL');
+  //       console.log(response);
+  
+        
+  //       // const formattedImages = response.fotos.map(photo => {
+
+  //       // // Verifica si la URL es absoluta o necesita ser transformada
+
+  //       //   const isAbsoluteUrl = photo.url.startsWith('http');
+  //       //   const imageUrl = isAbsoluteUrl ? photo.url : `${import.meta.env.VITE_BASE_URL}/${photo.url}`;
+  //       //   return {
+  //       //     original: `${imageUrl}/1018/1000/600`,
+  //       //     thumbnail: `${imageUrl}/1015/250/150`,
+  //       //   };
+  //       // });
+  
+  //       // console.log('Formatted Images:', formattedImages);
+  //       // setImages(formattedImages);
+
+  //     } catch (error) {
+  //       console.log("Error al cargar fetchingExtraFotosURL", error);
+  //     }
+  //   };
+  
+  //   fetchingExtraFotosURL();
+  // }, []);
+ 
 
   useEffect(() => {
-    const fetchingDatosGeneralUE = async () => {
+    const fetchingExtraFotosURL = async () => {
       try {
-        const response = await getDatoGeneralUE();
+        const response = await createURLFotos({ imageFiles: images });
+
+        console.log('image URL');
         console.log(response);
-        datoGeneralUE(response);
+
+        const formattedImages = response.map(photo => {
+          return {
+            original: photo.url,
+            thumbnail: photo.url,
+          };
+        });
+
+        console.log('Formatted Images:', formattedImages);
+        setImages(formattedImages);
       } catch (error) {
-        console.log(error);
+        console.log('Error al cargar fetchingExtraFotosURL', error);
       }
     };
-    fetchingDatosGeneralUE();
-  }, []);
+
+    if (images.length > 0) {
+      fetchingExtraFotosURL();
+    }
+  }, [images]);
+
 
   const generarPDF = () => {
     const doc = new jsPDF();
@@ -153,20 +218,20 @@ const FormDataPublica = () => {
     doc.save(`factura_${1}.pdf`);
   };
 
-  const images = [
-    {
-      original: "https://picsum.photos/id/1018/1000/600",
-      thumbnail: "https://picsum.photos/id/1018/250/150",
-    },
-    {
-      original: "https://picsum.photos/id/1015/1000/600",
-      thumbnail: "https://picsum.photos/id/1015/250/150",
-    },
-    {
-      original: "https://picsum.photos/id/1019/1000/600",
-      thumbnail: "https://picsum.photos/id/1019/250/150",
-    },
-  ];
+  // const images = [
+  //   {
+  //     original: "https://picsum.photos/id/1018/1000/600",
+  //     thumbnail: "https://picsum.photos/id/1018/250/150",
+  //   },
+  //   {
+  //     original: "https://picsum.photos/id/1015/1000/600",
+  //     thumbnail: "https://picsum.photos/id/1015/250/150",
+  //   },
+  //   {
+  //     original: "https://picsum.photos/id/1019/1000/600",
+  //     thumbnail: "https://picsum.photos/id/1019/250/150",
+  //   },
+  // ];
 
   return (
     <div className="flex justify-center items-center">
@@ -176,13 +241,14 @@ const FormDataPublica = () => {
           {/* Parte Lateral angosto Izquierdp*/}
           <section className="w-[45%]">
             {/* F  O  T  O  G  R  A  F  I  A  */}
-            <ImageGallery items={images} />
-            {/* <FotosMultiple */}
+            {/* <ImageGallery items={images} /> */}
 
-            {/* // id={datoGeneralUE.fotos.id}
-                        id={1}
-                        // id
-                    /> */}
+            <ImageGallery
+              
+
+              items={images}
+            />
+            
 
             {/* Historia */}
             <div className="h-3/5">
@@ -232,8 +298,7 @@ const FormDataPublica = () => {
                       Tipo Colegio
                     </p>
                     <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200">
-                      {/* {tipoColegio} */}
-                      Privado
+                      {tipoColegio}
                     </p>
                   </div>
 
@@ -252,8 +317,7 @@ const FormDataPublica = () => {
                     Tipo Infraestrcutura
                   </p>
                   <p className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200">
-                    {/* {tipoInfraestructura} */}
-                    Convenio
+                    {tipoInfraestructura}
                   </p>
                 </div>
               </div>
@@ -320,7 +384,6 @@ const FormDataPublica = () => {
 
         <section className="flex w-full mt-3 gap-5">
           <section className="w-1/2">
-
             <p className="uppercase font-semibold text-gray-600 mt-2 mb-1 text-center">
               Informacion de :
             </p>
@@ -328,7 +391,7 @@ const FormDataPublica = () => {
             <div className="flex justify-around w-full border border-black/50 rounded-md mt-2 py-3">
               <button
                 className="bg-primary-100 text-xl text-white font-semibold px-5 py-2 rounded-xl"
-                onClick={() => navigate(`/unidadeducativa/desayuno/${id}`)}
+                onClick={() => navigate(`unidadeducativa/desayuno/${id}`)}
               >
                 Desayuno
               </button>
@@ -363,15 +426,13 @@ const FormDataPublica = () => {
                 Gubernamental
               </button>
             </div>
-
           </section>
-
         </section>
 
         {/* Seleccion debajo */}
         <div className="flex gap-3">
           <button
-            onClick={() => navigate("/unidadeducativa")}
+            onClick={() => navigate("/inicio/unidadeducativa")}
             type="submit"
             className="w-1/2 bg-primary-300 rounded-xl text-white uppercase py-3 text-2xl font-semibold mt-5 hover:bg-primary-900/90"
           >

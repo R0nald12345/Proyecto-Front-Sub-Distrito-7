@@ -13,6 +13,7 @@ export const getDatoCentroSalud = async () => {
     }
 }
 
+
 export const createDatoGeneralUE = async ({
     nombre,
     coordenada_x,
@@ -28,7 +29,7 @@ export const createDatoGeneralUE = async ({
 }) => {
     try {
         const baseUrl = import.meta.env.VITE_BASE_URL;
-        const url = baseUrl + '/unidadeseducativas';
+        const url = baseUrl + '/centrossaluds';
 
         const body = {
             nombre,
@@ -47,5 +48,17 @@ export const createDatoGeneralUE = async ({
         return response.data;
     } catch (error) {
         console.log('Error no se pudo obtener los Datos', error);
+    }
+}
+
+
+export const deleteDatoCentroSalud = async ({id}) => {
+    try {
+        const baseUrl = import.meta.env.VITE_BASE_URL;
+        const url = baseUrl + `/centrossaluds/${id}`;
+        const datosCentroSalud = await axios.delete(url);
+        return datosCentroSalud.data;
+    } catch (error) {
+        console.log('Error no se pudo obtener los Datos Backend ApiServices/CentroSalud', error);
     }
 }

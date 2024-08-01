@@ -6,10 +6,10 @@ const Modal_AgregarGestion = ({ open, onClose }) => {
 
     const navigate =  useNavigate();
 
-    const [ horaGestion,  setHoraGestion] = seState("");
-    const [ nroGestion,  setNroGestion] = seState("");
-    const [ nombreDirectorGestion,  setNombreDirectorGestion] = seState("");
-    const [ image ,  setImage] = seState("");
+    // const [ horaGestion,  setHoraGestion] = useState(0);
+    // const [ nroGestion,  setNroGestion] = seState("");
+    // const [ nombreDirectorGestion,  setNombreDirectorGestion] = seState("");
+    // const [ image ,  setImage] = seState("");
 
   if (!open) return null;
 
@@ -42,7 +42,7 @@ const Modal_AgregarGestion = ({ open, onClose }) => {
                 Horario
               </p>
               <p className="w-full border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100">
-                {horaGestion} --
+                {horaGestion} 
               </p>
             </div>
             <div className="w-full mt-5">

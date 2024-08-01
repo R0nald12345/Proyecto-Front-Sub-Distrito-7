@@ -36,6 +36,7 @@ import ListaGeneralCentroDeportivo from "./pages/CentroDeportivo/ListaGeneralCen
 import AgregarCentroDeportivo from "./pages/CentroDeportivo/AgregarCentroDeportivo";
 import DetallesCentroDeportivo from "./pages/CentroDeportivo/DetallesCentroDeportivo";
 import NuevoUsuario from "./pages/AgregarUsuario/NuevoUsuario";
+import DetallesCentroTuristicos from "./pages/CentroTuristicos/DetallesCentroTuristicos";
 
 // import UnidadEducativa from "./pages/UnidadesEducativas/UnidadEducativa";
 function App() {
@@ -70,8 +71,11 @@ function App() {
               <Route path="unidadeducativa/detalles/:id" element={<FormDataPublica/>} />
 
               <Route path="unidadeducativa/desayuno/:id" element={<Encabezado_Desayuno/>} />
+
               <Route path="unidadeducativa/mantenimiento/:id" element={<Encabezado_Mantenimiento/>} />
+
               <Route path="unidadeducativa/apoyo-gubernamental/:id" element={<Encabezado_ApoyoGubernamental/>} />
+              
               <Route path="unidadeducativa/apoyo-social/:id" element={<Encabezado_ApoyoSocial/>} />
 
               <Route path="unidadeducativa/modificar/:id" element={<FormEditarUE/>} />
@@ -81,6 +85,7 @@ function App() {
 
               <Route path="centro_turisticos" element={<ListaGeneralCentroTuristicos/>}/>
               <Route path="centro_turisticos/agregarnuevo" element={<AgregarCentroTuristicos/>}/>
+              <Route path="centro_turisticos/detalles/:id" element={<DetallesCentroTuristicos/>}/>
 
               <Route path="centro_deportivo" element={<ListaGeneralCentroDeportivo/>}/>
               <Route path="centro_deportivo/agregarnuevo" element={<AgregarCentroDeportivo/>}/>

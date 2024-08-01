@@ -16,6 +16,8 @@ import { FaPersonShelter } from "react-icons/fa6";
 import { BsBusFrontFill } from "react-icons/bs";
 import { CiLogout } from "react-icons/ci";
 import { FaPersonCirclePlus } from "react-icons/fa6";
+import { MdOutlineHealthAndSafety } from "react-icons/md";
+import { FaCalendarPlus } from "react-icons/fa";
 
 const Sidebar = () => {
     const navigate = useNavigate();
@@ -65,7 +67,7 @@ const Sidebar = () => {
                         </Link>
                     </li>
 
-                    <li 
+                    {/* <li 
                         onClick={rutaOficinaDistrital}
                         className='mb-3'>
                         <Link to="/" 
@@ -74,9 +76,9 @@ const Sidebar = () => {
                             <FaRegChartBar className='text-primary'/> Oficina Distrital
                         </Link>
 
-                    </li>
+                    </li> */}
 
-                    <li 
+                    {/* <li 
                         onClick={rutatelefonoUrgencia}
                         className='mb-3'>
                         <Link to="/" 
@@ -85,7 +87,8 @@ const Sidebar = () => {
                             <FaRegChartBar className='text-primary'/>Telefono de Urgencia
                         </Link>
 
-                    </li>
+                    </li> */}
+
                     <li 
                         onClick={rutaUnidadEducativaConvenio}
                         className='mb-3'>
@@ -148,14 +151,14 @@ const Sidebar = () => {
                         </ul>
                     </li> */}
 
-                    <li className='mb-3' onClick={rutaCentroRecreativo}>
+                    {/* <li className='mb-3' onClick={rutaCentroRecreativo}>
                         <Link to="/" 
                               className={` flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors
                                             ${location.pathname === '/centrorecreativo' && 'bg-primary-900/50 text-white'}`}
                         >
                             <GiJumpAcross className='text-primary'/> Centros Recreativos
                         </Link>
-                    </li>
+                    </li> */}
 
                     <li className='mb-3' onClick={rutaCentroSalud}>
                         <Link 
@@ -176,21 +179,26 @@ const Sidebar = () => {
                             <PiMountainsFill className='text-primary'/> Puntos Turísticos
                         </Link>
                     </li>
-                    <li className='mb-3'>
+
+                    <li className='mb-3'
+                        onClick={rutaCentroSalud}
+                    >
                         <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
-                            <GiPoliceOfficerHead className='text-primary'/> Centros Policiales
+                            <FaCalendarPlus   className='text-primary text-xl'/> Centros de Salud
                         </Link>
                     </li>
-                    <li className='mb-3'>
+
+                    {/* <li className='mb-3'>
                         <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
                             <FaPersonShelter className='text-primary'/> Zona Vecinales
                         </Link>
-                    </li>
-                    <li className='mb-3'> 
+                    </li> */}
+
+                    {/* <li className='mb-3'> 
                         <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
                             <BsBusFrontFill className='text-primary'/> Parada Micros
                         </Link>
-                    </li>
+                    </li> */}
 
                     <li className='mb-3' onClick={()=>navigate('agregarUsuario')}> 
                         <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>

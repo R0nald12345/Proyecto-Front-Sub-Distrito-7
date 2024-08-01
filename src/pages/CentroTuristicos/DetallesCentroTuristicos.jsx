@@ -1,117 +1,94 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import Encabezado_Arreglo_CargarFotos from '../../components/Encabezado_Listas/UnidadesEducativas/Encabezado_Arreglo_CargarFotos';
 import MapaAgregar from '../UnidadesEducativas/Mapas/MapaAgregar';
-import { createDatoCentroTuristico } from '../../api/CentroTuristicos';
+import { createDatoCentroTuristico, deleteCentroTuristico, getDatoCentroTuristicosID } from '../../api/CentroTuristicos';
 import useForm from '../../hooks/useForm';
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
+import MapaMostrar from '../UnidadesEducativas/Mapas/MapaMostrar';
 
-const AgregarCentroTuristicos = () => {
+const DetallesCentroTuristicos = () => {
 
+    const id = useParams();
 
-    const {onResetForm, onInputChange, nombre, direccion, historia, videoUrl, uv 
-    } = useForm({ 
-        nombre : "", 
-        direccion : "", 
-        historia: "", 
-        uv : "",
-        videoUrl : "", 
-      });
+    console.log(id);
+   
 
-      const navigate = useNavigate();
-
+    const navigate = useNavigate();
     const [fotos, setFotos] = useState([]);
-    const [coordenada_x, setCoordenada_x] = useState(0);
-    const [coordenada_y, setCoordenada_y] = useState(0);
+    const [datoIDCentroTuristico, setDatoIDCentroTuristico] = useState([]);
+    const [coordenadaX, setCoordenadaX] = useState(0);
+  const [coordenadaY, setCoordenadaY] = useState(0);
 
-    //coorX
+    useEffect(() => {
+        const fetchingDatosCentrosTuristicos = async () => {
+          try {
+            const response = await getDatoCentroTuristicosID(id);
+            setDatoIDCentroTuristico(response);
+            setCoordenadaX(response.coordenada_x);
+            setCoordenadaY(response.coordenada_y);
+          } catch (error) {
+            console.log(
+              "Error en Componente ListaGeneral fetchingDatosGeneralUE",
+              error
+            );
+          }
+        };
+        fetchingDatosCentrosTuristicos();
+      
+    
+    }, [])
+    
+    const {coordenada_x, coordenada_y} = datoIDCentroTuristico;
 
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-      try {
-          await createDatoCentroTuristico({
-              nombre,
-              coordenada_x,
-              coordenada_y,
-              direccion,
-              uv,
-              historia,
-              videoUrl,
-              fotos,
-          });
-          onResetForm();
-          Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Centro Deportivo creado exitosamente",
-              showConfirmButton: false,
-              timer: 1500,
-          });
-          navigate('/inicio/centro_turisticos');
-      } catch (error) {
-          console.log("Error en el Componente AgregarCentroTuristicos: " + error);
-      }
-  };
+   
     
     return (
         <div className="flex justify-center items-center">    
           <form
-            onSubmit={handleSubmit}
-            className="bg-gray-100/50 rounded-xl shadow-xl w-[90%] p-5"
+            // onSubmit={handleSubmit}
+            className="bg-gray-100/50 rounded-xl shadow-xl w-[80%] p-8"
           >
             {/* parte Derecho */}
             <h2 className='text-center font-bold text-3xl text-gray-700'>Agregar Nuevo Centro Turistico</h2>
             <section className="xl:flex gap-5 mt-5">
               <section className="xl:w-[40%] md:flex lg:block ">
 
-    
                 <h3 className="uppercase font-semibold text-gray-600">Nombre</h3>
-    
                 <input
                   className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200 mb-1"
                   type="text"
-                  value={nombre}
-                  name='nombre'
-                  onChange={onInputChange}
+                  value={datoIDCentroTuristico.nombre}
                 />
     
                 <p className="uppercase font-semibold text-gray-600">Dirección</p>
-    
                 <input
                   className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
                   type='text'
-                  name='direccion'
-                  value={direccion}
-                  onChange={onInputChange}
+                  value={datoIDCentroTuristico.direccion}
                 />
+
                 <p className="uppercase font-semibold text-gray-600">Uv</p>
-    
                 <input
                   className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
                   type='text'
-                  value={uv}
-                  name='uv'
-                  onChange={onInputChange}
+                  value={datoIDCentroTuristico.uv}
                 />
+
                 <p className="uppercase font-semibold text-gray-600">Link De Video</p>
-    
                 <input
                   className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
                   type='text'
-                  value={videoUrl}
-                  name='videoUrl'
-                  onChange={onInputChange}
+                  value={datoIDCentroTuristico.videoUrl}
                 />
+
                 <h3 className="uppercase font-semibold text-gray-600 mt-1">
                   Historia
                 </h3>
                 <textarea
                   className="w-full mt-1 h-[48%] border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-200 overflow-y-scroll"
-                  value={historia}
-                  name='historia'
-                  onChange={onInputChange}
+                  value={datoIDCentroTuristico.historia}
                 ></textarea>
-    
     
               </section>
     
@@ -138,10 +115,9 @@ const AgregarCentroTuristicos = () => {
                     className=" rounded-xl mt-1 h-[60%]"
                     // style={{height:''}}
                   >
-                    <MapaAgregar
-                      setCoordenada_x={setCoordenada_x}
-                      setCoordenada_y={setCoordenada_y}
-                    
+                    <MapaMostrar
+                      datoX={coordenadaX} 
+                      datoY={coordenadaY}
                     />
                   </div>
                 </div>
@@ -152,7 +128,6 @@ const AgregarCentroTuristicos = () => {
     
             {/* Seleccion debajo */}
             <button
-              type="submit"
             //   onClick={() => handleSubmit}
               className="w-full mt-12 bg-primary-300 rounded-xl text-white uppercase py-3 text-2xl font-semibold hover:bg-primary-900/90"
             >
@@ -163,4 +138,4 @@ const AgregarCentroTuristicos = () => {
       );
     };
 
-export default AgregarCentroTuristicos
+export default DetallesCentroTuristicos

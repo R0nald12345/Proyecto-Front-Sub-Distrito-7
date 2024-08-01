@@ -43,14 +43,14 @@ const Lista_CentroDeportivo = ({
 
   return (
     <>
-      <ul className="bg-white gap-3 mb-3 rounded-xl shadow-lg flex">
+      <ul className="bg-white mb-3 rounded-xl shadow-lg flex">
         <li className="font-semibold text-center w-[30%] px-2 py-2">
           {nombre}
         </li>
-        <li className="font-semibold text-center w-[55%] px-2 py-2">
+        <li className="font-semibold text-center w-[50%] px-2 py-2">
           {direccion}
         </li>
-        <li className="font-semibold text-center w-[15%] px-2 py-2 flex justify-around gap-3">
+        <li className="font-semibold text-center w-[20%] px-2 py-2 flex justify-around gap-3">
           <BiEditAlt className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer" />
           <IoEyeSharp
             className="bg-black text-white text-3xl rounded-md p-1 cursor-pointer"

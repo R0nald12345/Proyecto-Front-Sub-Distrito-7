@@ -1,6 +1,5 @@
 // FormTipos.jsx
 import { useEffect, useState } from "react";
-import axios from "axios";
 import {
   getDatoGeneralTiposColegio,
   getDatoGeneralTiposInfraestructura,
@@ -47,18 +46,18 @@ const FormTipos = ({
   }, []);
 
   useEffect(() => {
-    const fetchingTiposTurnos = async () => {
+    const fetchingTiposInfraestructuras = async () => {
       try {
         const datosTipoInfraEstructura =await getDatoGeneralTiposInfraestructura();
         setTipoInfraestructura(datosTipoInfraEstructura);
       } catch (error) {
         console.log(
-          "Error no se pude obtener los Datos de fetchingTiposTurnos",
+          "Error no se pude obtener los Datos de fetchingTiposInfraestructuras",
           error
         );
       }
     };
-    fetchingTiposTurnos();
+    fetchingTiposInfraestructuras();
   }, []);
 
   // Manejadores de eventos para cada dropdown
@@ -80,13 +79,15 @@ const FormTipos = ({
 
   return (
     <>
-      <div className="flex gap-3">
+      <div className="flex gap-3 mt-3">
         <div className="w-1/2">
           <p className="font-semibold text-gray-600 uppercase">Tipo Colegio</p>
           <select
             className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
             onChange={handleTipoColegioChange}
+            defaultValue=""
           >
+            <option value="">Seleccionar</option>
             {tipoColegio.map((option) => (
               <option value={option.id} key={option.id}>
                 {option.nombre}
@@ -100,7 +101,9 @@ const FormTipos = ({
           <select
             className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
             onChange={handleTipoTurnoChange}
+            defaultValue=""
           >
+            <option value="">Seleccionar</option>
             {tipoTurno.map((option) => (
               <option value={option.id} key={option.id}>
                 {option.nombre}
@@ -110,14 +113,14 @@ const FormTipos = ({
         </div>
       </div>
 
-      <div className="">
-        <p className="font-semibold text-gray-600 uppercase">
-          Tipo Infraestrcutura
-        </p>
+      <div className="mt-3">
+        <p className="font-semibold text-gray-600 uppercase">Tipo Infraestructura</p>
         <select
           className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
           onChange={handleTipoInfraestructuraChange}
+          defaultValue=""
         >
+          <option value="" >Seleccionar</option>
           {tipoInfraestructura.map((option) => (
             <option value={option.id} key={option.id}>
               {option.nombre}
