@@ -9,10 +9,6 @@ import Dashboard from "./components/ComponentDashboardOficial/Dashboard";
 import MainBienvenida from '../src/components/ComponentsInitial/MainBienvenida'
 import LayoutAdmin from "./layout/LayoutAdmin";
 import Inicio from "./pages/Inicio/Inicio";
-// import EducativaPublica from "./pages/UnidadesEducativas/Publico/EducativaPublica";
-// import EducativaPrivada from "./pages/UnidadesEducativas/Privada/EducativaPrivada";
-
-// import CentroSalud from "./pages/CentrosSalud/CentroSalud";
 
 import CentroSalud from "./pages/CentrosSalud/CentroSalud";
 
@@ -47,7 +43,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Principal/>}>
               <Route index element={<MainBienvenida/>} />
-              <Route path="auth" element={<VentanaLogin/>} />
+              <Route path="auth" element={<VentanaLogin/> } />
             </Route>
 
             {/* Para Dashboard Completo */}
@@ -91,12 +87,7 @@ function App() {
               <Route path="centro_deportivo/agregarnuevo" element={<AgregarCentroDeportivo/>}/>
               <Route path="centro_deportivo/detalles/:id" element={<DetallesCentroDeportivo/>}/>
               <Route path="agregarUsuario" element={<NuevoUsuario/>}/>
-
-             
               {/* <Route path="centro_turisticos/agregarnuevo" element={<AgregarCentroTuristicos/>}/> */}
-
-
-
             </Route>
               {/* <Route index element={<Principal/>} /> */}
           </Routes>

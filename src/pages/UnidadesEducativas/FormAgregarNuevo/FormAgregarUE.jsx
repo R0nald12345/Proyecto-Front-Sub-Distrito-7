@@ -10,6 +10,7 @@ import { createDatoGeneralUE } from "../../../api/UnidadesEducativas";
 import Encabezado_Arreglo_CargarFotos from "../../../components/Encabezado_Listas/UnidadesEducativas/Encabezado_Arreglo_CargarFotos";
 import Swal from "sweetalert2";
 import Modal_AgregarGestion from "../../../components/modales/Modal_AgregarGestion";
+import ArregloFotos from "../../../components/Encabezado_Listas/UnidadesEducativas/ArregloFotos";
 
 const FormAgregarUE = () => {
   const navigate = useNavigate();
@@ -33,11 +34,10 @@ const FormAgregarUE = () => {
   const [juntaescolar, setJuntaEscolar] = useState(null);
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-      // Obtener el nombre del archivo si se ha seleccionado uno
       const juntaEscolarNombre = juntaescolar ? juntaescolar.name : "";
-
+  
       const response = await createDatoGeneralUE({
         nombre,
         coordenada_x,
@@ -46,17 +46,16 @@ const FormAgregarUE = () => {
         historia,
         video,
         slug,
-        fotos,
+        fotos, // Asegúrate de que fotos sea un arreglo de cadenas
         idInfraestructura,
         idTipoColegio,
         idTurno,
-        // Gestion
         numero,
         horario,
         director,
-        juntaescolar: juntaEscolarNombre, // Solo enviar el nombre del archivo
+        juntaescolar: juntaEscolarNombre,
       });
-
+  
       Swal.fire({
         position: "center",
         icon: "success",
@@ -64,7 +63,7 @@ const FormAgregarUE = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-
+  
       navigate("/inicio/unidadeducativa");
       console.log("UE Creado: ", response);
     } catch (error) {
@@ -182,8 +181,14 @@ const FormAgregarUE = () => {
 
             <section className="mt-3 block border-2 rounded-xl md:flex h-60 gap-5 ">
               <div className="w-full">
-                <div className="lg:w-full rounded-xl p-2">
-                  <Encabezado_Arreglo_CargarFotos
+                <div className="lg:w-full rounded-xl px-2">
+                  {/* <Encabezado_Arreglo_CargarFotos
+
+                    foto={fotos}
+                    setFoto={setFotos}
+                  /> */}
+
+                  <ArregloFotos
                     foto={fotos}
                     setFoto={setFotos}
                   />
