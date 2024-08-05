@@ -11,6 +11,7 @@ import Encabezado_Arreglo_CargarFotos from "../../../components/Encabezado_Lista
 import Swal from "sweetalert2";
 import Modal_AgregarGestion from "../../../components/modales/Modal_AgregarGestion";
 import ArregloFotos from "../../../components/Encabezado_Listas/UnidadesEducativas/ArregloFotos";
+import { createURLFotos } from "../../../api/ArchivoFotos";
 
 const FormAgregarUE = () => {
   const navigate = useNavigate();
@@ -31,12 +32,14 @@ const FormAgregarUE = () => {
   const [horario, sethorario] = useState("");
   const [director, setDirector] = useState("");
   const [numero, setNumero] = useState("");
-  const [juntaescolar, setJuntaEscolar] = useState(null);
+  const [juntaEscolarFoto, setJuntaEscolarFoto] = useState([]);
+  const [juntaEscolarCloudinary, setJuntaEscolarCloudinary] = useState([]);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const juntaEscolarNombre = juntaescolar ? juntaescolar.name : "";
+      // const juntaEscolarNombre = juntaescolar ? juntaescolar.name : "";
   
       const response = await createDatoGeneralUE({
         nombre,
@@ -53,7 +56,7 @@ const FormAgregarUE = () => {
         numero,
         horario,
         director,
-        juntaescolar: juntaEscolarNombre,
+        juntaescolar: juntaEscolarCloudinary,
       });
   
       Swal.fire({
@@ -75,6 +78,24 @@ const FormAgregarUE = () => {
       console.error("Error al crear la Unidad Educativa: ", error);
     }
   };
+
+  useEffect(() => {
+    const convertirCloudinary = async () => {
+      if (juntaEscolarFoto && typeof juntaEscolarFoto !== "string") {
+        try {
+          const formData = new FormData();
+          formData.append("files", juntaEscolarFoto);
+          console.log("DataFoto before sending to API:", formData);
+          const response = await createURLFotos(formData);
+          setJuntaEscolarCloudinary(response.imageUrls[0]);
+          console.log("Response from API:", response.imageUrls);
+        } catch (error) {
+          console.error("Error", error);
+        }
+      }
+    };
+    convertirCloudinary();
+  }, [juntaEscolarFoto]);
 
   return (
     <div className="flex justify-center items-center">
@@ -158,10 +179,20 @@ const FormAgregarUE = () => {
                       Junta Escolar
                     </p>
                     <input
-                      className=" border-2 rounded-xl  border-gray-400 w-[59%] md:w-full"
+                      className="border-2 rounded-xl border-gray-400 w-[59%] md:w-full"
                       type="file"
-                      onChange={(e) => setJuntaEscolar(e.target.files[0])}
+                      onChange={(e) => setJuntaEscolarFoto(e.target.files[0])} // Actualiza el estado con el archivo seleccionado
                     />
+                    {/* <div>
+                      <ArregloFotos
+                        setFoto={setJuntaEscolar}
+                      />
+
+
+
+
+
+                    </div> */}
                   </section>
                 </div>
               </div>

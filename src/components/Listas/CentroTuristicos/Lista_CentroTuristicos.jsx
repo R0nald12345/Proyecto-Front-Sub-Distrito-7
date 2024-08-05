@@ -29,10 +29,13 @@ const Lista_CentroTuristicos = ({ id,datosTuristicos,datosCentroTuristicos,setDa
       });
 
       if (result.isConfirmed) {
-        await deleteCentroTuristico(id);
-        setDatosCentroTuristicos(
-          datosCentroTuristicos.filter((element) => element.id !== id)
-        );
+        const responde = await deleteCentroTuristico(id);
+        // setDatosCentroTuristicos( 
+        //   datosCentroTuristicos.filter((element) => element.id !== id)
+        // );
+        
+        setDatosCentroTuristicos(prevState => prevState.filter((element) => element.id !== id));
+
         Swal.fire({
           title: "Eliminado!",
           text: "Eliminado Correctamente.",

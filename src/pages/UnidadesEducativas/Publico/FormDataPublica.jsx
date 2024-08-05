@@ -23,7 +23,7 @@ console.log(id);
   const [horaGestion, setHoraGestion] = useState("");
   const [nroGestion, setNroGestion] = useState("");
   const [nombreDirectorGestion, setNombreDirectorGestion] = useState("");
-  const [imagenGestion, setImagenGestion] = useState(null);
+  const [imagenGestion, setImagenGestion] = useState([]);
 
   const [tipoColegio, setTipoColegio] = useState("");
   const [tipoInfraestructura, setTipoInfraestructura] = useState("");
@@ -64,22 +64,16 @@ console.log(id);
         setTipoTurno(response.idTurno.nombre);
         setTipoInfraestructura(response.idInfraestructura.nombre);
         setTipoColegio(response.idTipoColegio.nombre);
-        setImages(response.fotos);
-      
-  
-        // const formattedImages = response.fotos.map( photo => {
-        //   // Verifica si la URL es absoluta o necesita ser transformada
-        //   const isAbsoluteUrl = photo.url.startsWith('http');
-        //   const imageUrl = isAbsoluteUrl ? photo.url : `${import.meta.env.VITE_BASE_URL}/${photo.url}`;
-        //   return {
-        //     original: `${imageUrl}/1018/1000/600`,
-        //     thumbnail: `${imageUrl}/1015/250/150`,
-        //   };
-        // });
-  
-        // console.log('Formatted Images:', formattedImages);
-        // setImages(formattedImages);
+        // setImages(response.fotos);
 
+        const formattedImages = response.fotos.map(photo => ({
+          original: `${photo.url}`,
+          thumbnail: `${photo.url}`,
+        }));
+
+        setImages(formattedImages);
+
+      
       } catch (error) {
         console.log("Error al cargar Datos de Formulario por Id", error);
       }
@@ -89,38 +83,6 @@ console.log(id);
   }, []);
  
 
-  // useEffect(() => {
-  //   const fetchingExtraFotosURL = async () => {
-  //     try {
-  //       const response = await createURLFotos(images);
-  
-  //       console.log('image URL');
-  //       console.log(response);
-  
-        
-  //       // const formattedImages = response.fotos.map(photo => {
-
-  //       // // Verifica si la URL es absoluta o necesita ser transformada
-
-  //       //   const isAbsoluteUrl = photo.url.startsWith('http');
-  //       //   const imageUrl = isAbsoluteUrl ? photo.url : `${import.meta.env.VITE_BASE_URL}/${photo.url}`;
-  //       //   return {
-  //       //     original: `${imageUrl}/1018/1000/600`,
-  //       //     thumbnail: `${imageUrl}/1015/250/150`,
-  //       //   };
-  //       // });
-  
-  //       // console.log('Formatted Images:', formattedImages);
-  //       // setImages(formattedImages);
-
-  //     } catch (error) {
-  //       console.log("Error al cargar fetchingExtraFotosURL", error);
-  //     }
-  //   };
-  
-  //   fetchingExtraFotosURL();
-  // }, []);
- 
 
   useEffect(() => {
     const fetchingExtraFotosURL = async () => {
@@ -240,14 +202,13 @@ console.log(id);
         <section className="w-full flex gap-5">
           {/* Parte Lateral angosto Izquierdp*/}
           <section className="w-[45%]">
+              <ImageGallery
+                items={images}
+              />
+
             {/* F  O  T  O  G  R  A  F  I  A  */}
             {/* <ImageGallery items={images} /> */}
 
-            <ImageGallery
-              
-
-              items={images}
-            />
             
 
             {/* Historia */}
@@ -262,7 +223,22 @@ console.log(id);
                 {descripcionHistoria}
               </p>
             </div>
+
           </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           {/* Parte Lateral Ancha Derecho*/}
           <section className="w-[55%]">
@@ -379,6 +355,7 @@ console.log(id);
                 </div>
               </div>
             </section>
+
           </section>
         </section>
 
@@ -391,7 +368,7 @@ console.log(id);
             <div className="flex justify-around w-full border border-black/50 rounded-md mt-2 py-3">
               <button
                 className="bg-primary-100 text-xl text-white font-semibold px-5 py-2 rounded-xl"
-                onClick={() => navigate(`unidadeducativa/desayuno/${id}`)}
+                onClick={() => navigate(`/unidadeducativa/desayuno`)}
               >
                 Desayuno
               </button>

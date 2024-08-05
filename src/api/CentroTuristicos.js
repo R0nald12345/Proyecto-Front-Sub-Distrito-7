@@ -15,10 +15,10 @@ export const getDatoCentroTuristicos = async () => {
   }
 };
 
-export const getDatoCentroTuristicosID = async (id) => {
+export const getDatoCentroTuristicosID = async ({id}) => {
     try {
       const baseUrl = import.meta.env.VITE_BASE_URL;
-      const url = baseUrl + `/centrosturisticos+${id}`;
+      const url = baseUrl + `/centrosturisticos/+${id}`;
       const datosCentroTuristicos = await axios.get(url);
       return datosCentroTuristicos.data;
     } catch (error) {
@@ -60,7 +60,7 @@ export const createDatoCentroTuristico = async ({
   }
 };
 
-export const deleteCentroTuristico = async ({id}) => {
+export const deleteCentroTuristico = async (id) => {
     try {
       const baseUrl = import.meta.env.VITE_BASE_URL;
       const url = baseUrl + `/centrosturisticos/+${id}`;

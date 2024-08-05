@@ -5,6 +5,7 @@ import { createDatoCentroTuristico } from '../../api/CentroTuristicos';
 import useForm from '../../hooks/useForm';
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import ArregloFotos from '../../components/Encabezado_Listas/UnidadesEducativas/ArregloFotos';
 
 const AgregarCentroTuristicos = () => {
 
@@ -20,7 +21,7 @@ const AgregarCentroTuristicos = () => {
 
       const navigate = useNavigate();
 
-    const [fotos, setFotos] = useState([]);
+    const [foto, setFoto] = useState([]);
     const [coordenada_x, setCoordenada_x] = useState(0);
     const [coordenada_y, setCoordenada_y] = useState(0);
 
@@ -37,7 +38,7 @@ const AgregarCentroTuristicos = () => {
               uv,
               historia,
               videoUrl,
-              fotos,
+              fotos:foto,
           });
           onResetForm();
           Swal.fire({
@@ -121,9 +122,14 @@ const AgregarCentroTuristicos = () => {
                 <section className="block border-2 rounded-xl md:flex h-60 gap-5 ">
                   <div className="w-full">
                     <div className=" lg:w-full rounded-xl p-2">
-                      <Encabezado_Arreglo_CargarFotos 
+                      {/* <Encabezado_Arreglo_CargarFotos 
                         foto={fotos}
                         setFoto={setFotos}                   
+                      /> */}
+
+                      <ArregloFotos
+                        foto={foto}
+                        setFoto={setFoto}
                       />
                     </div>
                   </div>
