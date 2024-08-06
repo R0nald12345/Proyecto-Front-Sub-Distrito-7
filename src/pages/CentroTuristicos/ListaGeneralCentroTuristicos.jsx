@@ -158,9 +158,9 @@ const ListaGeneralCentroTuristicos = () => {
               </button>
               <button
                 className="bg-blue-950 text-white px-3 py-1 rounded-lg"
-                // onClick={() =>
-                //   navigate(`/inicio/centro_deportivo/detalles/${element.id}`)
-                // }
+                onClick={() =>
+                  navigate(`/inicio/centro_turisticos/detalles/${element.id}`)
+                }
               >
                 Detalles
               </button>
