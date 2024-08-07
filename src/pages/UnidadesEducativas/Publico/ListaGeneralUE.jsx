@@ -3,8 +3,9 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import ListaUE from "../ListaUE";
 import FormAgregarGestion from "../../UnidadesEducativas/FormAgregarNuevo/FormAgregarGestion"; // Importa el componente del formulario
+import Swal from "sweetalert2";
 
-import { getDatoGeneralUE } from "../../../api/UnidadesEducativas";
+import { deleteUEid, getDatoGeneralUE } from "../../../api/UnidadesEducativas";
 
 const ListaGeneralUE = () => {
   const navigate = useNavigate();
@@ -37,12 +38,47 @@ const ListaGeneralUE = () => {
     setFiltro(e.target.value);
   };
 
+
+  const handleEliminar = async (id) => {
+    try {
+      const result = await Swal.fire({
+        title: "Deseas Eliminar?",
+        text: "Si eliminas no podrás recuperarlo!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, quiero Eliminar!",
+      });
+      if (result.isConfirmed) {
+        const response = await deleteUEid(id);
+        setDatosUnidadEducativa(
+          datosUnidadEducativa.filter((element) => element.id !== id)
+        );
+        // console.log(response);
+        Swal.fire({
+          icon: "success",
+          title: "Eliminado",
+          text: "Se elimino correctamente",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "No se pudo eliminar",
+      });
+    }
+  };
+
   const listaFiltrada =
     filtro.trim() === ""
       ? datosUnidadEducativa
       : datosUnidadEducativa.filter((element) =>
           element.nombre.toLowerCase().includes(filtro.toLowerCase())
         );
+
 
   // const handleOpenModal = () => {
   //   setOpenModalCreateGestion(true); // Abre el modal
@@ -141,15 +177,15 @@ const ListaGeneralUE = () => {
               </button>
               <button
                 className="bg-blue-950 text-white px-3 py-1 rounded-lg"
-                // onClick={() =>
-                //   navigate(`/inicio/centro_deportivo/detalles/${element.id}`)
-                // }
+                onClick={() =>
+                  navigate(`/inicio/unidadeducativa/detalles/${element.id}`)
+                }
               >
                 Detalles
               </button>
               <button
+                onClick={() => handleEliminar(element.id)}              
                 className="bg-red-500 text-white px-3 py-1 rounded-lg"
-                onClick={() => handleDeleteCentroTuristico(element.id)}
               >
                 Eliminar
               </button>

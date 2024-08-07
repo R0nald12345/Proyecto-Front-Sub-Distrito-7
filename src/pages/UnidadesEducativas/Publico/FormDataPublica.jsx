@@ -61,9 +61,11 @@ console.log(id);
         setNombreDirectorGestion(response.gestion.director);
         setNroGestion(response.gestion.director);
         setHoraGestion(response.gestion.director);
+        setImagenGestion(response.gestion.juntaescolar);
         setTipoTurno(response.idTurno.nombre);
         setTipoInfraestructura(response.idInfraestructura.nombre);
         setTipoColegio(response.idTipoColegio.nombre);
+
         // setImages(response.fotos);
 
         const formattedImages = response.fotos.map(photo => ({
@@ -197,14 +199,37 @@ console.log(id);
 
   return (
     <div className="flex justify-center items-center">
-      <form className="bg-gray-100/50 rounded-xl shadow-xl w-[95%] p-8">
+      <form className="bg-gray-100/50 rounded-xl shadow-xl w-[95%] xl:w-[85%] pl-4 pr-4 pb-4 xl:p-8">
         {/* parte Superior */}
-        <section className="w-full flex gap-5">
+        <section className="w-full md:flex gap-5 ">
           {/* Parte Lateral angosto Izquierdp*/}
-          <section className="w-[45%]">
-              <ImageGallery
-                items={images}
-              />
+
+          <section className="w-full md:w-[45%]">
+
+              <div className="lg:hidden mt-4">
+                  <h3 className="uppercase font-semibold text-gray-600">Nombre</h3>
+                
+                  <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200 mb-1">
+                    {nombreUE}
+                  </p>
+
+                  <h3 className="uppercase font-semibold mt-4 text-gray-600">
+                    Dirección
+                  </h3>
+                  <p
+                    className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
+                    style={{ height: "60px" }}
+                  >
+                    {direccionUE}
+                  </p>
+              </div>
+
+              <div className="max-w-md mx-auto">
+                <ImageGallery
+                  items={images}
+                />
+
+              </div>
 
             {/* F  O  T  O  G  R  A  F  I  A  */}
             {/* <ImageGallery items={images} /> */}
@@ -229,47 +254,37 @@ console.log(id);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
           {/* Parte Lateral Ancha Derecho*/}
-          <section className="w-[55%]">
+          <section className="md:w-[55%]">
             {/* Parte Superior*/}
-            <section className="flex h-40 gap-5 ">
-              <div className="w-3/5">
-                <p className="uppercase font-semibold text-gray-600">Nombre</p>
-                {/* <input
-                                type='text'
-                                className='py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2'
-                                placeholder='Nombre de la UE'
-                            /> */}
+            <section className="flex h-40 gap-5">
 
-                <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200 mb-1">
-                  {nombreUE}
-                </p>
+              <div className="hidden lg:block lg:w-3/5 ">
 
-                <p className="uppercase font-semibold text-gray-600">
-                  Dirección
-                </p>
-                <p
-                  className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
-                  style={{ height: "60px" }}
-                >
-                  {direccionUE}
-                </p>
+                  <h3 className="uppercase font-semibold text-gray-600">Nombre</h3>
+                
+                  <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200 mb-1">
+                    {nombreUE}
+                  </p>
+
+                  <h3 className="uppercase font-semibold mt-4 text-gray-600">
+                    Dirección
+                  </h3>
+                  <p
+                    className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
+                    style={{ height: "60px" }}
+                  >
+                    {direccionUE}
+                  </p>
+
+
+
               </div>
 
-              <div className="w-2/5 flex flex-col">
-                <div className="flex gap-3 mb-7">
-                  <div className="w-1/2">
+              <div className="w-full lg:w-2/5 flex flex-col mt-4 lg:mt-0" >
+                <div className="flex gap-3 mb-4">
+
+                  <div className="w-1/2  ">
                     <p className="font-semibold text-gray-600 uppercase">
                       Tipo Colegio
                     </p>
@@ -300,31 +315,40 @@ console.log(id);
             </section>
 
             <section className=" w-full">
-              <div className="w-full">
+              <div className="w-full ">
                 <p className="uppercase font-semibold text-gray-600 mt-3 mb-1 text-center">
                   Gestión
                 </p>
-                <section className="flex gap-8 border border-black/50 rounded-lg px-3 py-3">
-                  <section className="flex-col gap-5 w-[40%] ">
-                    <div className="w-full mt-1">
-                      <p className="uppercase font-semibold text-gray-600 mt-1">
-                        Horario
-                      </p>
-                      <p className="w-full border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100">
-                        {horaGestion}
-                      </p>
-                    </div>
-                    <div className="w-full mt-5">
-                      <p className="uppercase font-semibold text-gray-600 mt-1">
-                        Número
-                      </p>
-                      <p className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100">
-                        {nroGestion}
-                      </p>
-                    </div>
+                <section className="lg:flex gap-8 border border-black/50 rounded-lg px-3 py-3 ">
 
-                    <div className="w-full mt-5">
-                      <p className="uppercase font-semibold text-gray-600 mt-1">
+                  <section className="flex-col gap-5 lg:w-[40%]">
+
+
+                    <section className=" flex gap-3 md:flex-col ">
+                      
+                      <div className="w-full mt-1">
+                        <p className="uppercase font-semibold text-gray-600 ">
+                          Horario
+                        </p>
+                        <p className="w-full border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100">
+                          {horaGestion}
+                        </p>
+                      </div>
+
+
+                      <div className="w-full  ">
+                        <p className="uppercase font-semibold text-gray-600">
+                          Número
+                        </p>
+                        <p className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100">
+                          {nroGestion}
+                        </p>
+                      </div>
+
+                    </section>
+
+                    <div className="w-full ">
+                      <p className="uppercase font-semibold text-gray-600 mt-3">
                         Director
                       </p>
                       <p className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100">
@@ -333,15 +357,17 @@ console.log(id);
                     </div>
                   </section>
 
-                  <section className="w-[60%]">
-                    <p className="uppercase font-semibold text-gray-600 mt-1">
-                      Junta Escolar
-                    </p>
-                    <img
-                      src={imagenGestion}
-                      className="border-2 rounded-xl  border-gray-400 object-cover"
-                      style={{ height: "230px" }}
-                    />
+
+
+                  <section className="lg:w-[60%] ">
+                      <p className="uppercase font-semibold text-gray-600 mt-1">
+                        Junta Escolar
+                      </p>
+                      <img
+                        src={imagenGestion}
+                        className="bg-black border-2 rounded-xl w-full  border-gray-400 object-contain bg-blend-overlay"
+                        style={{ height: "230px" }}
+                      />
                   </section>
                 </section>
               </div>
@@ -359,45 +385,46 @@ console.log(id);
           </section>
         </section>
 
-        <section className="flex w-full mt-3 gap-5">
-          <section className="w-1/2">
+        <section className="md:flex w-full mt-32 md:mt-3 gap-5">
+
+          <section className="md:w-1/2 ">
             <p className="uppercase font-semibold text-gray-600 mt-2 mb-1 text-center">
               Informacion de :
             </p>
 
             <div className="flex justify-around w-full border border-black/50 rounded-md mt-2 py-3">
               <button
-                className="bg-primary-100 text-xl text-white font-semibold px-5 py-2 rounded-xl"
-                onClick={() => navigate(`/unidadeducativa/desayuno`)}
+                className="bg-primary-100 text-xl text-white font-semibold px-2 md:px-5 py-2 rounded-xl"
+                onClick={() => navigate(`/inicio/unidadeducativa/desayuno/${id}`)}
               >
                 Desayuno
               </button>
 
               <button
-                className="bg-primary-100 text-xl text-white font-semibold px-5 py-2 rounded-xl"
-                onClick={() => navigate(`/unidadeducativa/mantenimiento/${id}`)}
+                className="bg-primary-100 text-xl text-white font-semibold px-2 md:px-5 py-2 rounded-xl"
+                onClick={() => navigate(`/inicio/unidadeducativa/mantenimiento/${id}`)}
               >
                 Mantenimiento
               </button>
             </div>
           </section>
 
-          <section className="w-1/2">
+          <section className="md:w-1/2">
             <p className="uppercase font-semibold text-gray-600 mt-2 mb-1 text-center">
               Tipo de Apoyo
             </p>
             <div className="flex justify-around w-full border border-black/50 rounded-md mt-2 py-3">
               <button
-                className="bg-primary-100 text-xl text-white font-semibold px-5 py-2 rounded-xl"
-                onClick={() => navigate(`/unidadeducativa/apoyo-social/${id}`)}
+                className="bg-primary-100 text-xl text-white font-semibold px-6 md:px-5 py-2 rounded-xl"
+                onClick={() => navigate(`/inicio/unidadeducativa/apoyo-social/${id}`)}
               >
                 Social
               </button>
 
               <button
-                className="bg-primary-100 text-xl text-white font-semibold px-5 py-2 rounded-xl"
+                className="bg-primary-100 text-xl text-white font-semibold px-2 md:px-5 py-2 rounded-xl"
                 onClick={() =>
-                  navigate(`/unidadeducativa/apoyo-gubernamental/${id}`)
+                  navigate(`/inicio/unidadeducativa/apoyo-gubernamental/${id}`)
                 }
               >
                 Gubernamental

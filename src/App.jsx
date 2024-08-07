@@ -66,6 +66,9 @@ function App() {
 
               <Route path="unidadeducativa/detalles/:id" element={<FormDataPublica/>} />
 
+              <Route path="unidadeducativa/modificar/:id" element={<FormEditarUE/>} />
+
+
               <Route path="unidadeducativa/desayuno/:id" element={<Encabezado_Desayuno/>} />
 
               <Route path="unidadeducativa/mantenimiento/:id" element={<Encabezado_Mantenimiento/>} />
@@ -74,7 +77,7 @@ function App() {
               
               <Route path="unidadeducativa/apoyo-social/:id" element={<Encabezado_ApoyoSocial/>} />
 
-              <Route path="unidadeducativa/modificar/:id" element={<FormEditarUE/>} />
+
 
               <Route path="centrosalud" element={<CentroSaludGeneral/>}/>
               <Route path="centrorecreativo" element={<CentroRecreativo/>}/>

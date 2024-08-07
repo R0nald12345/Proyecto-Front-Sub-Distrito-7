@@ -66,20 +66,20 @@ import { actualizarDesayuno, deleteDesayunoID } from "../../../api/UnidadesEduca
 
       
       {/* <Modal_Agregar_Desayuno/> */}
-      <ul className="flex bg-white gap-5 mb-3 rounded-xl shadow-lg px-2">
-        <li className=" font-semibold text-start w-[10%] px-2 py-2 ">
+      <ul className="flex bg-white md:gap-2 lg:gap-5 mb-3 rounded-xl shadow-lg px-2">
+        <li className=" font-semibold text-start w-[15%] px-1 py-2 ">
           {fechaFormateada}
         </li>
         <li className=" font-semibold text-start w-[30%] px-2 py-2 ">
           {nombreEntrega}
         </li>
-        <li className=" font-semibold text-start w-[40%] px-2 py-2 ">
+        <li className=" font-semibold text-start w-[33%] px-2 py-2 ">
           {nombre}
         </li>
-        <li className=" font-semibold text-center w-[10%] px-2 py-2">
-          {cantidad}
+        <li className=" font-semibold text-center w-[12%] px-1 py-2">
+          {cantidad} 
         </li>
-        <li className=" font-semibold text-center w-[10%] px-2 py-2 flex gap-3">
+        <li className=" font-semibold text-center w-[10%] py-2 flex gap-3">
           <BiEditAlt 
             className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer" 
             onClick={() => setOpenModalEditar(!openModalEditar)}

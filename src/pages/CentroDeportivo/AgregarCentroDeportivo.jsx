@@ -5,6 +5,7 @@ import Encabezado_Arreglo_CargarFotos from "../../components/Encabezado_Listas/U
 import MapaAgregar from "../UnidadesEducativas/Mapas/MapaAgregar";
 import useForm from "../../hooks/useForm";
 import { createCentroDeportivo } from "../../api/CentroDeportivo";
+import ArregloFotos from "../../components/Encabezado_Listas/UnidadesEducativas/ArregloFotos";
 
 const AgregarCentroDeportivo = () => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const AgregarCentroDeportivo = () => {
         uv,
         historia,
         videoUrl,
-        foto,
+        fotos: foto,
       });
       onResetForm();
       Swal.fire({
@@ -124,7 +125,12 @@ const AgregarCentroDeportivo = () => {
             <section className="block border-2 rounded-xl md:flex h-60 gap-5">
               <div className="w-full">
                 <div className="lg:w-full rounded-xl p-2">
-                  <Encabezado_Arreglo_CargarFotos
+                  {/* <Encabezado_Arreglo_CargarFotos
+                    foto={foto}
+                    setFoto={setFoto}
+                    /> */}
+
+                  <ArregloFotos
                     foto={foto}
                     setFoto={setFoto}
                   />

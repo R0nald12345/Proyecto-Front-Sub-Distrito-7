@@ -11,12 +11,22 @@ const DetallesCentroDeportivo = () => {
   const { id } = useParams();
 
   const [datoCentroDeportivoId, setDatoCentroDeportivoId] = useState({});
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     const fetchingDatoCetroDeportivoId = async () => {
       try {
         const response = await getDatoCentroDeportivoId(id);
         setDatoCentroDeportivoId(response);
+        console.log(response);
+
+        const formattedIamges = response.fotos.map( photo => ({
+          original: `${photo.url}`,
+          thumbnail: `${photo.url}`,
+        }) );
+
+        setImages(formattedIamges);
+
       } catch (error) {
         console.log("Error en Componente DetallesCentroDeportivo", error);
       }
@@ -38,20 +48,20 @@ const DetallesCentroDeportivo = () => {
   //   console.log(coordenada_x);
   //   console.log(coordenada_y);
 
-  const images = [
-    {
-      original: "https://picsum.photos/id/1018/1000/600",
-      thumbnail: "https://picsum.photos/id/1018/250/150",
-    },
-    {
-      original: "https://picsum.photos/id/1015/1000/600",
-      thumbnail: "https://picsum.photos/id/1015/250/150",
-    },
-    {
-      original: "https://picsum.photos/id/1019/1000/600",
-      thumbnail: "https://picsum.photos/id/1019/250/150",
-    },
-  ];
+  // const images = [
+  //   {
+  //     original: "https://picsum.photos/id/1018/1000/600",
+  //     thumbnail: "https://picsum.photos/id/1018/250/150",
+  //   },
+  //   {
+  //     original: "https://picsum.photos/id/1015/1000/600",
+  //     thumbnail: "https://picsum.photos/id/1015/250/150",
+  //   },
+  //   {
+  //     original: "https://picsum.photos/id/1019/1000/600",
+  //     thumbnail: "https://picsum.photos/id/1019/250/150",
+  //   },
+  // ];
 
   return (
     <div className="flex justify-center items-center">
@@ -102,16 +112,27 @@ const DetallesCentroDeportivo = () => {
               value={historia}
             ></textarea>
           </section>
+
           <section className="w-full xl:w-[60%]">
-            <section className="block border-2 rounded-xl md:flex h-60 gap-5">
+            <section className="block border-2 rounded-xl md:flex gap-5 bg-black">
               <div className="w-full">
+
+
                 <div className="lg:w-full rounded-xl p-2">
+
+                <div className="max-w-md mx-auto">
+                  <ImageGallery
+                    items={images}
+                  />
+
+                  </div>
                   {/* <ImageGallery
                     items={images}
                     // items={fotos}
                   // foto={foto}
                   // setFoto={setFoto}
                   /> */}
+
                 </div>
               </div>
             </section>

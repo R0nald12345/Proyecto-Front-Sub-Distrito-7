@@ -67,6 +67,8 @@ const DetallesCentroTuristicos = () => {
 
           <section className="xl:w-[40%] md:flex lg:block">
 
+{/* -------------------------------------------------- */}
+
             <section className="w-full  lg:h-[87%]">
 
 
@@ -123,8 +125,6 @@ const DetallesCentroTuristicos = () => {
 
               </div>
 
-
-
                 <h3 className="uppercase font-semibold text-gray-600 mt-3">
                   Historia
                 </h3>
@@ -137,6 +137,7 @@ const DetallesCentroTuristicos = () => {
 
             </section>
 
+{/* ---------------------------------------------------------- */}
 
             
           </section>
@@ -146,6 +147,8 @@ const DetallesCentroTuristicos = () => {
             {/* Parte Superior*/}
             <section className="block border-2 rounded-xl md:flex gap-5 bg-black">
               <div className="w-full">
+
+
                 <div className=" lg:w-full rounded-xl p-2">
                   <div className="max-w-md mx-auto">
                     <ImageGallery
@@ -158,8 +161,8 @@ const DetallesCentroTuristicos = () => {
               </div>
             </section>
 
-            <div className=" h-60 lg:w-full text-center">
-              <h3 className="uppercase font-semibold text-gray-600 mt-3">
+            <div className=" h-60 w-full lg:w-full text-center ">
+              <h3 className="uppercase font-semibold text-gray-600 mt-3 ">
                 Puntos (Cordenadas)
               </h3>
 

@@ -33,6 +33,8 @@ const FormAgregarUE = () => {
   const [director, setDirector] = useState("");
   const [numero, setNumero] = useState("");
   const [juntaEscolarFoto, setJuntaEscolarFoto] = useState([]);
+  const [juntaEscolar, setJuntaEscolar] = useState("");
+
   const [juntaEscolarCloudinary, setJuntaEscolarCloudinary] = useState([]);
   
 
@@ -40,6 +42,10 @@ const FormAgregarUE = () => {
     e.preventDefault();
     try {
       // const juntaEscolarNombre = juntaescolar ? juntaescolar.name : "";
+      // setJuntaEscolar(juntaEscolarCloudinary);
+      // console.log("Junta Escolar: ", juntaEscolarCloudinary);
+
+      // console.log("State API:", juntaEscolarCloudinary);
   
       const response = await createDatoGeneralUE({
         nombre,
@@ -56,7 +62,9 @@ const FormAgregarUE = () => {
         numero,
         horario,
         director,
-        juntaescolar: juntaEscolarCloudinary,
+        // juntaescolar : juntaEscolar
+        juntaescolar:juntaEscolar
+        // juntaescolar : juntaEscolarCloudinary
       });
   
       Swal.fire({
@@ -87,8 +95,18 @@ const FormAgregarUE = () => {
           formData.append("files", juntaEscolarFoto);
           console.log("DataFoto before sending to API:", formData);
           const response = await createURLFotos(formData);
-          setJuntaEscolarCloudinary(response.imageUrls[0]);
-          console.log("Response from API:", response.imageUrls);
+
+          setJuntaEscolar( response.imageUrls[0] );
+
+          // console.log("Response from API Junta Escolar:", response.imageUrls[0]);
+          // console.log("Response from API Junta Escolar:", juntaEscolar);
+          // console.log("Response tipo :", typeof juntaEscolar);
+
+
+          // setJuntaEscolarCloudinary(response.imageUrls);
+          // console.log("Response from API:", response.imageUrls);
+
+          // console.log("State API:", juntaEscolarCloudinary);
         } catch (error) {
           console.error("Error", error);
         }
@@ -245,7 +263,7 @@ const FormAgregarUE = () => {
         </section>
         <button
           type="submit"
-          className="w-full mt-6 bg-primary-300 rounded-xl text-white uppercase py-3 text-2xl font-semibold hover:bg-primary-900/90"
+          className="w-full mt-14 md:mt-6 bg-primary-300 rounded-xl text-white uppercase py-3 text-2xl font-semibold hover:bg-primary-900/90"
         >
           Crear nueva Unidad Educativa
         </button>

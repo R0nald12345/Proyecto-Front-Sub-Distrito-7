@@ -67,7 +67,7 @@ export const createDatoGeneralUE = async ({
         numero,
         horario,
         director,
-        juntaescolar: juntaescolar ? juntaescolar.name : ""
+        juntaescolar
       }
     };
 
@@ -85,7 +85,7 @@ export const createDatoGeneralUE = async ({
 };
 
 
-export const deleteUEid = async ({id}) => {
+export const deleteUEid = async (id) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
     const url = baseUrl + `/unidadeseducativas/+${id}`;
