@@ -81,6 +81,7 @@ function App() {
 
               <Route path="centrosalud" element={<CentroSaludGeneral/>}/>
               <Route path="centrorecreativo" element={<CentroRecreativo/>}/>
+              
 
               <Route path="centro_turisticos" element={<ListaGeneralCentroTuristicos/>}/>
               <Route path="centro_turisticos/agregarnuevo" element={<AgregarCentroTuristicos/>}/>

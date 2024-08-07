@@ -7,7 +7,7 @@ import Modal_Agregar_Desayuno from "../../modales/Modal_Agregar_Desayuno";
 import { actualizarDesayuno, deleteDesayunoID } from "../../../api/UnidadesEducativas";
 
 // const Lista_Desayuno = ({ fecha, nombreEntrega, nombre, cantidad }) => {
-  console.log('DatosDesayuno');
+  // console.log('DatosDesayuno');
   const Lista_Desayuno = ({datosDesayuno,idDesayuno,listaGeneralDesayuno,setListasGeneralDesayuno}) => {
 
   const { fecha, nombreEntrega, nombre, cantidad } = datosDesayuno;

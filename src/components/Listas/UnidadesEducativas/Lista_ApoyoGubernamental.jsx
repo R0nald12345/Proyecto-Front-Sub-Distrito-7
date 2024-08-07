@@ -1,12 +1,16 @@
 import {useState} from 'react'
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
+import Swal from 'sweetalert2';
 import Modal_Editar_ApoyoGubernamental from "../../modales/Modal_Editar_ApoyoGubernamental";
+import { deleteApoyoGubernamentalID, deleteMantenimientoID } from '../../../api/UnidadesEducativas';
 
 
-const Lista_ApoyoGubernamental = ({datoApoyoGubernamental}) => {
+const Lista_ApoyoGubernamental = ({datoApoyoGubernamental,listaGeneralApoyoGubernamental,setListaGeneralApoyoGubernamental}) => {
 
-  const { fecha, nombreEntrega, cantidad } = datoApoyoGubernamental;
+  const { fecha, nombreEntrega, cantidad,id } = datoApoyoGubernamental;
+  // console.log('DatoApoyoGubernamental');
+  // console.log(datoApoyoGubernamental);
 
   const [openModalEdit, setOpenModalEdit] = useState(false);
 
@@ -19,6 +23,35 @@ const Lista_ApoyoGubernamental = ({datoApoyoGubernamental}) => {
 
   // Formatear la fecha como día/mes/año
   const fechaFormateada = `${dia}/${mes}/${año}`;
+
+  const handleEliminar = async () => {
+    try{
+      const result = await Swal.fire({
+        title: 'Eliminar Mantenimiento?',
+        text: "Estas seguro de Eliminar!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      });
+      if(result.isConfirmed){
+        console.log('id');
+        console.log(id);
+        await deleteApoyoGubernamentalID(id);
+        setListaGeneralApoyoGubernamental(listaGeneralApoyoGubernamental.filter((element) => element.id !== id));
+        Swal.fire({
+          title: 'Eliminado!',
+          text: 'ha sido eliminado con exito',
+          icon: 'success'
+        });
+        // Aquí puedes actualizar tu interfaz o recargar los datos necesarios
+      }
+    }catch(error){
+      console.log('Error en el componente Lista_ApoyoGubernamental' + error);
+    }
+
+  }
 
   return (
     <>
@@ -44,7 +77,10 @@ const Lista_ApoyoGubernamental = ({datoApoyoGubernamental}) => {
             onClick={() => setOpenModalEdit(!openModalEdit)}
           />
 
-          <RiDeleteBin5Line className="bg-red-700 text-white text-3xl rounded-md p-1 cursor-pointer" />
+          <RiDeleteBin5Line 
+            onClick={handleEliminar}
+            className="bg-red-700 text-white text-3xl rounded-md p-1 cursor-pointer" 
+          />
         </li>
       </ul>
     </>

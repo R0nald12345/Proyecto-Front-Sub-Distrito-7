@@ -59,12 +59,12 @@ const Lista_ApoyoSocial = ({ idUE,apoyoSocialId, datosApoyoSocial, listaGeneralA
         open={openModalEdit}
         onClose={() => setOpenModalEdit(false)}
       /> */}
-      <ul className="bg-white gap-3 mb-3 rounded-xl shadow-lg flex px-2">
-        <li className="font-semibold text-start w-[10%] px-3 py-2">{fechaFormateada}</li>
-        <li className="font-semibold text-start w-[35%] px-3 py-2">{nombre}</li>
-        <li className="font-semibold text-start w-[35%] px-3 py-2">{nombreEntrega}</li>
-        <li className="font-semibold text-center w-[10%] px-2 py-2">{cantidad}</li>
-        <li className="font-semibold text-center w-[10%] px-2 py-2 flex gap-3">
+      <ul className="bg-white gap-2 mb-3 rounded-xl shadow-lg flex px-2">
+        <li className="font-semibold  text-start w-[15%] px-1 py-2">{fechaFormateada}</li>
+        <li className="font-semibold text-start w-[28%] px-1 py-2">{nombre}</li>
+        <li className="font-semibold text-start w-[33%] px-1 py-2">{nombreEntrega}</li>
+        <li className="font-semibold text-center w-[12%] px-1 py-2">{cantidad}</li>
+        <li className="font-semibold text-center w-[12%] py-2 flex justify-around gap-3">
           <BiEditAlt
             className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer"
             onClick={() => setOpenModalEdit(!openModalEdit)}

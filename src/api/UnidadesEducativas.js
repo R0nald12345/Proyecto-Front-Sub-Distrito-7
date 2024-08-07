@@ -385,6 +385,7 @@ export const getCategoriaListaGeneral = async () => {
   }
 };
 
+
 export const getApoyoGubernamentalListaGeneral = async () => {
   try {
     const url = import.meta.env.VITE_BASE_URL;
@@ -435,6 +436,45 @@ export const deleteApoyoGubernamentalID = async (id) => {
   try {
     const url = import.meta.env.VITE_BASE_URL;
     const baseURL = url + `/apoyosgubernamentales/${id}`;
+    const response = await axios.delete(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api deleteApoyoGubernamentalListaGeneral", e);
+  }
+};
+
+
+//C  A  T  E  G  O  R  I  A  S 
+
+export const newCategoria = async (nombre ) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/categorias`;
+    const datos = {
+      nombre
+    };
+    const response = await axios.post(baseURL, datos);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api newCategoria", e);
+  }
+};
+
+export const actualizarCategoria = async (id, datos) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/categorias/${id}`;
+    const response = await axios.put(baseURL, datos);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api actualizarApoyoGubernamental", e);
+  }
+};
+
+export const deleteCategoriaID = async (id) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/categorias/${id}`;
     const response = await axios.delete(baseURL);
     return response.data;
   } catch (e) {

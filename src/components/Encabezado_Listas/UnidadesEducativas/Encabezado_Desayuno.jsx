@@ -63,9 +63,7 @@ const Encabezado_Desayuno = () => {
     }
   }
 
-  // console.log(listaGeneralDesayuno);
 
-  //Funcion para actualizar el Filtro basdado en el input
   const handleFiltroCambio = (e) => {
     setFiltro(e.target.value);
   };
@@ -107,6 +105,7 @@ const Encabezado_Desayuno = () => {
           >
             Agregar
           </button>
+          
         </div>
         <section className="hidden md:block w-full mt-6">
           <div className="">
