@@ -2,9 +2,9 @@ import {useState,useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import Lista_CentroSalud from '../../components/Encabezado_Listas/CentroSalud/Lista_CentroSalud';
-import { getDatoCentroSalud } from '../../api/CentroSalud';
-// import { getListaGeneralCentroSalud } from '../../apiServices/centroSalud/apiGeneralCentroSalud';
-// import {deleteDatoCentroDeportivoId, getDatoCentroSalud} from '../../api/CentroSalud';
+import { getDatoCentroSalud, deleteDatoCentroSalud } from '../../api/CentroSalud';
+import Swal from "sweetalert2";
+// import { deleteDatoCentroSalud } from '../../api/CentroSalud';
 
 const CentroSaludGeneral = () => {
 
@@ -29,12 +29,7 @@ const CentroSaludGeneral = () => {
   }, []);
 
 
-  const handleFiltroCambio = (e) => {
-    setFiltro(e.target.value);
-  };
-
-
-  const deleteDatoCentroSalud = async (id) => {
+  const handleDeleteCentroSalud = async (id) => {
     try {
       const result = await Swal.fire({
         title: "Deseas Eliminar?",
@@ -47,10 +42,10 @@ const CentroSaludGeneral = () => {
       });
 
       if (result.isConfirmed) {
-        await deleteDatoCentroDeportivoId(id);
-        setDatosCentroSalud(
-          datosCentroSalud.filter((element) => element.id !== id)
-        );
+        const response = await deleteDatoCentroSalud(id);
+        
+        setDatosCentroSalud(prevState => prevState.filter((element) => element.id !== id));
+
         Swal.fire({
           title: "Eliminado!",
           text: "Eliminado Correctamente.",
@@ -58,10 +53,16 @@ const CentroSaludGeneral = () => {
         });
       }
     } catch (error) {
-      console.log("Error en el Componente Lista_CentroDeportivo", error);
+      console.log("Error en el Componente Lista_CentroTuristicos", error);
     }
+  }
+
+  const handleFiltroCambio = (e) => {
+    setFiltro(e.target.value);
   };
 
+
+ 
 
   const listaFiltrada =
     filtro.trim() === ""
@@ -96,7 +97,7 @@ const CentroSaludGeneral = () => {
           {/* Boton */}
           <button
             className="mt-5 md:w-[30%] text-white font-new-font font-new-bold bg-primary-900/90 rounded-lg py-3 px-2 w-full"
-            onClick={() => navigate("/inicio/centro_deportivo/agregarnuevo")}
+            onClick={() => navigate("/inicio/centrosalud/agregarnuevo")}
           >
             Agregar Nuevo +
           </button>
@@ -160,13 +161,13 @@ const CentroSaludGeneral = () => {
                 </button>
                 <button 
                   className="bg-blue-950 text-white px-3 py-1 rounded-lg"
-                  onClick={() => navigate(`/inicio/centro_deportivo/detalles/${element.id}`)}
+                  onClick={() => navigate(`/inicio/centrosalud/detalles/${element.id}`)}
                 >
                   Detalles
                 </button>
                 <button 
                   className="bg-red-500 text-white px-3 py-1 rounded-lg"
-                  onClick={()=>deleteDatoCentroSalud(element.id)}
+                  onClick={()=>handleDeleteCentroSalud(element.id)}
                 >
                   Eliminar
                 </button>

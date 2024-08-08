@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <header className=" h-[7vh] md:h-[10vh] border-b border-gray-600 border-secondary-100 p-8 flex items-center justify-end bg-gray-300/70">
       <nav className="flex items-center gap-2">
-        <Menu
+        {/* <Menu
           menuButton={
             <MenuButton className="relative hover:bg-secondary-100 p-2 rounded-lg transition-colors">
               <IoNotifications />
@@ -105,7 +105,7 @@ const Header = () => {
               Todas las notificaciones
             </Link>
           </MenuItem>
-        </Menu>
+        </Menu> */}
 
         <Menu
           menuButton={

@@ -180,13 +180,13 @@ const Sidebar = () => {
                         </Link>
                     </li>
 
-                    <li className='mb-3'
+                    {/* <li className='mb-3'
                         onClick={rutaCentroSalud}
                     >
                         <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
                             <FaCalendarPlus   className='text-primary text-xl'/> Centros de Salud
                         </Link>
-                    </li>
+                    </li> */}
 
                     {/* <li className='mb-3'>
                         <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>

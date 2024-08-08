@@ -1,16 +1,15 @@
 
 import { Route,BrowserRouter as Router, Routes } from "react-router-dom";
-// import VentanaPrincipal from "./components/ComponentsDashboard/VentanaPrincipal";
+import {AuthProvider} from './components/ProteccionRutas/AuthContext';
+import PrivateRoute from './components/ProteccionRutas/PrivateRoute';
+
 import Principal from "./components/ComponentsInitial/Principal";
-// import Login from "./components/ComponentsLogin/FormularioLogin";
 import VentanaLogin from "../src/layout/FormularioLogin";
 import Dashboard from "./components/ComponentDashboardOficial/Dashboard";
 
 import MainBienvenida from '../src/components/ComponentsInitial/MainBienvenida'
 import LayoutAdmin from "./layout/LayoutAdmin";
 import Inicio from "./pages/Inicio/Inicio";
-
-import CentroSalud from "./pages/CentrosSalud/CentroSalud";
 
 import CentroRecreativo from "./pages/CentrosRecreativos/CentroRecreativo";
 import FormularioAgregarPublica from "./pages/UnidadesEducativas/Publico/FormularioAgregarPublica";
@@ -33,12 +32,14 @@ import AgregarCentroDeportivo from "./pages/CentroDeportivo/AgregarCentroDeporti
 import DetallesCentroDeportivo from "./pages/CentroDeportivo/DetallesCentroDeportivo";
 import NuevoUsuario from "./pages/AgregarUsuario/NuevoUsuario";
 import DetallesCentroTuristicos from "./pages/CentroTuristicos/DetallesCentroTuristicos";
+import CentroSalud_Crear from "./pages/CentrosSalud/CentroSalud_Crear";
+import CentroSalud_Detalles from "./pages/CentrosSalud/CentroSalud_Detalles";
 
 // import UnidadEducativa from "./pages/UnidadesEducativas/UnidadEducativa";
 function App() {
 
   return(
-      <>
+      <AuthProvider>
         <Router> {/* Envuelve todo dentro del componente Router */}
           <Routes>
             <Route path="/" element={<Principal/>}>
@@ -47,7 +48,11 @@ function App() {
             </Route>
 
             {/* Para Dashboard Completo */}
-            <Route path="/inicio" element={<LayoutAdmin/>} >
+            <Route path="/inicio" element={
+              <PrivateRoute>
+                <LayoutAdmin/>
+              </PrivateRoute>
+              } >
               <Route index element={<Inicio/>}/>
 
               {/* OficinaDistritalPrincipal */}
@@ -80,6 +85,9 @@ function App() {
 
 
               <Route path="centrosalud" element={<CentroSaludGeneral/>}/>
+              <Route path="centrosalud/agregarnuevo" element={<CentroSalud_Crear/>}/>
+              <Route path="centrosalud/detalles/:id" element={<CentroSalud_Detalles/>}/>
+
               <Route path="centrorecreativo" element={<CentroRecreativo/>}/>
               
 
@@ -97,7 +105,7 @@ function App() {
           </Routes>
         </Router>
 
-      </>
+      </AuthProvider>
   )
 }
 
