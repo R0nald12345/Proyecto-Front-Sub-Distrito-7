@@ -34,6 +34,7 @@ import NuevoUsuario from "./pages/AgregarUsuario/NuevoUsuario";
 import DetallesCentroTuristicos from "./pages/CentroTuristicos/DetallesCentroTuristicos";
 import CentroSalud_Crear from "./pages/CentrosSalud/CentroSalud_Crear";
 import CentroSalud_Detalles from "./pages/CentrosSalud/CentroSalud_Detalles";
+import PublicRoute from "./components/ProteccionRutas/PublicRoute";
 
 // import UnidadEducativa from "./pages/UnidadesEducativas/UnidadEducativa";
 function App() {
@@ -44,7 +45,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Principal/>}>
               <Route index element={<MainBienvenida/>} />
-              <Route path="auth" element={<VentanaLogin/> } />
+              <Route 
+                path="auth" 
+                element={
+                  <PublicRoute>
+                    <VentanaLogin/> 
+                  </PublicRoute>
+                } />
             </Route>
 
             {/* Para Dashboard Completo */}

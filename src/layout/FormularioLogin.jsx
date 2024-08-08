@@ -5,6 +5,7 @@ import { FaLock, FaEyeSlash } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
 import { login } from "../api/UnidadesEducativas";
 import Swal from "sweetalert2";
+import { useAuth } from "../components/ProteccionRutas/AuthContext";
 
 const FormularioLogin = () => {
 
@@ -13,6 +14,7 @@ const FormularioLogin = () => {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const { login: authLogin } = useAuth(); // Obtén la función login del contexto de autenticación
 
   const fetchingLogin = async (e) => {
 
@@ -44,6 +46,7 @@ const FormularioLogin = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          authLogin(); // Llama a la función login del contexto de autenticación
           navigate("/inicio");
         }
       }
