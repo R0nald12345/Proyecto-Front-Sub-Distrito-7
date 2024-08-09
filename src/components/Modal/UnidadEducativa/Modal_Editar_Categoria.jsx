@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import Swal from "sweetalert2";
 import ListaCategoria_Gubernamental from "../../../pages/UnidadesEducativas/Publico/ListaCategoria_Gubernamental";
 import { getApoyoGubernamentalListaGeneral, getCategoriaListaGeneral } from "../../../api/UnidadesEducativas";
+import Modal_Actualizar_Categoria from "./Modal_Actualizar_Categoria";
 // import { newApoyoGubernamental } from "../../api/UnidadesEducativas";
 // import { getApoyoGubernamentalListaGeneral } from "../../../api/UnidadesEducativas";
 
@@ -12,10 +13,12 @@ const Modal_Editar_Categoria = ({
   tipoCategoria,
   setTipoCategoria,
 }) => {
-  if (!open) return null;
 
+  
 
-
+  
+  
+  
   useEffect(() => {
     const fetchingDatoCategoria = async () => {
       try {
@@ -28,10 +31,14 @@ const Modal_Editar_Categoria = ({
       }
     };
     fetchingDatoCategoria();
-  }, []);
+  }, [open, setTipoCategoria]);
+
+    if (!open) return null;
 
   return (
     <>
+     
+    
       <div className="fixed inset-0 bg-black bg-opacity-50 z-10 flex items-center justify-center">
         <section className="max-w-lg w-11/12 max-h-[90vh] bg-white shadow-2xl rounded-2xl p-5">
 

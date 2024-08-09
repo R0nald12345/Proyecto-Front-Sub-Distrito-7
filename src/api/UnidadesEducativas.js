@@ -460,11 +460,12 @@ export const newCategoria = async (nombre ) => {
   }
 };
 
-export const actualizarCategoria = async (id, datos) => {
+export const actualizarCategoria = async (id,nombre) => {
   try {
     const url = import.meta.env.VITE_BASE_URL;
     const baseURL = url + `/categorias/${id}`;
-    const response = await axios.put(baseURL, datos);
+    const datos = { nombre };
+    const response = await axios.patch(baseURL, datos);
     return response.data;
   } catch (e) {
     console.log("Error en el Api actualizarApoyoGubernamental", e);
