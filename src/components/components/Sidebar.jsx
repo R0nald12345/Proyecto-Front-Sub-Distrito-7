@@ -211,7 +211,7 @@ const Sidebar = () => {
             <nav>
 
                 <Link 
-                    to="/auth" 
+                    to="/inicio/auth" 
                     className='text-white  flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50  transition-colors text-1xl font-semibold'>
                         <CiLogout className='text-primary'/> Cerrar Sesion
                 </Link>

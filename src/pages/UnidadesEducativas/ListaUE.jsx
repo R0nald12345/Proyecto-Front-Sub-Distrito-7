@@ -90,7 +90,6 @@ const ListaUE = ({
               className="text-3xl p-1 rounded-xl bg-green-900 text-white cursor-pointer"
             />
 
-            {/* </div> */}
 
             {/* <div className='w-1/2 flex justify-end gap-2'> */}
             {/* <ImWhatsapp className="text-3xl text-green-600" /> */}

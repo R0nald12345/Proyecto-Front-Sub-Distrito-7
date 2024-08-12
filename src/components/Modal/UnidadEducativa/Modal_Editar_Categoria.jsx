@@ -13,12 +13,7 @@ const Modal_Editar_Categoria = ({
   tipoCategoria,
   setTipoCategoria,
 }) => {
-
-  
-
-  
-  
-  
+ 
   useEffect(() => {
     const fetchingDatoCategoria = async () => {
       try {

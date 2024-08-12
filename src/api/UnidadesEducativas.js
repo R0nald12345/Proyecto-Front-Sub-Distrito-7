@@ -20,11 +20,10 @@ export const getDatoGeneralUEid = async (id) => {
     const baseUrl = import.meta.env.VITE_BASE_URL;
     const url = baseUrl + `/unidadeseducativas/+${id}`;
     const datoColegio = await axios.get(url);
-    console.log(datoColegio.data);
     return datoColegio.data;
   } catch (error) {
     console.log(
-      "Error no se pudo obtener los Datos Backend ApiServices/UnidadesEducativas/id",
+      "Error Api getDatoGeneralUEid",
       error
     );
   }
@@ -83,6 +82,60 @@ export const createDatoGeneralUE = async ({
     throw error;
   }
 };
+
+
+
+export const ActualizarlUE = async (
+  id,
+  nombre,
+  coordenada_x,
+  coordenada_y,
+  direccion,
+  historia,
+  video,
+  slug,
+  fotos,
+  idInfraestructura,
+  idTipoColegio,
+  idTurno,
+  numero,
+  horario,
+  director,
+  juntaescolar
+) => {
+  try {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+    const url = `${baseUrl}/unidadeseducativas/${id}`;
+
+    const body = {
+      nombre,
+      coordenada_x,
+      coordenada_y,
+      direccion,
+      historia,
+      video,
+      slug,
+      fotos,
+      idInfraestructura,
+      idTipoColegio,
+      idTurno,
+      gestion: {
+        numero,
+        horario,
+        director,
+        juntaescolar
+      }
+    };
+
+    const response = await axios.patch(url, body);
+
+    return response.data;
+  } catch (error) {
+    console.log("Error Api ActualizarlUE", error.response.data);
+    throw error;
+  }
+};
+
 
 
 export const deleteUEid = async (id) => {

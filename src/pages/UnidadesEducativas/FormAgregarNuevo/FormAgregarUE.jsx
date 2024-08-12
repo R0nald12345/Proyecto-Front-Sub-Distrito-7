@@ -115,6 +115,7 @@ const FormAgregarUE = () => {
     convertirCloudinary();
   }, [juntaEscolarFoto]);
 
+  
   return (
     <div className="flex justify-center items-center">
       <Modal_AgregarGestion
