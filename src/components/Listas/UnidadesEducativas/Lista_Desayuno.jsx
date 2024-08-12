@@ -5,26 +5,33 @@ import { BiEditAlt } from "react-icons/bi";
 import Modal_Editar_Desayuno from "../../modales/Modal_Editar_Desayuno";
 import Modal_Agregar_Desayuno from "../../modales/Modal_Agregar_Desayuno";
 import { actualizarDesayuno, deleteDesayunoID } from "../../../api/UnidadesEducativas";
+import Modal_Actualizar_Desayuno from "../../Modal/UnidadEducativa/Modal_Actualizar_Desayuno";
 
 // const Lista_Desayuno = ({ fecha, nombreEntrega, nombre, cantidad }) => {
   // console.log('DatosDesayuno');
-  const Lista_Desayuno = ({datosDesayuno,idDesayuno,listaGeneralDesayuno,setListasGeneralDesayuno}) => {
+  const Lista_Desayuno = ({idUE, idDesayuno,datosDesayuno,listaGeneralDesayuno,setListasGeneralDesayuno}) => {
 
+    console.log('IdDesayunoooooo', idDesayuno);
   const { fecha, nombreEntrega, nombre, cantidad } = datosDesayuno;
   
-  
-  const [openModalEditar, setOpenModalEditar] = useState(false);
+  const [openActualizar, setOpenActualizar] = useState(false);
 
   // Convertir la fecha a un objeto Date
-  const fechaObj = new Date(fecha);
-
-  // Convertir el objeto Date al formato deseado (dia/mes/año)
-  const fechaFormateada = fechaObj.toLocaleDateString("es-ES", {
-    day: "2-digit", // Día en dos dígitos
-    month: "2-digit", // Mes en dos dígitos
-    year: "numeric", // Año en formato numérico
-  });
-
+  const formatearFecha = (fecha) => {
+    if (fecha.length > 0) { // Me indica que tengo una fecha
+      let fechaFormateada = ""; 
+      for (let i = 0; i < fecha.length; i++) {
+        if (fecha[i] == "T") {
+          fechaFormateada = fecha.substring(0, i);
+          break;
+        }
+      }
+      const [year, month, day] = fechaFormateada.split("-");
+      return `${day}-${month}-${year}`;
+    } else {
+      return "Fecha no válida";
+    }
+  };
   // console.log(fechaFormateada); // Imprime la fecha en el formato dia/mes/año
   const handleDeleteDesayuno = async() => {
     try{
@@ -56,19 +63,20 @@ import { actualizarDesayuno, deleteDesayunoID } from "../../../api/UnidadesEduca
 
   return (
     <>
-      <Modal_Editar_Desayuno
-        open={openModalEditar}
-        onClose={() => setOpenModalEditar(false)}
+      <Modal_Actualizar_Desayuno
+        open={openActualizar}
+        onClose={() => setOpenActualizar(false)}
+        idUE={  idUE  }
+        idDesayuno={  idDesayuno }
         listaGeneralDesayuno={listaGeneralDesayuno}
         setListasGeneralDesayuno={setListasGeneralDesayuno}
-
       />
 
       
       {/* <Modal_Agregar_Desayuno/> */}
       <ul className="flex bg-white md:gap-2 lg:gap-5 mb-3 rounded-xl shadow-lg px-2">
         <li className=" font-semibold text-start w-[15%] px-1 py-2 ">
-          {fechaFormateada}
+          {formatearFecha(fecha)}
         </li>
         <li className=" font-semibold text-start w-[30%] px-2 py-2 ">
           {nombreEntrega}
@@ -82,7 +90,7 @@ import { actualizarDesayuno, deleteDesayunoID } from "../../../api/UnidadesEduca
         <li className=" font-semibold text-center w-[10%] py-2 flex gap-3">
           <BiEditAlt 
             className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer" 
-            onClick={() => setOpenModalEditar(!openModalEditar)}
+            onClick={() => setOpenActualizar(!openActualizar)}
           />
           <RiDeleteBin5Line 
             className="bg-red-700 text-white text-3xl rounded-md p-1 cursor-pointer"

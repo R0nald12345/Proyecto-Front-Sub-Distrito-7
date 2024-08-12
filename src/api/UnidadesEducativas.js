@@ -211,6 +211,17 @@ export const getDesayunosListaGeneral = async () => {
   }
 };
 
+export const getDesayunosID = async (id) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/desayunos/${id}`;
+    const response = await axios.get(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api getDesayunosID", e);
+  }
+};
+
 export const crearNuevoDesayuno = async (
   nombre,
   cantidad,
@@ -230,17 +241,24 @@ export const crearNuevoDesayuno = async (
 };
 
 export const actualizarDesayuno = async (
+  id,
   nombre,
-  cantidad,
+  updatedFecha,
   nombreEntrega,
-  fecha,
-  idUnidadEducativa
+  cantidad,
+  idUE
 ) => {
   try {
     const url = import.meta.env.VITE_BASE_URL;
-    const baseURL = `${url}/desayunos/${idUnidadEducativa}`;
-    const datos = { nombre, cantidad, nombreEntrega, fecha, idUnidadEducativa };
-    const response = await axios.put(baseURL, datos);
+    const baseURL = `${url}/desayunos/${id}`;
+    const datos = { 
+        nombre, 
+        cantidad, 
+        nombreEntrega, 
+        fecha:updatedFecha, 
+        idUnidadEducativa : idUE
+    };
+    const response = await axios.patch(baseURL, datos);
     return response.data;
   } catch (e) {
     console.log("Error en el API actualizarDesayuno", e);
