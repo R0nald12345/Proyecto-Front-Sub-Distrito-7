@@ -1,18 +1,23 @@
 import {useState} from 'react'
+import { useParams } from 'react-router-dom';
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import Swal from 'sweetalert2';
 import Modal_Editar_ApoyoGubernamental from "../../modales/Modal_Editar_ApoyoGubernamental";
 import { deleteApoyoGubernamentalID, deleteMantenimientoID } from '../../../api/UnidadesEducativas';
+import Modal_Actualizar_Categoria from '../../Modal/UnidadEducativa/Modal_Actualizar_Categoria';
+import Modal_Actualizar_Gubernamental from '../../Modal/UnidadEducativa/Modal_Actualizar_Gubernamental';
 
 
-const Lista_ApoyoGubernamental = ({datoApoyoGubernamental,listaGeneralApoyoGubernamental,setListaGeneralApoyoGubernamental}) => {
+const Lista_ApoyoGubernamental = ({datoApoyoGubernamental,tipoCategoria, listaGeneralApoyoGubernamental,setListaGeneralApoyoGubernamental}) => {
+
+  // const { id } = useParams();
 
   const { fecha, nombreEntrega, cantidad,id } = datoApoyoGubernamental;
   // console.log('DatoApoyoGubernamental');
   // console.log(datoApoyoGubernamental);
 
-  const [openModalEdit, setOpenModalEdit] = useState(false);
+  const [openModalActualizar, setOpenModalActualizar] = useState(false);
 
   const fechaObj = new Date(fecha);
 
@@ -55,12 +60,16 @@ const Lista_ApoyoGubernamental = ({datoApoyoGubernamental,listaGeneralApoyoGuber
 
   return (
     <>
-      <Modal_Editar_ApoyoGubernamental
-        open={openModalEdit}
-        onClose={() => setOpenModalEdit(false)}
-        datoApoyoGubernamental={datoApoyoGubernamental}
-      
+
+      <Modal_Actualizar_Gubernamental
+        open={openModalActualizar}
+        onClose={() => setOpenModalActualizar(false)}
+        id={id}
+        tipoCategoria={tipoCategoria}
+        listaGeneralApoyoGubernamental={listaGeneralApoyoGubernamental}
+        setListaGeneralApoyoGubernamental={setListaGeneralApoyoGubernamental}
       />
+
       <ul className="bg-white gap-3 mb-3 rounded-xl shadow-lg flex px-2">
         <li className=" font-semibold text-start w-[15%] px-2 py-2 ">
           {fechaFormateada}
@@ -74,7 +83,7 @@ const Lista_ApoyoGubernamental = ({datoApoyoGubernamental,listaGeneralApoyoGuber
         <li className=" font-semibold text-center w-[20%] px-2 py-2 flex justify-around gap-3 ">
           <BiEditAlt 
             className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer" 
-            onClick={() => setOpenModalEdit(!openModalEdit)}
+            onClick={() => setOpenModalActualizar(!openModalActualizar)}
           />
 
           <RiDeleteBin5Line 

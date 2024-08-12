@@ -1,35 +1,42 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
-import Modal_Editar_ApoyoSocial from "../../modales/Modal_Editar_ApoyoSocial";
 import { deleteApoyoSocialID } from "../../../api/UnidadesEducativas";
+import Modal_Actualizar_Social from "../../Modal/UnidadEducativa/Modal_Actualizar_Social";
+import { DataContext } from "../../../context/DataProvider";
 
-const Lista_ApoyoSocial = ({ idUE,apoyoSocialId, datosApoyoSocial, listaGeneralApoyoSocial, setListasGeneralApoyoSocial }) => {
-  const [openModalEdit, setOpenModalEdit] = useState(false);
+const Lista_ApoyoSocial = ({ idUE, idApoyoSocial, datosApoyoSocial, listaGeneralApoyoSocial, setListasGeneralApoyoSocial }) => {
+  const [openActualizar, setOpenActualizar] = useState(false);
 
-  console.log("Lista General Apoyo Social");
-  console.log(listaGeneralApoyoSocial);
-  // Destructuring para extraer los datos necesarios de listaGeneralApoyoSocial
+  const { setApoyoSocialID } = useContext(DataContext);
+
+  setApoyoSocialID(idApoyoSocial);
+
+
   const { fecha, nombreEntrega, nombre, cantidad } = datosApoyoSocial;
 
- console.log('fecha eDestrcuturing');
- console.log(fecha);
+  console.log('fecha eDestrcuturing');
+  console.log(fecha);
+
   // Función para formatear la fecha
   const formatearFecha = (fecha) => {
-    const fechaObj = new Date(fecha);
-    if (!isNaN(fechaObj.getTime())) {
-      return fechaObj.toLocaleDateString("es-ES", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-      });
+    if (fecha.length > 0) { // Me indica que tengo una fecha
+      let fechaFormateada = ""; 
+      for (let i = 0; i < fecha.length; i++) {
+        if (fecha[i] == "T") {
+          fechaFormateada = fecha.substring(0, i);
+          break;
+        }
+      }
+      const [year, month, day] = fechaFormateada.split("-");
+      return `${day}-${month}-${year}`;
     } else {
       return "Fecha no válida";
     }
   };
 
-  const fechaFormateada = formatearFecha(fecha);
+  // const fechaFormateada = formatearFecha(fecha);
 
   const handleEliminar = async () => {
     try {
@@ -55,19 +62,24 @@ const Lista_ApoyoSocial = ({ idUE,apoyoSocialId, datosApoyoSocial, listaGeneralA
 
   return (
     <>
-      {/* <Modal_Editar_ApoyoSocial
-        open={openModalEdit}
-        onClose={() => setOpenModalEdit(false)}
-      /> */}
+      <Modal_Actualizar_Social
+        open={openActualizar}
+        onClose={() => setOpenActualizar(false)}
+        idUE={idUE}
+        idApoyoSocial={idApoyoSocial}
+        listaGeneralApoyoSocial={listaGeneralApoyoSocial}
+        setListasGeneralApoyoSocial={setListasGeneralApoyoSocial}
+      />
+
       <ul className="bg-white gap-2 mb-3 rounded-xl shadow-lg flex px-2">
-        <li className="font-semibold  text-start w-[15%] px-1 py-2">{fechaFormateada}</li>
+        <li className="font-semibold text-start w-[15%] px-1 py-2">{formatearFecha(fecha)}</li>
         <li className="font-semibold text-start w-[28%] px-1 py-2">{nombre}</li>
         <li className="font-semibold text-start w-[33%] px-1 py-2">{nombreEntrega}</li>
         <li className="font-semibold text-center w-[12%] px-1 py-2">{cantidad}</li>
         <li className="font-semibold text-center w-[12%] py-2 flex justify-around gap-3">
           <BiEditAlt
             className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer"
-            onClick={() => setOpenModalEdit(!openModalEdit)}
+            onClick={() => setOpenActualizar(!openActualizar)}
           />
           <RiDeleteBin5Line
             className="bg-red-700 text-white text-3xl rounded-md p-1 cursor-pointer"

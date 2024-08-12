@@ -3,20 +3,33 @@ import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { deleteMantenimientoID, getMantenimientosListaGeneral } from "../../../api/UnidadesEducativas";
 import Lista_Mantenimiento from '../../Listas/UnidadesEducativas/Lista_Mantenimiento.jsx';
-import Modal_Agregar_Mantenimiento from "../../modales/Modal_Agregar_Mantenimiento.jsx";
+import Modal_Agregar_Mantenimiento from "../../Modal/UnidadEducativa/Modal_Agregar_Mantenimiento.jsx";
+import Modal_Actualizar_Mantenimiento from "../../Modal/UnidadEducativa/Modal_Actualizar_Mantenimiento.jsx";
 
 
 // Función para formatear la fecha
-const formatearFecha = (fechaISO) => {
-  const fecha = new Date(fechaISO);
-  const dia = String(fecha.getDate()).padStart(2, '0');
-  const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses son 0-indexados
-  const año = fecha.getFullYear();
-  return `${mes}/${dia}/${año}`;
+const formatearFecha = (fecha) => {
+  if (fecha.length > 0) { // Me indica que tengo una fecha
+    let fechaFormateada = ""; 
+    for (let i = 0; i < fecha.length; i++) {
+      if (fecha[i] == "T") {
+        fechaFormateada = fecha.substring(0, i);
+        break;
+      }
+    }
+    const [year, month, day] = fechaFormateada.split("-");
+    return `${day}-${month}-${year}`;
+  } else {
+    return "Fecha no válida";
+  }
 };
 
 const Encabezado_Mantenimiento = () => {
+  
   const [openModalCreate, setOpenModalCreate] = useState(false);
+  const [openActualizar, setOpenActualizar] = useState(false);
+  const [idSocial,setIdSocial] = useState(0);
+
   const { id } = useParams();
   const [listaGeneralMantenimiento, setListasGeneralMantenimiento] = useState([]);
   const [filtro, setFiltro] = useState(""); // Estado para el filtro
@@ -60,6 +73,10 @@ const Encabezado_Mantenimiento = () => {
     }
   };
   
+  const handleActualizar = (idS) => {
+    setOpenActualizar(!openActualizar);
+    setIdSocial(idS);
+  }
 
 
   // Función para actualizar el estado del filtro basado en el input
@@ -81,6 +98,18 @@ const Encabezado_Mantenimiento = () => {
         listaGeneralMantenimiento={listaGeneralMantenimiento}
         setListasGeneralMantenimiento = {setListasGeneralMantenimiento}
       />
+
+      <Modal_Actualizar_Mantenimiento
+        open={openActualizar}
+        onClose={() => setOpenActualizar(false)}
+        idUE={id}
+        idMantenimiento = {idSocial}
+        listaGeneralMantenimiento={listaGeneralMantenimiento}
+        setListasGeneralMantenimiento = {setListasGeneralMantenimiento}
+
+      />
+
+
       <section className="md:w-[100%] lg:w-[90%]  bg-gray-200/70 mx-auto rounded-xl p-5 md:p-3 lg:p-5">
         <h3 className="text-center font-bold text-3xl">Lista Mantenimiento</h3>
 
@@ -133,7 +162,8 @@ const Encabezado_Mantenimiento = () => {
           {listaFiltrada.map((element) => ( // Usar listaFiltrada para renderizar
             <Lista_Mantenimiento
               key={element.id}
-              id={element.id}
+              idUE={id}
+              idMantenimiento = {element.id}
               datosMantenimiento={element}
               listaGeneralMantenimiento={listaGeneralMantenimiento}
               setListasGeneralMantenimiento = {setListasGeneralMantenimiento}
@@ -163,9 +193,7 @@ const Encabezado_Mantenimiento = () => {
                     {/* Aquí puedes agregar los botones de acciones */}
                     <button
                       className="bg-primary-900 w-1/2 text-white px-3 py-1 rounded-lg"
-                      // onClick={() =>
-                      //   navigate(`/inicio/centro_deportivo/editar/${element.id}`)
-                      // }
+                      onClick={() =>handleActualizar(element.id)}
                     >
                       Editar
                     </button>

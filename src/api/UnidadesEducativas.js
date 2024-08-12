@@ -271,6 +271,17 @@ export const getMantenimientosListaGeneral = async () => {
   }
 };
 
+export const getMantenimientoID = async (id) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/mantenimientos/${id}`;
+    const response = await axios.get(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api getMantenimientosListaGeneral", e);
+  }
+};
+
 export const crearNuevoMantenimiento = async (
   titulo,
   encargado,
@@ -289,19 +300,25 @@ export const crearNuevoMantenimiento = async (
   }
 };
 
-export const modificarMantenimiento = async (
-  id,
+export const actualizarMantenimiento = async (
+  idMantenimiento,
   titulo,
+  updatedFecha,
   encargado,
   empresa,
-  fecha,
-  idUnidadEducativa
+  idUE
 ) => {
   try {
     const url = import.meta.env.VITE_BASE_URL;
-    const baseURL = url + `/mantenimientos/${id}`;
-    const datos = { titulo, encargado, empresa, fecha, idUnidadEducativa };
-    const response = await axios.put(baseURL, datos);
+    const baseURL = url + `/mantenimientos/${idMantenimiento}`;
+    const datos = { 
+      titulo, 
+      fecha:updatedFecha, 
+      encargado, 
+      empresa,  
+      idUnidadEducativa : idUE
+    };
+    const response = await axios.patch(baseURL, datos);
     return response.data;
   } catch (e) {
     console.log("Error en el API modificarMantenimiento", e);
@@ -333,6 +350,17 @@ export const getApoyoSocialListaGeneral = async () => {
   }
 };
 
+export const getApoyoSocialID = async (id) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/apoyossociales/${id}`;
+    const response = await axios.get(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api getApoyoSocialListaGeneral", e);
+  }
+};
+
 export const newApoyoSocial = async (
   nombre,
   cantidad,
@@ -351,11 +379,25 @@ export const newApoyoSocial = async (
   }
 };
 
-export const actualizarApoyoSocial = async (id, datos) => {
+export const actualizarApoyoSocial = async (
+  id,
+  updatedNombre,
+  updatedCantidad,
+  updatedNombreEntrega,
+  updatedFecha,
+  idUnidadEducativa
+) => {
   try {
     const url = import.meta.env.VITE_BASE_URL;
     const baseURL = url + `/apoyossociales/${id}`;
-    const response = await axios.put(baseURL, datos);
+    const datos = { 
+      nombre : updatedNombre, 
+      cantidad : updatedCantidad, 
+      nombreEntrega : updatedNombreEntrega, 
+      fecha : updatedFecha, 
+      idUnidadEducativa : idUnidadEducativa 
+    };
+    const response = await axios.patch(baseURL, datos);
     return response.data;
   } catch (e) {
     console.log("Error en el Api actualizarApoyoSocial", e);
@@ -374,16 +416,7 @@ export const deleteApoyoSocialID = async (id) => {
 };
 
 // A  P  O  Y  O    G  U  B  E  R  N  A  M  E  N  T  A  L
-export const getCategoriaListaGeneral = async () => {
-  try {
-    const url = import.meta.env.VITE_BASE_URL;
-    const baseURL = url + "/categorias";
-    const response = await axios.get(baseURL);
-    return response.data;
-  } catch (e) {
-    console.log("Error en el Api getApoyoGubernamentalListaGeneral", e);
-  }
-};
+
 
 
 export const getApoyoGubernamentalListaGeneral = async () => {
@@ -396,6 +429,18 @@ export const getApoyoGubernamentalListaGeneral = async () => {
     console.log("Error en el Api getApoyoGubernamentalListaGeneral", e);
   }
 };
+
+export const getApoyoGubernamentalID = async (id) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/apoyosgubernamentales/${id}`;
+    const response = await axios.get(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api getApoyoGubernamentalID", e);
+  }
+};
+
 
 export const newApoyoGubernamental = async (
   cantidad,
@@ -421,11 +466,24 @@ export const newApoyoGubernamental = async (
   }
 };
 
-export const actualizarApoyoGubernamental = async (id, datos) => {
+export const actualizarApoyoGubernamental = async (id, 
+  cantidad,
+  nombreEntrega,
+  fecha,
+  idUnidadEducativa,
+  idCategoria
+) => {
   try {
     const url = import.meta.env.VITE_BASE_URL;
     const baseURL = url + `/apoyosgubernamentales/${id}`;
-    const response = await axios.put(baseURL, datos);
+    const datos = {
+      cantidad,
+      nombreEntrega,
+      fecha,
+      idUnidadEducativa,
+      idCategoria,
+    };
+    const response = await axios.patch(baseURL, datos);
     return response.data;
   } catch (e) {
     console.log("Error en el Api actualizarApoyoGubernamental", e);
@@ -445,6 +503,18 @@ export const deleteApoyoGubernamentalID = async (id) => {
 
 
 //C  A  T  E  G  O  R  I  A  S 
+
+export const getCategoriaListaGeneral = async () => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + "/categorias";
+    const response = await axios.get(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api getApoyoGubernamentalListaGeneral", e);
+  }
+};
+
 
 export const newCategoria = async (nombre ) => {
   try {

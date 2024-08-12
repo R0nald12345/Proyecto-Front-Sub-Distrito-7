@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2'; // Asegúrate de importar Swal
-import { crearNuevoMantenimiento } from '../../api/UnidadesEducativas';
+import { crearNuevoMantenimiento } from '../../../api/UnidadesEducativas';
 import { v4 as uuidv4 } from 'uuid'; // Importa uuidv4
 
 const Modal_Agregar_Mantenimiento = ({ id, open, onClose,listaGeneralMantenimiento,setListasGeneralMantenimiento }) => {
@@ -29,6 +29,8 @@ const Modal_Agregar_Mantenimiento = ({ id, open, onClose,listaGeneralMantenimien
       console.log("Error en el Componente Modal_Agregar_Mantenimiento: " + error);
     }
   };
+
+  // Modal_Actualizar_Mantenimiento
 
   return (
     <>

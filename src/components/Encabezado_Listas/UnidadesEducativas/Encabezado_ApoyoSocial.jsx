@@ -1,33 +1,49 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Lista_ApoyoSocial from "../../Listas/UnidadesEducativas/Lista_ApoyoSocial";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { deleteApoyoSocialID, getApoyoSocialListaGeneral } from "../../../api/UnidadesEducativas";
+import { deleteApoyoSocialID, getApoyoSocialID, getApoyoSocialListaGeneral } from "../../../api/UnidadesEducativas";
 import Modal_Aregar_ApoyoSocial from "../../modales/Modal_Aregar_ApoyoSocial";
+// import Modal_Agregar_ApoyoSocial from "../../modales/Modal_Aregar_ApoyoSocial";
+import Modal_Actualizar_Social from "../../Modal/UnidadEducativa/Modal_Actualizar_Social";
+import { DataContext } from "../../../context/DataProvider";
 
 // Función para formatear la fecha
-const formatearFecha = (fechaISO) => {
-  const fecha = new Date(fechaISO);
-  const dia = String(fecha.getDate()).padStart(2, '0');
-  const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses son 0-indexados
-  const año = fecha.getFullYear();
-  return `${mes}/${dia}/${año}`;
+const formatearFecha = (fecha) => {
+  if (fecha.length > 0) { // Me indica que tengo una fecha
+    let fechaFormateada = ""; 
+    for (let i = 0; i < fecha.length; i++) {
+      if (fecha[i] == "T") {
+        fechaFormateada = fecha.substring(0, i);
+        break;
+      }
+    }
+    const [year, month, day] = fechaFormateada.split("-");
+    return `${day}-${month}-${year}`;
+  } else {
+    return "Fecha no válida";
+  }
 };
 
 
 
 const Encabezado_ApoyoSocial = () => {
   const [openModalCreate, setOpenModalCreate] = useState(false);
+  const [openActualizar, setOpenActualizar] = useState(false);
   const { id } = useParams();
 
   const [listaGeneralApoyoSocial, setListasGeneralApoyoSocial] = useState([]);
+  const [datosApoyoSocial, setDatosApoyoSocial] = useState([]);
+  const [idS, setidS] = useState(0)
+
   const [filtro, setFiltro] = useState("");
 
+  
   useEffect(() => {
     const fetchingListaDesayunoGeneral = async () => {
       try {
         const datosApoyoSocial = await getApoyoSocialListaGeneral();
-        // console.log(datosApoyoSocial);
+        console.log(datosApoyoSocial);
         setListasGeneralApoyoSocial(datosApoyoSocial);
       } catch (error) {
         console.log("Error en el Componente Encabezado Desayuno" + error);
@@ -36,6 +52,7 @@ const Encabezado_ApoyoSocial = () => {
     fetchingListaDesayunoGeneral();
   }, []);
 
+  
   const handleEliminar = async (nombre, id) => {
     try {
       const result = await Swal.fire({
@@ -47,7 +64,7 @@ const Encabezado_ApoyoSocial = () => {
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
       });
-
+      
       if (result.isConfirmed) {
         await deleteApoyoSocialID(id);
         setListasGeneralApoyoSocial(listaGeneralApoyoSocial.filter((element) => element.id !== id));
@@ -57,14 +74,25 @@ const Encabezado_ApoyoSocial = () => {
       console.error("Error en Componente EncabezadoApoyoSocial", error);
     }
   };
-
+  
   const handleFiltroCambio = (e) => {
     setFiltro(e.target.value);
   }
-
+  
   const listaFiltrada = filtro.trim() === "" ? listaGeneralApoyoSocial : listaGeneralApoyoSocial.filter((element) =>
     element.nombre.toLowerCase().includes(filtro.toLowerCase())
-  );
+);
+
+// const idSocial = 0;
+
+
+const handleActualizar=(idSocial)=>{
+  // const {apoyoSocialID,setApoyoSocialID} = useContext(DataContext);
+  // setApoyoSocialID(idSocial);
+  setidS(idSocial);
+  setOpenActualizar(!openActualizar);
+}
+
 
   return (
     <>
@@ -75,6 +103,16 @@ const Encabezado_ApoyoSocial = () => {
         listaGeneralApoyoSocial={listaGeneralApoyoSocial}
         setListasGeneralApoyoSocial={setListasGeneralApoyoSocial}
       />
+
+      <Modal_Actualizar_Social
+        open={openActualizar}
+        onClose={() => setOpenActualizar(false)}
+        idUE={id}
+        idApoyoSocial={idS}
+        listaGeneralApoyoSocial={listaGeneralApoyoSocial}
+        setListasGeneralApoyoSocial={setListasGeneralApoyoSocial}
+      />
+
       <section className="md:w-[100%] lg:w-[80%]  bg-gray-200/70 mx-auto rounded-xl p-5 md:p-3 lg:p-5">
         <h3 className="text-center font-bold text-3xl">Lista Apoyo Social</h3>
 
@@ -123,7 +161,7 @@ const Encabezado_ApoyoSocial = () => {
             <Lista_ApoyoSocial
               key={element.id}
               idUE={id}
-              apoyoSocialId={element.id} 
+              idApoyoSocial = {element.id}
               datosApoyoSocial={element}
               listaGeneralApoyoSocial={listaGeneralApoyoSocial} // Cambio aquí: pasa el objeto individual
               setListasGeneralApoyoSocial={setListasGeneralApoyoSocial}
@@ -153,9 +191,7 @@ const Encabezado_ApoyoSocial = () => {
                 {/* Aquí puedes agregar los botones de acciones */}
                 <button
                   className="bg-primary-900 w-1/2 text-white px-3 py-1 rounded-lg"
-                  // onClick={() =>
-                  //   navigate(`/inicio/centro_deportivo/editar/${element.id}`)
-                  // }
+                  onClick={()=>handleActualizar(element.id)} 
                 >
                   Editar
                 </button>

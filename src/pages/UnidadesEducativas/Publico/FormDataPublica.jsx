@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import jsPDF from "jspdf";
 
@@ -11,9 +11,16 @@ import "react-image-gallery/styles/css/image-gallery.css";
 
 import {getDatoGeneralUEid} from '../../../api/UnidadesEducativas'
 import { createURLFotos } from "../../../api/ArchivoFotos";
+import { DataContext } from "../../../context/DataProvider";
 
 const FormDataPublica = () => {
+
   const { id } = useParams();
+
+  const { setDataIdUE } = useContext(DataContext);
+  
+  setDataIdUE(id);
+
 console.log(id);
 
   const [nombreUE, setNombreUE] = useState("");
