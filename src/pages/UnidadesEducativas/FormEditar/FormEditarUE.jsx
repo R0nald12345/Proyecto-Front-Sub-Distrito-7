@@ -4,6 +4,7 @@ import { ActualizarlUE, getDatoGeneralUEid } from "../../../api/UnidadesEducativ
 import FormTipos from "../FormAgregarNuevo/FormTipos";
 import ArregloFotos from "../../../components/Encabezado_Listas/UnidadesEducativas/ArregloFotos";
 import MapaAgregar from "../Mapas/MapaAgregar";
+
 // import FormTipos from "./FormEditarTipos";
 // import FormAgregarGestion from "./FormAgregarGestion";
 // import FormAgregarDesayuno from "./FormAgregarDesayuno";

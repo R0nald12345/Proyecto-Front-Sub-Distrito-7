@@ -150,7 +150,7 @@ const Header = () => {
             </Link>
           </MenuItem> */}
 
-          <MenuItem className={"p-0 hover:transparent font-bold"}>
+          {/* <MenuItem className={"p-0 hover:transparent font-bold"}>
             <Link
               className="rounded-lg transition-colors hover:text-white hover:bg-red-500/80 flex items-center gap-x-4 py-2 px-6 flex-1"
               to="/logout"
@@ -160,7 +160,7 @@ const Header = () => {
                 Cerrar Sesion
               </p>
             </Link>
-          </MenuItem>
+          </MenuItem> */}
         </Menu>
       </nav>
     </header>

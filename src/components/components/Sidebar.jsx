@@ -1,6 +1,6 @@
-import {Link,useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 import { IoCloseSharp } from "react-icons/io5";
 import { SlMenu } from "react-icons/sl";
@@ -18,56 +18,68 @@ import { CiLogout } from "react-icons/ci";
 import { FaPersonCirclePlus } from "react-icons/fa6";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { FaCalendarPlus } from "react-icons/fa";
+import { useAuth } from "../ProteccionRutas/AuthContext";
 
 const Sidebar = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [showMenu, setshowMenu] = useState(false);
-    const [showSubMenu, setShowSubMenu] = useState(false);
+  const [showMenu, setshowMenu] = useState(false);
+  const { logout } = useAuth(); // Obtener la función logout del contexto de autenticación
+  const [showSubMenu, setShowSubMenu] = useState(false);
 
-    const rutaCentroRecreativo=()=>{
-        navigate('centrorecreativo');
-    }
+  const rutaCentroRecreativo = () => {
+    navigate("centrorecreativo");
+  };
 
-    const rutaCentroSalud=()=>{
-        navigate('centrosalud');
-    }
+  const rutaCentroSalud = () => {
+    navigate("centrosalud");
+  };
 
+  const rutaUnidadEducativaConvenio = () => {
+    navigate("/inicio/unidadeducativa");
+  };
 
+  const rutaOficinaDistrital = () => {
+    navigate("oficinadistrital");
+  };
 
-    const rutaUnidadEducativaConvenio=()=>{
-        navigate('/inicio/unidadeducativa');
-    }
-
-    const rutaOficinaDistrital=()=>{
-        navigate('oficinadistrital');
-    }
-
-    const rutatelefonoUrgencia=()=>{
-        navigate('telefonourgencia');
-    }
+  const rutatelefonoUrgencia = () => {
+    navigate("telefonourgencia");
+  };
 
 
+  const handleLogout = () => {
+    logout(); // Llamar a la función logout del contexto de autenticación
+}
 
   return (
     <>
-        <div className={`xl:h-[100vh] overflow-y-scroll fixed xl:static w-[80%] md:w-[40%] lg:w-[30%] xl:w-auto h-full  top-0 bg-green-800
-                        p-4 flex flex-col justify-between z-50 ${showMenu ? "left-0": "-left-full"} transition-all`}>
-            <div>
-                <h1 className='text-center text-2xl font-bold text-white mb-10'>
-                    Administración
-                </h1>
+      <div
+        className={`xl:h-[100vh] overflow-y-scroll fixed xl:static w-[80%] md:w-[40%] lg:w-[30%] xl:w-auto h-full  top-0 bg-green-800
+                        p-4 flex flex-col justify-between z-50 ${
+                          showMenu ? "left-0" : "-left-full"
+                        } transition-all`}
+      >
+        <div>
+          <h1 className="text-center text-2xl font-bold text-white mb-10">
+            Administración
+          </h1>
 
-                <ul className='text-white'>
-                    <li className='mb-3'>
-                        <Link to="/inicio" 
-                        className={` flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors
-                                    ${ location.pathname ==='/' && 'bg-primary-900/50 text-white'}`}>
-                            <FaRegChartBar className='text-primary'/> Inicio
-                        </Link>
-                    </li>
+          <ul className="text-white">
+            <li className="mb-3">
+              <Link
+                to="/inicio"
+                className={` flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors
+                                    ${
+                                      location.pathname === "/" &&
+                                      "bg-primary-900/50 text-white"
+                                    }`}
+              >
+                <FaRegChartBar className="text-primary" /> Inicio
+              </Link>
+            </li>
 
-                    {/* <li 
+            {/* <li 
                         onClick={rutaOficinaDistrital}
                         className='mb-3'>
                         <Link to="/" 
@@ -78,7 +90,7 @@ const Sidebar = () => {
 
                     </li> */}
 
-                    {/* <li 
+            {/* <li 
                         onClick={rutatelefonoUrgencia}
                         className='mb-3'>
                         <Link to="/" 
@@ -89,19 +101,23 @@ const Sidebar = () => {
 
                     </li> */}
 
-                    <li 
-                        onClick={rutaUnidadEducativaConvenio}
-                        className='mb-3'>
-                        <Link to="/" 
-                        className={` flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors
-                                    ${ location.pathname ==='/unidadeducativa' && 'bg-primary-900/50 text-white'}`}>
-                            <FaRegChartBar className='text-primary'/>Unidades Educativas
-                        </Link>
+            <li onClick={rutaUnidadEducativaConvenio} className="mb-3">
+              <Link
+                to="/"
+                className={` flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors
+                                    ${
+                                      location.pathname ===
+                                        "/unidadeducativa" &&
+                                      "bg-primary-900/50 text-white"
+                                    }`}
+              >
+                <FaRegChartBar className="text-primary" />
+                Unidades Educativas
+              </Link>
+            </li>
 
-                    </li>
-
-                    {/* Unidades Educativas con Drop Down */}
-                    {/* <li className='mb-3'>
+            {/* Unidades Educativas con Drop Down */}
+            {/* <li className='mb-3'>
                         <button className={`w-full flex items-center justify-between gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors
                                         `}
                                 onClick={()=>setShowSubMenu(!showSubMenu)}
@@ -151,7 +167,7 @@ const Sidebar = () => {
                         </ul>
                     </li> */}
 
-                    {/* <li className='mb-3' onClick={rutaCentroRecreativo}>
+            {/* <li className='mb-3' onClick={rutaCentroRecreativo}>
                         <Link to="/" 
                               className={` flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors
                                             ${location.pathname === '/centrorecreativo' && 'bg-primary-900/50 text-white'}`}
@@ -160,27 +176,47 @@ const Sidebar = () => {
                         </Link>
                     </li> */}
 
-                    <li className='mb-3' onClick={rutaCentroSalud}>
-                        <Link 
-                            to="/" 
-                            className={`flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors
-                                        ${location.pathname === '/centrosalud' && 'bg-primary-900/50 text-white'}`} 
-                        >
-                            <MdHealthAndSafety className='text-primary'/> Centros Salud
-                        </Link>
-                    </li>
-                    <li className='mb-3' onClick={()=>navigate('centro_deportivo')}>
-                        <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
-                            <MdOutlineSportsKabaddi className='text-primary'/> Centros Deportivos
-                        </Link>
-                    </li>
-                    <li className='mb-3' onClick={()=>navigate('centro_turisticos')}>
-                        <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
-                            <PiMountainsFill className='text-primary'/> Puntos Turísticos
-                        </Link>
-                    </li>
+            <li className="mb-3" onClick={rutaCentroSalud}>
+              <Link
+                to="/"
+                className={`flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors
+                                        ${
+                                          location.pathname ===
+                                            "/centrosalud" &&
+                                          "bg-primary-900/50 text-white"
+                                        }`}
+              >
+                <MdHealthAndSafety className="text-primary" /> Centros Salud
+              </Link>
+            </li>
+            <li className="mb-3" onClick={() => navigate("centro_deportivo")}>
+              <Link
+                to="/"
+                className=" flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors"
+              >
+                <MdOutlineSportsKabaddi className="text-primary" /> Centros
+                Deportivos
+              </Link>
+            </li>
+            <li className="mb-3" onClick={() => navigate("centro_turisticos")}>
+              <Link
+                to="/"
+                className=" flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors"
+              >
+                <PiMountainsFill className="text-primary" /> Puntos Turísticos
+              </Link>
+            </li>
 
-                    {/* <li className='mb-3'
+            <li className="mb-3" onClick={() => navigate("centro_policial")}>
+              <Link
+                to="/"
+                className=" flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors"
+              >
+                <PiMountainsFill className="text-primary" /> Centros Policiales
+              </Link>
+            </li>
+
+            {/* <li className='mb-3'
                         onClick={rutaCentroSalud}
                     >
                         <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
@@ -188,45 +224,47 @@ const Sidebar = () => {
                         </Link>
                     </li> */}
 
-                    {/* <li className='mb-3'>
+            {/* <li className='mb-3'>
                         <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
                             <FaPersonShelter className='text-primary'/> Zona Vecinales
                         </Link>
                     </li> */}
 
-                    {/* <li className='mb-3'> 
+            {/* <li className='mb-3'> 
                         <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
                             <BsBusFrontFill className='text-primary'/> Parada Micros
                         </Link>
                     </li> */}
 
-                    <li className='mb-3' onClick={()=>navigate('agregarUsuario')}> 
-                        <Link to="/" className=' flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors'>
-                            <FaPersonCirclePlus className='text-primary'/> Registrar Usuario
-                        </Link>
-                    </li>
-                    
-                </ul>
-            </div>
-            <nav>
-
-                <Link 
-                    to="/inicio/auth" 
-                    className='text-white  flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50  transition-colors text-1xl font-semibold'>
-                        <CiLogout className='text-primary'/> Cerrar Sesion
-                </Link>
-            
-            </nav>
+            <li className="mb-3" onClick={() => navigate("agregarUsuario")}>
+              <Link
+                to="/"
+                className=" flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors"
+              >
+                <FaPersonCirclePlus className="text-primary" /> Registrar
+                Usuario
+              </Link>
+            </li>
+          </ul>
         </div>
+        <nav>
+          <button
+            onClick={handleLogout}
+            className="text-white flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 transition-colors text-1xl font-semibold"
+          >
+            <CiLogout className="text-primary" /> Cerrar Sesion
+          </button>
+        </nav>
+      </div>
 
-        <button 
-            onClick={()=>setshowMenu(!showMenu)}
-            className='xl:hidden fixed bottom-4 right-4 bg-green-900 text-black p-3 rounded-full z-50'>
-                {showMenu?<IoCloseSharp/>:<SlMenu/>}
-            
-        </button>
+      <button
+        onClick={() => setshowMenu(!showMenu)}
+        className="xl:hidden fixed bottom-4 right-4 bg-green-900 text-black p-3 rounded-full z-50"
+      >
+        {showMenu ? <IoCloseSharp /> : <SlMenu />}
+      </button>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

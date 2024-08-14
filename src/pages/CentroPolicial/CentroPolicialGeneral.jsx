@@ -1,33 +1,32 @@
 import { useEffect, useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import ListaUE from "../ListaUE";
-import FormAgregarGestion from "../../UnidadesEducativas/FormAgregarNuevo/FormAgregarGestion"; // Importa el componente del formulario
+import Lista_CentroPolicial from "../../components/Listas/CentroPolicial/Lista_CentroPolicial";
 import Swal from "sweetalert2";
+import { deleteCentroPolicialID, getCentroPolicialListaGeneral } from "../../api/UnidadesEducativas";
 
-import { deleteUEid, getDatoGeneralUE } from "../../../api/UnidadesEducativas";
 
 const ListaGeneralUE = () => {
-  const navigate = useNavigate();
 
-  const [datosUnidadEducativa, setDatosUnidadEducativa] = useState([]);
+  const navigate = useNavigate();
+  const [datosCentroPolicial, setDatosCentroPolicial] = useState([]);
   const [filtro, setFiltro] = useState("");
 
   const [openModalCreateGestion, setOpenModalCreateGestion] = useState(false); // Estado para manejar el modal
 
   useEffect(() => {
-    const fetchingDatosGeneralUE = async () => {
+    const fetchingDatosCentroPolicial = async () => {
       try {
-        const response = await getDatoGeneralUE();
-        setDatosUnidadEducativa(response);
+        const response = await getCentroPolicialListaGeneral();
+        setDatosCentroPolicial(response);
       } catch (error) {
         console.log(
-          "Error en Componente ListaGeneral fetchingDatosGeneralUE",
+          "Error en Componente ListaGeneral fetchingDatosCentroPolicial",
           error
         );
       }
     };
-    fetchingDatosGeneralUE();
+    fetchingDatosCentroPolicial();
   }, []);
 
   const changeRutaNuevoFormulario = () => {
@@ -51,9 +50,9 @@ const ListaGeneralUE = () => {
         confirmButtonText: "Si, quiero Eliminar!",
       });
       if (result.isConfirmed) {
-        const response = await deleteUEid(id);
-        setDatosUnidadEducativa(
-          datosUnidadEducativa.filter((element) => element.id !== id)
+        const response = await deleteCentroPolicialID(id);
+        setDatosCentroPolicial(
+          datosCentroPolicial.filter((element) => element.id !== id)
         );
         // console.log(response);
         Swal.fire({
@@ -74,11 +73,10 @@ const ListaGeneralUE = () => {
 
   const listaFiltrada =
     filtro.trim() === ""
-      ? datosUnidadEducativa
-      : datosUnidadEducativa.filter((element) =>
+      ? datosCentroPolicial
+      : datosCentroPolicial.filter((element) =>
           element.nombre.toLowerCase().includes(filtro.toLowerCase())
         );
-
 
   // const handleOpenModal = () => {
   //   setOpenModalCreateGestion(true); // Abre el modal
@@ -90,16 +88,11 @@ const ListaGeneralUE = () => {
 
   return (
     <div className="flex flex-col items-center justify-center rounded-xl bg-white/50 w-[95%] xl:w-[70%] mx-auto px-4 md:px-6 pb-6 md:pb-2">
-      {/* Modal para agregar gestion */}
-      {/* <FormAgregarGestion
-        open={openModalCreateGestion}
-        OnClose={handleCloseModal}
-      /> */}
-
+   
       {/* Parte Superior */}
       <section className="flex-col justify-center p-2 bg-red w-[95%] ">
         <h3 className="text-3xl font-bold text-center mt-3">
-          Lista de Unidades Educativas
+          Lista de Centros Policiales
         </h3>
 
         <section className="md:flex md:justify-between px-2 bg-red mt-5">
@@ -119,7 +112,7 @@ const ListaGeneralUE = () => {
 
           <button
             className="mt-5 md:w-[30%] text-white font-new-font font-new-bold bg-primary-900/90 rounded-lg py-3 px-2 w-full"
-            onClick={() => navigate("agregarnuevo")}
+            onClick={() => navigate("/inicio/centro_policial/agregarnuevo")}
           >
             Agregar Nuevo +
           </button>
@@ -143,14 +136,14 @@ const ListaGeneralUE = () => {
 
           <section className="">
             {listaFiltrada.map((element) => (
-              <ListaUE
+              <Lista_CentroPolicial
                 key={element.id}
-                id={element.id}
-                nombreUE={element.nombre}
-                datosUnidadEducativa={datosUnidadEducativa}
-                setDatosUnidadEducativa={setDatosUnidadEducativa}
+                // id={element.id}
+                datosPolicial={element}
+                datosCentroPolicial={datosCentroPolicial}
+                setDatosCentroPolicial = {setDatosCentroPolicial}
                 // nombreDirector={element.idGestion.director}
-                turno={element.idTurno.nombre}
+                // turno={element.idTurno.nombre}
               />
             ))}
           </section>
@@ -167,22 +160,23 @@ const ListaGeneralUE = () => {
             <p className="text-gray-600">{element.direccion}</p>
             <div className="flex justify-end mt-3 gap-2">
               {/* Aquí puedes agregar los botones de acciones */}
+              
               <button
                 className="bg-primary-900 text-white px-3 py-1 rounded-lg"
                 // onClick={() =>
-                //   navigate(`/inicio/centro_deportivo/editar/${element.id}`)
+                //   handleEliminar(element.id)
                 // }
               >
                 Editar
               </button>
+
               <button
                 className="bg-blue-950 text-white px-3 py-1 rounded-lg"
-                onClick={() =>
-                  navigate(`/inicio/unidadeducativa/detalles/${element.id}`)
-                }
+               
               >
                 Detalles
               </button>
+
               <button
                 onClick={() => handleEliminar(element.id)}              
                 className="bg-red-500 text-white px-3 py-1 rounded-lg"

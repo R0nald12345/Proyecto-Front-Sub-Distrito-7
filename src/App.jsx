@@ -35,16 +35,15 @@ import CentroSalud_Crear from "./pages/CentrosSalud/CentroSalud_Crear";
 import CentroSalud_Detalles from "./pages/CentrosSalud/CentroSalud_Detalles";
 import PublicRoute from "./components/ProteccionRutas/PublicRoute";
 import { DataProvider } from "./context/DataProvider";
+import CentroPolicialGeneral from "./pages/CentroPolicial/CentroPolicialGeneral";
+import CentroPolicial_Crear from "./pages/CentroPolicial/CentroPolicial_Crear";
+import CentroPolicial_Detalles from "./pages/CentroPolicial/CentroPolicial_Detalles";
 
-// import UnidadEducativa from "./pages/UnidadesEducativas/UnidadEducativa";
 function App() {
   return (
-    <AuthProvider>
-      <DataProvider>
-        
-        <Router>
-          {" "}
-          {/* Envuelve todo dentro del componente Router */}
+    <Router>
+      <AuthProvider>
+        <DataProvider>
           <Routes>
             <Route path="/" element={<Principal />}>
               <Route index element={<MainBienvenida />} />
@@ -58,7 +57,6 @@ function App() {
               />
             </Route>
 
-            {/* Para Dashboard Completo */}
             <Route
               path="/inicio"
               element={
@@ -68,100 +66,37 @@ function App() {
               }
             >
               <Route index element={<Inicio />} />
-
-              {/* OficinaDistritalPrincipal */}
-              <Route
-                path="oficinadistrital"
-                element={<OficinaDistritalPrincipal />}
-              />
-
-              {/* TelefonoUrgencia */}
+              <Route path="oficinadistrital" element={<OficinaDistritalPrincipal />} />
               <Route path="telefonourgencia" element={<TelefonoUrgencia />} />
-
-              {/* Rutas de Unidades Educativas */}
               <Route path="unidadeducativa" element={<ListaGeneralUE />} />
-
-              {/* <Route path="unidadeducativa/agregarnuevo" element={<FormularioAgregarPublica/>} /> Formulario Antiguo*/}
-              <Route
-                path="unidadeducativa/agregarnuevo"
-                element={<FormAgregarUE />}
-              />
-
-              <Route
-                path="unidadeducativa/detalles/:id"
-                element={<FormDataPublica />}
-              />
-
-              <Route
-                path="unidadeducativa/modificar/:id"
-                element={<FormEditarUE />}
-              />
-
-              <Route
-                path="unidadeducativa/desayuno/:id"
-                element={<Encabezado_Desayuno />}
-              />
-
-              <Route
-                path="unidadeducativa/mantenimiento/:id"
-                element={<Encabezado_Mantenimiento />}
-              />
-
-              <Route
-                path="unidadeducativa/apoyo-gubernamental/:id"
-                element={<Encabezado_ApoyoGubernamental />}
-              />
-
-              <Route
-                path="unidadeducativa/apoyo-social/:id"
-                element={<Encabezado_ApoyoSocial />}
-              />
-
+              <Route path="unidadeducativa/agregarnuevo" element={<FormAgregarUE />} />
+              <Route path="unidadeducativa/detalles/:id" element={<FormDataPublica />} />
+              <Route path="unidadeducativa/modificar/:id" element={<FormEditarUE />} />
+              <Route path="unidadeducativa/desayuno/:id" element={<Encabezado_Desayuno />} />
+              <Route path="unidadeducativa/mantenimiento/:id" element={<Encabezado_Mantenimiento />} />
+              <Route path="unidadeducativa/apoyo-gubernamental/:id" element={<Encabezado_ApoyoGubernamental />} />
+              <Route path="unidadeducativa/apoyo-social/:id" element={<Encabezado_ApoyoSocial />} />
               <Route path="centrosalud" element={<CentroSaludGeneral />} />
-              <Route
-                path="centrosalud/agregarnuevo"
-                element={<CentroSalud_Crear />}
-              />
-              <Route
-                path="centrosalud/detalles/:id"
-                element={<CentroSalud_Detalles />}
-              />
-
+              <Route path="centrosalud/agregarnuevo" element={<CentroSalud_Crear />} />
+              <Route path="centrosalud/detalles/:id" element={<CentroSalud_Detalles />} />
               <Route path="centrorecreativo" element={<CentroRecreativo />} />
+              <Route path="centro_turisticos" element={<ListaGeneralCentroTuristicos />} />
+              <Route path="centro_turisticos/agregarnuevo" element={<AgregarCentroTuristicos />} />
+              <Route path="centro_turisticos/detalles/:id" element={<DetallesCentroTuristicos />} />
+              <Route path="centro_deportivo" element={<ListaGeneralCentroDeportivo />} />
+              <Route path="centro_deportivo/agregarnuevo" element={<AgregarCentroDeportivo />} />
+              <Route path="centro_deportivo/detalles/:id" element={<DetallesCentroDeportivo />} />
 
-              <Route
-                path="centro_turisticos"
-                element={<ListaGeneralCentroTuristicos />}
-              />
-              <Route
-                path="centro_turisticos/agregarnuevo"
-                element={<AgregarCentroTuristicos />}
-              />
-              <Route
-                path="centro_turisticos/detalles/:id"
-                element={<DetallesCentroTuristicos />}
-              />
+              <Route path="centro_policial" element={<CentroPolicialGeneral />} />
+              <Route path="centro_policial/agregarnuevo" element={<CentroPolicial_Crear/>} />
+              <Route path="centro_policial/detalles/:id" element={<CentroPolicial_Detalles/>} />
 
-              <Route
-                path="centro_deportivo"
-                element={<ListaGeneralCentroDeportivo />}
-              />
-              <Route
-                path="centro_deportivo/agregarnuevo"
-                element={<AgregarCentroDeportivo />}
-              />
-              <Route
-                path="centro_deportivo/detalles/:id"
-                element={<DetallesCentroDeportivo />}
-              />
               <Route path="agregarUsuario" element={<NuevoUsuario />} />
-              {/* <Route path="centro_turisticos/agregarnuevo" element={<AgregarCentroTuristicos/>}/> */}
             </Route>
-            {/* <Route index element={<Principal/>} /> */}
           </Routes>
-        </Router>
-      </DataProvider>
-    </AuthProvider>
+        </DataProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 
