@@ -61,7 +61,7 @@ const FormularioLogin = () => {
 
   return (
     <>
-      <div className="w-[80%] mt-48 md:w-1/2 bg-white/50 block xl:flex justify-center rounded-lg">
+      <div className="w-[80%] mt-24 md:mt-48 md:w-1/2 bg-white/50 block xl:flex justify-center rounded-lg">
         <form onSubmit={fetchingLogin} className="rounded-lg xl:w-1/2 p-5">
           <p className="font-bold text-4xl text-center mb-5">Iniciar Sesión</p>
           <p className="font-bold text-xl">Correo Electrónico</p>
