@@ -1,10 +1,13 @@
 // FormTipos.jsx
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   getDatoGeneralTiposColegio,
   getDatoGeneralTiposInfraestructura,
   getDatoGeneralTiposTurno,
 } from "../../../api/UnidadesEducativas";
+import { FaEdit } from "react-icons/fa";
+import { MdAddBox } from "react-icons/md";
+import { DataContext } from "../../../context/DataProvider";
 
 const FormTipos = ({
   setIdTipoColegio = 1,
@@ -14,6 +17,9 @@ const FormTipos = ({
   const [tipoColegio, setTipoColegio] = useState([]);
   const [tipoTurno, setTipoTurno] = useState([]);
   const [tipoInfraestructura, setTipoInfraestructura] = useState([]);
+
+
+
 
   useEffect(() => {
     const fetchingTipoColegio = async () => {
@@ -60,6 +66,13 @@ const FormTipos = ({
     fetchingTiposInfraestructuras();
   }, []);
 
+  const {setDatoTurno,setDatoInfraestructura, setTipoColegios} = useContext(DataContext);
+
+  setDatoTurno(tipoTurno);
+  setDatoInfraestructura(tipoInfraestructura);
+  setTipoColegios(tipoColegio);
+  
+
   // Manejadores de eventos para cada dropdown
   const handleTipoColegioChange = (event) => {
     const selectedId = event.target.value;
@@ -79,9 +92,14 @@ const FormTipos = ({
 
   return (
     <>
+     
+
+      {/* <Modal_Crear_TipoColegio/>
+      <Modal_Crear_TipoTurno/> */}
       <div className="flex gap-3 mt-3">
         <div className="w-1/2">
           <p className="font-semibold text-gray-600 uppercase">Tipo Colegio</p>
+        
           <select
             className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
             onChange={handleTipoColegioChange}
@@ -98,6 +116,7 @@ const FormTipos = ({
 
         <div className="w-1/2">
           <p className="font-semibold text-gray-600 uppercase">Tipo Turno</p>
+       
           <select
             className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
             onChange={handleTipoTurnoChange}
@@ -115,6 +134,7 @@ const FormTipos = ({
 
       <div className="mt-3">
         <p className="font-semibold text-gray-600 uppercase">Tipo Infraestructura</p>
+   
         <select
           className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
           onChange={handleTipoInfraestructuraChange}

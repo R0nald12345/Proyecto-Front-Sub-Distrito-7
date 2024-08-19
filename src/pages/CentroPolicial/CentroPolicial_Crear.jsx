@@ -18,8 +18,8 @@ const CentroPolicial_Crear = () => {
   const [coordenada_y, setCoordenada_y] = useState(0);
   const [direccion, setDireccion] = useState("");
   const [uv, setUv] = useState("");
-  const [horario, sethorario] = useState("");
-  const [foto, setFoto] = useState("");
+  const [horario, setHorario] = useState("");
+  const [fotoUrl, setFotoUrl] = useState("");
   const [serviciosPublicos, setServiciosPublicos] = useState([]);
 
   const [openModalCreateServicioPublico, setOpenModalCreateServicioPublico] = useState(false);
@@ -72,7 +72,7 @@ const CentroPolicial_Crear = () => {
         direccion,
         uv,
         horario,
-        foto,
+        fotoUrl,
         numeroTelefono,
         serviciosPublicos
       );
@@ -140,8 +140,8 @@ const CentroPolicial_Crear = () => {
                 </p>
                 <input
                   className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
-                  value={direccion}
-                  onChange={(e) => setDireccion(e.target.value)}
+                  value={encargado}
+                  onChange={(e) => setEncargado(e.target.value)}
                 />
 
                 <p className="mt-3 uppercase font-semibold text-gray-600">
@@ -150,8 +150,8 @@ const CentroPolicial_Crear = () => {
                 <input
                   className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
                   type="time"
-                  value={direccion}
-                  onChange={(e) => setDireccion(e.target.value)}
+                  value={horario}
+                  onChange={(e) => setHorario(e.target.value)}
                 />
 
                 <div className="">
@@ -161,7 +161,7 @@ const CentroPolicial_Crear = () => {
                     </p>
                     <input
                       className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
-                      onChange={(e) => sethorario(e.target.value)}
+                      onChange={(e) => setUv(e.target.value)}
                     />
                   </div>
                   <div className="w-full mt-3">
@@ -170,6 +170,7 @@ const CentroPolicial_Crear = () => {
                     </p>
                     <input
                       className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
+                      type="number"
                       onChange={(e) => setNumeroTelefono(e.target.value)}
                     />
                   </div>
@@ -189,7 +190,8 @@ const CentroPolicial_Crear = () => {
                   </p>
                   <input
                     className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
-                    onChange={(e) => setFoto(e.target.value)}
+                    type="url"
+                    onChange={(e) => setFotoUrl(e.target.value)}
                   />
                 </div>
               </div>

@@ -65,7 +65,9 @@ function App() {
                 </PrivateRoute>
               }
             >
+
               <Route index element={<Inicio />} />
+
               <Route path="oficinadistrital" element={<OficinaDistritalPrincipal />} />
               <Route path="telefonourgencia" element={<TelefonoUrgencia />} />
               <Route path="unidadeducativa" element={<ListaGeneralUE />} />
@@ -91,6 +93,7 @@ function App() {
               <Route path="centro_policial/agregarnuevo" element={<CentroPolicial_Crear/>} />
               <Route path="centro_policial/detalles/:id" element={<CentroPolicial_Detalles/>} />
 
+              {/* <Route path="usuario" element={<ListaGeneralUsuario/>} /> */}
               <Route path="agregarUsuario" element={<NuevoUsuario />} />
             </Route>
           </Routes>

@@ -2,17 +2,20 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import Swal from "sweetalert2";
-import { getCentroPolicialID, getCentroPolicialListaGeneral } from "../../api/UnidadesEducativas";
+import {
+  getCentroPolicialID,
+  getCentroPolicialListaGeneral,
+} from "../../api/UnidadesEducativas";
 import MapaAgregar from "../UnidadesEducativas/Mapas/MapaAgregar";
 import Lista_CentroPolicial_ServicioPublico from "../../components/Listas/CentroPolicial/Lista_CentroPolicial";
 import Lista_ServicioPublico from "../../components/Listas/CentroPolicial/Lista_ServicioPublico";
 import MapaMostrar from "../UnidadesEducativas/Mapas/MapaMostrar";
+import Lista_ServicioPublico_Mostrar from "../../components/Listas/CentroPolicial/Lista_ServicioPublico_Mostrar";
 
 const CentroPolicial_Detalles = () => {
-
   const navigate = useNavigate();
 
-  const {id} = useParams();
+  const { id } = useParams();
 
   const [nombre, setNombre] = useState("");
   const [encargado, setEncargado] = useState("");
@@ -25,36 +28,40 @@ const CentroPolicial_Detalles = () => {
   const [fotoUrl, setFotoUrl] = useState("");
   const [serviciosPublicos, setServiciosPublicos] = useState([]);
 
-
-
   useEffect(() => {
     const fetchingCentroPolicial = async () => {
-        try {
-          const response = await getCentroPolicialID(id);
-          console.log("response", response);
-            setNombre(response.nombre),
-            setEncargado(response.encargado),
-            setNumeroTelefono(response.numeroTelefono),
-            setCoordenada_x(response.coordenada_x),
-            setCoordenada_y(response.coordenada_y),
-            setDireccion(response.direccion),
-            setUv(response.uv),
-            sethorario(response.horario),
-            setFotoUrl(response.fotoUrl),
-            setServiciosPublicos(response.serviciosPublicos)
-          
-        } catch (error) {
-          console.error("Error", error);
+      try {
+        const response = await getCentroPolicialID(id);
+        console.log("response", response);
+        setNombre(response.nombre);
+          setEncargado(response.encargado);
+          setNumeroTelefono(response.numeroTelefono);
+          setCoordenada_x(response.coordenada_x);
+          setCoordenada_y(response.coordenada_y);
+          setDireccion(response.direccion);
+          setUv(response.uv);
+          sethorario(response.horario);
+          setFotoUrl(response.fotoUrl);
+
+          // setServiciosPublicos(JSON.parse(response.serviciosPublicos));
+           // Limpia y parsea la cadena JSON
+        let servicios = response.serviciosPublicos;
+        if (typeof servicios === 'string') {
+          servicios = servicios.replace(/'/g, '"'); // Reemplaza comillas simples por comillas dobles
+          servicios = servicios.replace(/(\w+)(?=:)/g, '"$1"'); // Añade comillas a las claves
+          servicios = JSON.parse(servicios);
         }
+        setServiciosPublicos(servicios);
+      } catch (error) {
+        console.error("Error", error);
       }
-      fetchingCentroPolicial();
+    };
+    fetchingCentroPolicial();
   }, []);
 
   return (
     <div className="flex justify-center items-center">
-      <form
-        className="bg-gray-100/50 rounded-xl shadow-xl w-[100%] lg:w-[85%] p-4 md:px-8"
-      >
+      <form className="bg-gray-100/50 rounded-xl shadow-xl w-[100%] lg:w-[85%] p-4 md:px-8">
         <h2 className="text-center font-bold text-3xl text-gray-700">
           Agregar Nuevo Centro Policial
         </h2>
@@ -105,7 +112,7 @@ const CentroPolicial_Detalles = () => {
                     </p>
                     <input
                       className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
-                        value={numeroTelefono}
+                      value={numeroTelefono}
                     />
                   </div>
 
@@ -122,21 +129,11 @@ const CentroPolicial_Detalles = () => {
                   <p className="uppercase font-semibold text-gray-600 mt-3">
                     FotoUrl
                   </p>
-                  {/* <input
-                    className="border-2 rounded-xl border-gray-400 w-[59%] md:w-full"
-                    type="file"
-                    onChange={(e) => setJuntaEscolarFoto(e.target.files[0])} // Actualiza el estado con el archivo seleccionado
-                  /> */}
-                  {/* <div>
-                      <ArregloFotos
-                        setFoto={setJuntaEscolar}
-                      />
-
-
-
-
-
-                    </div> */}
+                  <input
+                    className="border-2 rounded-xl border-gray-400 w-[59%] md:w-full px-2"
+                    // type="file"
+                    value={fotoUrl}
+                  />
                 </div>
               </div>
             </div>
@@ -152,17 +149,14 @@ const CentroPolicial_Detalles = () => {
                   {/* <Lista_CentroPolicial_ServicioPublico/> */}
                   <div className="flex bg-white mt-3">
                     <h4 className="w-[60%]">Descripcion</h4>
-                   
                   </div>
                   <div>
-                    {/* {
-                          serviciosPublicos.map(element =>(
-                            <Lista_ServicioPublico
-                              key={element.id}
-                              descripcion={element.descripcion}
-                            />
-                          ))
-                        } */}
+                    {serviciosPublicos.map((element) => (
+                      <Lista_ServicioPublico_Mostrar
+                        key={element.id}
+                        descripcion={element.descripcion}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
@@ -173,10 +167,7 @@ const CentroPolicial_Detalles = () => {
                 Puntos (Cordenadas)
               </h3>
               <div className="rounded-xl mt-1 h-[60%]">
-                {/* <MapaMostrar
-                  setCoordenada_x={setCoordenada_x}
-                  setCoordenada_y={setCoordenada_y}
-                /> */}
+                <MapaMostrar datoX={coordenada_x} datoY={coordenada_y} />
               </div>
             </div>
           </section>

@@ -189,6 +189,68 @@ export const getDatoGeneralTiposColegio = async () => {
   }
 };
 
+
+
+export const getTipoColegioID = async (id) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/tipocolegios/${id}`;
+    const response = await axios.get(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api getTipoColegioID", e);
+  }
+};
+
+
+export const crearTipoColegio = async (
+  nombre,
+) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/tipocolegios`;
+    const datos = { nombre };
+    const response = await axios.post(baseURL, datos);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api crearTipoColegio", e);
+  }
+};
+
+
+export const actualizarTipoColegio = async (
+  id,
+  nombre,
+) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = `${url}/tipocolegios/${id}`;
+    const datos = { 
+        nombre, 
+    };
+    const response = await axios.patch(baseURL, datos);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el API actualizarTipoColegio", e);
+  }
+};
+
+
+
+export const deleteTipoColegioID = async (id) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/tipocolegios/${id}`;
+    const response = await axios.delete(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api deleteTipoColegioID", e);
+  }
+};
+
+
+
+
 //************  TiposTunos ************
 
 export const getDatoGeneralTiposTurno = async () => {
@@ -205,6 +267,83 @@ export const getDatoGeneralTiposTurno = async () => {
   }
 };
 
+
+export const getTurnoID = async (id) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/turnos/${id}`;
+    const response = await axios.get(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api getTurnoID", e);
+  }
+};
+
+
+export const crearTurno = async (
+  nombre,
+) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/turnos`;
+    const datos = { nombre };
+    const response = await axios.post(baseURL, datos);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api crearTurno", e);
+  }
+};
+
+
+export const actualizarTurno = async (
+  id,
+  nombre,
+) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = `${url}/turnos/${id}`;
+    const datos = { 
+        nombre, 
+    };
+    const response = await axios.patch(baseURL, datos);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el API actualizarTurno", e);
+  }
+};
+
+
+
+export const deleteTurnoID = async (id) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/turnos/${id}`;
+    const response = await axios.delete(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api deleteTurnoID", e);
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //************ Tipos InfraEstrcutura ************
 
 export const getDatoGeneralTiposInfraestructura = async () => {
@@ -220,6 +359,71 @@ export const getDatoGeneralTiposInfraestructura = async () => {
     );
   }
 };
+
+
+
+export const getInfraestructuraID = async (id) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/infraestructuras/${id}`;
+    const response = await axios.get(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api getInfraestructuraID", e);
+  }
+};
+
+
+export const crearInfraestructura = async (
+  nombre,
+) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/infraestructuras`;
+    const datos = { nombre };
+    const response = await axios.post(baseURL, datos);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api crearInfraestructura", e);
+  }
+};
+
+
+export const actualizarInfraestructura = async (
+  id,
+  nombre,
+) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = `${url}/infraestructuras/${id}`;
+    const datos = { 
+        nombre, 
+    };
+    const response = await axios.patch(baseURL, datos);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el API actualizarInfraestructura", e);
+  }
+};
+
+
+
+export const deleteInfraestructuraID = async (id) => {
+  try {
+    const url = import.meta.env.VITE_BASE_URL;
+    const baseURL = url + `/infraestructuras/${id}`;
+    const response = await axios.delete(baseURL);
+    return response.data;
+  } catch (e) {
+    console.log("Error en el Api deleteInfraestructuraID", e);
+  }
+};
+
+
+
+
+
+
 
 //************ LOGIN ************!/
 
@@ -709,7 +913,7 @@ export const crearCentroPolicial = async (
     const response = await axios.post(baseURL, datos);
     return response.data;
   } catch (e) {
-    console.log("Error en el Api newCentroPolicial", e);
+    console.log("Error en el Api crearCentroPolicial", e);
   }
 };
 
