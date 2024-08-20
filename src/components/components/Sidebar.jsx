@@ -19,6 +19,7 @@ import { FaPersonCirclePlus } from "react-icons/fa6";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { FaCalendarPlus } from "react-icons/fa";
 import { useAuth } from "../ProteccionRutas/AuthContext";
+import { RiFindReplaceFill } from "react-icons/ri";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -243,6 +244,16 @@ const Sidebar = () => {
               >
                 <FaPersonCirclePlus className="text-primary" /> Registrar
                 Usuario
+              </Link>
+            </li>
+
+            <li className="mb-3" onClick={() => navigate("visitas")}>
+              <Link
+                to="/"
+                className=" flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors"
+              >
+                <RiFindReplaceFill className="text-primary" /> Visitas
+                
               </Link>
             </li>
           </ul>

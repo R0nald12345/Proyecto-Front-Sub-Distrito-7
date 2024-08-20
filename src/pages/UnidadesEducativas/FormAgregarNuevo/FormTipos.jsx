@@ -96,6 +96,7 @@ const FormTipos = ({
 
       {/* <Modal_Crear_TipoColegio/>
       <Modal_Crear_TipoTurno/> */}
+      
       <div className="flex gap-3 mt-3">
         <div className="w-1/2">
           <p className="font-semibold text-gray-600 uppercase">Tipo Colegio</p>

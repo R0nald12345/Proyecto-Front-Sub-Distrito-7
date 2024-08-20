@@ -38,6 +38,8 @@ import { DataProvider } from "./context/DataProvider";
 import CentroPolicialGeneral from "./pages/CentroPolicial/CentroPolicialGeneral";
 import CentroPolicial_Crear from "./pages/CentroPolicial/CentroPolicial_Crear";
 import CentroPolicial_Detalles from "./pages/CentroPolicial/CentroPolicial_Detalles";
+import Actualizar_UE from "./pages/UnidadesEducativas/FormAgregarNuevo/Actualizar_UE";
+import ListaGeneralVisitas from "./pages/Visita/ListaGeneralVisitas";
 
 function App() {
   return (
@@ -70,21 +72,30 @@ function App() {
 
               <Route path="oficinadistrital" element={<OficinaDistritalPrincipal />} />
               <Route path="telefonourgencia" element={<TelefonoUrgencia />} />
+
               <Route path="unidadeducativa" element={<ListaGeneralUE />} />
               <Route path="unidadeducativa/agregarnuevo" element={<FormAgregarUE />} />
               <Route path="unidadeducativa/detalles/:id" element={<FormDataPublica />} />
+
+              <Route path="unidadeducativa/actualizar/:id" element={<Actualizar_UE/>} />
+              
               <Route path="unidadeducativa/modificar/:id" element={<FormEditarUE />} />
               <Route path="unidadeducativa/desayuno/:id" element={<Encabezado_Desayuno />} />
               <Route path="unidadeducativa/mantenimiento/:id" element={<Encabezado_Mantenimiento />} />
               <Route path="unidadeducativa/apoyo-gubernamental/:id" element={<Encabezado_ApoyoGubernamental />} />
               <Route path="unidadeducativa/apoyo-social/:id" element={<Encabezado_ApoyoSocial />} />
+
               <Route path="centrosalud" element={<CentroSaludGeneral />} />
               <Route path="centrosalud/agregarnuevo" element={<CentroSalud_Crear />} />
               <Route path="centrosalud/detalles/:id" element={<CentroSalud_Detalles />} />
               <Route path="centrorecreativo" element={<CentroRecreativo />} />
+
               <Route path="centro_turisticos" element={<ListaGeneralCentroTuristicos />} />
               <Route path="centro_turisticos/agregarnuevo" element={<AgregarCentroTuristicos />} />
+              
               <Route path="centro_turisticos/detalles/:id" element={<DetallesCentroTuristicos />} />
+
+
               <Route path="centro_deportivo" element={<ListaGeneralCentroDeportivo />} />
               <Route path="centro_deportivo/agregarnuevo" element={<AgregarCentroDeportivo />} />
               <Route path="centro_deportivo/detalles/:id" element={<DetallesCentroDeportivo />} />
@@ -95,6 +106,8 @@ function App() {
 
               {/* <Route path="usuario" element={<ListaGeneralUsuario/>} /> */}
               <Route path="agregarUsuario" element={<NuevoUsuario />} />
+
+              <Route path="visitas" element={<ListaGeneralVisitas/>} />
             </Route>
           </Routes>
         </DataProvider>

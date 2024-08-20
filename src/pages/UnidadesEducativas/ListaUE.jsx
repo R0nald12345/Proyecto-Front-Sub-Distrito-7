@@ -29,7 +29,7 @@ const ListaUE = ({
   };
 
   const changeRutaEditarFormulario = (id) => {
-    navigate(`/inicio/unidadeducativa/modificar/${id}`);
+    navigate(`/inicio/unidadeducativa/actualizar/${id}`);
   };
 
   const handleEliminar = async (id) => {
