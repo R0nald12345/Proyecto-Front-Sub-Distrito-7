@@ -15,7 +15,7 @@ export const getDatoCentroSalud = async () => {
   }
 };
 
-export const nuevoCentroSalud = async ({
+export const nuevoCentroSalud = async (
   nombre,
   coordenada_x,
   coordenada_y,
@@ -26,7 +26,7 @@ export const nuevoCentroSalud = async ({
   video,
   paginaweburl,
   fotos,
-}) => {
+) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
     const url = baseUrl + "/centrossaluds";
@@ -43,12 +43,51 @@ export const nuevoCentroSalud = async ({
       paginaweburl,
       fotos,
     };
+
     const response = await axios.post(url, body);
     return response.data;
   } catch (error) {
     console.log("Error no se pudo obtener los Datos", error);
   }
 };
+
+export const updateCentroSalud = async (
+  id,
+  nombre,
+  coordenada_x,
+  coordenada_y,
+  direccion,
+  uv,
+  horario,
+  nivel,
+  video,
+  paginaweburl,
+  fotoActualizado,
+) => {
+  try {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+    const url = baseUrl + `/centrossaluds/${id}`;
+
+    const body = {
+      nombre,
+      coordenada_x,
+      coordenada_y,
+      direccion,
+      uv,
+      horario,
+      nivel,
+      video,
+      paginaweburl,
+      fotos:fotoActualizado,
+    };
+
+    const response = await axios.patch(url, body);
+    return response.data;
+  } catch (error) {
+    console.log("Error no se pudo obtener los Datos", error);
+  }
+};
+
 
 
 export const getDatoCentroSaludID = async (id) => {

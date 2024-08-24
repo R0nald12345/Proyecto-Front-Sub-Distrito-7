@@ -50,16 +50,7 @@ const ArregloFotos = ({ foto = [], setFoto }) => {
         name: file.name,
         url,
       });
-
-      // dataFoto.push(
-      //   {
-      //     name: "file",
-      //     file: file
-      //   }
-      // ); // Agrega el archivo al FormData
      
-      // console.log(dataFoto); // Log para depuración 
-
       indexInicial++; // Incrementa el índice para la siguiente imagen
     });
 
@@ -83,19 +74,10 @@ const ArregloFotos = ({ foto = [], setFoto }) => {
       // Agrega la imagen al array
       arrayImages.push({
         file,
-        // index: indexInicial,
-        // name: file.name,
-        // url,
+ 
       });
 
-      // dataFoto.push(
-      //   {
-      //     name: "file",
-      //     file: file
-      //   }
-      // ); // Agrega el archivo al FormData
-     
-      // console.log(dataFoto); // Log para depuración 
+      
 
       indexInicial++; // Incrementa el índice para la siguiente imagen
     });
@@ -142,6 +124,7 @@ const ArregloFotos = ({ foto = [], setFoto }) => {
 
       <section className="overflow-auto h-44">
         <div className="flex flex-wrap">
+
           {images.map((imagen) => (
             <div className="w-1/2 sm:w-1/3 lg:w-1/4 p-2" key={imagen.index}> {/* Muestra cada imagen */}
               <div className="relative">

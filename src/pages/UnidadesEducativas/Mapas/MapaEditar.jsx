@@ -4,12 +4,12 @@ import mapboxgl from 'mapbox-gl';
 // Asigna tu token de Mapbox
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9uYWxkdWFncm0iLCJhIjoiY2x0dnB0ZGRqMXBmODJqc3lmODVrdWdrYyJ9.neqEa6j7_rpPpNaj49I5iA';
 
-const MapaAgregar = ({ setCoordenada_x, setCoordenada_y }) => {
+const MapaEditar = ({datoX,datoY, setCoordenada_x, setCoordenada_y }) => {
     
-    console.log("coordenada_x", setCoordenada_x);
-    console.log("coordenada_y", setCoordenada_y);
+    console.log("coordenada_x1", datoX);
+    console.log("coordenada_y1", datoY);
     
-    const [markerCoords, setMarkerCoords] = useState({ lng: -63.1351584, lat: -17.8008285 });
+    const [markerCoords, setMarkerCoords] = useState({ lng: datoX, lat: datoY });
     const mapaDiv = useRef(null);
     const [mapa, setMapa] = useState();
     const [marcador, setMarcador] = useState(null);
@@ -26,8 +26,10 @@ const MapaAgregar = ({ setCoordenada_x, setCoordenada_y }) => {
         setMapa(map);
     
         const marker = new mapboxgl.Marker({ color: '#FF0000', draggable: true })
-            .setLngLat([markerCoords.lng, markerCoords.lat])
-            .addTo(map);
+        .setLngLat([markerCoords.lng, markerCoords.lat])
+        .addTo(map);
+        console.log("markerCoords.lng", markerCoords.lng);
+        console.log("markerCoords.lat",markerCoords.lat);
     
         setMarcador(marker);
     
@@ -89,4 +91,4 @@ const MapaAgregar = ({ setCoordenada_x, setCoordenada_y }) => {
     );
 }
 
-export default MapaAgregar;
+export default MapaEditar;

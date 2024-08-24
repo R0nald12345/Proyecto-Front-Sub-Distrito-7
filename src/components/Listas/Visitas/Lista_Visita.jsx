@@ -6,21 +6,40 @@ import Swal from "sweetalert2";
 import { deleteDatoCentroDeportivoId as deleteDatoCentroDeportivoIdApi } from "../../../api/CentroDeportivo";
 import { deleteVisitas } from "../../../api/Visitas";
 import Modal_Detalle_Visita from "../../Modal/Visita/Modal_Detalle_Visita";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import Modal_Editar_Visita from "../../Modal/Visita/Modal_Editar_Visita";
+import { DataContext } from "../../../context/DataProvider";
+
+const formatearFecha = (fecha) => {
+  if (fecha.length > 0) {
+    // Me indica que tengo una fecha
+    let fechaFormateada = "";
+    for (let i = 0; i < fecha.length; i++) {
+      if (fecha[i] == "T") {
+        fechaFormateada = fecha.substring(0, i);
+        break;
+      }
+    }
+    const [year, month, day] = fechaFormateada.split("-");
+    return `${day}-${month}-${year}`;
+  } else {
+    return "Fecha no válida";
+  }
+};
 
 const Lista_Visita = ({
-  datosVisita,
-  
+  datosVisita, 
   datosVisitas,
   setDatosVisitas,
 }) => {
-  const { id, titulo, fecha, visitantes } = datosVisita;
-  const navigate = useNavigate();
-
   
-  // const [openModalCreate, setOpenModalCreate] = useState(false);
-  // const [openModalUpdate, setOpenModalUpdate] = useState(false);
+  const { id, titulo, fecha, visitantes } = datosVisita;
+ 
+  // const {datoVisitaId }= useContext(DataContext);
+
+
   const [openModalDetalles,setOpenModalDetalles] = useState(false);
+  const [openModalEditar,setOpenModalEditar] = useState(false);
 
 
   const deleteVisita = async (id) => {
@@ -57,25 +76,34 @@ const Lista_Visita = ({
       {/* //Modal para Editar */}
       <Modal_Detalle_Visita
         open={openModalDetalles}
-        setOpenModalDetalles={()=>setOpenModalDetalles(false)}
+        onClose={()=>setOpenModalDetalles(false)}
         idVisita={id}
       />
 
-      <ul className="bg-white mb-3 rounded-xl shadow-lg flex">
-        <li className="font-semibold text-center w-[30%] px-2 py-2">
+      <Modal_Editar_Visita
+        open = {openModalEditar}
+        onClose = {()=>setOpenModalEditar(false)}
+        idVisita = {id}
+      />
+
+      <ul className="bg-white mb-3 gap-3 rounded-xl shadow-lg flex">
+        <li className="font-semibold text-center w-[35%] px-2 py-2">
           {titulo}
         </li>
 
-        <li className="font-semibold text-center w-[50%] px-2 py-2">
+        <li className="font-semibold text-center w-[25%] px-2 py-2">
           {visitantes}
         </li>
 
-        <li className="font-semibold text-center w-[50%] px-2 py-2">
-          {fecha}
+        <li className="font-semibold text-center w-[20%] px-2 py-2">
+          { formatearFecha(fecha) }
         </li>
-        <li className="font-semibold text-center w-[20%] px-2 py-2 flex justify-around gap-3">
+        <li className="font-semibold text-center w-[20%] px-2 py-2 flex justify-around gap-2">
           
-          <BiEditAlt className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer" />
+          <BiEditAlt 
+            className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer" 
+            onClick={()=>setOpenModalEditar(!openModalEditar)}
+          />
 
           <IoEyeSharp
             className="bg-black text-white text-3xl rounded-md p-1 cursor-pointer"

@@ -18,7 +18,7 @@ export const getDatoVisitas = async () => {
 export const getDatoVisitasID = async (id) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
-    const url = baseUrl + `/visitas/+${id}`;
+    const url = baseUrl + `/visitas/${id}`;
     const datosVisita = await axios.get(url);
     return datosVisita.data;
   } catch (error) {
@@ -63,7 +63,7 @@ export const updateDatoVisitas = async (
   fecha,
   motivo,
   visitantes,
-  idUnidadEducativa
+  dataIdUE
 ) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -74,7 +74,7 @@ export const updateDatoVisitas = async (
       fecha,
       motivo,
       visitantes,
-      idUnidadEducativa,
+      idUnidadEducativa: dataIdUE,
     };
     const response = await axios.patch(url, body);
     return response.data;

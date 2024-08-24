@@ -6,9 +6,8 @@ import { createDatoVisitas } from "../../../api/Visitas";
 // import { crearNuevoDesayuno } from "../../api/UnidadesEducativas";
 // import {Modal_Crear_Visita} from "../../components/Modal/Visita/Modal_Crear_Visita";
 
-const Modal_Crear_Visita = ({ open, onClose, listaVisita, setListaVisita }) => {
-  //   console.log(idUE);
-
+const Modal_Crear_Visita = ({ open, onClose, idUnidadEducativa ,listaVisita, setListaVisita }) => {
+  
   const { onInputChange, onResetForm, titulo, fecha, visitantes, motivo } =
     useForm({
       titulo: "",
@@ -18,7 +17,6 @@ const Modal_Crear_Visita = ({ open, onClose, listaVisita, setListaVisita }) => {
     });
 
   const [datoColegio, setDatoColegio] = useState([]);
-  const [datoColegioId, setDatoColegioId] = useState(0);
 
   useEffect(() => {
     const fetchingVisitas = async () => {
@@ -40,7 +38,6 @@ const Modal_Crear_Visita = ({ open, onClose, listaVisita, setListaVisita }) => {
   const handleNuevaVisita = async (e) => {
     e.preventDefault();
     try {
-      let idUnidadEducativa = datoColegioId;
       const data = await createDatoVisitas(
         titulo,
         fecha,
@@ -100,7 +97,7 @@ const Modal_Crear_Visita = ({ open, onClose, listaVisita, setListaVisita }) => {
               onChange={onInputChange}
             />
 
-            <h3 className="font-semibold mt-3">Nombre Colegio</h3>
+            {/* <h3 className="font-semibold mt-3">Nombre Colegio</h3>
 
             <select
               className="mt-2 py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
@@ -113,7 +110,7 @@ const Modal_Crear_Visita = ({ open, onClose, listaVisita, setListaVisita }) => {
                   {option.nombre}
                 </option>
               ))}
-            </select>
+            </select> */}
 
             <h3 className="font-semibold mt-3">Motivo</h3>
             <input
@@ -136,7 +133,7 @@ const Modal_Crear_Visita = ({ open, onClose, listaVisita, setListaVisita }) => {
 
           <div className="flex justify-center">
             <button
-              className="bg-green-600 hover:bg-green-700 font-semibold mt-3 mt-5 text-white py-2 px-5 rounded-xl"
+              className="bg-green-600 hover:bg-green-700 font-semibold mt-5 text-white py-2 px-5 rounded-xl"
                 type="submit"
             >
               Agregar

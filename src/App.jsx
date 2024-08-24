@@ -40,6 +40,7 @@ import CentroPolicial_Crear from "./pages/CentroPolicial/CentroPolicial_Crear";
 import CentroPolicial_Detalles from "./pages/CentroPolicial/CentroPolicial_Detalles";
 import Actualizar_UE from "./pages/UnidadesEducativas/FormAgregarNuevo/Actualizar_UE";
 import ListaGeneralVisitas from "./pages/Visita/ListaGeneralVisitas";
+import CentroSalud_Editar from "./pages/CentrosSalud/CentroSalud_Editar";
 
 function App() {
   return (
@@ -84,10 +85,14 @@ function App() {
               <Route path="unidadeducativa/mantenimiento/:id" element={<Encabezado_Mantenimiento />} />
               <Route path="unidadeducativa/apoyo-gubernamental/:id" element={<Encabezado_ApoyoGubernamental />} />
               <Route path="unidadeducativa/apoyo-social/:id" element={<Encabezado_ApoyoSocial />} />
+              <Route path="unidadeducativa/visitas/:id" element={<ListaGeneralVisitas/>} />
 
               <Route path="centrosalud" element={<CentroSaludGeneral />} />
-              <Route path="centrosalud/agregarnuevo" element={<CentroSalud_Crear />} />
               <Route path="centrosalud/detalles/:id" element={<CentroSalud_Detalles />} />
+              <Route path="centrosalud/agregarnuevo" element={<CentroSalud_Crear />} />
+              <Route path="centrosalud/editar/:id" element={<CentroSalud_Editar/>} />
+
+
               <Route path="centrorecreativo" element={<CentroRecreativo />} />
 
               <Route path="centro_turisticos" element={<ListaGeneralCentroTuristicos />} />
@@ -107,7 +112,6 @@ function App() {
               {/* <Route path="usuario" element={<ListaGeneralUsuario/>} /> */}
               <Route path="agregarUsuario" element={<NuevoUsuario />} />
 
-              <Route path="visitas" element={<ListaGeneralVisitas/>} />
             </Route>
           </Routes>
         </DataProvider>

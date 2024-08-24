@@ -12,7 +12,7 @@ const Lista_CentroSalud = ({ dateCentroSalud,datosCentroSalud,setDatosCentroSalu
   const navigate = useNavigate();
 
   const changeRutaEditarFormulario = (id) => {
-    navigate(`/unidadeducativa/modificar/${id}`);
+    navigate(`/inicio/centrosalud/editar/${id}`);
   };
 
   const handleDeleteCentroSalud = async (id) => {
