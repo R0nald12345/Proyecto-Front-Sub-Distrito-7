@@ -690,6 +690,19 @@ export const deleteApoyoSocialID = async (id) => {
   }
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // A  P  O  Y  O    G  U  B  E  R  N  A  M  E  N  T  A  L
 
 
@@ -742,7 +755,8 @@ export const newApoyoGubernamental = async (
 };
 
 
-export const actualizarApoyoGubernamental = async (id, 
+export const actualizarApoyoGubernamental = async (
+  id, 
   cantidad,
   nombreEntrega,
   fecha,

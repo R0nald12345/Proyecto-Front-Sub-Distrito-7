@@ -15,19 +15,26 @@ const Lista_ApoyoGubernamental = ({datoApoyoGubernamental,tipoCategoria, listaGe
 
   const { fecha, nombreEntrega, cantidad,id } = datoApoyoGubernamental;
   // console.log('DatoApoyoGubernamental');
-  // console.log(datoApoyoGubernamental);
+
 
   const [openModalActualizar, setOpenModalActualizar] = useState(false);
 
-  const fechaObj = new Date(fecha);
 
-  // Obtener el día, mes y año de la fecha
-  const dia = fechaObj.getDate();
-  const mes = fechaObj.getMonth() + 1; // El mes se indexa desde 0 (enero es 0)
-  const año = fechaObj.getFullYear();
-
-  // Formatear la fecha como día/mes/año
-  const fechaFormateada = `${dia}/${mes}/${año}`;
+  const formatearFecha = (fecha) => {
+    if (fecha.length > 0) { // Me indica que tengo una fecha
+      let fechaFormateada = ""; 
+      for (let i = 0; i < fecha.length; i++) {
+        if (fecha[i] == "T") {
+          fechaFormateada = fecha.substring(0, i);
+          break;
+        }
+      }
+      const [year, month, day] = fechaFormateada.split("-");
+      return `${day}-${month}-${year}`;
+    } else {
+      return "Fecha no válida";
+    }
+  };
 
   const handleEliminar = async () => {
     try{
@@ -72,7 +79,7 @@ const Lista_ApoyoGubernamental = ({datoApoyoGubernamental,tipoCategoria, listaGe
 
       <ul className="bg-white gap-3 mb-3 rounded-xl shadow-lg flex px-2">
         <li className=" font-semibold text-start w-[15%] px-2 py-2 ">
-          {fechaFormateada}
+          {formatearFecha(fecha)}
         </li>
         <li className=" font-semibold text-start w-[50%] px-2 py-2 ">
           {nombreEntrega}

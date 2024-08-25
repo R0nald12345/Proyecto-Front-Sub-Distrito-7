@@ -16,6 +16,8 @@ const Modal_Actualizar_Gubernamental = ({
   listaGeneralApoyoGubernamental
 
 }) => {
+
+  console.log("idGubernamentalllll", id);
   // Definición de hooks al inicio del componente
   const [selectedOption, setSelectedOption] = useState({
     idCategoria: 0,
@@ -35,9 +37,16 @@ const Modal_Actualizar_Gubernamental = ({
   // console.log("tipoCategoria", tipoCategoria);
 
   // Uso de useEffect con la dependencia correcta
+
+  // const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
   useEffect(() => {
     const fetchingGetGubernamentalID = async () => {
       try {
+
+        //  // Espera 2 segundos antes de hacer la llamada a la API
+        //  await delay(2000);
+        
         const response = await getApoyoGubernamentalID(id);
         setDatoGubernamental(response);
         console.log("response", response);
@@ -53,6 +62,7 @@ const Modal_Actualizar_Gubernamental = ({
     };
     fetchingGetGubernamentalID();
   }, [id]); // Añadí `id` como dependencia
+
 
   // Función para manejar el cambio de selección
   const handleSelectChange = (e) => {
@@ -74,20 +84,23 @@ const Modal_Actualizar_Gubernamental = ({
       console.log("nombreEntrega", nombreEntrega);
       console.log("fecha", fecha);
       console.log("dataIdUE", dataIdUE);
-      console.log("selectedOption", selectedOption);
-      const data = await actualizarApoyoGubernamental({
-        id:id,
-        cantidad: cantidad,
-        nombreEntrega: nombreEntrega,
-        fecha: fecha,
-        idUnidadEducativa: dataIdUE,
-        idCategoria: selectedOption.idCategoria,
-      });
+      console.log("selectedOption", selectedOption.idCategoria);
+        let idUnidadEducativa =  dataIdUE;
+        let idCategoria =  selectedOption.idCategoria;
+      const data = await actualizarApoyoGubernamental(
+        id,
+        cantidad,
+        nombreEntrega,
+        fecha,
+        idUnidadEducativa,
+        idCategoria
+      );  
 
-      setListaGeneralApoyoGubernamental([
-        ...listaGeneralApoyoGubernamental,
-        data,
-      ]);
+      const updateList = listaGeneralApoyoGubernamental.map(item=>
+        item.id === id ? data : item
+      );
+
+      setListaGeneralApoyoGubernamental(updateList);
 
       Swal.fire({
         position: "center",

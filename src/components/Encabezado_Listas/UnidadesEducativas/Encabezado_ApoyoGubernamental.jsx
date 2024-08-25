@@ -10,26 +10,39 @@ import Lista_ApoyoGubernamental from "../../Listas/UnidadesEducativas/Lista_Apoy
 import Modal_Agregar_ApoyoGubernamental from "../../modales/Modal_Agregar_ApoyoGubernamental.jsx";
 import Modal_Crear_Categoria from "../../Modal/UnidadEducativa/Modal_Crear_Categoria.jsx";
 import Modal_Editar_Categoria from "../../Modal/UnidadEducativa/Modal_Editar_Categoria.jsx";
+import Modal_Actualizar_Gubernamental from "../../Modal/UnidadEducativa/Modal_Actualizar_Gubernamental.jsx";
 
 // Función para formatear la fecha
-const formatearFecha = (fechaISO) => {
-  const fecha = new Date(fechaISO);
-  const dia = String(fecha.getDate()).padStart(2, "0");
-  const mes = String(fecha.getMonth() + 1).padStart(2, "0");
-  const año = fecha.getFullYear();
-  return `${mes}/${dia}/${año}`;
+const formatearFecha = (fecha) => {
+  if (fecha.length > 0) { // Me indica que tengo una fecha
+    let fechaFormateada = ""; 
+    for (let i = 0; i < fecha.length; i++) {
+      if (fecha[i] == "T") {
+        fechaFormateada = fecha.substring(0, i);
+        break;
+      }
+    }
+    const [year, month, day] = fechaFormateada.split("-");
+    return `${day}-${month}-${year}`;
+  } else {
+    return "Fecha no válida";
+  }
 };
 
 const Encabezado_ApoyoGubernamental = () => {
+  
   const [openModalCreate, setOpenModalCreate] = useState(false);
-  const [openModalCreateCategoria, setOpenModalCreateCategoria] =
-    useState(false);
+  const [openModalActualizarGubernamental, setModalActualizarGubernamental] = useState(false);
+
+  const [openModalCreateCategoria, setOpenModalCreateCategoria] = useState(false);
+
+  const [idGubernamental, setIdGubernamental] = useState(null);
+
   const [openModalSetCategoria, setOpenModalSetCategoria] = useState(false);
 
   const { id } = useParams();
   const [tipoCategoria, setTipoCategoria] = useState([]);
-  const [listaGeneralApoyoGubernamental, setListaGeneralApoyoGubernamental] =
-    useState([]);
+  const [listaGeneralApoyoGubernamental, setListaGeneralApoyoGubernamental] =useState([]);
   const [filtro, setFiltro] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -97,6 +110,12 @@ const Encabezado_ApoyoGubernamental = () => {
     return matchFiltro && matchCategoria;
   });
 
+
+  const hanldeUpdate=(id)=>{
+      setIdGubernamental(id);
+      setModalActualizarGubernamental(!openModalActualizarGubernamental);
+  }
+
   return (
     <>
       <Modal_Agregar_ApoyoGubernamental
@@ -107,6 +126,19 @@ const Encabezado_ApoyoGubernamental = () => {
         listaGeneralApoyoGubernamental={listaGeneralApoyoGubernamental}
         setListaGeneralApoyoGubernamental={setListaGeneralApoyoGubernamental}
       />
+
+      <Modal_Actualizar_Gubernamental
+        open={openModalActualizarGubernamental}
+        onClose={() => setModalActualizarGubernamental(false)}
+
+        id={idGubernamental}
+
+        tipoCategoria={tipoCategoria}
+        listaGeneralApoyoGubernamental={listaGeneralApoyoGubernamental}
+        setListaGeneralApoyoGubernamental={setListaGeneralApoyoGubernamental}
+      />
+
+
 
       <Modal_Crear_Categoria
         open={openModalCreateCategoria}
@@ -203,7 +235,9 @@ const Encabezado_ApoyoGubernamental = () => {
                   element && element.id ? (
                     <Lista_ApoyoGubernamental
                       key={element.id}
+
                       datoApoyoGubernamental={element}
+
                       tipoCategoria={tipoCategoria}
                       listaGeneralApoyoGubernamental={
                         listaGeneralApoyoGubernamental
@@ -226,6 +260,7 @@ const Encabezado_ApoyoGubernamental = () => {
           {listaFiltrada && listaFiltrada.length > 0 ? (
             listaFiltrada.map((element) =>
               element && element.id ? (
+                
                 <div
                   key={element.id}
                   className="bg-white p-4 rounded-xl shadow-lg"
@@ -233,8 +268,7 @@ const Encabezado_ApoyoGubernamental = () => {
                   <h4 className="font-bold text-lg">Nombre Entrega:</h4>
                   <p className="font-new-font">{element.nombreEntrega}</p>
 
-                  <h4 className="font-bold text-lg">Nombre Desayuno:</h4>
-                  <p className="font-new-font">{element.nombre}</p>
+                 
 
                   <h4 className="font-bold text-lg">Cantidad:</h4>
                   <p className="font-new-font">{element.cantidad}</p>
@@ -245,7 +279,10 @@ const Encabezado_ApoyoGubernamental = () => {
                   </p>
 
                   <div className="flex justify-end mt-3 gap-2">
-                    <button className="bg-primary-900 w-1/2 text-white px-3 py-1 rounded-lg">
+                    <button 
+                      className="bg-primary-900 w-1/2 text-white px-3 py-1 rounded-lg"
+                      onClick={()=>hanldeUpdate(element.id)}
+                    >
                       Editar
                     </button>
                     <button

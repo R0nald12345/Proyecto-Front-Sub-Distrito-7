@@ -39,6 +39,7 @@ const ListaGeneralUE = () => {
       try {
         const response = await getDatoGeneralUE();
         setDatosUnidadEducativa(response);
+        console.log("response", response);
       } catch (error) {
         console.log(
           "Error en Componente ListaGeneral fetchingDatosGeneralUE",
