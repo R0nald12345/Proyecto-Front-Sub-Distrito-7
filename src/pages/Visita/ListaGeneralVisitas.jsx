@@ -10,6 +10,26 @@ import { deleteVisitas as deleteVisitasApi, getDatoVisitas } from "../../api/Vis
 import Lista_Visita from "../../components/Listas/Visitas/Lista_Visita"
 import Modal_Crear_Visita from "../../components/Modal/Visita/Modal_Crear_Visita";
 import Modal_Detalle_Visita from "../../components/Modal/Visita/Modal_Detalle_Visita";
+import Modal_Editar_Visita from "../../components/Modal/Visita/Modal_Editar_Visita";
+import { TbRuler } from "react-icons/tb";
+
+const formatearFecha = (fecha) => {
+  if (fecha.length > 0) {
+    // Me indica que tengo una fecha
+    let fechaFormateada = "";
+    for (let i = 0; i < fecha.length; i++) {
+      if (fecha[i] == "T") {
+        fechaFormateada = fecha.substring(0, i);
+        break;
+      }
+    }
+    const [year, month, day] = fechaFormateada.split("-");
+    return `${day}-${month}-${year}`;
+  } else {
+    return "Fecha no válida";
+  }
+};
+
 
 const ListaGeneralVisitas = () => {
 
@@ -19,7 +39,10 @@ const ListaGeneralVisitas = () => {
   const [datosVisitas, setDatosVisitas] = useState([]);
   const [filtro, setFiltro] = useState("");
 
+  const [idVisita, setIdVisita] = useState(0);
+
   const [openModalCreate, setOpenModalCreate] = useState(false);
+  const [openModalDetails, setOpenModalDetails] = useState(false);
   const [openModalUpdate, setOpenModalUpdate] = useState(false);
   
   useEffect(() => {
@@ -70,10 +93,15 @@ const ListaGeneralVisitas = () => {
     }
   };
 
-  let idVisita = 0;
 
   const changeDatails=(id)=>{
-    idVisita = id;
+    setIdVisita(id);
+    setOpenModalDetails(true);
+  }
+
+
+  const changeUpdate=(id)=>{
+    setIdVisita(id);
     setOpenModalUpdate(!openModalUpdate);
   }
 
@@ -97,9 +125,19 @@ const ListaGeneralVisitas = () => {
       />
 
       <Modal_Detalle_Visita
-        open={openModalUpdate}
-        onClose={() => setOpenModalUpdate(false)}
+        open={openModalDetails}
+        onClose={() => setOpenModalDetails(false)}
         idVisita={idVisita}
+      />
+
+      <Modal_Editar_Visita
+        open={openModalUpdate}
+        onClose={()=> setOpenModalUpdate(false)}
+        idVisita = {idVisita}
+        datosVisitas={ datosVisitas}
+        setDatosVisitas={ setDatosVisitas}
+
+      
       />
     
       <div className="flex flex-col items-center justify-center rounded-xl bg-white/50 md:w-full lg:w-[75%]  mx-auto px-4 md:px-6 pb-6 md:pb-2">
@@ -172,16 +210,17 @@ const ListaGeneralVisitas = () => {
               <div key={element.id} className="bg-white p-4 rounded-xl shadow-lg">
                 <h4 className="font-bold text-lg">{element.titulo}</h4>
                 <p className="text-gray-600">{element.visitantes}</p>
-                <p className="text-gray-600">{element.fecha}</p>d 
+                <p className="text-gray-600">{ formatearFecha(element.fecha)}</p>d 
 
                 <div className="flex justify-end mt-3 gap-2">
                   {/* Aquí puedes agregar los botones de acciones */}
                   <button 
                     className="bg-primary-900 text-white px-3 py-1 rounded-lg"
-                    onClick={() => navigate(`/inicio/centro_deportivo/editar/${element.id}`)}
+                    onClick={() => changeUpdate(element.id)}
                   >
                     Editar
                   </button>
+
                   <button 
                     className="bg-blue-950 text-white px-3 py-1 rounded-lg"
                     onClick={()=>changeDatails(element.id)}

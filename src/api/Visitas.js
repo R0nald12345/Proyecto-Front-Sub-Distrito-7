@@ -9,7 +9,7 @@ export const getDatoVisitas = async () => {
     return datosCentroTuristicos.data;
   } catch (error) {
     console.log(
-      "Error no se pudo obtener los Datos Backend ApiServices/entroTuristicos",
+      "Error getDatoVisitas",
       error
     );
   }
@@ -23,7 +23,7 @@ export const getDatoVisitasID = async (id) => {
     return datosVisita.data;
   } catch (error) {
     console.log(
-      "Error no se pudo obtener los Datos Backend ApiServices/getDatoCentroTuristicosID",
+      "Error getDatoVisitasID",
       error
     );
   }
@@ -51,7 +51,7 @@ export const createDatoVisitas = async (
     return response.data;
   } catch (error) {
     console.log(
-      "Error no se pudo obtener los Datos createDatoCentroTuristico",
+      "Error createDatoVisitas",
       error
     );
   }
@@ -80,7 +80,7 @@ export const updateDatoVisitas = async (
     return response.data;
   } catch (error) {
     console.log(
-      "Error no se pudo obtener los Datos createDatoCentroTuristico",
+      "Error  updateDatoVisitas",
       error
     );
   }
@@ -94,7 +94,7 @@ export const deleteVisitas = async (id) => {
     return datosVisitas.data;
   } catch (error) {
     console.log(
-      "Error no se pudo obtener los Datos Backend ApiServices/deleteVisitas",
+      "Error deleteVisitas",
       error
     );
   }

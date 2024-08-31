@@ -26,6 +26,8 @@ const formatearFecha = (fecha) => {
 };
 
 const Modal_Detalle_Visita = ({ open, onClose, idVisita }) => {
+
+  console.log('idVisitaaaaaaaaaa',idVisita);
   const [titulo, setTitulo] = useState("");
   const [fecha, setFecha] = useState("");
   const [visitantes, setVisitantes] = useState("");
@@ -48,7 +50,7 @@ const Modal_Detalle_Visita = ({ open, onClose, idVisita }) => {
       }
     };
     fetchingVisitas();
-  }, []);
+  }, [idVisita]);
 
   if (!open) return null;
 

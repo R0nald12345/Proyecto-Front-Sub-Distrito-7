@@ -13,7 +13,6 @@ import Inicio from "./pages/Inicio/Inicio";
 import CentroRecreativo from "./pages/CentrosRecreativos/CentroRecreativo";
 import FormularioAgregarPublica from "./pages/UnidadesEducativas/Publico/FormularioAgregarPublica";
 import FormDataPublica from "./pages/UnidadesEducativas/Publico/FormDataPublica";
-import OficinaDistritalPrincipal from "./pages/OficinaDistrital/OficinaDistritalPrincipal";
 import TelefonoUrgencia from "./pages/TelefonoUrgencia/TelefonoUrgencia";
 import ListaGeneralUE from "./pages/UnidadesEducativas/Publico/ListaGeneralUE";
 import FormAgregarUE from "./pages/UnidadesEducativas/FormAgregarNuevo/FormAgregarUE";
@@ -41,6 +40,7 @@ import CentroPolicial_Detalles from "./pages/CentroPolicial/CentroPolicial_Detal
 import Actualizar_UE from "./pages/UnidadesEducativas/FormAgregarNuevo/Actualizar_UE";
 import ListaGeneralVisitas from "./pages/Visita/ListaGeneralVisitas";
 import CentroSalud_Editar from "./pages/CentrosSalud/CentroSalud_Editar";
+import OficinaDistritalGeneral from "./pages/OficinaDistrital/OficinaDistritalGeneral";
 
 function App() {
   return (
@@ -71,7 +71,7 @@ function App() {
 
               <Route index element={<Inicio />} />
 
-              <Route path="oficinadistrital" element={<OficinaDistritalPrincipal />} />
+              <Route path="oficinadistrital" element={<OficinaDistritalGeneral />} />
               <Route path="telefonourgencia" element={<TelefonoUrgencia />} />
 
               <Route path="unidadeducativa" element={<ListaGeneralUE />} />

@@ -20,6 +20,7 @@ import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { FaCalendarPlus } from "react-icons/fa";
 import { useAuth } from "../ProteccionRutas/AuthContext";
 import { RiFindReplaceFill } from "react-icons/ri";
+import { RiCustomerService2Fill } from "react-icons/ri";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -254,6 +255,15 @@ const Sidebar = () => {
               >
                 <RiFindReplaceFill className="text-primary" /> Visitas
                 
+              </Link>
+            </li>
+
+            <li className="mb-3" onClick={() => navigate("visitas")}>
+              <Link
+                to="/"
+                className=" flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors"
+              >
+                <RiCustomerService2Fill  className="text-primary" /> Servicio Distrital            
               </Link>
             </li>
           </ul>

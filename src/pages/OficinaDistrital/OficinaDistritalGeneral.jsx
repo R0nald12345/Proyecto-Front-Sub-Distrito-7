@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OficinaDistritalPrincipal = () => {
+const OficinaDistritalGeneral = () => {
   return (
     <div>
         OficinaDistritalPrincipal
@@ -8,4 +8,4 @@ const OficinaDistritalPrincipal = () => {
   )
 }
 
-export default OficinaDistritalPrincipal
+export default OficinaDistritalGeneral

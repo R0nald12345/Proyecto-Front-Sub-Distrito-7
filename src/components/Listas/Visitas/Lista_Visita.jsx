@@ -32,15 +32,10 @@ const Lista_Visita = ({
   datosVisitas,
   setDatosVisitas,
 }) => {
-  
   const { id, titulo, fecha, visitantes } = datosVisita;
- 
-  // const {datoVisitaId }= useContext(DataContext);
 
-
-  const [openModalDetalles,setOpenModalDetalles] = useState(false);
-  const [openModalEditar,setOpenModalEditar] = useState(false);
-
+  const [openModalDetalles, setOpenModalDetalles] = useState(false);
+  const [openModalEditar, setOpenModalEditar] = useState(false);
 
   const deleteVisita = async (id) => {
     try {
@@ -57,7 +52,7 @@ const Lista_Visita = ({
       if (result.isConfirmed) {
         await deleteVisitas(id);
         setDatosVisitas(
-            datosVisitas.filter((element) => element.id !== id)
+          datosVisitas.filter((element) => element.id !== id)
         );
         Swal.fire({
           title: "Eliminado!",
@@ -72,18 +67,18 @@ const Lista_Visita = ({
 
   return (
     <>
-
-      {/* //Modal para Editar */}
       <Modal_Detalle_Visita
         open={openModalDetalles}
-        onClose={()=>setOpenModalDetalles(false)}
+        onClose={() => setOpenModalDetalles(false)}
         idVisita={id}
       />
 
       <Modal_Editar_Visita
-        open = {openModalEditar}
-        onClose = {()=>setOpenModalEditar(false)}
-        idVisita = {id}
+        open={openModalEditar}
+        onClose={() => setOpenModalEditar(false)}
+        idVisita={id}
+        datosVisitas={datosVisitas}
+        setDatosVisitas={setDatosVisitas}
       />
 
       <ul className="bg-white mb-3 gap-3 rounded-xl shadow-lg flex">
@@ -96,18 +91,17 @@ const Lista_Visita = ({
         </li>
 
         <li className="font-semibold text-center w-[20%] px-2 py-2">
-          { formatearFecha(fecha) }
+          {fecha ? formatearFecha(fecha) : "Fecha no válida"}
         </li>
         <li className="font-semibold text-center w-[20%] px-2 py-2 flex justify-around gap-2">
-          
           <BiEditAlt 
             className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer" 
-            onClick={()=>setOpenModalEditar(!openModalEditar)}
+            onClick={() => setOpenModalEditar(!openModalEditar)}
           />
 
           <IoEyeSharp
             className="bg-black text-white text-3xl rounded-md p-1 cursor-pointer"
-            onClick={() => setOpenModalDetalles(!openModalDetalles) }
+            onClick={() => setOpenModalDetalles(!openModalDetalles)}
           />
 
           <RiDeleteBin5Line
