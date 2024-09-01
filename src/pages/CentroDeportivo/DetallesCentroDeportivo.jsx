@@ -5,28 +5,30 @@ import Encabezado_Arreglo_CargarFotos from "../../components/Encabezado_Listas/U
 import MapaAgregar from "../UnidadesEducativas/Mapas/MapaAgregar";
 import MapaMostrar from "../UnidadesEducativas/Mapas/MapaMostrar";
 import ImageGallery from "react-image-gallery";
+import Lista_ServicioPublicoGeneral from "../../components/ServicioPublicos/Lista_ServicioPublicoGeneral";
 
 const DetallesCentroDeportivo = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
   const [datoCentroDeportivoId, setDatoCentroDeportivoId] = useState({});
+  const [servicioPublico, setServicioPublico] = useState([]);
   const [images, setImages] = useState([]);
 
   useEffect(() => {
     const fetchingDatoCetroDeportivoId = async () => {
       try {
         const response = await getDatoCentroDeportivoId(id);
+        setServicioPublico(response.serviciosPublicos);
         setDatoCentroDeportivoId(response);
         console.log(response);
 
-        const formattedIamges = response.fotos.map( photo => ({
+        const formattedIamges = response.fotos.map((photo) => ({
           original: `${photo.url}`,
           thumbnail: `${photo.url}`,
-        }) );
+        }));
 
         setImages(formattedIamges);
-
       } catch (error) {
         console.log("Error en Componente DetallesCentroDeportivo", error);
       }
@@ -107,24 +109,32 @@ const DetallesCentroDeportivo = () => {
               Historia
             </h3>
             <textarea
-              className="mb-5 w-full mt-1 h-[48%] border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-200 overflow-y-scroll"
+              className=" w-full mt-1 h-[35%] border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-200 overflow-y-scroll"
               type="text"
               value={historia}
             ></textarea>
+
+            <div className="mt-1">
+              <h3 className="text-gray-600 text-xl uppercase font-semibold text-center">
+                Servicios Publicos
+              </h3>
+              <div className="mb-4 mt-1 max-h-28 md:max-h-24  overflow-y-auto scrollbar-hide">
+                {servicioPublico.map((element, index) => (
+                  <Lista_ServicioPublicoGeneral
+                    key={index}
+                    descripcion={element}
+                  />
+                ))}
+              </div>
+            </div>
           </section>
 
           <section className="w-full xl:w-[60%]">
             <section className="block border-2 rounded-xl md:flex gap-5 bg-black">
               <div className="w-full">
-
-
                 <div className="lg:w-full rounded-xl p-2">
-
-                <div className="max-w-md mx-auto">
-                  <ImageGallery
-                    items={images}
-                  />
-
+                  <div className="max-w-md mx-auto ">
+                    <ImageGallery items={images} />
                   </div>
                   {/* <ImageGallery
                     items={images}
@@ -132,12 +142,11 @@ const DetallesCentroDeportivo = () => {
                   // foto={foto}
                   // setFoto={setFoto}
                   /> */}
-
                 </div>
               </div>
             </section>
             <div className="xs:w-1/2 h-60 lg:w-full text-center mb-6 xl:mb-5">
-              <h3 className="uppercase font-semibold text-gray-600 mt-3">
+              <h3 className="uppercase text-xl font-semibold text-gray-600 mt-3">
                 Puntos (Coordenadas)
               </h3>
               <div className="rounded-xl mt-1 h-[60%]">

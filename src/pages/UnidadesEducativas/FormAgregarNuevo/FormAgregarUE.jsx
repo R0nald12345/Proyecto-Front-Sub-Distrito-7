@@ -84,7 +84,6 @@ const FormAgregarUE = () => {
   };
 
 
-  console.log('serviciosPublicossssssss',serviciosPublicos);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -324,8 +323,8 @@ const FormAgregarUE = () => {
                     + Agregar Servicio Público
                   </button>
                   <div className="flex bg-white mt-2 py-2 rounded-md">
-                    <h4 className=" w-[80%] text-start lg:text-center px-2  uppercase font-semibold ">Descripcion</h4>
-                    <h4 className="w-[20%] hidden lg:block text-center uppercase font-semibold">Acciones</h4>
+                    <h4 className=" w-[70%] text-start lg:text-center px-2  uppercase font-semibold ">Descripcion</h4>
+                    <h4 className="w-[30%] hidden lg:block text-center uppercase font-semibold">Acciones</h4>
                   </div>
                   <div className=" mt-3 max-h-28 md:max-h-32  overflow-y-auto scrollbar-hide">
                     {serviciosPublicos.map((element, index) => (

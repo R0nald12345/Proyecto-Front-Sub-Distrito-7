@@ -7,3 +7,15 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.image-gallery-container {
+  width: 500px; /* Ancho fijo */
+  height: 300px; /* Alto fijo */
+  overflow: hidden; /* Ocultar cualquier contenido que se desborde */
+}
+
+.image-gallery-container .image-gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ajustar la imagen para que se contenga dentro del contenedor */
+}

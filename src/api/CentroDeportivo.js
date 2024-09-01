@@ -22,6 +22,7 @@ export const createCentroDeportivo = async ({
     historia, 
     videoUrl, 
     fotos, 
+    serviciosPublicos
 }) => {
     try {
         const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -36,11 +37,46 @@ export const createCentroDeportivo = async ({
             historia, 
             videoUrl, 
             fotos,
+            serviciosPublicos
         };
         const response = await axios.post(url,body);
         return response.data;
     } catch (error) {
         console.log('Error no se pudo obtener los Datos', error);
+    }
+}
+
+export const updateCentroDeportivos = async (
+    id,
+    nombre,
+    coordenada_x,
+    coordenada_y,
+    direccion,
+    uv,
+    historia, 
+    videoUrl, 
+    fotos, 
+    serviciosPublicos
+) => {
+    try {
+        const baseUrl = import.meta.env.VITE_BASE_URL;
+        const url = baseUrl + `/centrosdeportivos/${id}`; 
+
+        const body = {
+            nombre,
+            coordenada_x,
+            coordenada_y,
+            direccion,
+            uv,
+            historia, 
+            videoUrl, 
+            fotos,
+            serviciosPublicos
+        };
+        const response = await axios.patch(url,body);
+        return response.data;
+    } catch (error) {
+        console.log('Error no se pudo Actualizar Api/Centro Deportivo', error);
     }
 }
 

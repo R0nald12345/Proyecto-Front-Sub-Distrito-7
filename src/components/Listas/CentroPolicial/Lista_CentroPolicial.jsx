@@ -65,7 +65,10 @@ const Lista_CentroPolicial = ({
 
         <li className="font-semibold text-center w-[20%] px-2 py-2 flex justify-around gap-3"
         >
-          <BiEditAlt className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer" />
+          <BiEditAlt 
+            className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer" 
+            onClick={() => navigate(`/inicio/centro_policial/actualizar/${id}`)}
+          />
 
           <IoEyeSharp
             className="bg-black text-white text-3xl rounded-md p-1 cursor-pointer"

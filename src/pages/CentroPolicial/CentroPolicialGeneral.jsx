@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { deleteCentroPolicialID, getCentroPolicialListaGeneral } from "../../api/CentroPolicial";
 
 
-const ListaGeneralUE = () => {
+const CentroPolicialGeneral = () => {
 
   const navigate = useNavigate();
   const [datosCentroPolicial, setDatosCentroPolicial] = useState([]);
@@ -192,4 +192,4 @@ const ListaGeneralUE = () => {
   );
 };
 
-export default ListaGeneralUE;
+export default CentroPolicialGeneral;

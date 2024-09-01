@@ -69,6 +69,7 @@ const Actualizar_UE = () => {
   const [images, setImages] = useState([]);
 
   console.log("Imagesss", juntaEscolarFoto);
+  
   const handleAddServicioPublico = (descripcion) => {
     setServiciosPublicos([...serviciosPublicos, descripcion]);
   };
