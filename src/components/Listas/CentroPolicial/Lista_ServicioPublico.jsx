@@ -6,30 +6,30 @@ import { deleteCentroPolicialID } from "../../../api/UnidadesEducativas";
 
 const Lista_ServicioPublico = ({ id, descripcion, onDelete, onEdit }) => {
 
-  const deleteDatoCentroPolicial = async (id) => {
-    try {
-      const result = await Swal.fire({
-        title: "Deseas Eliminar?",
-        text: "Si eliminas no podrás recuperarlo!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si, quiero Eliminar!",
-      });
+  // const deleteDatoCentroPolicial = async (id) => {
+  //   try {
+  //     const result = await Swal.fire({
+  //       title: "Deseas Eliminar?",
+  //       text: "Si eliminas no podrás recuperarlo!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonColor: "#3085d6",
+  //       cancelButtonColor: "#d33",
+  //       confirmButtonText: "Si, quiero Eliminar!",
+  //     });
 
-      if (result.isConfirmed) {
-        onDelete(id);
-        Swal.fire({
-          title: "Eliminado!",
-          text: "Eliminado Correctamente.",
-          icon: "success",
-        });
-      }
-    } catch (error) {
-      console.log("Error en el Componente Lista_CentroPolicial", error);
-    }
-  };
+  //     if (result.isConfirmed) {
+  //       onDelete(id);
+  //       Swal.fire({
+  //         title: "Eliminado!",
+  //         text: "Eliminado Correctamente.",
+  //         icon: "success",
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log("Error en el Componente Lista_CentroPolicial", error);
+  //   }
+  // };
 
   return (
     <>

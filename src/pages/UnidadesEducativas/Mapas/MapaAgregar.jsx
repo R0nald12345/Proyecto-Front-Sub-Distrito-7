@@ -6,8 +6,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoicm9uYWxkdWFncm0iLCJhIjoiY2x0dnB0ZGRqMXBmODJqc
 
 const MapaAgregar = ({ setCoordenada_x, setCoordenada_y }) => {
     
-    console.log("coordenada_x", setCoordenada_x);
-    console.log("coordenada_y", setCoordenada_y);
+    // console.log("coordenada_x", setCoordenada_x);
+    // console.log("coordenada_y", setCoordenada_y);
     
     const [markerCoords, setMarkerCoords] = useState({ lng: -63.1351584, lat: -17.8008285 });
     const mapaDiv = useRef(null);

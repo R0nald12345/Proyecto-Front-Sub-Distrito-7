@@ -20,7 +20,6 @@ const FormTipos = ({
 
 
 
-
   useEffect(() => {
     const fetchingTipoColegio = async () => {
       try {
@@ -36,6 +35,7 @@ const FormTipos = ({
     fetchingTipoColegio();
   }, []);
 
+  
   useEffect(() => {
     const fetchingTiposTurnos = async () => {
       try {

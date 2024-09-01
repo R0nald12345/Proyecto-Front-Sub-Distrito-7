@@ -12,6 +12,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import {getDatoGeneralUEid} from '../../../api/UnidadesEducativas'
 import { createURLFotos } from "../../../api/ArchivoFotos";
 import { DataContext } from "../../../context/DataProvider";
+import Lista_ServicioPublicoGeneral from "../../../components/ServicioPublicos/Lista_ServicioPublicoGeneral";
 
 const FormDataPublica = () => {
 
@@ -36,6 +37,10 @@ console.log(id);
   const [tipoInfraestructura, setTipoInfraestructura] = useState("");
   const [tipoTurno, setTipoTurno] = useState("");
 
+  const [uv, setUv] = useState("");
+  const [video, setVideo] = useState("");
+  const [slug, setSlug] = useState("");
+
   const [coordenadaX, setCoordenadaX] = useState(0);
   const [coordenadaY, setCoordenadaY] = useState(0);
 
@@ -43,6 +48,7 @@ console.log(id);
   const [nombreDesayuno, setNombreDesayuno] = useState("");
   const [fechaDesayuno, setFechaDesayuno] = useState(0);
   const [nombreEntregaDesayuno, setNombreEntregaDesayuno] = useState("");
+  const [servicioPublico, setServicioPublico] = useState([]);
 
   const [datoGeneralUE, setDatoGeneralUE] = useState([]);
 
@@ -66,14 +72,17 @@ console.log(id);
         setDescripcionHistoria(response.historia);
   
         setNombreDirectorGestion(response.gestion.director);
-        setNroGestion(response.gestion.director);
-        setHoraGestion(response.gestion.director);
+        setNroGestion(response.gestion.numero);
+        setHoraGestion(response.gestion.horario);
         setImagenGestion(response.gestion.juntaescolar);
         setTipoTurno(response.idTurno.nombre);
         setTipoInfraestructura(response.idInfraestructura.nombre);
         setTipoColegio(response.idTipoColegio.nombre);
+        setServicioPublico(response.serviciosPublicos);
+        setVideo(response.video);
+        setUv(response.uv);
+        setSlug(response.slug);
 
-        // setImages(response.fotos);
 
         const formattedImages = response.fotos.map(photo => ({
           original: `${photo.url}`,
@@ -229,6 +238,15 @@ console.log(id);
                   >
                     {direccionUE}
                   </p>
+
+                  <h3 className="uppercase mt-2 font-semibold  text-gray-600">
+                    Video
+                  </h3>
+                  <p
+                    className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
+                  >
+                    {video}
+                  </p>
               </div>
 
               <div className="max-w-md mx-auto">
@@ -238,10 +256,6 @@ console.log(id);
 
               </div>
 
-            {/* F  O  T  O  G  R  A  F  I  A  */}
-            {/* <ImageGallery items={images} /> */}
-
-            
 
             {/* Historia */}
             <div className="h-3/5">
@@ -249,8 +263,7 @@ console.log(id);
                 Historia
               </p>
               <p
-                className="w-full border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-200 overflow-y-scroll"
-                style={{ height: "430px" }}
+                className="w-full border-gray-400 border-2 rounded-xl h-40 md:h-[610px] lg:h-[430px] py-1 px-2 bg-gray-200 overflow-y-scroll"
               >
                 {descripcionHistoria}
               </p>
@@ -264,7 +277,7 @@ console.log(id);
           {/* Parte Lateral Ancha Derecho*/}
           <section className="md:w-[55%]">
             {/* Parte Superior*/}
-            <section className="flex h-40 gap-5">
+            <section className="flex h-52 gap-5">
 
               <div className="hidden lg:block lg:w-3/5 ">
 
@@ -273,23 +286,33 @@ console.log(id);
                   <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200 mb-1">
                     {nombreUE}
                   </p>
-
-                  <h3 className="uppercase font-semibold mt-4 text-gray-600">
+                  <h3 className="uppercase font-semibold mt-2 text-gray-600">
                     Dirección
                   </h3>
                   <p
-                    className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
-                    style={{ height: "60px" }}
+                    className="py-1 rounded-xl pl-3  w-full border-gray-400 border-2 bg-gray-200"
                   >
                     {direccionUE}
                   </p>
+
+                  <h3 className="uppercase mt-2 font-semibold  text-gray-600">
+                    Video
+                  </h3>
+                  <p
+                    className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
+                  >
+                    {video}
+                  </p>
+                
 
 
 
               </div>
 
+
+
               <div className="w-full lg:w-2/5 flex flex-col mt-4 lg:mt-0" >
-                <div className="flex gap-3 mb-4">
+                <div className="flex gap-3">
 
                   <div className="w-1/2  ">
                     <p className="font-semibold text-gray-600 uppercase">
@@ -310,16 +333,35 @@ console.log(id);
                   </div>
                 </div>
 
-                <div className="">
-                  <p className="font-semibold text-gray-600 uppercase">
+                  <p className="font-semibold text-gray-600 uppercase mt-2">
                     Tipo Infraestrcutura
                   </p>
-                  <p className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200">
+                  <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200">
                     {tipoInfraestructura}
                   </p>
-                </div>
+
+                <h3 className="uppercase font-semibold mt-2 text-gray-600">
+                    Uv
+                  </h3>
+                  <p
+                    className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
+                  >
+                    {uv}
+                  </p>
+                  {/* <h3 className="uppercase font-semibold mt-4 text-gray-600">
+                    Slug
+                  </h3>
+                  <p
+                    className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
+                  >
+                    {slug}
+                  </p> */}
               </div>
+
+
             </section>
+
+
 
             <section className=" w-full">
               <div className="w-full ">
@@ -379,6 +421,22 @@ console.log(id);
                 </section>
               </div>
 
+              <div className="mt-3">
+                  
+                  <h3 className="text-gray-600 text-xl uppercase font-semibold text-center">Servicios Publicos</h3>
+                  <div className=" mt-3 max-h-28 md:max-h-32  overflow-y-auto scrollbar-hide">
+                    {
+                      servicioPublico.map( (element,index) =>(
+                        <Lista_ServicioPublicoGeneral
+                          key={index}
+                          descripcion={element}
+                        />  
+                      ))
+                    }
+                  </div>
+
+              </div>
+
               <div className="mt-1">
                 <h3 className="uppercase font-semibold text-gray-600 mt-3 text-center">
                   Puntos (Cordenadas)
@@ -393,7 +451,7 @@ console.log(id);
           
         </section>
 
-        <section className="md:flex w-full mt-32 md:mt-3 gap-5">
+        <section className="md:flex w-full mt-32 md:mt-5 lg:mt-12 gap-5">
 
           <section className="md:w-1/3 ">
             <p className="uppercase font-semibold text-gray-600 mt-2 mb-1 text-center">
@@ -453,6 +511,7 @@ console.log(id);
               </button>
             </div>
           </section>
+          
         </section>
 
         {/* Seleccion debajo */}

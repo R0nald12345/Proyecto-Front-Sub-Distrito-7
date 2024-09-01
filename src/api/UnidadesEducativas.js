@@ -44,7 +44,8 @@ export const createDatoGeneralUE = async ({
   numero,
   horario,
   director,
-  juntaescolar
+  juntaescolar,
+  serviciosPublicos
 }) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -67,7 +68,8 @@ export const createDatoGeneralUE = async ({
         horario,
         director,
         juntaescolar
-      }
+      },
+      serviciosPublicos
     };
 
     const response = await axios.post(url, body, {
@@ -93,15 +95,20 @@ export const ActualizarlUE = async (
   direccion,
   historia,
   video,
+  uv,
   slug,
   fotos,
+
   idInfraestructura,
   idTipoColegio,
   idTurno,
+
   numero,
   horario,
   director,
-  juntaescolar
+  juntaescolar,
+  serviciosPublicos
+  
 ) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -114,6 +121,7 @@ export const ActualizarlUE = async (
       direccion,
       historia,
       video,
+      uv,
       slug,
       fotos,
       idInfraestructura,
@@ -124,7 +132,8 @@ export const ActualizarlUE = async (
         horario,
         director,
         juntaescolar
-      }
+      },
+      serviciosPublicos
     };
 
     const response = await axios.patch(url, body);

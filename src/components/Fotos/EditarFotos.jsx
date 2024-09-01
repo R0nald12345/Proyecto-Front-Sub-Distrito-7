@@ -74,14 +74,13 @@ const EditarFotos = ({ fotos, setFotos, setFotoActualizado }) => {
   return (
     <>
       <section>
-        <h3>Fotos</h3>
         <br />
         <label className="btn btn-warning bg-yellow-500 text-white px-4 rounded cursor-pointer inline-block">
           <span>Seleccionar archivos</span>
           <input hidden type="file" multiple onChange={changeInput} />{" "}
           {/* Input para seleccionar múltiples archivos */}
         </label>
-        <div className="flex flex-wrap gap-2 bg-green-500">
+        <div className="flex flex-wrap gap-2 mt-3 max-h-60 md:max-h-32  overflow-y-auto scrollbar-hide">
           {fotos && fotos.length > 0 ? (
             fotos.map((foto, index) => (
               <div key={index} className="relative">

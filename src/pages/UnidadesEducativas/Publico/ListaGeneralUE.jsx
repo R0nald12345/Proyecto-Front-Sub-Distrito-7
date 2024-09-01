@@ -307,6 +307,7 @@ const ListaGeneralUE = () => {
                   key={element.id}
                   id={element.id}
                   nombreUE={element.nombre}
+                  nombreDirector={element.gestion.director}
                   datosUnidadEducativa={datosUnidadEducativa}
                   setDatosUnidadEducativa={setDatosUnidadEducativa}
                   // nombreDirector={element.idGestion.director}

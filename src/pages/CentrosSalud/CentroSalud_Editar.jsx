@@ -42,8 +42,8 @@ const CentroSalud_Editar = () => {
         setCoordenada_x(response.coordenada_x);
         setCoordenada_y(response.coordenada_y);
 
-        console.log("coordenada_xxxx", coordenada_x );
-        console.log("coordenada_yyyyy", coordenada_y);
+        // console.log("coordenada_xxxx", coordenada_x );
+        // console.log("coordenada_yyyyy", coordenada_y);
 
         setDireccion(response.direccion);
         setNombre(response.nombre);
