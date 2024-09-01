@@ -38,10 +38,11 @@ import CentroPolicialGeneral from "./pages/CentroPolicial/CentroPolicialGeneral"
 import CentroPolicial_Crear from "./pages/CentroPolicial/CentroPolicial_Crear";
 import CentroPolicial_Detalles from "./pages/CentroPolicial/CentroPolicial_Detalles";
 import Actualizar_UE from "./pages/UnidadesEducativas/FormAgregarNuevo/Actualizar_UE";
-import ListaGeneralVisitas from "./pages/Visita/ListaGeneralVisitas";
+import ListaGeneralVisitas from "./pages/UnidadesEducativas/Visita/ListaGeneralVisitas";
 import CentroSalud_Editar from "./pages/CentrosSalud/CentroSalud_Editar";
 import OficinaDistritalGeneral from "./pages/OficinaDistrital/OficinaDistritalGeneral";
 import CentroPolicial_Actualizar from "./pages/CentroPolicial/CentroPolicial_Actualizar";
+import ListaGeneralUsuarios from "./pages/Usuarios/ListaGeneralUsuario";
 
 function App() {
   return (
@@ -110,6 +111,9 @@ function App() {
               <Route path="centro_policial/agregarnuevo" element={<CentroPolicial_Crear/>} />
               <Route path="centro_policial/detalles/:id" element={<CentroPolicial_Detalles/>} />
               <Route path="centro_policial/actualizar/:id" element={<CentroPolicial_Actualizar/>} />
+              
+              
+              <Route path="usuarios" element={<ListaGeneralUsuarios/>} />
 
               {/* <Route path="usuario" element={<ListaGeneralUsuario/>} /> */}
               <Route path="agregarUsuario" element={<NuevoUsuario />} />

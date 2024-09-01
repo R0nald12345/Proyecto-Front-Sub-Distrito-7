@@ -12,32 +12,35 @@ import Modal_Crear_Visita from "../../components/Modal/Visita/Modal_Crear_Visita
 import Modal_Detalle_Visita from "../../components/Modal/Visita/Modal_Detalle_Visita";
 import Modal_Editar_Visita from "../../components/Modal/Visita/Modal_Editar_Visita";
 import { TbRuler } from "react-icons/tb";
+import Lista_Usuario from "../../components/Listas/Usuarios/Lista_Usuario";
+import { deleteUsuarioId, getUsuarios } from "../../api/Usuario";
 
-const formatearFecha = (fecha) => {
-  if (fecha.length > 0) {
-    // Me indica que tengo una fecha
-    let fechaFormateada = "";
-    for (let i = 0; i < fecha.length; i++) {
-      if (fecha[i] == "T") {
-        fechaFormateada = fecha.substring(0, i);
-        break;
-      }
-    }
-    const [year, month, day] = fechaFormateada.split("-");
-    return `${day}-${month}-${year}`;
-  } else {
-    return "Fecha no válida";
-  }
-};
+// const formatearFecha = (fecha) => {
+//   if (fecha.length > 0) {
+//     // Me indica que tengo una fecha
+//     let fechaFormateada = "";
+//     for (let i = 0; i < fecha.length; i++) {
+//       if (fecha[i] == "T") {
+//         fechaFormateada = fecha.substring(0, i);
+//         break;
+//       }
+//     }
+//     const [year, month, day] = fechaFormateada.split("-");
+//     return `${day}-${month}-${year}`;
+//   } else {
+//     return "Fecha no válida";
+//   }
+// };
 
 
-const ListaGeneralVisitas = () => {
+const ListaGeneralUsuarios = () => {
 
   const {id} = useParams();
 
   const navigate = useNavigate();
-  const [datosVisitas, setDatosVisitas] = useState([]);
+  const [datosUsuarios, setDatosUsuarios] = useState([]);
   const [filtro, setFiltro] = useState("");
+
 
   const [idVisita, setIdVisita] = useState(0);
 
@@ -48,11 +51,11 @@ const ListaGeneralVisitas = () => {
   useEffect(() => {
     const fetchingVisitas = async () => {
       try {
-        const response = await getDatoVisitas();
-        setDatosVisitas(response);
+        const response = await getUsuarios();
+        setDatosUsuarios(response);
       } catch (error) {
         console.log(
-          "Error en Componente ListaGeneralVisitas",
+          "Error en Componente ListaGeneralUsuarios",
           error
         );
       }
@@ -65,7 +68,7 @@ const ListaGeneralVisitas = () => {
     setFiltro(e.target.value);
   };
 
-  const handleDeleteVisita = async (id) => {
+  const handleDeleteUsuario = async (id) => {
     try {
       const result = await Swal.fire({
         title: "Deseas Eliminar?",
@@ -78,9 +81,9 @@ const ListaGeneralVisitas = () => {
       });
 
       if (result.isConfirmed) {
-        await deleteVisitasApi(id);
-        setDatosVisitas(
-            datosVisitas.filter((element) => element.id !== id)
+        await deleteUsuarioId(id);
+        setDatosUsuarios(
+          datosUsuarios.filter((element) => element.id !== id)
         );        
         Swal.fire({
           title: "Eliminado!",
@@ -89,34 +92,34 @@ const ListaGeneralVisitas = () => {
         });
       }
     } catch (error) {
-      console.log("Error en el Componente ListaGeneralVisitas", error);
+      console.log("Error en el Componente ListaGeneralUsuarios", error);
     }
   };
 
 
-  const changeDatails=(id)=>{
-    setIdVisita(id);
-    setOpenModalDetails(true);
-  }
+  // const changeDatails=(id)=>{
+  //   setIdVisita(id);
+  //   setOpenModalDetails(true);
+  // }
 
 
-  const changeUpdate=(id)=>{
-    setIdVisita(id);
-    setOpenModalUpdate(!openModalUpdate);
-  }
+  // const changeUpdate=(id)=>{
+  //   setIdVisita(id);
+  //   setOpenModalUpdate(!openModalUpdate);
+  // }
 
 
   const listaFiltrada =
     filtro.trim() === ""
-      ? datosVisitas
-      : datosVisitas.filter((element) =>
-          element.nombre.toLowerCase().includes(filtro.toLowerCase())
+      ? datosUsuarios
+      : datosUsuarios.filter((element) =>
+          element.name.toLowerCase().includes(filtro.toLowerCase())
         );
 
   return (
     <>
 
-      <Modal_Crear_Visita
+      {/* <Modal_Crear_Visita
         open={openModalCreate}
         onClose={() => setOpenModalCreate(false)}
         idUnidadEducativa = {id}
@@ -136,20 +139,19 @@ const ListaGeneralVisitas = () => {
         idVisita = {idVisita}
         datosVisitas={ datosVisitas}
         setDatosVisitas={ setDatosVisitas}
-
       
-      />
+      /> */}
     
-      <div className="flex flex-col items-center justify-center rounded-xl bg-white/50 md:w-full lg:w-[75%]  mx-auto px-4 md:px-6 pb-6 md:pb-2">
+      <div className="flex flex-col items-center bg-red-600 justify-center  rounded-xl bg-white/50 md:w-[90%] lg:w-[75%]  mx-auto px-4 md:px-6 pb-6 md:pb-2">
         {/* Parte Superrior */}
-        <section className="flex-col justify-center p-2 bg-red w-full">
-          <h3 className="text-3xl font-bold text-center mt-3">
-            Lista de Visitas
+        <section className="flex-col justify-center  p-2 bg-red w-full">
+          <h3 className="text-3xl font-bold text-center  mt-3">
+            Lista de Usuarios
           </h3>
 
           <section className="md:flex md:justify-between md:px-2 bg-red ">
 
-            <div className=" mt-5 col-span-4 flex items-center justify-end gap-1 md:gap-3">
+            <div className=" mt-5 col-span-4 flex items-center  justify-end gap-1 md:gap-3">
               <p className="font-new-font font-new-bold text-white">Nombre</p>
               <div className="w-full flex bg-gray-300 border border-black rounded-xl px-2 bg-red">
                 <FaMagnifyingGlass className="mt-2 bg-red" />
@@ -165,7 +167,7 @@ const ListaGeneralVisitas = () => {
             {/* Boton */}
             <button
               className="mt-5 md:w-[30%] text-white font-new-font font-new-bold bg-primary-900/90 rounded-lg py-3 px-2 w-full"
-              onClick={() => setOpenModalCreate(!openModalCreate)}
+              // onClick={() => setOpenModalCreate(!openModalCreate)}
             >
               Agregar Nuevo +
             </button>
@@ -176,28 +178,26 @@ const ListaGeneralVisitas = () => {
         <main className="w-full mt-5">
           {/* Lista para pantallas grandes */}
           <div className="hidden md:flex flex-col justify-center w-full">
-            <ul className="w-full flex bg-white gap-3 mb-3 rounded-xl shadow-lg">
-              <li className="font-semibold text-center w-[35%] px-3 py-2">
-                Titulo
+            <ul className="w-full flex bg-white gap-2 mb-3 rounded-xl shadow-lg">
+              <li className="font-semibold text-center w-[40%] px-3 py-2">
+                nombre
               </li>
-              <li className="font-semibold text-center w-[25%] px-3 py-2">
-                Visitantes
+              <li className="font-semibold text-center w-[40%] px-3 py-2">
+                Correo
               </li>
-              <li className="font-semibold text-center w-[20%] px-3 py-2">
-                Fecha
-              </li>
+              
               <li className="font-semibold text-center w-[20%] px-3 py-2">
                 Acciones
               </li>
             </ul>
 
-            <section>
+            <section className="max-h-56 overflow-y-auto scrollbar-hide">
               {listaFiltrada.map((element) => (
-                <Lista_Visita
+                <Lista_Usuario
                   key={element.id}
-                  datosVisita={element}
-                  datosVisitas={datosVisitas}
-                  setDatosVisitas={setDatosVisitas}
+                  datosUsuario={element}
+                  datosUsuarios={datosUsuarios}
+                  setDatosUsuarios={setDatosUsuarios}
                 />
               ))}
             </section>
@@ -205,38 +205,38 @@ const ListaGeneralVisitas = () => {
 
 
           {/* Tarjetas para pantallas pequeñas */}
-          <div className="md:hidden grid grid-cols-1 gap-4">
+          <div className="md:hidden grid grid-cols-1 gap-4 max-h-96 overflow-y-auto scrollbar-hide">
             {listaFiltrada.map((element) => (
               <div key={element.id} className="bg-white p-4 rounded-xl shadow-lg">
-                <h4 className="font-bold text-lg">{element.titulo}</h4>
-                <p className="text-gray-600">{element.visitantes}</p>
-                <p className="text-gray-600">{ formatearFecha(element.fecha)}</p>d 
+                <h4 className="font-bold text-lg">{element.nombre}</h4>
+                <p className="text-gray-600">{element.email}</p>
+                {/* <p className="text-gray-600">{ formatearFecha(element.fecha)}</p>d  */}
 
                 <div className="flex justify-end mt-3 gap-2">
                   {/* Aquí puedes agregar los botones de acciones */}
-                  <button 
+                   <button 
                     className="bg-primary-900 text-white px-3 py-1 rounded-lg"
-                    onClick={() => changeUpdate(element.id)}
+                    // onClick={() => changeUpdate(element.id)}
                   >
                     Editar
                   </button>
 
                   <button 
                     className="bg-blue-950 text-white px-3 py-1 rounded-lg"
-                    onClick={()=>changeDatails(element.id)}
+                    // onClick={()=>changeDatails(element.id)}
                   >
                     Detalles
                   </button>
                   <button 
                     className="bg-red-500 text-white px-3 py-1 rounded-lg"
-                    onClick={ ()=>handleDeleteVisita(element.id) }
+                    onClick={ ()=>handleDeleteUsuario(element.id) }
                   >
                     Eliminar
                   </button>
                 </div>
               </div>
             ))}
-          </div>
+          </div>   
         </main>
       </div>
     </>
@@ -244,4 +244,4 @@ const ListaGeneralVisitas = () => {
 };
 
 
-export default ListaGeneralVisitas;
+export default ListaGeneralUsuarios;

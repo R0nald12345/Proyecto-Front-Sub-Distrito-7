@@ -38,9 +38,9 @@ export const getUsuarios = async () => {
 export const getUsuariosId = async (id) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
-    const url = baseUrl + `/usuarios/+${id}`;
+    const url = baseUrl + `/usuarios/${id}`;
     const datoUsuario = await axios.get(url);
-    return datoColegio.data;
+    return datoUsuario.data;
   } catch (error) {
     console.log(
       "Error Api getDatoGeneralUEid",
@@ -49,109 +49,49 @@ export const getUsuariosId = async (id) => {
   }
 };
 
-export const createDatoGeneralUE = async ({
-  nombre,
-  coordenada_x,
-  coordenada_y,
-  direccion,
-  historia,
-  video,
-  slug,
-  fotos,
-  idInfraestructura,
-  idTipoColegio,
-  idTurno,
-  numero,
-  horario,
-  director,
-  juntaescolar
-}) => {
+export const createUsuarios = async ( name, email, password, roles ) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
-    const url = `${baseUrl}/unidadeseducativas`;
-
+    const url = baseUrl + "/usuarios";
     const body = {
-      nombre,
-      coordenada_x,
-      coordenada_y,
-      direccion,
-      historia,
-      video,
-      slug,
-      fotos,
-      idInfraestructura,
-      idTipoColegio,
-      idTurno,
-      gestion: {
-        numero,
-        horario,
-        director,
-        juntaescolar
-      }
+      name,
+      email,
+      password,
+      roles
     };
-
-    const response = await axios.post(url, body, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-
+    const response = await axios.post(url, body);
     return response.data;
   } catch (error) {
-    console.log("Error no se pudo obtener los Datos", error.response.data);
-    throw error;
+    console.log("Error no se pudo obtener los Datos createUsuario", error);
   }
 };
 
 
 
-export const ActualizarlUE = async (
+
+export const updateUsuarios = async (
   id,
-  nombre,
-  coordenada_x,
-  coordenada_y,
-  direccion,
-  historia,
-  video,
-  slug,
-  fotos,
-  idInfraestructura,
-  idTipoColegio,
-  idTurno,
-  numero,
-  horario,
-  director,
-  juntaescolar
+  name,
+  email, 
+  password, 
+  roles 
 ) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
-    const url = `${baseUrl}/unidadeseducativas/${id}`;
+    const url = `${baseUrl}/usuarios/${id}`;
 
     const body = {
-      nombre,
-      coordenada_x,
-      coordenada_y,
-      direccion,
-      historia,
-      video,
-      slug,
-      fotos,
-      idInfraestructura,
-      idTipoColegio,
-      idTurno,
-      gestion: {
-        numero,
-        horario,
-        director,
-        juntaescolar
-      }
+      name,
+      email, 
+      password, 
+      roles 
     };
 
     const response = await axios.patch(url, body);
 
     return response.data;
   } catch (error) {
-    console.log("Error Api ActualizarlUE", error.response.data);
+    console.log("Error Api updateUsuarios", error.response.data);
     throw error;
   }
 };
@@ -161,12 +101,12 @@ export const ActualizarlUE = async (
 export const deleteUsuarioId = async (id) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
-    const url = baseUrl + `/unidadeseducativas/+${id}`;
-    const datosTipoColegio = await axios.delete(url);
-    return datosTipoColegio.data;
+    const url = baseUrl + `/usuarios/+${id}`;
+    const response = await axios.delete(url);
+    return response.data;
   } catch (error) {
     console.log(
-      "Error no se pudo obtener los Datos Backend ApiServices/DeleteUEidid",
+      "Error no se pudo obtener los Datos Backend ApiServices/deleteUsuarioId",
       error
     );
   }

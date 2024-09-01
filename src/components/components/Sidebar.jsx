@@ -248,17 +248,17 @@ const Sidebar = () => {
               </Link>
             </li>
 
-            <li className="mb-3" onClick={() => navigate("visitas")}>
+            <li className="mb-3" onClick={() => navigate("usuarios")}>
               <Link
                 to="/"
                 className=" flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors"
               >
-                <RiFindReplaceFill className="text-primary" /> Visitas
+                <RiFindReplaceFill className="text-primary" /> Usuarios
                 
               </Link>
             </li>
 
-            <li className="mb-3" onClick={() => navigate("visitas")}>
+            <li className="mb-3" onClick={() => navigate("servicioDistrital")}>
               <Link
                 to="/"
                 className=" flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary-900/50 text-1xl font-semibold transition-colors"
