@@ -3,7 +3,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import Lista_CentroPolicial from "../../components/Listas/CentroPolicial/Lista_CentroPolicial";
 import Swal from "sweetalert2";
-import { deleteCentroPolicialID, getCentroPolicialListaGeneral } from "../../api/UnidadesEducativas";
+import { deleteCentroPolicialID, getCentroPolicialListaGeneral } from "../../api/CentroPolicial";
 
 
 const ListaGeneralUE = () => {
@@ -87,7 +87,7 @@ const ListaGeneralUE = () => {
   // };
 
   return (
-    <div className="flex flex-col items-center justify-center rounded-xl bg-white/50 w-[95%] xl:w-[70%] mx-auto px-4 md:px-6 pb-6 md:pb-2">
+    <div className="flex flex-col items-center justify-center rounded-xl bg-white/50 w-[95%] xl:w-[80%] mx-auto px-4 md:px-6 pb-6 md:pb-2">
    
       {/* Parte Superior */}
       <section className="flex-col justify-center p-2 bg-red w-[95%] ">
@@ -119,31 +119,30 @@ const ListaGeneralUE = () => {
         </section>
       </section>
 
+
+{/* mt-3 max-h-28 md:max-h-32  overflow-y-auto scrollbar-hide */}
       {/* Parte de la Lista de Colegios */}
       <main className="flex flex-col justify-center w-[95%] mt-5">
         <div  className="hidden md:flex flex-col justify-center w-full">
 
           <ul className="w-full flex bg-white gap-1 mb-3 rounded-xl shadow-lg">
-            <li className="font-semibold text-start w-[35%] px-3 py-2">Nombre</li>
-            <li className="font-semibold text-start w-[35%] px-3 py-2">
-              Nombre Director
+            <li className="font-semibold text-start w-[35%] px-3  py-2">Nombre</li>
+            <li className="font-semibold text-start w-[33%] px-3  py-2">
+              Encargado
             </li>
-            <li className="font-semibold text-center w-[10%] px-3 py-2">Turno</li>
-            <li className="font-semibold text-center w-[20%] px-3 py-2">
+            <li className="font-semibold text-center w-[12%] px-3  py-2">Teléfono</li>
+            <li className="font-semibold text-center w-[20%] px-3  py-2">
               Acciones
             </li>
           </ul>
 
-          <section className="">
+          <section className="mt-3 max-h-28 md:max-h-56  overflow-y-auto scrollbar-hide">
             {listaFiltrada.map((element) => (
               <Lista_CentroPolicial
                 key={element.id}
-                // id={element.id}
                 datosPolicial={element}
                 datosCentroPolicial={datosCentroPolicial}
                 setDatosCentroPolicial = {setDatosCentroPolicial}
-                // nombreDirector={element.idGestion.director}
-                // turno={element.idTurno.nombre}
               />
             ))}
           </section>
@@ -166,12 +165,14 @@ const ListaGeneralUE = () => {
                 // onClick={() =>
                 //   handleEliminar(element.id)
                 // }
+                onClick={() => navigate(`/inicio/centro_policial/actualizar/${element.id}`)}
               >
                 Editar
               </button>
 
               <button
                 className="bg-blue-950 text-white px-3 py-1 rounded-lg"
+                onClick={() => navigate(`/inicio/centro_policial/detalles/${element.id}`)}
                
               >
                 Detalles

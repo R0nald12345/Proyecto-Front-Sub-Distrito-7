@@ -41,6 +41,7 @@ import Actualizar_UE from "./pages/UnidadesEducativas/FormAgregarNuevo/Actualiza
 import ListaGeneralVisitas from "./pages/Visita/ListaGeneralVisitas";
 import CentroSalud_Editar from "./pages/CentrosSalud/CentroSalud_Editar";
 import OficinaDistritalGeneral from "./pages/OficinaDistrital/OficinaDistritalGeneral";
+import CentroPolicial_Actualizar from "./pages/CentroPolicial/CentroPolicial_Actualizar";
 
 function App() {
   return (
@@ -108,6 +109,7 @@ function App() {
               <Route path="centro_policial" element={<CentroPolicialGeneral />} />
               <Route path="centro_policial/agregarnuevo" element={<CentroPolicial_Crear/>} />
               <Route path="centro_policial/detalles/:id" element={<CentroPolicial_Detalles/>} />
+              <Route path="centro_policial/actualizar/:id" element={<CentroPolicial_Actualizar/>} />
 
               {/* <Route path="usuario" element={<ListaGeneralUsuario/>} /> */}
               <Route path="agregarUsuario" element={<NuevoUsuario />} />

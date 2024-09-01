@@ -3,7 +3,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import { IoEyeSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
-import { deleteCentroPolicialID } from "../../../api/UnidadesEducativas";
+import { deleteCentroPolicialID } from "../../../api/CentroPolicial";
 
 const Lista_CentroPolicial = ({
 
@@ -14,11 +14,11 @@ const Lista_CentroPolicial = ({
 }) => {
   const navigate = useNavigate();
 
-  console.log("datosPolicial", datosPolicial);
+  // console.log("datosPolicial", datosPolicial);
 
   const { id, nombre, encargado, numeroTelefono } =   datosPolicial;
 
-  const deleteDatoCentroPolicial = async (id) => {
+  const deleteDatoCentroPolicial = async () => {
     try {
       const result = await Swal.fire({
         title: "Deseas Eliminar?",
@@ -48,30 +48,33 @@ const Lista_CentroPolicial = ({
 
   return (
     <>
-      <ul className="bg-white mb-3 rounded-xl shadow-lg flex">
+      <ul className="bg-white mb-3 rounded-xl gap-1 shadow-lg flex">
         
-        <li className="font-semibold text-center w-[30%] px-2 py-2">
-          {id}
+        <li className="font-semibold w-[35%] px-2 py-2">
+          {nombre}
         </li>
 
-        <li className="font-semibold text-center w-[50%] px-2 py-2">
+        <li className="font-semibold  w-[33%] px-2 py-2">
           {encargado}
         </li>
 
-        <li className="font-semibold text-center w-[50%] px-2 py-2">
+        <li className=" font-semibold text-center w-[12%] px-2 py-2">
           {numeroTelefono}
+          12345678
         </li>
 
-        <li className="font-semibold text-center w-[20%] px-2 py-2 flex justify-around gap-3">
+        <li className="font-semibold text-center w-[20%] px-2 py-2 flex justify-around gap-3"
+        >
           <BiEditAlt className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer" />
 
           <IoEyeSharp
             className="bg-black text-white text-3xl rounded-md p-1 cursor-pointer"
             onClick={() => navigate(`/inicio/centro_policial/detalles/${id}`)}
           />
+
           <RiDeleteBin5Line
             className="bg-red-700 text-white text-3xl rounded-md p-1 cursor-pointer"
-            onClick={() => deleteDatoCentroPolicial(id)}
+            onClick={deleteDatoCentroPolicial}
           />
         </li>
       </ul>

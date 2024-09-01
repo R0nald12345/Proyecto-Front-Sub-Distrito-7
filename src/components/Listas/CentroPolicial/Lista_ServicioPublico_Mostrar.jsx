@@ -2,7 +2,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import { IoEyeSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
-import { deleteCentroPolicialID } from "../../../api/UnidadesEducativas";
+import { deleteCentroPolicialID } from "../../../api/CentroPolicial";
 
 const Lista_ServicioPublico_Mostrar = ({ descripcion }) => {
 

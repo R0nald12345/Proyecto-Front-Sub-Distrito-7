@@ -5,15 +5,15 @@ import Swal from "sweetalert2";
 import {
   getCentroPolicialID,
   getCentroPolicialListaGeneral,
-} from "../../api/UnidadesEducativas";
+} from "../../api/CentroPolicial";
 import MapaAgregar from "../UnidadesEducativas/Mapas/MapaAgregar";
 import Lista_CentroPolicial_ServicioPublico from "../../components/Listas/CentroPolicial/Lista_CentroPolicial";
 import Lista_ServicioPublico from "../../components/Listas/CentroPolicial/Lista_ServicioPublico";
 import MapaMostrar from "../UnidadesEducativas/Mapas/MapaMostrar";
 import Lista_ServicioPublico_Mostrar from "../../components/Listas/CentroPolicial/Lista_ServicioPublico_Mostrar";
+import Lista_ServicioPublicoGeneral from "../../components/ServicioPublicos/Lista_ServicioPublicoGeneral";
 
 const CentroPolicial_Detalles = () => {
-  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -45,13 +45,13 @@ const CentroPolicial_Detalles = () => {
 
           // setServiciosPublicos(JSON.parse(response.serviciosPublicos));
            // Limpia y parsea la cadena JSON
-        let servicios = response.serviciosPublicos;
-        if (typeof servicios === 'string') {
-          servicios = servicios.replace(/'/g, '"'); // Reemplaza comillas simples por comillas dobles
-          servicios = servicios.replace(/(\w+)(?=:)/g, '"$1"'); // Añade comillas a las claves
-          servicios = JSON.parse(servicios);
-        }
-        setServiciosPublicos(servicios);
+        // let servicios = response.serviciosPublicos;
+        // if (typeof servicios === 'string') {
+        //   servicios = servicios.replace(/'/g, '"'); // Reemplaza comillas simples por comillas dobles
+        //   servicios = servicios.replace(/(\w+)(?=:)/g, '"$1"'); // Añade comillas a las claves
+        //   servicios = JSON.parse(servicios);
+        // }
+        setServiciosPublicos(response.serviciosPublicos);
       } catch (error) {
         console.error("Error", error);
       }
@@ -63,7 +63,7 @@ const CentroPolicial_Detalles = () => {
     <div className="flex justify-center items-center">
       <form className="bg-gray-100/50 rounded-xl shadow-xl w-[100%] lg:w-[85%] p-4 md:px-8">
         <h2 className="text-center font-bold text-3xl text-gray-700">
-          Agregar Nuevo Centro Policial
+          {nombre}
         </h2>
         <section className="md:flex gap-5">
           <section className="sm:w-[45%] xl:w-[40%]  md:flex lg:block ">
@@ -130,7 +130,7 @@ const CentroPolicial_Detalles = () => {
                     FotoUrl
                   </p>
                   <input
-                    className="border-2 rounded-xl border-gray-400 w-[59%] md:w-full px-2"
+                    className="border-2 rounded-xl border-gray-400 w-full px-2"
                     // type="file"
                     value={fotoUrl}
                   />
@@ -140,21 +140,19 @@ const CentroPolicial_Detalles = () => {
           </section>
 
           <section className="w-full sm:w-[55%] xl:w-[60%]">
-            <section className="mt-3 block border-2 rounded-xl md:flex h-60 gap-5 ">
+            <section className="mt-3 block border-2 rounded-xl md:flex h-52 gap-5 ">
               <div className="w-full">
                 <div className="lg:w-full rounded-xl px-2">
                   <h3 className="w-full mt-2 text-center rounded-xl text-gray-600 font-bold uppercase py-1 text-xl ">
                     Lista Servicio Servicio Público
                   </h3>
                   {/* <Lista_CentroPolicial_ServicioPublico/> */}
-                  <div className="flex bg-white mt-3">
-                    <h4 className="w-[60%]">Descripcion</h4>
-                  </div>
-                  <div>
+                 
+                  <div className=" mt-3 max-h-28 md:max-h-28 lg:max-h-36 overflow-y-auto scrollbar-hide">
                     {serviciosPublicos.map((element) => (
-                      <Lista_ServicioPublico_Mostrar
+                      <Lista_ServicioPublicoGeneral
                         key={element.id}
-                        descripcion={element.descripcion}
+                        descripcion={element}
                       />
                     ))}
                   </div>
