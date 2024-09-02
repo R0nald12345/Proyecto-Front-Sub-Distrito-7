@@ -14,6 +14,7 @@ import Lista_ServicioPublico from "../../components/Listas/CentroPolicial/Lista_
 import MapaEditar from "../UnidadesEducativas/Mapas/MapaEditar";
 
 const ActualizarCentroDeportivo = () => {
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -230,9 +231,13 @@ const ActualizarCentroDeportivo = () => {
             ></textarea>
 
             <div className="mt-1">
-              <h3 className="text-gray-600  uppercase font-semibold text-center">
-                Servicios Publicos
-              </h3>
+               <button 
+                    type="button"
+                    onClick={() => setOpenModalCreateServicioPublico(!openModalCreateServicioPublico)}
+                    className="w-full mt-2 bg-primary-300 rounded-xl text-white uppercase py-1 text-xl font-semibold hover:bg-primary-900/90">
+                    
+                    + Agregar Servicio Público
+                  </button>
               <div className="mb-4 mt-1 max-h-28 md:max-h-24  overflow-y-auto scrollbar-hide">
               {serviciosPublicos.map((element, index) => (
                       <Lista_ServicioPublico

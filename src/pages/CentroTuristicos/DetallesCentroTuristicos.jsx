@@ -11,6 +11,7 @@ import useForm from "../../hooks/useForm";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import MapaMostrar from "../UnidadesEducativas/Mapas/MapaMostrar";
+import Lista_ServicioPublicoGeneral from "../../components/ServicioPublicos/Lista_ServicioPublicoGeneral";
 
 const DetallesCentroTuristicos = () => {
   const id = useParams();
@@ -24,6 +25,8 @@ const DetallesCentroTuristicos = () => {
   const [coordenadaY, setCoordenadaY] = useState(0);
   const [images, setImages] = useState([]);
 
+  const [serviciosPublicos, setServiciosPublicos] = useState([]);
+
   useEffect(() => {
     const fetchingDatosCentrosTuristicos = async () => {
       try {
@@ -32,6 +35,7 @@ const DetallesCentroTuristicos = () => {
         setDatoIDCentroTuristico(response);
         setCoordenadaX(response.coordenada_x);
         setCoordenadaY(response.coordenada_y);
+        setServiciosPublicos(response.serviciosPublicos);
 
         const formattedIamges = response.fotos.map( photo => ({
           original: `${photo.url}`,
@@ -129,9 +133,23 @@ const DetallesCentroTuristicos = () => {
                   Historia
                 </h3>
                 <textarea
-                  className="w-full mt-1 lg:h-[50%] border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-200 overflow-y-scroll"
+                  className="w-full mt-1 lg:h-[40%] border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-200 overflow-y-scroll"
                   value={datoIDCentroTuristico.historia}
                 ></textarea>
+
+              <div className="mt-1">
+                <h3 className="text-gray-600 text-xl uppercase font-semibold text-center">
+                  Servicios Publicos
+                </h3>
+                <div className="mb-4 mt-1 max-h-28 md:max-h-24  overflow-y-auto scrollbar-hide">
+                  {serviciosPublicos.map((element, index) => (
+                    <Lista_ServicioPublicoGeneral
+                      key={index}
+                      descripcion={element}
+                    />
+                  ))}
+                </div>
+              </div>
 
 
 

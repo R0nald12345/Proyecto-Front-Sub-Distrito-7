@@ -69,7 +69,7 @@ const DetallesCentroDeportivo = () => {
     <div className="flex justify-center items-center">
       <form className="bg-gray-100/50 rounded-xl shadow-xl xl:w-[80%] md:w-[80%] p-6">
         <h2 className="text-center font-bold text-3xl text-gray-700">
-          Agregar Nuevo Centro Deportivo
+          Datos Centro Deportivo
         </h2>
         <section className="xl:flex gap-5 mt-5">
           <section className="xl:w-[40%] flex-col md:flex lg:block ">

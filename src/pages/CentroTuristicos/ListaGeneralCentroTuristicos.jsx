@@ -150,9 +150,7 @@ const ListaGeneralCentroTuristicos = () => {
               {/* Aquí puedes agregar los botones de acciones */}
               <button
                 className="bg-primary-900 text-white px-3 py-1 rounded-lg"
-                // onClick={() =>
-                //   navigate(`/inicio/centro_deportivo/editar/${element.id}`)
-                // }
+                onClick={() => navigate(`/inicio/centro_turisticos/actualizar/${element.id}`)}
               >
                 Editar
               </button>

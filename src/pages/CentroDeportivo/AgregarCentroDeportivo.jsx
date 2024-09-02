@@ -249,7 +249,7 @@ const AgregarCentroDeportivo = () => {
         </section>
         <button
           type="submit"
-          className="w-full mt-8 bg-primary-300 rounded-xl text-white uppercase py-3 text-2xl font-semibold hover:bg-primary-900/90"
+          className="w-full mt-12 bg-primary-300 rounded-xl text-white uppercase py-3 text-2xl font-semibold hover:bg-primary-900/90"
         >
           Crear Centro Deportivo
         </button>

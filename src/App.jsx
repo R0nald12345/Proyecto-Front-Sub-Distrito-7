@@ -44,6 +44,8 @@ import OficinaDistritalGeneral from "./pages/OficinaDistrital/OficinaDistritalGe
 import CentroPolicial_Actualizar from "./pages/CentroPolicial/CentroPolicial_Actualizar";
 import ListaGeneralUsuarios from "./pages/Usuarios/ListaGeneralUsuario";
 import ActualizarCentroDeportivo from "./pages/CentroDeportivo/ActualizarCentroDeportivo";
+import Modal_Actualizar_Turno from "./components/Modal/UnidadEducativa/Modal_Actualizar_Turno";
+import Actualizar_CentroTuristicos from "./pages/CentroTuristicos/Actualizar_CentroTuristico";
 
 function App() {
   return (
@@ -100,8 +102,8 @@ function App() {
 
               <Route path="centro_turisticos" element={<ListaGeneralCentroTuristicos />} />
               <Route path="centro_turisticos/agregarnuevo" element={<AgregarCentroTuristicos />} />
-              
               <Route path="centro_turisticos/detalles/:id" element={<DetallesCentroTuristicos />} />
+              <Route path="centro_turisticos/actualizar/:id" element={<Actualizar_CentroTuristicos/>} />
 
 
               <Route path="centro_deportivo" element={<ListaGeneralCentroDeportivo />} />

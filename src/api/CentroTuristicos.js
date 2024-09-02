@@ -38,6 +38,7 @@ export const createDatoCentroTuristico = async ({
   historia,
   videoUrl,
   fotos,
+  serviciosPublicos
 }) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -52,11 +53,46 @@ export const createDatoCentroTuristico = async ({
         historia,
         videoUrl,
         fotos,
+        serviciosPublicos
     };
     const response = await axios.post(url, body);
     return response.data;
   } catch (error) {
     console.log("Error no se pudo obtener los Datos createDatoCentroTuristico", error);
+  }
+};
+
+export const updateDatoCentroTuristico = async (
+  id,
+  nombre,
+  coordenada_x,
+  coordenada_y,
+  direccion,
+  uv,
+  historia,
+  videoUrl,
+  fotos,
+  serviciosPublicos
+) => {
+  try {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+    const url = baseUrl + `/centrosturisticos/${id}`;
+
+    const body = {
+        nombre,
+        coordenada_x,
+        coordenada_y,
+        direccion,
+        uv,
+        historia,
+        videoUrl,
+        fotos,
+        serviciosPublicos
+    };
+    const response = await axios.patch(url, body);
+    return response.data;
+  } catch (error) {
+    console.log("Error no se pudo obtener los Datos updateDatoCentroTuristico", error);
   }
 };
 
