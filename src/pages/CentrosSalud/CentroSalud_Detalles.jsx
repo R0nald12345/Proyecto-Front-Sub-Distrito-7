@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 // import FormTipoApoyo from "./FormTipoApoyo";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import ArregloFotos from "../../components/Encabezado_Listas/UnidadesEducativas/ArregloFotos";
 import { getDatoCentroSaludID, nuevoCentroSalud } from "../../api/CentroSalud";
 import MapaMostrar from "../UnidadesEducativas/Mapas/MapaMostrar";
+import { DataContext } from "../../context/DataProvider";
 // import { createURLFotos } from "../../../api/ArchivoFotos";
 
 const CentroSalud_Detalles = () => {
@@ -57,11 +58,21 @@ const CentroSalud_Detalles = () => {
     fetchingDatosCentroSalud();
   }, []);
 
+  const {setNombreCentroSalud} =useContext(DataContext);
+
+  setNombreCentroSalud(nombre);
+
+
+  const handleDireccionEspecialidad = (e) => {
+    e.preventDefault();
+    navigate(`/inicio/centrosalud/especialidades/${id}`);
+  }
+
   return (
     <div className="flex justify-center items-center">
       <form className="bg-gray-100/50 rounded-xl shadow-xl w-[100%] lg:w-[85%] p-4 md:px-8">
         <h2 className="text-center font-bold text-3xl text-gray-700">
-          Agregar Centro Salud
+          Detalles Centro Salud {nombre}
         </h2>
         <section className="md:flex gap-5 mt-7">
           <section className="sm:w-[45%] xl:w-[40%]  md:flex lg:block ">
@@ -127,6 +138,15 @@ const CentroSalud_Detalles = () => {
                       className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
                       value={paginaweburl}
                     />
+
+                    <button 
+                      type="button"
+                      className="w-full mt-14 md:mt-6 bg-green-600 rounded-xl text-white uppercase py-3 text-2xl font-semibold hover:bg-primary-900/90"
+                      onClick={(e) => handleDireccionEspecialidad(e)}
+                    >
+                      Especialidades
+                    </button>
+                    
                   </div>
                 </div>
               </div>
@@ -146,13 +166,17 @@ const CentroSalud_Detalles = () => {
 
           
         </section>
-          <div className=" h-60 mt-5 lg:w-full text-center">
+          <div className="h-60 mt-5 lg:w-full text-center">
+            
+            
             <h3 className="uppercase font-semibold text-gray-600 mt-3">
               Puntos (Cordenadas)
             </h3>
             <div className="rounded-xl  h-[60%]">
               <MapaMostrar datoX={coordenada_x} datoY={coordenada_y} />
             </div>
+
+            
           </div>
         <button
           onClick={() => navigate("/inicio/centrosalud")}

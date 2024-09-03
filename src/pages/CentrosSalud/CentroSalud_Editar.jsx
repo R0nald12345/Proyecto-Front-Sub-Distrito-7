@@ -26,8 +26,8 @@ const CentroSalud_Editar = () => {
   const [uv, setUv] = useState("");
   const [horario, setHorario] = useState("");
   const [nivel, setNivel] = useState(0);
-  const [video, setVideo] = useState("");
-  const [paginaweburl, setPaginaweburl] = useState("");
+  const [videoUrl, setVideoUrl] = useState("");
+  const [paginawebUrl, setPaginawebUrl] = useState("");
   const [fotoActualizado, setFotoActualizado] = useState([]);
 
   const [images, setImages] = useState([]);
@@ -50,8 +50,8 @@ const CentroSalud_Editar = () => {
         setUv(response.uv);
         setHorario(response.horario);
         setNivel(response.nivel);
-        setVideo(response.videoUrl);
-        setPaginaweburl(response.paginawebUrl);
+        setVideoUrl(response.videoUrl);
+        setPaginawebUrl(response.paginawebUrl);
 
         // const formattedImages = response.fotos.map((photo) => ({
         //   original: `${photo.url}`,
@@ -77,8 +77,8 @@ const CentroSalud_Editar = () => {
         uv,
         horario,
         nivel,
-        video,
-        paginaweburl,
+        videoUrl,
+        paginawebUrl,
         fotoActualizado
       );
       navigate("/inicio/centrosalud")
@@ -151,8 +151,8 @@ const CentroSalud_Editar = () => {
                     </p>
                     <input
                       className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
-                      value={video}
-                      onChange={(e) => setVideo(e.target.value)}
+                      value={videoUrl}
+                      onChange={(e) => setVideoUrl(e.target.value)}
                     />
                   </div>
                   <div className="w-full mt-3">
@@ -189,8 +189,8 @@ const CentroSalud_Editar = () => {
                     </p>
                     <input
                       className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
-                      value={paginaweburl}
-                      onChange={(e) => setPaginaweburl(e.target.value)}
+                      value={paginawebUrl}
+                      onChange={(e) => setPaginawebUrl(e.target.value)}
                     />
                   </div>
                 </div>

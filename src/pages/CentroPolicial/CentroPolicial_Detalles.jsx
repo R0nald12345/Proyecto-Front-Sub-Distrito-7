@@ -85,7 +85,7 @@ const CentroPolicial_Detalles = () => {
                 </p>
                 <input
                   className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
-                  value={direccion}
+                  value={encargado}
                 />
 
                 <p className="mt-3 uppercase font-semibold text-gray-600">

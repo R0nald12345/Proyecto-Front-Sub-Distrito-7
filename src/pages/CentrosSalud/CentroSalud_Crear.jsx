@@ -18,8 +18,9 @@ const CentroSalud_Crear = () => {
   const [uv, setUv] = useState("");
   const [horario, setHorario] = useState("");
   const [nivel, setNivel] = useState(0);
-  const [video, setVideo] = useState("");
-  const [paginaweburl, setPaginaweburl] = useState("");
+
+  const [videoUrl, setVideoUrl] = useState("");
+  const [paginawebUrl, setPaginawebUrl] = useState("");
   const [fotos, setFotos] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -34,8 +35,8 @@ const CentroSalud_Crear = () => {
         uv,
         horario,
         nivel,
-        video,
-        paginaweburl,
+        videoUrl,
+        paginawebUrl,
         fotos,
       );
 
@@ -100,7 +101,7 @@ const CentroSalud_Crear = () => {
                     <input
                       className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
                       type="text"
-                      onChange={(e) => setVideo(e.target.value)}
+                      onChange={(e) => setVideoUrl(e.target.value)}
                     />
                   </div>
                   <div className="w-full mt-3">
@@ -138,7 +139,7 @@ const CentroSalud_Crear = () => {
                     <input
                       className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
                       type="text"
-                      onChange={(e) => setPaginaweburl(e.target.value)}
+                      onChange={(e) => setPaginawebUrl(e.target.value)}
                     />
                   </div>
                 </div>

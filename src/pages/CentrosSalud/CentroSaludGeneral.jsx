@@ -61,7 +61,6 @@ const CentroSaludGeneral = () => {
     setFiltro(e.target.value);
   };
 
-
  
 
   const listaFiltrada =
@@ -94,13 +93,26 @@ const CentroSaludGeneral = () => {
             </div>
           </div>
 
-          {/* Boton */}
+          
+          <button
+            className="mt-5 md:w-[30%] text-white font-new-font font-new-bold bg-primary-900/90 rounded-lg py-3 px-2 w-full"
+            onClick={() => navigate("/inicio/centrosalud/encargados")}
+          >
+            Encargados
+          </button>
+
           <button
             className="mt-5 md:w-[30%] text-white font-new-font font-new-bold bg-primary-900/90 rounded-lg py-3 px-2 w-full"
             onClick={() => navigate("/inicio/centrosalud/agregarnuevo")}
           >
             Agregar Nuevo +
           </button>
+          {/* <button
+            className="mt-5 md:w-[30%] text-white font-new-font font-new-bold bg-primary-900/90 rounded-lg py-3 px-2 w-full"
+            onClick={() => navigate("/inicio/centrosalud/agregarnuevo")}
+          >
+            Listado de Encargados
+          </button> */}
         </section>
       </section>
 
@@ -155,7 +167,7 @@ const CentroSaludGeneral = () => {
                 {/* Aquí puedes agregar los botones de acciones */}
                 <button 
                   className="bg-primary-900 text-white px-3 py-1 rounded-lg"
-                  onClick={() => navigate(`/inicio/centro_deportivo/editar/${element.id}`)}
+                  onClick={() => navigate(`/inicio/centrosalud/editar/${element.id}`)}
                 >
                   Editar
                 </button>

@@ -46,6 +46,9 @@ import ListaGeneralUsuarios from "./pages/Usuarios/ListaGeneralUsuario";
 import ActualizarCentroDeportivo from "./pages/CentroDeportivo/ActualizarCentroDeportivo";
 import Modal_Actualizar_Turno from "./components/Modal/UnidadEducativa/Modal_Actualizar_Turno";
 import Actualizar_CentroTuristicos from "./pages/CentroTuristicos/Actualizar_CentroTuristico";
+import OficinaDistrital_Editar from "./pages/OficinaDistrital/OficinaDistrital_Editar";
+import CentroSalud_EspecialidadGeneral from "./pages/CentrosSalud/CentroSalud_EspecialidadGeneral";
+import CentroSalud_Encargados from "./pages/CentrosSalud/CentroSalud_Encargados";
 
 function App() {
   return (
@@ -82,7 +85,6 @@ function App() {
               <Route path="unidadeducativa" element={<ListaGeneralUE />} />
               <Route path="unidadeducativa/agregarnuevo" element={<FormAgregarUE />} />
               <Route path="unidadeducativa/detalles/:id" element={<FormDataPublica />} />
-
               <Route path="unidadeducativa/actualizar/:id" element={<Actualizar_UE/>} />
               
               <Route path="unidadeducativa/modificar/:id" element={<FormEditarUE />} />
@@ -96,6 +98,9 @@ function App() {
               <Route path="centrosalud/detalles/:id" element={<CentroSalud_Detalles />} />
               <Route path="centrosalud/agregarnuevo" element={<CentroSalud_Crear />} />
               <Route path="centrosalud/editar/:id" element={<CentroSalud_Editar/>} />
+              <Route path="centrosalud/especialidades/:id" element={<CentroSalud_EspecialidadGeneral/>} />
+              <Route path="centrosalud/encargados" element={<CentroSalud_Encargados/>} />
+
 
 
               <Route path="centrorecreativo" element={<CentroRecreativo />} />
@@ -116,13 +121,17 @@ function App() {
               <Route path="centro_policial/detalles/:id" element={<CentroPolicial_Detalles/>} />
               <Route path="centro_policial/actualizar/:id" element={<CentroPolicial_Actualizar/>} />
               
+              <Route path="servicioDistrital" element={<OficinaDistritalGeneral/>} />
+              <Route path="servicioDistrital/actualizar" element={<OficinaDistrital_Editar/>} />
 
               <Route path="usuarios" element={<ListaGeneralUsuarios/>} />
 
               {/* <Route path="usuario" element={<ListaGeneralUsuario/>} /> */}
               <Route path="agregarUsuario" element={<NuevoUsuario />} />
 
+
             </Route>
+
           </Routes>
         </DataProvider>
       </AuthProvider>

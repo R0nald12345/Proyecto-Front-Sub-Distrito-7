@@ -18,6 +18,10 @@ export const DataProvider = ({ children }) => {
   const [datoTipoColegios,setTipoColegios] = useState([]);
   const [datoVisitaId,setDatoVisitaId] = useState([]);
 
+  const [nombreCentroSalud ,setNombreCentroSalud] = useState("");
+
+  
+
   // El componente DataProvider retorna un componente Provider del contexto DataContext
   // Todos los componentes hijos (children) dentro de este Provider podrán acceder al valor del contexto
   return (
@@ -34,7 +38,11 @@ export const DataProvider = ({ children }) => {
         setTipoColegios,
 
         datoVisitaId,
-        setDatoVisitaId
+        setDatoVisitaId,
+        nombreCentroSalud,
+        setNombreCentroSalud
+
+      
 
     }}>
       {/* Aquí se renderizan los componentes hijos que estén dentro de DataProvider */}

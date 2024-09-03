@@ -23,8 +23,8 @@ export const nuevoCentroSalud = async (
   uv,
   horario,
   nivel,
-  video,
-  paginaweburl,
+  videoUrl,
+  paginawebUrl,
   fotos,
 ) => {
   try {
@@ -39,8 +39,8 @@ export const nuevoCentroSalud = async (
       uv,
       horario,
       nivel,
-      video,
-      paginaweburl,
+      videoUrl,
+      paginawebUrl,
       fotos,
     };
 
@@ -60,8 +60,8 @@ export const updateCentroSalud = async (
   uv,
   horario,
   nivel,
-  video,
-  paginaweburl,
+  videoUrl,
+  paginawebUrl,
   fotoActualizado,
 ) => {
   try {
@@ -75,9 +75,8 @@ export const updateCentroSalud = async (
       direccion,
       uv,
       horario,
-      nivel,
-      video,
-      paginaweburl,
+      videoUrl,
+      paginawebUrl,
       fotos:fotoActualizado,
     };
 
@@ -118,3 +117,187 @@ export const deleteDatoCentroSalud = async ( id ) => {
     );
   }
 };
+
+
+// E  S  P  E  C  I  A  L  I  D  A  D  E  S
+
+export const getDatoEspecialidades = async () => {
+  try {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+    const url = baseUrl + "/especialidades";
+    const datosCentroSalud = await axios.get(url);
+    return datosCentroSalud.data;
+  } catch (error) {
+    console.log(
+      "Error no se pudo obtener los Datos Backend ApiServices/CentroSalud",
+      error
+    );
+  }
+};
+
+export const nuevaEspecialidad = async (
+  nombre,
+) => {
+  try {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+    const url = baseUrl + "/especialidades";
+
+    const body = {
+      nombre,
+      
+    };
+
+    const response = await axios.post(url, body);
+    return response.data;
+  } catch (error) {
+    console.log("Error no se pudo obtener los Datos", error);
+  }
+};
+
+export const updateEspecialidad = async (
+  id,
+  nombre,
+
+) => {
+  try {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+    const url = baseUrl + `/especialidades/${id}`;
+
+    const body = {
+      nombre
+    };
+
+    const response = await axios.patch(url, body);
+    return response.data;
+  } catch (error) {
+    console.log("Error no se pudo obtener los Datos", error);
+  }
+};
+
+
+
+export const getDatoEspecialidadID = async (id) => {
+    try {
+      const baseUrl = import.meta.env.VITE_BASE_URL;
+      const url = baseUrl + `/especialidades/${id}`;
+      const datosCentroSalud = await axios.get(url);
+      return datosCentroSalud.data;
+    } catch (error) {
+      console.log(
+        "Error no se pudo obtener los Datos Backend ApiServices/CentroSalud",
+        error
+      );
+    }
+  };
+
+
+export const deleteEspecialidad = async ( id ) => {
+  try {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+    const url = baseUrl + `/especialidades/${id}`;
+    const datosCentroSalud = await axios.delete(url);
+    return datosCentroSalud.data;
+  } catch (error) {
+    console.log(
+      "Error no se pudo obtener los Datos Backend ApiServices/CentroSalud",
+      error
+    );
+  }
+};
+
+
+
+
+
+
+
+
+
+// E  N  C  A  R  G  A  D  O  S   D E    E  S  P  E  C  I  A  L  I  D  A  D  E  S
+
+export const getDatoCentroSaludHasEspecialidades   = async () => {
+  try {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+    const url = baseUrl + "/centrosaludhasespecialidades";
+    const datosCentroSalud = await axios.get(url);
+    return datosCentroSalud.data;
+  } catch (error) {
+    console.log(
+      "Error no se pudo obtener los Datos Backend ApiServices/getDatoCentroSaludHasEspecialidades",
+      error
+    );
+  }
+};
+
+export const nuevaCentroSaludHasEspecialidades = async (
+  nombre,
+) => {
+  try {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+    const url = baseUrl + "/centrosaludhasespecialidades";
+
+    const body = {
+      nombre,
+      
+    };
+
+    const response = await axios.post(url, body);
+    return response.data;
+  } catch (error) {
+    console.log("Error no se pudo obtener los Datos", error);
+  }
+};
+
+export const updateCentroSaludHasEspecialidades = async (
+  id,
+  nombre,
+
+) => {
+  try {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+    const url = baseUrl + `/centrosaludhasespecialidades/${id}`;
+
+    const body = {
+      nombre
+    };
+
+    const response = await axios.patch(url, body);
+    return response.data;
+  } catch (error) {
+    console.log("Error no se pudo obtener los Datos", error);
+  }
+};
+
+
+
+export const getDatoCentrosaludHasEspecialidadeID = async (id) => {
+    try {
+      const baseUrl = import.meta.env.VITE_BASE_URL;
+      const url = baseUrl + `/centrosaludhasespecialidades/${id}`;
+      const datosCentroSalud = await axios.get(url);
+      return datosCentroSalud.data;
+    } catch (error) {
+      console.log(
+        "Error no se pudo obtener los Datos Backend ApiServices/getDatoCentrosaludHasEspecialidadeID",
+        error
+      );
+    }
+  };
+
+
+export const deleteCentrosaludhasEspecialidades = async ( id ) => {
+  try {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+    const url = baseUrl + `/centrosaludhasespecialidades/${id}`;
+    const datosCentroSalud = await axios.delete(url);
+    return datosCentroSalud.data;
+  } catch (error) {
+    console.log(
+      "Error no se pudo obtener los Datos Backend ApiServices/deleteCentrosaludhasEspecialidades",
+      error
+    );
+  }
+};
+
+
+
