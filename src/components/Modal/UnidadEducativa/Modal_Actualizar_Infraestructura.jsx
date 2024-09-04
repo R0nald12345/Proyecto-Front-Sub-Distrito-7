@@ -5,7 +5,7 @@ import { ImInsertTemplate } from "react-icons/im";
 import Lista_TipoTurno from "../../Listas/UnidadesEducativas/Lista_TipoTurno";
 import { DataContext } from "../../../context/DataProvider";
 
-import "../../../../src/Styles.css";
+// import "../../../../src/Styles.css";
 import Lista_TipoInfraestructura from "../../Listas/UnidadesEducativas/Lista_TipoInfraestructura";
 
 const Modal_Actualizar_Infraestructura = ({
