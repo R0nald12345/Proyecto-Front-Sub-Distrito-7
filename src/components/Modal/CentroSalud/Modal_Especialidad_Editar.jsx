@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import Swal from "sweetalert2";
 import { updateEspecialidad } from '../../../api/CentroSalud';
 
-const Modal_Especialidad_Editar = ({onClose, open,  idEspecialidad,nombreEspecialidad,
+const Modal_Especialidad_Editar = ({ open,onClose,  idEspecialidad,nombreEspecialidad,
   setListaEspecialidades, listaEspecialidades
  }) => {
 

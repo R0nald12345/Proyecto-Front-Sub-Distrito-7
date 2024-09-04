@@ -101,7 +101,7 @@ export const updateUsuarios = async (
 export const deleteUsuarioId = async (id) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
-    const url = baseUrl + `/usuarios/+${id}`;
+    const url = baseUrl + `/usuarios/${id}`;
     const response = await axios.delete(url);
     return response.data;
   } catch (error) {

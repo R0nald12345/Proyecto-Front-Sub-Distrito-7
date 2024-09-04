@@ -15,7 +15,6 @@ const Modal_Especialidad_Agregar = ({onClose, open,  listaEspecialidades, setLis
 
   const handleNuevaEspecialidad = async () => {
  
-
     try {
       const data = await nuevaEspecialidad(
         nombre,

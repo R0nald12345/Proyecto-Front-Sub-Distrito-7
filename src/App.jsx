@@ -48,7 +48,7 @@ import Modal_Actualizar_Turno from "./components/Modal/UnidadEducativa/Modal_Act
 import Actualizar_CentroTuristicos from "./pages/CentroTuristicos/Actualizar_CentroTuristico";
 import OficinaDistrital_Editar from "./pages/OficinaDistrital/OficinaDistrital_Editar";
 import CentroSalud_EspecialidadGeneral from "./pages/CentrosSalud/CentroSalud_EspecialidadGeneral";
-import CentroSalud_Encargados from "./pages/CentrosSalud/CentroSalud_Encargados";
+import CentroSalud_EncargadosEspecialidades from "./pages/CentrosSalud/CentroSalud_EncargadosEspecialidades";
 
 function App() {
   return (
@@ -99,7 +99,8 @@ function App() {
               <Route path="centrosalud/agregarnuevo" element={<CentroSalud_Crear />} />
               <Route path="centrosalud/editar/:id" element={<CentroSalud_Editar/>} />
               <Route path="centrosalud/especialidades/:id" element={<CentroSalud_EspecialidadGeneral/>} />
-              <Route path="centrosalud/encargados" element={<CentroSalud_Encargados/>} />
+
+              <Route path="centrosalud/encargados/:id" element={<CentroSalud_EncargadosEspecialidades/>} />
 
 
 

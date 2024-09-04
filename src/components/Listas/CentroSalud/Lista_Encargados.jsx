@@ -1,12 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useNavigate} from 'react-router-dom'
+import Swal from "sweetalert2";
 
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import { IoEyeSharp } from "react-icons/io5";
+import { deleteCentrosaludhasEspecialidades } from '../../../api/CentroSalud';
+import Modal_Encargado_Editar from '../../Modal/CentroSalud/Modal_Encargado_Editar';
 
-const Lista_Encargados = ({datoCentroSaludEncargado,datosCentroSaludEncargados,setDatosCentroSaludEncargados}) => {
+const Lista_Encargados = ({idCentroSalud,datoEncargadoEspecialidades,listaEncargadosEspecialidades,setListaEncargadosEspecialidades}) => {
     const navigate = useNavigate();
+
+    const {id,encargado, idEspecialidad} = datoEncargadoEspecialidades;
+    const {nombre} = idEspecialidad;
+
+    const [openActualizar, setOpenActualizar] = useState(false);
 
     const changeFormDetails=(id)=>{
         navigate(`/unidadeducativa/detalles/${id}`);
@@ -16,55 +24,72 @@ const Lista_Encargados = ({datoCentroSaludEncargado,datosCentroSaludEncargados,s
       navigate(`/unidadeducativa/modificar/${id}`);
     }
 
-// sdaf
-
-// Los Encargados de especialidades deben estar dentro de cada Centro de Salud
-
-
-
-
-
-
-
-
-
-
-
-
-
+    const deleteDatoEncargadoEspecialidad = async (id) => {
+      try {
+        const result = await Swal.fire({
+          title: "Deseas Eliminar?",
+          text: "Si eliminas no podrás recuperarlo!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Si, quiero Eliminar!",
+        });
+  
+        if (result.isConfirmed) {
+          await deleteCentrosaludhasEspecialidades(id);
+          setListaEncargadosEspecialidades(
+            listaEncargadosEspecialidades.filter((element) => element.id !== id)
+          );
+          Swal.fire({
+            title: "Eliminado!",
+            text: "Eliminado Correctamente.",
+            icon: "success",
+          });
+        }
+      } catch (error) {
+        console.log("Error en el Componente Lista_Encargados", error);
+      }
+    };
 
   return (
     <>
-        <ul className='grid grid-cols-12 gap-5 rounded-xl mb-3 bg-white shadow-xl'>
-            <li className=" font-semibold text-start col-span-3 px-3 py-2">
-                {/* <div className='flex items-center gap-3'>
-                    {/* <img 
-                        src='https://img.freepik.com/vector-gratis/escuela-diseno-ilustracion-vectorial_24640-45977.jpg'
-                        className='w-9 h-8 rounded-full object-cover'
-                    /> */}
-                    {/* {nombre} 
-                </div> */}
-            </li>
-            {/* <li className=" font-semibold text-start col-span-3 px-3 py-2 flex items-center ">{}</li>
-            <li className=" font-semibold col-span-1 px-3 py-2 flex items-center justify-center">{}</li>
-            <li className=" font-semibold col-span-2 px-3 py-2 flex items-center justify-center">{}</li> */}
-            <li className=' col-span-3 flex items-center '>
-                {/* <div className='flex justify-between w-full px-2'>
-                      <IoEyeSharp 
-                        onClick={()=>changeFormDetails(id)}
-                        className="text-3xl p-1 rounded-lg bg-black text-white" />
-                        
-                      <BiEditAlt 
-                        onClick={()=>changeRutaEditarFormulario(id)}
-                        className="text-3xl p-1 rounded-xl bg-green-900 text-white" />
-        
-                      {/* <ImWhatsapp className="text-3xl text-green-600" /> */}
-                      {/* <RiDeleteBin5Line 
-                        // onClick={handleEliminar(id)}
-                        className="text-3xl text-red-700" />
+        <Modal_Encargado_Editar
+             open={openActualizar}
+             onClose={() => setOpenActualizar(!openActualizar)}
+
+             idEspecialista={id}
+             encargadoA={encargado}
+             idCentroSalud={idCentroSalud}
+             idEspecialidadA={idEspecialidad.id}
+
+             
+             listaEncargadosEspecialidades={listaEncargadosEspecialidades}
+             setListaEncargadosEspecialidades={setListaEncargadosEspecialidades}
+        />
+
+
+        <ul className='bg-white mb-3 rounded-xl shadow-lg flex'>
+           
+        <li className="font-semibold text-start w-[45%] px-2 py-2">
+          {encargado}
+        </li>
+        <li className="font-semibold text-start w-[30%] px-2 py-2">
+          {nombre}
+        </li>
+        <li className="font-semibold text-start w-[25%] px-2 py-2 flex justify-around gap-3">
+
+          <BiEditAlt 
+            className="bg-green-700 text-white text-3xl rounded-md p-1 cursor-pointer" 
+            onClick={() => setOpenActualizar(!openActualizar)}
+          />
+
     
-                </div> */} 
-            </li>
+          <RiDeleteBin5Line
+            className="bg-red-700 text-white text-3xl rounded-md p-1 cursor-pointer"
+            onClick={() => deleteDatoEncargadoEspecialidad(id)}
+          />
+        </li>
         </ul>
 
     </>

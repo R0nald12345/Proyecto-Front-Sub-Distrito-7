@@ -230,14 +230,19 @@ export const getDatoCentroSaludHasEspecialidades   = async () => {
 };
 
 export const nuevaCentroSaludHasEspecialidades = async (
-  nombre,
+  encargado,
+  idCentroSalud,
+  idEspecialidad
+
 ) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
     const url = baseUrl + "/centrosaludhasespecialidades";
 
     const body = {
-      nombre,
+      encargado,
+      idCentroSalud,
+      idEspecialidad
       
     };
 
@@ -250,7 +255,9 @@ export const nuevaCentroSaludHasEspecialidades = async (
 
 export const updateCentroSaludHasEspecialidades = async (
   id,
-  nombre,
+  encargado,
+  idCentroSalud,
+  idEspecialidad
 
 ) => {
   try {
@@ -258,10 +265,13 @@ export const updateCentroSaludHasEspecialidades = async (
     const url = baseUrl + `/centrosaludhasespecialidades/${id}`;
 
     const body = {
-      nombre
+      encargado,
+      idCentroSalud,
+      idEspecialidad
     };
 
     const response = await axios.patch(url, body);
+    console.log('responseeeeee',response.data);
     return response.data;
   } catch (error) {
     console.log("Error no se pudo obtener los Datos", error);

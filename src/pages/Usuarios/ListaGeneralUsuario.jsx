@@ -14,28 +14,15 @@ import Modal_Editar_Visita from "../../components/Modal/Visita/Modal_Editar_Visi
 import { TbRuler } from "react-icons/tb";
 import Lista_Usuario from "../../components/Listas/Usuarios/Lista_Usuario";
 import { deleteUsuarioId, getUsuarios } from "../../api/Usuario";
+import Modal_Crear_Usuario from "../../components/Modal/Usuarios/Modal_Crear_Usuario";
+import Modal_Actualizar_Usuario from "../../components/Modal/Usuarios/Modal_Actualizar_Usuario";
+import Modal_Detalles_Usuario from "../../components/Modal/Usuarios/Modal_Detalles_Usuario";
 
-// const formatearFecha = (fecha) => {
-//   if (fecha.length > 0) {
-//     // Me indica que tengo una fecha
-//     let fechaFormateada = "";
-//     for (let i = 0; i < fecha.length; i++) {
-//       if (fecha[i] == "T") {
-//         fechaFormateada = fecha.substring(0, i);
-//         break;
-//       }
-//     }
-//     const [year, month, day] = fechaFormateada.split("-");
-//     return `${day}-${month}-${year}`;
-//   } else {
-//     return "Fecha no válida";
-//   }
-// };
 
 
 const ListaGeneralUsuarios = () => {
 
-  const {id} = useParams();
+  // const {id} = useParams();
 
   const navigate = useNavigate();
   const [datosUsuarios, setDatosUsuarios] = useState([]);
@@ -64,12 +51,39 @@ const ListaGeneralUsuarios = () => {
   }, []);
 
 
+  const [userEmail, setUserEmail] = useState('');
+
+  useEffect(() => {
+    // Obtener el valor de localStorage
+    const userData = sessionStorage.getItem('userData');
+    // console.log("userDataaaaaaaaaaaaa", userData);
+    if (userData) {
+      // Parsear el valor JSON
+      const parsedUserData = JSON.parse(userData);
+      // Acceder al campo email
+      setUserEmail(parsedUserData.email);
+      // console.log("Email del Usuario", parsedUserData.email);
+    } else {
+      console.log("No se encontró la clave 'userData' en el localStorage.");
+    }
+  }, []);
+
+  
   const handleFiltroCambio = (e) => {
     setFiltro(e.target.value);
   };
 
-  const handleDeleteUsuario = async (id) => {
+  const handleDeleteUsuario = async (id,email) => {
     try {
+      if(userEmail === email){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No puedes eliminar tu propia cuenta!',
+        });
+        return;
+
+      }
       const result = await Swal.fire({
         title: "Deseas Eliminar?",
         text: "Si eliminas no podrás recuperarlo!",
@@ -81,10 +95,11 @@ const ListaGeneralUsuarios = () => {
       });
 
       if (result.isConfirmed) {
+        console.log("iddddddd",id); 
         await deleteUsuarioId(id);
         setDatosUsuarios(
           datosUsuarios.filter((element) => element.id !== id)
-        );        
+        );
         Swal.fire({
           title: "Eliminado!",
           text: "Eliminado Correctamente.",
@@ -92,9 +107,11 @@ const ListaGeneralUsuarios = () => {
         });
       }
     } catch (error) {
-      console.log("Error en el Componente ListaGeneralUsuarios", error);
+      console.log("Error en el Componente Lista_Usuario", error);
     }
   };
+
+  console.log("openModalCreate", openModalCreate);
 
 
   // const changeDatails=(id)=>{
@@ -116,31 +133,61 @@ const ListaGeneralUsuarios = () => {
           element.name.toLowerCase().includes(filtro.toLowerCase())
         );
 
+        
+      const [id, setId] = useState(0);
+      const [nameU, setNameU] = useState("");
+      const [emailU, setEmailU] = useState("");
+      const [passwordU, setPasswordU] = useState("");
+
+      const [nameUD, setNameUD] = useState("");
+      const [emailUD, setEmailUD] = useState("");
+      const [passwordUD, setPasswordUD] = useState("");
+
+        const hadleOpenModalUpdate = (idU, nombre,correo, contra) => {
+          setId(idU);
+          setNameU(nombre);
+          setEmailU(correo);
+          setPasswordU(contra);
+          setOpenModalUpdate(true);
+        }
+
+        const changeDetalles = (nombre,correo, contra) => {
+          setNameUD(nombre);
+          setEmailUD(correo);
+          setPasswordUD(contra);
+          setOpenModalDetails(true);
+        }
   return (
     <>
 
-      {/* <Modal_Crear_Visita
+
+
+      <Modal_Crear_Usuario
         open={openModalCreate}
         onClose={() => setOpenModalCreate(false)}
-        idUnidadEducativa = {id}
-        listaVisita={datosVisitas}
-        setListaVisita={setDatosVisitas}
+        listaUsuarios={datosUsuarios}
+        setListaUsuarios={setDatosUsuarios}
       />
 
-      <Modal_Detalle_Visita
+      <Modal_Actualizar_Usuario
+        open={openModalUpdate}
+        onClose={() => setOpenModalUpdate(false)}
+        id = {id} 
+        nameU = {nameU} 
+        emailU = {emailU} 
+        passwordU = {passwordU}
+        listaUsuarios = {datosUsuarios}
+        setListaUsuarios = {setDatosUsuarios}
+      />
+
+      <Modal_Detalles_Usuario
         open={openModalDetails}
         onClose={() => setOpenModalDetails(false)}
-        idVisita={idVisita}
+        // id = {id} 
+        nameU = {nameUD} 
+        emailU = {emailUD} 
+        passwordU = {passwordUD}
       />
-
-      <Modal_Editar_Visita
-        open={openModalUpdate}
-        onClose={()=> setOpenModalUpdate(false)}
-        idVisita = {idVisita}
-        datosVisitas={ datosVisitas}
-        setDatosVisitas={ setDatosVisitas}
-      
-      /> */}
     
       <div className="flex flex-col items-center bg-red-600 justify-center  rounded-xl bg-white/50 md:w-[90%] lg:w-[75%]  mx-auto px-4 md:px-6 pb-6 md:pb-2">
         {/* Parte Superrior */}
@@ -167,7 +214,7 @@ const ListaGeneralUsuarios = () => {
             {/* Boton */}
             <button
               className="mt-5 md:w-[30%] text-white font-new-font font-new-bold bg-primary-900/90 rounded-lg py-3 px-2 w-full"
-              // onClick={() => setOpenModalCreate(!openModalCreate)}
+              onClick={() => setOpenModalCreate(!openModalCreate)}
             >
               Agregar Nuevo +
             </button>
@@ -216,20 +263,21 @@ const ListaGeneralUsuarios = () => {
                   {/* Aquí puedes agregar los botones de acciones */}
                    <button 
                     className="bg-primary-900 text-white px-3 py-1 rounded-lg"
-                    // onClick={() => changeUpdate(element.id)}
-                  >
+                    onClick={()=>hadleOpenModalUpdate(element.id, element.name, element.email, element.password)}
+                    >
                     Editar
                   </button>
 
                   <button 
                     className="bg-blue-950 text-white px-3 py-1 rounded-lg"
-                    // onClick={()=>changeDatails(element.id)}
+                    onClick={() => changeDetalles(element.name, element.email, element.password)}
+                   
                   >
                     Detalles
                   </button>
                   <button 
                     className="bg-red-500 text-white px-3 py-1 rounded-lg"
-                    onClick={ ()=>handleDeleteUsuario(element.id) }
+                    onClick={ ()=>handleDeleteUsuario(element.id,element.email) }
                   >
                     Eliminar
                   </button>

@@ -68,6 +68,11 @@ const CentroSalud_Detalles = () => {
     navigate(`/inicio/centrosalud/especialidades/${id}`);
   }
 
+  const handleDireccionEncargadosEspecialidad = (e) => {
+    e.preventDefault();
+    navigate(`/inicio/centrosalud/encargados/${id}`);
+  }
+
   return (
     <div className="flex justify-center items-center">
       <form className="bg-gray-100/50 rounded-xl shadow-xl w-[100%] lg:w-[85%] p-4 md:px-8">
@@ -141,10 +146,18 @@ const CentroSalud_Detalles = () => {
 
                     <button 
                       type="button"
-                      className="w-full mt-14 md:mt-6 bg-green-600 rounded-xl text-white uppercase py-3 text-2xl font-semibold hover:bg-primary-900/90"
+                      className="w-full mt-14 md:mt-6 bg-green-600 rounded-xl text-white uppercase py-3 text-xl font-semibold hover:bg-primary-900/90"
                       onClick={(e) => handleDireccionEspecialidad(e)}
                     >
                       Especialidades
+                    </button>
+
+                    <button 
+                      type="button"
+                      className="w-full mt-14 md:mt-6 bg-green-600 rounded-xl text-white uppercase py-3 text-xl font-semibold hover:bg-primary-900/90"
+                      onClick={(e) => handleDireccionEncargadosEspecialidad(e)}
+                    >
+                      Encargados de Especialidades
                     </button>
                     
                   </div>
