@@ -5,7 +5,7 @@ import { ImInsertTemplate } from "react-icons/im";
 import Lista_TipoTurno from "../../Listas/UnidadesEducativas/Lista_TipoTurno";
 import { DataContext } from "../../../context/DataProvider";
 
-import "../../../../src/Styles.css";
+// import "../../../../src/Styles.css";
 
 const Modal_Actualizar_Turno = ({
   open,
