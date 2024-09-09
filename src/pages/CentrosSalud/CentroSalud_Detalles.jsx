@@ -58,20 +58,14 @@ const CentroSalud_Detalles = () => {
     fetchingDatosCentroSalud();
   }, []);
 
-  const {setNombreCentroSalud} =useContext(DataContext);
+  const { setNombreCentroSalud } = useContext(DataContext);
 
   setNombreCentroSalud(nombre);
-
-
-  const handleDireccionEspecialidad = (e) => {
-    e.preventDefault();
-    navigate(`/inicio/centrosalud/especialidades/${id}`);
-  }
 
   const handleDireccionEncargadosEspecialidad = (e) => {
     e.preventDefault();
     navigate(`/inicio/centrosalud/encargados/${id}`);
-  }
+  };
 
   return (
     <div className="flex justify-center items-center">
@@ -144,22 +138,13 @@ const CentroSalud_Detalles = () => {
                       value={paginaweburl}
                     />
 
-                    <button 
-                      type="button"
-                      className="w-full mt-14 md:mt-6 bg-green-600 rounded-xl text-white uppercase py-3 text-xl font-semibold hover:bg-primary-900/90"
-                      onClick={(e) => handleDireccionEspecialidad(e)}
-                    >
-                      Especialidades
-                    </button>
-
-                    <button 
+                    <button
                       type="button"
                       className="w-full mt-14 md:mt-6 bg-green-600 rounded-xl text-white uppercase py-3 text-xl font-semibold hover:bg-primary-900/90"
                       onClick={(e) => handleDireccionEncargadosEspecialidad(e)}
                     >
                       Encargados de Especialidades
                     </button>
-                    
                   </div>
                 </div>
               </div>
@@ -176,21 +161,15 @@ const CentroSalud_Detalles = () => {
               </div>
             </div>
           </section>
-
-          
         </section>
-          <div className="h-60 mt-5 lg:w-full text-center">
-            
-            
-            <h3 className="uppercase font-semibold text-gray-600 mt-3">
-              Puntos (Cordenadas)
-            </h3>
-            <div className="rounded-xl  h-[60%]">
-              <MapaMostrar datoX={coordenada_x} datoY={coordenada_y} />
-            </div>
-
-            
+        <div className="h-60 mt-5 lg:w-full text-center">
+          <h3 className="uppercase font-semibold text-gray-600 mt-3">
+            Puntos (Cordenadas)
+          </h3>
+          <div className="rounded-xl  h-[60%]">
+            <MapaMostrar datoX={coordenada_x} datoY={coordenada_y} />
           </div>
+        </div>
         <button
           onClick={() => navigate("/inicio/centrosalud")}
           className="w-full mt-14 md:mt-6 bg-primary-300 rounded-xl text-white uppercase py-3 text-2xl font-semibold hover:bg-primary-900/90"

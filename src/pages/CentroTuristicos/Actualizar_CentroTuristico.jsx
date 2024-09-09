@@ -124,7 +124,7 @@ const Actualizar_CentroTuristicos = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate("/inicio/centro_deportivo");
+      navigate("/inicio/centro_turisticos");
 
 
     } catch (error) {
@@ -178,7 +178,7 @@ const Actualizar_CentroTuristicos = () => {
         className="bg-gray-100/50 rounded-xl shadow-xl xl:w-[80%] md:w-[80%] p-6"
       >
         <h2 className="text-center font-bold text-3xl text-gray-700">
-          Actualizar Nuevo Centro Deportivo
+          Actualizar Nuevo Centro Turístico
         </h2>
         <section className="xl:flex gap-5 mt-5">
           <section className="xl:w-[40%] flex-col md:flex lg:block ">

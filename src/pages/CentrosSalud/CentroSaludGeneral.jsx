@@ -1,13 +1,15 @@
-import {useState,useEffect} from 'react'
-import {useNavigate} from 'react-router-dom'
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import Lista_CentroSalud from '../../components/Encabezado_Listas/CentroSalud/Lista_CentroSalud';
-import { getDatoCentroSalud, deleteDatoCentroSalud } from '../../api/CentroSalud';
+import Lista_CentroSalud from "../../components/Encabezado_Listas/CentroSalud/Lista_CentroSalud";
+import {
+  getDatoCentroSalud,
+  deleteDatoCentroSalud,
+} from "../../api/CentroSalud";
 import Swal from "sweetalert2";
 // import { deleteDatoCentroSalud } from '../../api/CentroSalud';
 
 const CentroSaludGeneral = () => {
-
   const navigate = useNavigate();
 
   const [datosCentroSalud, setDatosCentroSalud] = useState([]);
@@ -28,7 +30,6 @@ const CentroSaludGeneral = () => {
     fetchingDatosCentroSalud();
   }, []);
 
-
   const handleDeleteCentroSalud = async (id) => {
     try {
       const result = await Swal.fire({
@@ -43,8 +44,10 @@ const CentroSaludGeneral = () => {
 
       if (result.isConfirmed) {
         const response = await deleteDatoCentroSalud(id);
-        
-        setDatosCentroSalud(prevState => prevState.filter((element) => element.id !== id));
+
+        setDatosCentroSalud((prevState) =>
+          prevState.filter((element) => element.id !== id)
+        );
 
         Swal.fire({
           title: "Eliminado!",
@@ -55,13 +58,17 @@ const CentroSaludGeneral = () => {
     } catch (error) {
       console.log("Error en el Componente Lista_CentroTuristicos", error);
     }
+  };
+
+  
+  const handleDireccionEspecialidad = (e) => {
+    e.preventDefault();
+    navigate(`/inicio/centrosalud/especialidades/${id}`);
   }
 
   const handleFiltroCambio = (e) => {
     setFiltro(e.target.value);
   };
-
- 
 
   const listaFiltrada =
     filtro.trim() === ""
@@ -78,8 +85,7 @@ const CentroSaludGeneral = () => {
           Lista de Centro Saluds
         </h3>
 
-        <section className="md:flex md:justify-between md:px-2 bg-red ">
-
+        <section className="md:flex md:justify-between md:px-2 bg-red gap-3 ">
           <div className=" mt-5 col-span-4 flex items-center  justify-end gap-1 md:gap-3">
             <p className="font-new-font font-new-bold text-white">Nombre</p>
             <div className="w-full flex bg-gray-300 border border-black rounded-xl px-2 bg-red">
@@ -93,26 +99,25 @@ const CentroSaludGeneral = () => {
             </div>
           </div>
 
-          
-          <button
-            className="mt-5 md:w-[30%] text-white font-new-font font-new-bold bg-primary-900/90 rounded-lg py-3 px-2 w-full"
-            onClick={() => navigate("/inicio/centrosalud/encargados")}
-          >
-            Encargados
-          </button>
+          <section className="md:flex md:justify-around md:w-[60%]  gap-3" >
+            <button
+              type="button"
+              className="w-full md:w-2/3  mt-14 md:mt-6 bg-green-600 rounded-xl text-white uppercase py-3 text-xl font-semibold hover:bg-primary-900/90"
+              onClick={(e) => handleDireccionEspecialidad(e)}
+            >
+              Especialidades
+            </button>
 
-          <button
-            className="mt-5 md:w-[30%] text-white font-new-font font-new-bold bg-primary-900/90 rounded-lg py-3 px-2 w-full"
-            onClick={() => navigate("/inicio/centrosalud/agregarnuevo")}
-          >
-            Agregar Nuevo +
-          </button>
-          {/* <button
-            className="mt-5 md:w-[30%] text-white font-new-font font-new-bold bg-primary-900/90 rounded-lg py-3 px-2 w-full"
-            onClick={() => navigate("/inicio/centrosalud/agregarnuevo")}
-          >
-            Listado de Encargados
-          </button> */}
+            <button
+              className="mt-5 md:w-1/3 text-white font-new-font font-new-bold bg-primary-900/90 rounded-lg py-3 px-2 w-full"
+              onClick={() => navigate("/inicio/centrosalud/agregarnuevo")}
+            >
+              Agregar Nuevo +
+            </button>
+
+          </section>
+
+         
         </section>
       </section>
 
@@ -121,7 +126,6 @@ const CentroSaludGeneral = () => {
         {/* Lista para pantallas grandes */}
         <div className="hidden md:flex flex-col justify-center w-full">
           <ul className="w-full flex bg-white gap-1 mb-3 rounded-xl shadow-lg">
-
             <li className="font-semibold text-start w-[32%] px-3 py-2">
               Nombre
             </li>
@@ -129,7 +133,7 @@ const CentroSaludGeneral = () => {
             <li className="font-semibold text-start w-[33%] px-3 py-2">
               Direccion
             </li>
-            
+
             <li className="font-semibold text-center w-[12%] px-3 py-2">
               Horario
             </li>
@@ -155,8 +159,6 @@ const CentroSaludGeneral = () => {
           </section>
         </div>
 
-
-
         {/* Tarjetas para pantallas pequeñas */}
         <div className="md:hidden grid grid-cols-1 gap-4">
           {listaFiltrada.map((element) => (
@@ -165,21 +167,25 @@ const CentroSaludGeneral = () => {
               <p className="text-gray-600">{element.direccion}</p>
               <div className="flex justify-end mt-3 gap-2">
                 {/* Aquí puedes agregar los botones de acciones */}
-                <button 
+                <button
                   className="bg-primary-900 text-white px-3 py-1 rounded-lg"
-                  onClick={() => navigate(`/inicio/centrosalud/editar/${element.id}`)}
+                  onClick={() =>
+                    navigate(`/inicio/centrosalud/editar/${element.id}`)
+                  }
                 >
                   Editar
                 </button>
-                <button 
+                <button
                   className="bg-blue-950 text-white px-3 py-1 rounded-lg"
-                  onClick={() => navigate(`/inicio/centrosalud/detalles/${element.id}`)}
+                  onClick={() =>
+                    navigate(`/inicio/centrosalud/detalles/${element.id}`)
+                  }
                 >
                   Detalles
                 </button>
-                <button 
+                <button
                   className="bg-red-500 text-white px-3 py-1 rounded-lg"
-                  onClick={()=>handleDeleteCentroSalud(element.id)}
+                  onClick={() => handleDeleteCentroSalud(element.id)}
                 >
                   Eliminar
                 </button>
@@ -192,4 +198,4 @@ const CentroSaludGeneral = () => {
   );
 };
 
-export default CentroSaludGeneral
+export default CentroSaludGeneral;

@@ -68,7 +68,8 @@ const Actualizar_UE = () => {
 
   const [images, setImages] = useState([]);
 
-  console.log("Imagesss", juntaEscolarFoto);
+
+  // console.log("Imagesss", juntaEscolarFoto);
   
   const handleAddServicioPublico = (descripcion) => {
     setServiciosPublicos([...serviciosPublicos, descripcion]);
@@ -127,7 +128,7 @@ const Actualizar_UE = () => {
         setDireccion(response.direccion);
         setVideo(response.video);
         setUv(response.uv);
-
+        setSlug(response.slug);
 
 
 
@@ -155,10 +156,6 @@ const Actualizar_UE = () => {
     };
     fetchingDatosColegio();
   }, [])
-
-  console.log("IDCOLEGIOooo",idTipoColegio);
-    console.log("IDTURNOooo",idTurno);
-    console.log("IDINFRAESTRUCTURAooo",idInfraestructura);
 
 
   const updateColegio=async(e)=>{

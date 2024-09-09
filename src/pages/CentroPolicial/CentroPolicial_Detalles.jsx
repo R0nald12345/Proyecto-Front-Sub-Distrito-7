@@ -14,7 +14,6 @@ import Lista_ServicioPublico_Mostrar from "../../components/Listas/CentroPolicia
 import Lista_ServicioPublicoGeneral from "../../components/ServicioPublicos/Lista_ServicioPublicoGeneral";
 
 const CentroPolicial_Detalles = () => {
-
   const { id } = useParams();
 
   const [nombre, setNombre] = useState("");
@@ -23,6 +22,8 @@ const CentroPolicial_Detalles = () => {
   const [coordenada_x, setCoordenada_x] = useState(0);
   const [coordenada_y, setCoordenada_y] = useState(0);
   const [direccion, setDireccion] = useState("");
+
+
   const [uv, setUv] = useState("");
   const [horario, sethorario] = useState("");
   const [fotoUrl, setFotoUrl] = useState("");
@@ -34,17 +35,17 @@ const CentroPolicial_Detalles = () => {
         const response = await getCentroPolicialID(id);
         console.log("response", response);
         setNombre(response.nombre);
-          setEncargado(response.encargado);
-          setNumeroTelefono(response.numeroTelefono);
-          setCoordenada_x(response.coordenada_x);
-          setCoordenada_y(response.coordenada_y);
-          setDireccion(response.direccion);
-          setUv(response.uv);
-          sethorario(response.horario);
-          setFotoUrl(response.fotoUrl);
+        setEncargado(response.encargado);
+        setNumeroTelefono(response.numeroTelefono);
+        setCoordenada_x(response.coordenada_x);
+        setCoordenada_y(response.coordenada_y);
+        setDireccion(response.direccion);
+        setUv(response.uv);
+        sethorario(response.horario);
+        setFotoUrl(response.fotoUrl);
 
-          // setServiciosPublicos(JSON.parse(response.serviciosPublicos));
-           // Limpia y parsea la cadena JSON
+        // setServiciosPublicos(JSON.parse(response.serviciosPublicos));
+        // Limpia y parsea la cadena JSON
         // let servicios = response.serviciosPublicos;
         // if (typeof servicios === 'string') {
         //   servicios = servicios.replace(/'/g, '"'); // Reemplaza comillas simples por comillas dobles
@@ -126,13 +127,14 @@ const CentroPolicial_Detalles = () => {
                     />
                   </div>
 
-                  <p className="uppercase font-semibold text-gray-600 mt-3">
-                    FotoUrl
+                  <p className="uppercase font-semibold text-gray-600 mt-1">
+                    Imagen
                   </p>
-                  <input
-                    className="border-2 rounded-xl border-gray-400 w-full px-2"
-                    // type="file"
-                    value={fotoUrl}
+
+                  <img
+                    src={fotoUrl}
+                    className="bg-black border-2 rounded-xl w-full  border-gray-400 object-contain bg-blend-overlay"
+                    style={{ height: "230px" }}
                   />
                 </div>
               </div>
@@ -147,7 +149,7 @@ const CentroPolicial_Detalles = () => {
                     Lista Servicio Servicio Público
                   </h3>
                   {/* <Lista_CentroPolicial_ServicioPublico/> */}
-                 
+
                   <div className=" mt-3 max-h-28 md:max-h-28 lg:max-h-36 overflow-y-auto scrollbar-hide">
                     {serviciosPublicos.map((element) => (
                       <Lista_ServicioPublicoGeneral

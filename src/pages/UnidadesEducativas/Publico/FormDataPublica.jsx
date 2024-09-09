@@ -348,14 +348,7 @@ console.log(id);
                   >
                     {uv}
                   </p>
-                  {/* <h3 className="uppercase font-semibold mt-4 text-gray-600">
-                    Slug
-                  </h3>
-                  <p
-                    className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
-                  >
-                    {slug}
-                  </p> */}
+      
               </div>
 
 
@@ -371,7 +364,6 @@ console.log(id);
                 <section className="lg:flex gap-8 border border-black/50 rounded-lg px-3 py-3 ">
 
                   <section className="flex-col gap-5 lg:w-[40%]">
-
 
                     <section className=" flex gap-3 md:flex-col ">
                       

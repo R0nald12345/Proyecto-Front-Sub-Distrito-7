@@ -12,9 +12,11 @@ export default {
       },
       fontFamily:{
         'new-font': ['Ubuntu', 'sans-serif'],
+        suse: ['SUSE', 'sans-serif'],
       },
-      fontWeight:{
+      fontWeight: {
         'new-bold': 700,
+        'semi-bold': 650, // Agregar font-weight 690
       },
     },
   },

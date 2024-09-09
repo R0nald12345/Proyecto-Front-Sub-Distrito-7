@@ -60,7 +60,6 @@ const Lista_CentroPolicial = ({
 
         <li className=" font-semibold text-center w-[12%] px-2 py-2">
           {numeroTelefono}
-          12345678
         </li>
 
         <li className="font-semibold text-center w-[20%] px-2 py-2 flex justify-around gap-3"

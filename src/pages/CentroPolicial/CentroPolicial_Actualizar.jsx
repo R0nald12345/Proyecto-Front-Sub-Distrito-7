@@ -5,8 +5,12 @@ import Lista_ServicioPublico from "../../components/Listas/CentroPolicial/Lista_
 import Modal_Crear_ServicioPublico from "../../components/Modal/CentroPolicial/Modal_Crear_ServicioPublico";
 import Modal_Actualizar_ServicioPublico from "../../components/Modal/CentroPolicial/Modal_Actualizar_ServicioPublico";
 import "../../../src/styles.css";
-import { actualizarCentroPolicial, getCentroPolicialID } from "../../api/CentroPolicial";
+import {
+  actualizarCentroPolicial,
+  getCentroPolicialID,
+} from "../../api/CentroPolicial";
 import MapaEditar from "../UnidadesEducativas/Mapas/MapaEditar";
+import { createURLFotos } from "../../api/ArchivoFotos";
 
 const CentroPolicial_Actualizar = () => {
   const { id } = useParams();
@@ -22,6 +26,8 @@ const CentroPolicial_Actualizar = () => {
   const [uv, setUv] = useState("");
   const [horario, setHorario] = useState("");
   const [fotoUrl, setFotoUrl] = useState("");
+  const [fotoUrlNuevo, setFotoUrlNuevo] = useState("");
+
   const [serviciosPublicos, setServiciosPublicos] = useState([]);
 
   const [openModalCreateServicioPublico, setOpenModalCreateServicioPublico] =
@@ -136,6 +142,26 @@ const CentroPolicial_Actualizar = () => {
     }
   };
 
+  useEffect(() => {
+    const convertirCloudinary = async () => {
+      if (fotoUrlNuevo && typeof fotoUrlNuevo !== "string") {
+        try {
+          const formData = new FormData();
+          formData.append("files", fotoUrlNuevo);
+          console.log("DataFoto before sending to API:", formData);
+          const response = await createURLFotos(formData);
+
+          setFotoUrl( response.imageUrls[0] );
+
+        } catch (error) {
+          console.error("Error", error);
+        }
+      }
+    };
+    convertirCloudinary();
+  }, [fotoUrlNuevo]);
+
+
   return (
     <div className="flex justify-center items-center">
       <Modal_Crear_ServicioPublico
@@ -201,8 +227,8 @@ const CentroPolicial_Actualizar = () => {
                     </p>
                     <input
                       className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
-                        type="text"
-                        value={uv}
+                      type="text"
+                      value={uv}
                       onChange={(e) => setUv(e.target.value)}
                     />
                   </div>
@@ -213,7 +239,7 @@ const CentroPolicial_Actualizar = () => {
                     <input
                       className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
                       type="number"
-                        value={numeroTelefono}
+                      value={numeroTelefono}
                       onChange={(e) => setNumeroTelefono(e.target.value)}
                     />
                   </div>
@@ -230,14 +256,29 @@ const CentroPolicial_Actualizar = () => {
                   </div>
 
                   <p className="uppercase font-semibold text-gray-600 mt-3">
-                    Foto Url
+                    Foto
                   </p>
                   <input
-                    className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
-                    type="url"
-                    value={fotoUrl}
-                    onChange={(e) => setFotoUrl(e.target.value)}
+                    className="border-2 rounded-xl border-gray-400 w-[59%] md:w-full"
+                    type="file"
+                    onChange={(e) => setFotoUrlNuevo(e.target.files[0])} // Actualiza el estado con el archivo seleccionado
                   />
+                  <div className="relative">
+                    <button
+                      className="absolute top-3 right-3 bg-red-600 font-bold text-white px-2 rounded"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        setFotoUrl("");
+                      }}
+                    >
+                      X
+                    </button>
+                    <img
+                      src={fotoUrl}
+                      className="bg-black border-2 rounded-xl w-full  border-gray-400 object-contain bg-blend-overlay"
+                      style={{ height: "230px" }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -270,7 +311,6 @@ const CentroPolicial_Actualizar = () => {
                     {serviciosPublicos.map((element, index) => (
                       <Lista_ServicioPublico
                         key={index}
-
                         id={index}
                         descripcion={element}
                         onDelete={handleDeleteServicioPublico}

@@ -88,11 +88,6 @@ const FormAgregarUE = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const juntaEscolarNombre = juntaescolar ? juntaescolar.name : "";
-      // setJuntaEscolar(juntaEscolarCloudinary);
-      // console.log("Junta Escolar: ", juntaEscolarCloudinary);
-
-      // console.log("State API:", juntaEscolarCloudinary);
   
       const response = await createDatoGeneralUE({
         nombre,
@@ -112,7 +107,6 @@ const FormAgregarUE = () => {
         // juntaescolar : juntaEscolar
         juntaescolar:juntaEscolar,
         serviciosPublicos
-        // juntaescolar : juntaEscolarCloudinary
       });
   
       Swal.fire({
@@ -146,15 +140,6 @@ const FormAgregarUE = () => {
 
           setJuntaEscolar( response.imageUrls[0] );
 
-          // console.log("Response from API Junta Escolar:", response.imageUrls[0]);
-          // console.log("Response from API Junta Escolar:", juntaEscolar);
-          // console.log("Response tipo :", typeof juntaEscolar);
-
-
-          // setJuntaEscolarCloudinary(response.imageUrls);
-          // console.log("Response from API:", response.imageUrls);
-
-          // console.log("State API:", juntaEscolarCloudinary);
         } catch (error) {
           console.error("Error", error);
         }
@@ -268,16 +253,7 @@ const FormAgregarUE = () => {
                       type="file"
                       onChange={(e) => setJuntaEscolarFoto(e.target.files[0])} // Actualiza el estado con el archivo seleccionado
                     />
-                    {/* <div>
-                      <ArregloFotos
-                        setFoto={setJuntaEscolar}
-                      />
-
-
-
-
-
-                    </div> */}
+              
                   </section>
                 </div>
               </div>

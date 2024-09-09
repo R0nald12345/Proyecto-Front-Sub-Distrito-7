@@ -75,6 +75,7 @@ export const updateCentroSalud = async (
       direccion,
       uv,
       horario,
+      nivel,
       videoUrl,
       paginawebUrl,
       fotos:fotoActualizado,

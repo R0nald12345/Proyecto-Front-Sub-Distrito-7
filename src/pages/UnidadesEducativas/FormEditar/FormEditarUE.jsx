@@ -5,19 +5,6 @@ import FormTipos from "../FormAgregarNuevo/FormTipos";
 import ArregloFotos from "../../../components/Encabezado_Listas/UnidadesEducativas/ArregloFotos";
 import MapaAgregar from "../Mapas/MapaAgregar";
 
-// import FormTipos from "./FormEditarTipos";
-// import FormAgregarGestion from "./FormAgregarGestion";
-// import FormAgregarDesayuno from "./FormAgregarDesayuno";
-// import { useNavigate } from "react-router-dom";
-// import { useDropzone } from "react-dropzone";
-// import FormTipoApoyo from "./FormTipoApoyo";
-// import MapaAgregar from "../Mapas/MapaAgregar";
-// import { createDatoGeneralUE } from "../../../api/UnidadesEducativas";
-// import Encabezado_Arreglo_CargarFotos from "../../../components/Encabezado_Listas/UnidadesEducativas/Encabezado_Arreglo_CargarFotos";
-// import Swal from "sweetalert2";
-// import Modal_AgregarGestion from "../../../components/modales/Modal_AgregarGestion";
-// import ArregloFotos from "../../../components/Encabezado_Listas/UnidadesEducativas/ArregloFotos";
-// import { createURLFotos } from "../../../api/ArchivoFotos";
 
 const FormEditarUE = () => {
 
@@ -141,7 +128,6 @@ const FormEditarUE = () => {
           // console.log("Response from API Junta Escolar:", response.imageUrls[0]);
           // console.log("Response from API Junta Escolar:", juntaEscolar);
           // console.log("Response tipo :", typeof juntaEscolar);
-
 
           // setJuntaEscolarCloudinary(response.imageUrls);
           // console.log("Response from API:", response.imageUrls);

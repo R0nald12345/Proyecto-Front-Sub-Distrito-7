@@ -110,11 +110,12 @@ const Header = () => {
         <Menu
           menuButton={
             <MenuButton className="flex items-center gap-x-2 hover:bg-secondary-100  p-2 rounded-lg transition-colors">
-              <img
+              {/* <img
                 src="https://img.freepik.com/foto-gratis/retrato-joven-feliz-camisa-blanca_171337-17462.jpg"
                 className="w-8 h-8 object-cover rounded-full"
-              />
-              <span>{userName}</span>
+              /> */}
+                <span className="font-bold uppercase text-xl">{userName}</span>
+
               <FaAngleDown />
             </MenuButton>
           }
@@ -128,10 +129,10 @@ const Header = () => {
               className="rounded-lg transition-colors hover:bg-primary-100/90 flex items-center gap-x-4 py-2 px-6 flex-1"
               to="/perfil"
             >
-              <img
+              {/* <img
                 src="https://img.freepik.com/foto-gratis/retrato-joven-feliz-camisa-blanca_171337-17462.jpg"
                 className="w-8 h-8 object-cover rounded-full"
-              />
+              /> */}
               <div className="flex flex-col gap-1 text-sm">
                 <span className="text-sm font-semibold">{userName}</span>
                 <span className="text-xs text-gray-800 font-semibold">
