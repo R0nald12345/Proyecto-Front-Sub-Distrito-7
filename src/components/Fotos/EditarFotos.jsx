@@ -1,5 +1,4 @@
 import { FcStackOfPhotos } from "react-icons/fc";
-import EditarFotos_Listado from "./EditarFotos_Listado";
 import "../../../src/styles.css";
 import { useState, useEffect } from "react";
 import { createURLFotos } from "../../api/ArchivoFotos";
@@ -7,23 +6,21 @@ import { createURLFotos } from "../../api/ArchivoFotos";
 const EditarFotos = ({ fotos, setFotos, setFotoActualizado }) => {
   const [fotoNueva, setFotoNueva] = useState(null);
 
-//   let arregloUrl = fotos.map(foto => foto.url);
-
   // Actualizar setFotoActualizado con las URLs de las fotos proporcionadas a través de las props
   useEffect(() => {
     let arregloUrl = fotos.map(foto => foto.url);
     setFotoActualizado(arregloUrl);
   }, [fotos, setFotoActualizado]);
-   
 
-  const handleDelete = (id) => {
+  const handleDelete = (e,id) => {
+    e.preventDefault();
     // Filtra las imágenes para eliminar la que tiene el id correspondiente
-  const updatedImages = fotos.filter((image) => image.id !== id);
-  setFotos(updatedImages); // Actualiza el estado en el componente padre
+    const updatedImages = fotos.filter((image) => image.id !== id);
+    setFotos(updatedImages); // Actualiza el estado en el componente padre
 
-  // Extraer solo las URLs de las imágenes actualizadas
-  const updatedUrls = updatedImages.map((image) => image.url);
-  setFotoActualizado(updatedUrls); // Actualiza el estado con las URLs
+    // Extraer solo las URLs de las imágenes actualizadas
+    const updatedUrls = updatedImages.map((image) => image.url);
+    setFotoActualizado(updatedUrls); // Actualiza el estado con las URLs
   };
 
   // Función para convertir fotos usando Cloudinary
@@ -62,13 +59,12 @@ const EditarFotos = ({ fotos, setFotos, setFotoActualizado }) => {
     console.log("newImgsStateeeeeee", newImgsState);
     setFotos(newImgsState);
 
-    // setFotos(...fotos, newImgsToState);
-      // Extraer solo las URLs de las fotos
-  let urls = newImgsState.map(foto => foto.url);
-  console.log("URLs", urls);
+    // Extraer solo las URLs de las fotos
+    let urls = newImgsState.map(foto => foto.url);
+    console.log("URLs", urls);
 
-  // Actualizar el estado con las URLs
-  setFotoActualizado(urls);
+    // Actualizar el estado con las URLs
+    setFotoActualizado(urls);
   };
 
   return (
@@ -91,7 +87,7 @@ const EditarFotos = ({ fotos, setFotos, setFotoActualizado }) => {
                 />
                 <button
                   className="absolute top-2 right-0 bg-red-600 font-bold text-white px-2 rounded"
-                  onClick={() => handleDelete(foto.id)}
+                  onClick={(e) => handleDelete(e,foto.id)}
                 >
                   x
                 </button>
