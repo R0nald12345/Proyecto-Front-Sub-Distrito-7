@@ -110,12 +110,15 @@ function App() {
               <Route path="usuarios" element={<ListaGeneralUsuarios />} />
               <Route path="agregarUsuario" element={<NuevoUsuario />} />
             </Route>
-              <Route path="*" element={<NotFound />} /> {/* Ruta catch-all */}
+            
+            {/* Ruta catch-all */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </DataProvider>
       </AuthProvider>
     </Router>
   );
 }
+
 
 export default App;

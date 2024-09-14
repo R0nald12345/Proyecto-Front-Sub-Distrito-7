@@ -443,16 +443,16 @@ console.log(id);
           
         </section>
 
-        <section className="md:flex w-full mt-32 md:mt-5 lg:mt-12 gap-5">
+        <section className="md:flex w-full mt-32 md:mt-20 lg:mt-20 gap-5">
 
           <section className="md:w-1/3 ">
             <p className="uppercase font-semibold text-gray-600 mt-2 mb-1 text-center">
               Informacion de :
             </p>
 
-            <div className="flex justify-around md:px-2 md:block lg:flex lg:justify-around w-full border border-black/50 rounded-md mt-2 py-3">
+            <div className="flex justify-around md:px-2 md:block lg:flex lg:justify-around w-full border border-black/50 rounded-md mt-2 py-3 gap-2">
               <button
-                className="bg-primary-100 md:w-full lg:w-auto text-xl text-white font-semibold px-2 md:px-5 py-2 rounded-xl"
+                className="bg-primary-100 md:w-full lg:w-auto text-xl text-white font-semibold px-2 md:px-3 py-2 rounded-xl"
                 onClick={() => navigate(`/inicio/unidadeducativa/desayuno/${id}`)}
               >
                 Desayuno
