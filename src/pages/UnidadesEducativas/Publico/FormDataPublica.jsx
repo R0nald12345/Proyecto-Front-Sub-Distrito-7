@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import jsPDF from "jspdf";
+// import jsPDF from "jspdf";
 
 import "jspdf-autotable";
 import MapaMostrar from "../Mapas/MapaMostrar";
@@ -9,20 +9,21 @@ import MapaMostrar from "../Mapas/MapaMostrar";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import {getDatoGeneralUEid} from '../../../api/UnidadesEducativas'
+import { getDatoGeneralUEid } from "../../../api/UnidadesEducativas";
 import { createURLFotos } from "../../../api/ArchivoFotos";
 import { DataContext } from "../../../context/DataProvider";
 import Lista_ServicioPublicoGeneral from "../../../components/ServicioPublicos/Lista_ServicioPublicoGeneral";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import Documento from "../../../reports/Documento";
 
 const FormDataPublica = () => {
-
   const { id } = useParams();
 
   const { setDataIdUE } = useContext(DataContext);
-  
+
   setDataIdUE(id);
 
-console.log(id);
+  console.log(id);
 
   const [nombreUE, setNombreUE] = useState("");
   const [direccionUE, setDireccionUE] = useState("");
@@ -55,22 +56,27 @@ console.log(id);
   const [images, setImages] = useState([]);
   const [imagesURL, setImagesURL] = useState([]);
 
+
   const navigate = useNavigate();
+
+  const handleClick = (event) => {
+    event.preventDefault();
+  };
 
 
   useEffect(() => {
     const fetchingExtraDatoId = async () => {
       try {
         const response = await getDatoGeneralUEid(id);
-  
+
         console.log(response);
-  
+
         setNombreUE(response.nombre);
         setDireccionUE(response.direccion);
         setCoordenadaX(response.coordenada_x);
         setCoordenadaY(response.coordenada_y);
         setDescripcionHistoria(response.historia);
-  
+
         setNombreDirectorGestion(response.gestion.director);
         setNroGestion(response.gestion.numero);
         setHoraGestion(response.gestion.horario);
@@ -83,23 +89,44 @@ console.log(id);
         setUv(response.uv);
         setSlug(response.slug);
 
-
-        const formattedImages = response.fotos.map(photo => ({
+        const formattedImages = response.fotos.map((photo) => ({
           original: `${photo.url}`,
           thumbnail: `${photo.url}`,
         }));
 
         setImages(formattedImages);
 
-      
+        setNombreColegio(nombreUE);
+        console.log("Colegioooooo", nombreColegio);
+
+        // actualizarDatoColegio({
+        //   tipoColegio: response.idTipoColegio.nombre,
+        //   tipoInfraestructura: response.idInfraestructura.nombre,
+        //   tipoTurno: response.idTurno.nombre,
+        //   nombreUE: response.nombre,
+        //   direccionUE: response.direccion,
+        //   descripcionHistoria: response.historia,
+        //   horaGestion: response.gestion.horario,
+        //   nroGestion: response.gestion.numero,
+        //   nombreDirectorGestion: response.gestion.director,
+        //   uv: response.uv,
+        //   servicioPublico: response.serviciosPublicos,
+        // });
+
+
+        // Establecer un retraso de 2 segundos
+        // setTimeout(() => {
+        //   setDelay(false);
+        // }, 2000);
+
+        // Actualizar el estado en el contexto
       } catch (error) {
         console.log("Error al cargar Datos de Formulario por Id", error);
       }
     };
-  
+
     fetchingExtraDatoId();
-  }, []);
- 
+  }, [id]);
 
 
   useEffect(() => {
@@ -107,20 +134,20 @@ console.log(id);
       try {
         const response = await createURLFotos({ imageFiles: images });
 
-        console.log('image URL');
+        console.log("image URL");
         console.log(response);
 
-        const formattedImages = response.map(photo => {
+        const formattedImages = response.map((photo) => {
           return {
             original: photo.url,
             thumbnail: photo.url,
           };
         });
 
-        console.log('Formatted Images:', formattedImages);
+        console.log("Formatted Images:", formattedImages);
         setImages(formattedImages);
       } catch (error) {
-        console.log('Error al cargar fetchingExtraFotosURL', error);
+        console.log("Error al cargar fetchingExtraFotosURL", error);
       }
     };
 
@@ -128,90 +155,6 @@ console.log(id);
       fetchingExtraFotosURL();
     }
   }, [images]);
-
-
-  const generarPDF = () => {
-    const doc = new jsPDF();
-
-    // doc.setMargins(1, 1); // Configurar los márgenes antes de agregar contenido al PDF
-    doc.setFontSize(12);
-    // doc.setTextColor('justify'); // Justificar el texto
-
-    // const maxWidth = 175;
-    // const lines = doc.splitTextToSize(`${descripcionHistoria}`, maxWidth);
-
-    doc.text("Informe", 95, 20);
-
-    //Crear una tabla para los detalles de los factura
-
-    const columns1 = ["Nombre", "Direccion"];
-    const data1 = [[nombreUE, direccionUE]];
-
-    doc.autoTable({
-      startY: 30,
-      head: [columns1],
-      body: data1,
-    });
-
-    const columns2 = ["Historia Unidad Educativa"];
-    const data2 = [[descripcionHistoria]];
-
-    doc.autoTable({
-      startY: 50,
-      head: [columns2],
-      body: data2,
-      styles: { fillColor: [17, 115, 0] },
-    });
-
-    const columns3 = ["Tipo Colegio", "Tipo Turno", "Tipo InfraEstructura"];
-    const data3 = [[tipoColegio, tipoTurno, tipoInfraestructura]];
-
-    doc.autoTable({
-      startY: 30,
-      head: [columns3],
-      body: data3,
-      styles: { fillColor: [17, 115, 0] },
-    });
-
-    const columns4 = ["Horario", "Numero", "Director"];
-    const data4 = [[horaGestion, nroGestion, nombreDirectorGestion]];
-
-    doc.autoTable({
-      startY: 140,
-      head: [columns4],
-      body: data4,
-      styles: { fillColor: [17, 115, 0] },
-    });
-
-    const columns5 = ["Nombre Comida", "Fecha", "Nombre Entrega", "Cantidad"];
-    const data5 = [
-      [nombreDesayuno, fechaDesayuno, nombreEntregaDesayuno, cantidadDesayuno],
-    ];
-
-    doc.autoTable({
-      startY: 160,
-      head: [columns5],
-      body: data5,
-      styles: { fillColor: [17, 115, 0] },
-    });
-
-    doc.save(`factura_${1}.pdf`);
-  };
-
-  // const images = [
-  //   {
-  //     original: "https://picsum.photos/id/1018/1000/600",
-  //     thumbnail: "https://picsum.photos/id/1018/250/150",
-  //   },
-  //   {
-  //     original: "https://picsum.photos/id/1015/1000/600",
-  //     thumbnail: "https://picsum.photos/id/1015/250/150",
-  //   },
-  //   {
-  //     original: "https://picsum.photos/id/1019/1000/600",
-  //     thumbnail: "https://picsum.photos/id/1019/250/150",
-  //   },
-  // ];
 
   return (
     <div className="flex justify-center items-center">
@@ -221,99 +164,75 @@ console.log(id);
           {/* Parte Lateral angosto Izquierdp*/}
 
           <section className="w-full md:w-[45%]">
+            <div className="lg:hidden mt-4">
+              <h3 className="uppercase font-semibold text-gray-600">Nombre</h3>
 
-              <div className="lg:hidden mt-4">
-                  <h3 className="uppercase font-semibold text-gray-600">Nombre</h3>
-                
-                  <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200 mb-1">
-                    {nombreUE}
-                  </p>
+              <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200 mb-1">
+                {nombreUE}
+              </p>
 
-                  <h3 className="uppercase font-semibold mt-4 text-gray-600">
-                    Dirección
-                  </h3>
-                  <p
-                    className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
-                    style={{ height: "60px" }}
-                  >
-                    {direccionUE}
-                  </p>
+              <h3 className="uppercase font-semibold mt-4 text-gray-600">
+                Dirección
+              </h3>
+              <p
+                className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
+                style={{ height: "60px" }}
+              >
+                {direccionUE}
+              </p>
 
-                  <h3 className="uppercase mt-2 font-semibold  text-gray-600">
-                    Video
-                  </h3>
-                  <p
-                    className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
-                  >
-                    {video}
-                  </p>
-              </div>
+              <h3 className="uppercase mt-2 font-semibold  text-gray-600">
+                Video
+              </h3>
+              <p className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200">
+                {video}
+              </p>
+            </div>
 
-              <div className="max-w-md mx-auto">
-                <ImageGallery
-                  items={images}
-                />
-
-              </div>
-
+            <div className="max-w-md mx-auto">
+              <ImageGallery items={images} />
+            </div>
 
             {/* Historia */}
             <div className="h-3/5">
               <p className="uppercase font-semibold text-gray-600 mt-1">
                 Historia
               </p>
-              <p
-                className="w-full border-gray-400 border-2 rounded-xl h-40 md:h-[610px] lg:h-[430px] py-1 px-2 bg-gray-200 overflow-y-scroll"
-              >
+              <p className="w-full border-gray-400 border-2 rounded-xl h-40 md:h-[610px] lg:h-[430px] py-1 px-2 bg-gray-200 overflow-y-scroll">
                 {descripcionHistoria}
               </p>
             </div>
-
           </section>
-
-
-
 
           {/* Parte Lateral Ancha Derecho*/}
           <section className="md:w-[55%]">
             {/* Parte Superior*/}
             <section className="flex h-52 gap-5">
-
               <div className="hidden lg:block lg:w-3/5 ">
+                <h3 className="uppercase font-semibold text-gray-600">
+                  Nombre
+                </h3>
 
-                  <h3 className="uppercase font-semibold text-gray-600">Nombre</h3>
-                
-                  <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200 mb-1">
-                    {nombreUE}
-                  </p>
-                  <h3 className="uppercase font-semibold mt-2 text-gray-600">
-                    Dirección
-                  </h3>
-                  <p
-                    className="py-1 rounded-xl pl-3  w-full border-gray-400 border-2 bg-gray-200"
-                  >
-                    {direccionUE}
-                  </p>
+                <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200 mb-1">
+                  {nombreUE}
+                </p>
+                <h3 className="uppercase font-semibold mt-2 text-gray-600">
+                  Dirección
+                </h3>
+                <p className="py-1 rounded-xl pl-3  w-full border-gray-400 border-2 bg-gray-200">
+                  {direccionUE}
+                </p>
 
-                  <h3 className="uppercase mt-2 font-semibold  text-gray-600">
-                    Video
-                  </h3>
-                  <p
-                    className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200"
-                  >
-                    {video}
-                  </p>
-                
-
-
-
+                <h3 className="uppercase mt-2 font-semibold  text-gray-600">
+                  Video
+                </h3>
+                <p className="py-1 rounded-xl pl-3 mb-4 w-full border-gray-400 border-2 bg-gray-200">
+                  {video}
+                </p>
               </div>
 
-
-
-              <div className="w-full lg:w-2/5 flex flex-col mt-4 lg:mt-0" >
+              <div className="w-full lg:w-2/5 flex flex-col mt-4 lg:mt-0">
                 <div className="flex gap-3">
-
                   <div className="w-1/2  ">
                     <p className="font-semibold text-gray-600 uppercase">
                       Tipo Colegio
@@ -333,28 +252,21 @@ console.log(id);
                   </div>
                 </div>
 
-                  <p className="font-semibold text-gray-600 uppercase mt-2">
-                    Tipo Infraestrcutura
-                  </p>
-                  <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200">
-                    {tipoInfraestructura}
-                  </p>
+                <p className="font-semibold text-gray-600 uppercase mt-2">
+                  Tipo Infraestrcutura
+                </p>
+                <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200">
+                  {tipoInfraestructura}
+                </p>
 
                 <h3 className="uppercase font-semibold mt-2 text-gray-600">
-                    Uv
-                  </h3>
-                  <p
-                    className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
-                  >
-                    {uv}
-                  </p>
-      
+                  Uv
+                </h3>
+                <p className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200">
+                  {uv}
+                </p>
               </div>
-
-
             </section>
-
-
 
             <section className=" w-full">
               <div className="w-full ">
@@ -362,11 +274,8 @@ console.log(id);
                   Gestión
                 </p>
                 <section className="lg:flex gap-8 border border-black/50 rounded-lg px-3 py-3 ">
-
                   <section className="flex-col gap-5 lg:w-[40%]">
-
                     <section className=" flex gap-3 md:flex-col ">
-                      
                       <div className="w-full mt-1">
                         <p className="uppercase font-semibold text-gray-600 ">
                           Horario
@@ -376,7 +285,6 @@ console.log(id);
                         </p>
                       </div>
 
-
                       <div className="w-full  ">
                         <p className="uppercase font-semibold text-gray-600">
                           Número
@@ -385,7 +293,6 @@ console.log(id);
                           {nroGestion}
                         </p>
                       </div>
-
                     </section>
 
                     <div className="w-full ">
@@ -398,35 +305,31 @@ console.log(id);
                     </div>
                   </section>
 
-
-
                   <section className="lg:w-[60%] ">
-                      <p className="uppercase font-semibold text-gray-600 mt-1">
-                        Junta Escolar
-                      </p>
-                      <img
-                        src={imagenGestion}
-                        className="bg-black border-2 rounded-xl w-full  border-gray-400 object-contain bg-blend-overlay"
-                        style={{ height: "230px" }}
-                      />
+                    <p className="uppercase font-semibold text-gray-600 mt-1">
+                      Junta Escolar
+                    </p>
+                    <img
+                      src={imagenGestion}
+                      className="bg-black border-2 rounded-xl w-full  border-gray-400 object-contain bg-blend-overlay"
+                      style={{ height: "230px" }}
+                    />
                   </section>
                 </section>
               </div>
 
               <div className="mt-3">
-                  
-                  <h3 className="text-gray-600 text-xl uppercase font-semibold text-center">Servicios Publicos</h3>
-                  <div className=" mt-3 max-h-28 md:max-h-32  overflow-y-auto scrollbar-hide">
-                    {
-                      servicioPublico.map( (element,index) =>(
-                        <Lista_ServicioPublicoGeneral
-                          key={index}
-                          descripcion={element}
-                        />  
-                      ))
-                    }
-                  </div>
-
+                <h3 className="text-gray-600 text-xl uppercase font-semibold text-center">
+                  Servicios Publicos
+                </h3>
+                <div className=" mt-3 max-h-28 md:max-h-32  overflow-y-auto scrollbar-hide">
+                  {servicioPublico.map((element, index) => (
+                    <Lista_ServicioPublicoGeneral
+                      key={index}
+                      descripcion={element}
+                    />
+                  ))}
+                </div>
               </div>
 
               <div className="mt-1">
@@ -438,13 +341,10 @@ console.log(id);
                 </div>
               </div>
             </section>
-
           </section>
-          
         </section>
 
         <section className="md:flex w-full mt-32 md:mt-20 lg:mt-20 gap-5">
-
           <section className="md:w-1/3 ">
             <p className="uppercase font-semibold text-gray-600 mt-2 mb-1 text-center">
               Informacion de :
@@ -453,14 +353,18 @@ console.log(id);
             <div className="flex justify-around md:px-2 md:block lg:flex lg:justify-around w-full border border-black/50 rounded-md mt-2 py-3 gap-2">
               <button
                 className="bg-primary-100 md:w-full lg:w-auto text-xl text-white font-semibold px-2 md:px-3 py-2 rounded-xl"
-                onClick={() => navigate(`/inicio/unidadeducativa/desayuno/${id}`)}
+                onClick={() =>
+                  navigate(`/inicio/unidadeducativa/desayuno/${id}`)
+                }
               >
                 Desayuno
               </button>
 
               <button
                 className="bg-primary-100 md:mt-2 lg:mt-0 md:w-full lg:w-auto text-xl text-white font-semibold px-2 md:px-5 py-2 rounded-xl"
-                onClick={() => navigate(`/inicio/unidadeducativa/mantenimiento/${id}`)}
+                onClick={() =>
+                  navigate(`/inicio/unidadeducativa/mantenimiento/${id}`)
+                }
               >
                 Mantenimiento
               </button>
@@ -474,7 +378,9 @@ console.log(id);
             <div className="flex justify-around md:px-2 md:block lg:flex lg:justify-around w-full border border-black/50 rounded-md mt-2 py-3">
               <button
                 className="bg-primary-100 md:w-full lg:w-auto text-xl text-white font-semibold px-6 md:px-5 py-2 rounded-xl"
-                onClick={() => navigate(`/inicio/unidadeducativa/apoyo-social/${id}`)}
+                onClick={() =>
+                  navigate(`/inicio/unidadeducativa/apoyo-social/${id}`)
+                }
               >
                 Social
               </button>
@@ -497,13 +403,14 @@ console.log(id);
             <div className="flex justify-around md:px-2 w-full border border-black/50 rounded-md mt-2 py-3">
               <button
                 className="bg-primary-100 text-xl text-white font-semibold px-6 md:px-5 py-2 rounded-xl"
-                onClick={() => navigate(`/inicio/unidadeducativa/visitas/${id}`)}
+                onClick={() =>
+                  navigate(`/inicio/unidadeducativa/visitas/${id}`)
+                }
               >
                 Informacion Visitas
               </button>
             </div>
           </section>
-          
         </section>
 
         {/* Seleccion debajo */}
@@ -516,12 +423,57 @@ console.log(id);
             Regresar
           </button>
 
-          <button
+          {/* <button
             onClick={generarPDF}
             className="w-1/2 bg-red-600 rounded-xl text-white uppercase font-semibold text-2xl mt-5 py-3 hover:bg-red-900"
           >
             Generar PDF
-          </button>
+          </button> */}
+          
+            <PDFDownloadLink
+              className="w-1/2 text-center uppercase bg-red-600 rounded-xl text-white font-semibold text-2xl mt-5 py-3 hover:bg-red-900"
+              document={<Documento
+                nombreUE={nombreUE}
+                direccionUE={direccionUE}
+                descripcionHistoria={descripcionHistoria}
+                horaGestion={horaGestion}
+                nroGestion={nroGestion}
+                nombreDirectorGestion={nombreDirectorGestion}
+                uv={uv}
+
+                servicioPublico={servicioPublico}
+                tipoColegio={tipoColegio}
+                tipoInfraestructura={tipoInfraestructura}
+                tipoTurno={tipoTurno}
+
+
+
+                />}
+              fileName="Kimetsu_Pilares.pdf"
+            >
+              {({ loading }) =>
+                loading ? (
+                  <button onClick={handleClick}>Cargando...</button>
+                ) : (
+                  <button onClick={handleClick}>Descargar PDF</button>
+                )
+              }
+            </PDFDownloadLink>
+          
+
+          {/* <PDFDownloadLink
+            className="w-1/2 text-center uppercase bg-red-600 rounded-xl text-white font-semibold text-2xl mt-5 py-3 hover:bg-red-900"
+            document={<Documento />}
+            fileName="Kimetsu_Pilares.pdf"
+          >
+            {({ loading }) =>
+              loading ? (
+                <button onClick={handleClick}>Cargando...</button>
+              ) : (
+                <button onClick={handleClick}>Descargar PDF</button>
+              )
+            }
+          </PDFDownloadLink> */}
         </div>
       </form>
     </div>
