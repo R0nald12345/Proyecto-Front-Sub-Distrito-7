@@ -25,6 +25,7 @@ const FormAgregarUE = () => {
   const [direccion, setDireccion] = useState("");
   const [historia, setHistoria] = useState("");
   const [video, setVideo] = useState("");
+  const [uv, setUv] = useState("");
   const [slug, setSlug] = useState("");
   const [fotos, setFotos] = useState([]);
   const [idInfraestructura, setIdInfraestructura] = useState(0);
@@ -96,6 +97,7 @@ const FormAgregarUE = () => {
         direccion,
         historia,
         video,
+        uv,
         slug,
         fotos, // Asegúrate de que fotos sea un arreglo de cadenas
         idInfraestructura,
@@ -210,6 +212,22 @@ const FormAgregarUE = () => {
                   value={direccion}
                   onChange={(e) => setDireccion(e.target.value)}
                 />
+                <p className="mt-3 uppercase font-semibold text-gray-600">
+                  Video
+                </p>
+                <input
+                  className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
+                  value={video}
+                  onChange={(e) => setVideo(e.target.value)}
+                />
+                <p className="mt-3 uppercase font-semibold text-gray-600">
+                  Uv
+                </p>
+                <input
+                  className="py-1 rounded-xl pl-3 w-full border-gray-400 border-2 bg-gray-200"
+                  value={uv}
+                  onChange={(e) => setUv(e.target.value)}
+                />
 
                 <div className="">
                   <p className="uppercase font-semibold text-gray-600 mt-3 mb-1 text-center">
@@ -230,6 +248,7 @@ const FormAgregarUE = () => {
                         Número
                       </p>
                       <input
+                        type="number"
                         className="w-full  border-gray-400 border-2 rounded-xl py-1 px-2 bg-gray-100"
                         onChange={(e) => setNumero(e.target.value)}
                       />

@@ -124,6 +124,7 @@ export default function Documento({
   horaGestion,
   nroGestion,
   nombreDirectorGestion,
+  video,
   uv,
   servicioPublico,
   tipoColegio,
@@ -159,6 +160,7 @@ export default function Documento({
 
         <Text style={styles.parragraph}>Nombre:{nombreUE}</Text>
         <Text style={styles.parragraph}>Dirección:{direccionUE}</Text>
+        <Text style={styles.parragraph}>Video:{video}</Text>
         <Text style={styles.parragraph}>Historia:{descripcionHistoria}</Text>
 
         <View style={styles.pageNumber}>
@@ -182,6 +184,7 @@ export default function Documento({
             <View style={styles.tableColHeader}>
               <Text style={styles.tableCellHeader}>Tipo Infraestructura</Text>
             </View>
+           
             <View style={styles.tableColHeader}>
               <Text style={styles.tableCellHeader}>Uv</Text>
             </View>
@@ -197,6 +200,7 @@ export default function Documento({
             <View style={styles.tableCol}>
               <Text style={styles.tableCell}>{tipoInfraestructura}</Text>
             </View>
+         
             <View style={styles.tableCol}>
               <Text style={styles.tableCell}>{uv}</Text>
             </View>

@@ -439,6 +439,7 @@ const FormDataPublica = () => {
                 horaGestion={horaGestion}
                 nroGestion={nroGestion}
                 nombreDirectorGestion={nombreDirectorGestion}
+                video = {video}
                 uv={uv}
 
                 servicioPublico={servicioPublico}
