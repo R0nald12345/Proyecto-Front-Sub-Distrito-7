@@ -107,7 +107,7 @@ const ListaGeneralVisitas = () => {
     filtro.trim() === ""
       ? datosVisitas
       : datosVisitas.filter((element) =>
-          element.nombre.toLowerCase().includes(filtro.toLowerCase())
+          element.titulo.toLowerCase().includes(filtro.toLowerCase())
         );
 
   return (
