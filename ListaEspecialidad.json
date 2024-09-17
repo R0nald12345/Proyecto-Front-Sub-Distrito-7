@@ -1,22 +1,2662 @@
-{
-    "ListaEspecialidad": 
-    [
-        {
-            "idEspecialidad":"1",
-            "encargado":"Dr Fong"
-        },
-        {
-            "idEspecialidad":"2",
-            "encargado":"Dr Suarez"
-        },
-        {
-            "idEspecialidad":"3",
-            "encargado":"Dr Juan Alvares"
-        },
-        {
-            "idEspecialidad":"4",
-            "encargado":"Dr Suarez"
-        }
-    ]
-
-}
+[
+	{
+		"id": 101,
+		"texto": "",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1726440163/t0fjaegpimg37eqzos6b.jpg",
+		"fecha": "2024-09-15T22:42:50.245Z",
+		"idUnidadeducativa": {
+			"id": 134,
+			"nombre": "Unidad Educativa 1",
+			"coordenada_x": "-63.1486",
+			"coordenada_y": "-17.7925",
+			"direccion": "Direccion 1",
+			"historia": "Historia 1",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "111",
+			"slug": "unidad-educativa-dos",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 286,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1726338267/iyythj0kzushvcdmpcst.jpg"
+				},
+				{
+					"id": 285,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1726336587/tsbb1qodf94nszrdjaa5.png"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 3,
+				"nombre": "Privado"
+			},
+			"idTurno": {
+				"id": 3,
+				"nombre": "Tarde"
+			},
+			"gestion": {
+				"id": 134,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 102,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 101,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 100,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 67,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 104,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 101,
+					"cantidad": 500,
+					"nombreEntrega": "Sahonero Puma Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 102,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 103,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 100,
+					"cantidad": 300,
+					"nombreEntrega": "Ronald Pumari",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"categoria": {
+						"id": 2,
+						"nombre": "Sillas"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 67,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 68,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 69,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 70,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 71,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 100,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 101,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 102,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 103,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 104,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 34,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 67,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 68,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	},
+	{
+		"id": 110,
+		"texto": "",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1726450789/awn565ps6eczuz4qqgqa.jpg",
+		"fecha": "2024-09-16T01:39:57.638Z",
+		"idUnidadeducativa": {
+			"id": 134,
+			"nombre": "Unidad Educativa 1",
+			"coordenada_x": "-63.1486",
+			"coordenada_y": "-17.7925",
+			"direccion": "Direccion 1",
+			"historia": "Historia 1",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "111",
+			"slug": "unidad-educativa-dos",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 286,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1726338267/iyythj0kzushvcdmpcst.jpg"
+				},
+				{
+					"id": 285,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1726336587/tsbb1qodf94nszrdjaa5.png"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 3,
+				"nombre": "Privado"
+			},
+			"idTurno": {
+				"id": 3,
+				"nombre": "Tarde"
+			},
+			"gestion": {
+				"id": 134,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 102,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 101,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 100,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 67,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 104,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 101,
+					"cantidad": 500,
+					"nombreEntrega": "Sahonero Puma Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 103,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 100,
+					"cantidad": 300,
+					"nombreEntrega": "Ronald Pumari",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"categoria": {
+						"id": 2,
+						"nombre": "Sillas"
+					}
+				},
+				{
+					"id": 102,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 67,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 68,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 69,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 70,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 71,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 100,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 101,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 102,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 103,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 104,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 34,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 67,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 68,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	},
+	{
+		"id": 67,
+		"texto": "hola",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1725806154/hk3exprsmgg6rz5citvn.jpg",
+		"fecha": "2024-09-08T14:35:59.536Z",
+		"idUnidadeducativa": {
+			"id": 134,
+			"nombre": "Unidad Educativa 1",
+			"coordenada_x": "-63.1486",
+			"coordenada_y": "-17.7925",
+			"direccion": "Direccion 1",
+			"historia": "Historia 1",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "111",
+			"slug": "unidad-educativa-dos",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 285,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1726336587/tsbb1qodf94nszrdjaa5.png"
+				},
+				{
+					"id": 286,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1726338267/iyythj0kzushvcdmpcst.jpg"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 3,
+				"nombre": "Privado"
+			},
+			"idTurno": {
+				"id": 3,
+				"nombre": "Tarde"
+			},
+			"gestion": {
+				"id": 134,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 102,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 101,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 100,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 67,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 104,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 101,
+					"cantidad": 500,
+					"nombreEntrega": "Sahonero Puma Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 102,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 103,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 100,
+					"cantidad": 300,
+					"nombreEntrega": "Ronald Pumari",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"categoria": {
+						"id": 2,
+						"nombre": "Sillas"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 67,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 68,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 69,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 70,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 71,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 100,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 101,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 102,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 103,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 104,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 34,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 67,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 68,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	},
+	{
+		"id": 109,
+		"texto": "",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1726450757/vxewehapeczubt1qi5rp.jpg",
+		"fecha": "2024-09-16T01:39:21.507Z",
+		"idUnidadeducativa": {
+			"id": 137,
+			"nombre": "Unidad Educativa 4",
+			"coordenada_x": "-63.1380",
+			"coordenada_y": "-17.7900",
+			"direccion": "Direccion 4",
+			"historia": "Historia 4",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "uv1",
+			"slug": "unidad-educativa-cuatro",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 214,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/crqupodo4yfc3pzjlvhb.jpg"
+				},
+				{
+					"id": 213,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/gganzsfptuiowuwzn4gt.jpg"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 1,
+				"nombre": "Convenio"
+			},
+			"idTurno": {
+				"id": 3,
+				"nombre": "Tarde"
+			},
+			"gestion": {
+				"id": 137,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 114,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 113,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 112,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 111,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 116,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 115,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 117,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 119,
+					"cantidad": 500,
+					"nombreEntrega": "Sahonero Puma Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 118,
+					"cantidad": 300,
+					"nombreEntrega": "Ronald Pumari",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"categoria": {
+						"id": 2,
+						"nombre": "Sillas"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 82,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 83,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 84,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 85,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 86,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 115,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 116,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 117,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 118,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 119,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 75,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 76,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 77,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	},
+	{
+		"id": 106,
+		"texto": "",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1726450649/pix1apydhshs0rx3zxjh.jpg",
+		"fecha": "2024-09-16T01:37:35.471Z",
+		"idUnidadeducativa": {
+			"id": 137,
+			"nombre": "Unidad Educativa 4",
+			"coordenada_x": "-63.1380",
+			"coordenada_y": "-17.7900",
+			"direccion": "Direccion 4",
+			"historia": "Historia 4",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "uv1",
+			"slug": "unidad-educativa-cuatro",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 214,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/crqupodo4yfc3pzjlvhb.jpg"
+				},
+				{
+					"id": 213,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/gganzsfptuiowuwzn4gt.jpg"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 1,
+				"nombre": "Convenio"
+			},
+			"idTurno": {
+				"id": 3,
+				"nombre": "Tarde"
+			},
+			"gestion": {
+				"id": 137,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 114,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 113,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 112,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 111,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 115,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 117,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 119,
+					"cantidad": 500,
+					"nombreEntrega": "Sahonero Puma Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 116,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 118,
+					"cantidad": 300,
+					"nombreEntrega": "Ronald Pumari",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"categoria": {
+						"id": 2,
+						"nombre": "Sillas"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 82,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 83,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 84,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 85,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 86,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 115,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 116,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 117,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 118,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 119,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 75,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 76,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 77,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	},
+	{
+		"id": 107,
+		"texto": "",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1726450680/a4birqlugjzk2awqo98f.jpg",
+		"fecha": "2024-09-16T01:38:10.202Z",
+		"idUnidadeducativa": {
+			"id": 137,
+			"nombre": "Unidad Educativa 4",
+			"coordenada_x": "-63.1380",
+			"coordenada_y": "-17.7900",
+			"direccion": "Direccion 4",
+			"historia": "Historia 4",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "uv1",
+			"slug": "unidad-educativa-cuatro",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 214,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/crqupodo4yfc3pzjlvhb.jpg"
+				},
+				{
+					"id": 213,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/gganzsfptuiowuwzn4gt.jpg"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 1,
+				"nombre": "Convenio"
+			},
+			"idTurno": {
+				"id": 3,
+				"nombre": "Tarde"
+			},
+			"gestion": {
+				"id": 137,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 114,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 113,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 112,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 111,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 115,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 117,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 119,
+					"cantidad": 500,
+					"nombreEntrega": "Sahonero Puma Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 116,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 118,
+					"cantidad": 300,
+					"nombreEntrega": "Ronald Pumari",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"categoria": {
+						"id": 2,
+						"nombre": "Sillas"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 82,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 83,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 84,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 85,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 86,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 115,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 116,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 117,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 118,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 119,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 75,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 76,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 77,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	},
+	{
+		"id": 108,
+		"texto": "",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1726450719/lvkoynw1wgeruepbvxfa.jpg",
+		"fecha": "2024-09-16T01:38:48.498Z",
+		"idUnidadeducativa": {
+			"id": 137,
+			"nombre": "Unidad Educativa 4",
+			"coordenada_x": "-63.1380",
+			"coordenada_y": "-17.7900",
+			"direccion": "Direccion 4",
+			"historia": "Historia 4",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "uv1",
+			"slug": "unidad-educativa-cuatro",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 214,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/crqupodo4yfc3pzjlvhb.jpg"
+				},
+				{
+					"id": 213,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/gganzsfptuiowuwzn4gt.jpg"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 1,
+				"nombre": "Convenio"
+			},
+			"idTurno": {
+				"id": 3,
+				"nombre": "Tarde"
+			},
+			"gestion": {
+				"id": 137,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 114,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 113,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 112,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 111,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 115,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 117,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 119,
+					"cantidad": 500,
+					"nombreEntrega": "Sahonero Puma Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 116,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 118,
+					"cantidad": 300,
+					"nombreEntrega": "Ronald Pumari",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"categoria": {
+						"id": 2,
+						"nombre": "Sillas"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 82,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 83,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 84,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 85,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 86,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 115,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 116,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 117,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 118,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 119,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 75,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 76,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 77,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	},
+	{
+		"id": 102,
+		"texto": "",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1726450444/lvjafnwc1uckjxyfvorg.jpg",
+		"fecha": "2024-09-16T01:34:11.070Z",
+		"idUnidadeducativa": {
+			"id": 138,
+			"nombre": "Unidad Educativa 5",
+			"coordenada_x": "-63.1320",
+			"coordenada_y": "-17.7940",
+			"direccion": "Direccion 5",
+			"historia": "Historia 5",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "uv1",
+			"slug": "unidad-educativa-cinco",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 215,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/gganzsfptuiowuwzn4gt.jpg"
+				},
+				{
+					"id": 216,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/crqupodo4yfc3pzjlvhb.jpg"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 3,
+				"nombre": "Privado"
+			},
+			"idTurno": {
+				"id": 1,
+				"nombre": "Mañana"
+			},
+			"gestion": {
+				"id": 138,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 117,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 118,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 116,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 115,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 120,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 121,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 122,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 87,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 88,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 89,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 90,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 91,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 120,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 121,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 122,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 123,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 124,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 78,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 79,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 80,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	},
+	{
+		"id": 100,
+		"texto": "",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1726440125/ppdbhydyk6ewyfugv3a1.jpg",
+		"fecha": "2024-09-15T22:42:11.248Z",
+		"idUnidadeducativa": {
+			"id": 138,
+			"nombre": "Unidad Educativa 5",
+			"coordenada_x": "-63.1320",
+			"coordenada_y": "-17.7940",
+			"direccion": "Direccion 5",
+			"historia": "Historia 5",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "uv1",
+			"slug": "unidad-educativa-cinco",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 215,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/gganzsfptuiowuwzn4gt.jpg"
+				},
+				{
+					"id": 216,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/crqupodo4yfc3pzjlvhb.jpg"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 3,
+				"nombre": "Privado"
+			},
+			"idTurno": {
+				"id": 1,
+				"nombre": "Mañana"
+			},
+			"gestion": {
+				"id": 138,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 117,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 118,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 116,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 115,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 120,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 121,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 122,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 87,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 88,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 89,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 90,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 91,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 120,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 121,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 122,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 123,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 124,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 78,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 79,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 80,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	},
+	{
+		"id": 105,
+		"texto": "",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1726450599/dyeaul6mxwp0blxuen0d.jpg",
+		"fecha": "2024-09-16T01:36:46.360Z",
+		"idUnidadeducativa": {
+			"id": 138,
+			"nombre": "Unidad Educativa 5",
+			"coordenada_x": "-63.1320",
+			"coordenada_y": "-17.7940",
+			"direccion": "Direccion 5",
+			"historia": "Historia 5",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "uv1",
+			"slug": "unidad-educativa-cinco",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 216,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/crqupodo4yfc3pzjlvhb.jpg"
+				},
+				{
+					"id": 215,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/gganzsfptuiowuwzn4gt.jpg"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 3,
+				"nombre": "Privado"
+			},
+			"idTurno": {
+				"id": 1,
+				"nombre": "Mañana"
+			},
+			"gestion": {
+				"id": 138,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 117,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 118,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 116,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 115,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 120,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 121,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 122,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 87,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 88,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 89,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 90,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 91,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 120,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 121,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 122,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 123,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 124,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 78,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 79,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 80,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	},
+	{
+		"id": 104,
+		"texto": "",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1726450561/tsbuq5pkbuhtwdoo9b6d.jpg",
+		"fecha": "2024-09-16T01:36:10.289Z",
+		"idUnidadeducativa": {
+			"id": 138,
+			"nombre": "Unidad Educativa 5",
+			"coordenada_x": "-63.1320",
+			"coordenada_y": "-17.7940",
+			"direccion": "Direccion 5",
+			"historia": "Historia 5",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "uv1",
+			"slug": "unidad-educativa-cinco",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 216,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/crqupodo4yfc3pzjlvhb.jpg"
+				},
+				{
+					"id": 215,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/gganzsfptuiowuwzn4gt.jpg"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 3,
+				"nombre": "Privado"
+			},
+			"idTurno": {
+				"id": 1,
+				"nombre": "Mañana"
+			},
+			"gestion": {
+				"id": 138,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 117,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 118,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 116,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 115,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 120,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 121,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 122,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 87,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 88,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 89,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 90,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 91,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 120,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 121,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 122,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 123,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 124,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 78,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 79,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 80,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	},
+	{
+		"id": 103,
+		"texto": "",
+		"imageUrl": "https://res.cloudinary.com/da9xsfose/image/upload/v1726450488/abpxc73cavyhkgnq4dn2.jpg",
+		"fecha": "2024-09-16T01:35:01.419Z",
+		"idUnidadeducativa": {
+			"id": 138,
+			"nombre": "Unidad Educativa 5",
+			"coordenada_x": "-63.1320",
+			"coordenada_y": "-17.7940",
+			"direccion": "Direccion 5",
+			"historia": "Historia 5",
+			"video": "https://www.youtube.com/watch?v=wtsaxIWaCiU",
+			"uv": "uv1",
+			"slug": "unidad-educativa-cinco",
+			"serviciosPublicos": [
+				"Servicio 1",
+				"Servicio 2",
+				"Servicio 3"
+			],
+			"fotos": [
+				{
+					"id": 216,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/crqupodo4yfc3pzjlvhb.jpg"
+				},
+				{
+					"id": 215,
+					"url": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725813324/gganzsfptuiowuwzn4gt.jpg"
+				}
+			],
+			"idInfraestructura": {
+				"id": 2,
+				"nombre": "Escuela"
+			},
+			"idTipoColegio": {
+				"id": 3,
+				"nombre": "Privado"
+			},
+			"idTurno": {
+				"id": 1,
+				"nombre": "Mañana"
+			},
+			"gestion": {
+				"id": 138,
+				"numero": 1234561,
+				"horario": "8:00 - 20:00",
+				"director": "Juan Carlos Puma",
+				"juntaescolar": "http://res.cloudinary.com/dc629i0tc/image/upload/v1725811087/x7dheywxer4zgj3xak6a.webp"
+			},
+			"apoyosSociales": [
+				{
+					"id": 117,
+					"nombre": "Equipamiento de computadoras",
+					"cantidad": 20,
+					"nombreEntrega": "Arq. David Suárez",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 118,
+					"nombre": "Material de limpieza",
+					"cantidad": 50,
+					"nombreEntrega": "Sr. Fernando Ramírez",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 116,
+					"nombre": "Uniformes para estudiantes",
+					"cantidad": 150,
+					"nombreEntrega": "Ing. José Vargas",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 115,
+					"nombre": "Dotación de libros escolares",
+					"cantidad": 300,
+					"nombreEntrega": "Lic. María López",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				}
+			],
+			"apoyosGubernamentales": [
+				{
+					"id": 120,
+					"cantidad": 250,
+					"nombreEntrega": "Puma Luishiño",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				},
+				{
+					"id": 121,
+					"cantidad": 390,
+					"nombreEntrega": "Karla Puma",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"categoria": {
+						"id": 3,
+						"nombre": "Mesas"
+					}
+				},
+				{
+					"id": 122,
+					"cantidad": 250,
+					"nombreEntrega": "Carlos Sahonero",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"categoria": {
+						"id": 1,
+						"nombre": "Camara"
+					}
+				}
+			],
+			"desayunos": [
+				{
+					"id": 87,
+					"nombre": "Pan con Queso y Jugo de Naranja",
+					"cantidad": 300,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-01T00:00:00.000Z"
+				},
+				{
+					"id": 88,
+					"nombre": "Moffins de Chocolate con Leche de Soya",
+					"cantidad": 450,
+					"nombreEntrega": "Sahonero Ronald",
+					"fecha": "2024-08-02T00:00:00.000Z"
+				},
+				{
+					"id": 89,
+					"nombre": "Chocolate con leche y Galletas",
+					"cantidad": 320,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-03T00:00:00.000Z"
+				},
+				{
+					"id": 90,
+					"nombre": "Mocochinchi y Galletas Sofia",
+					"cantidad": 460,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-04T00:00:00.000Z"
+				},
+				{
+					"id": 91,
+					"nombre": "Pan con Queso y Mandarinas",
+					"cantidad": 100,
+					"nombreEntrega": " Sahonero Ronald",
+					"fecha": "2024-08-05T00:00:00.000Z"
+				}
+			],
+			"mantenimientos": [
+				{
+					"id": 120,
+					"titulo": "Arreglo de Pavimento",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"encargado": "Ronald Puma",
+					"empresa": "Pavimentación STL"
+				},
+				{
+					"id": 121,
+					"titulo": "Mantenimiento de áreas verdes",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"encargado": "Juan Pérez",
+					"empresa": "Green Life Landscaping"
+				},
+				{
+					"id": 122,
+					"titulo": "Reparación de sistema eléctrico",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"encargado": "Ana Rodríguez",
+					"empresa": "ElectroSoluciones S.A."
+				},
+				{
+					"id": 123,
+					"titulo": "Revisión y mantenimiento de equipos de laboratorio",
+					"fecha": "2024-08-04T00:00:00.000Z",
+					"encargado": "Carlos Gómez",
+					"empresa": "LabTech Innovación"
+				},
+				{
+					"id": 124,
+					"titulo": "Limpieza y desinfección de aulas",
+					"fecha": "2024-08-05T00:00:00.000Z",
+					"encargado": "Marta Sánchez",
+					"empresa": "CleanPro Servicios"
+				}
+			],
+			"visitas": [
+				{
+					"id": 78,
+					"titulo": "Visita 3",
+					"fecha": "2024-08-03T00:00:00.000Z",
+					"motivo": "Motivo 3",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 79,
+					"titulo": "Visita 1",
+					"fecha": "2024-08-01T00:00:00.000Z",
+					"motivo": "Motivo1",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				},
+				{
+					"id": 80,
+					"titulo": "Visita 2",
+					"fecha": "2024-08-02T00:00:00.000Z",
+					"motivo": "Motivo 2",
+					"visitantes": "Puma Ronald, Sahonero Salas, Carlos Pociabo"
+				}
+			]
+		}
+	}
+]

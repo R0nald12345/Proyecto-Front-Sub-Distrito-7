@@ -37,9 +37,9 @@ const ListaGeneralUE = () => {
   useEffect(() => {
     const fetchingDatosGeneralUE = async () => {
       try {
-        const response = await getDatoGeneralUE();
+        const response = await getDatoGeneralUE(1000);
         setDatosUnidadEducativa(response);
-        console.log("response", response);
+        console.log("response1", response);
       } catch (error) {
         console.log(
           "Error en Componente ListaGeneral fetchingDatosGeneralUE",
@@ -301,7 +301,7 @@ const ListaGeneralUE = () => {
               </li>
             </ul>
 
-            <section className="">
+            <section className="mt-3 max-h-28 md:max-h-80  overflow-y-auto scrollbar-hide">
               {listaFiltrada.map((element) => (
                 <ListaUE
                   key={element.id}

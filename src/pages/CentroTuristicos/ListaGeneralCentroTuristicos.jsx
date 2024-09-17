@@ -120,7 +120,7 @@ const ListaGeneralCentroTuristicos = () => {
             </li>
           </ul>
 
-          <section className="">
+          <section className="mt-3 max-h-28 md:max-h-80  overflow-y-auto scrollbar-hide">
             {listaFiltrada.map((element) => {
               return (
                 <Lista_CentroTuristicos

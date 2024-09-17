@@ -117,7 +117,7 @@ const ListaGeneralCentroDeportivo = () => {
             </li>
           </ul>
 
-          <section>
+          <section className="mt-3 max-h-28 md:max-h-80  overflow-y-auto scrollbar-hide">
             {listaFiltrada.map((element) => (
               <Lista_CentroDeportivo
                 key={element.id}

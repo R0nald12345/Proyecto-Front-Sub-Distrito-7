@@ -1,19 +1,37 @@
 // apiServices.js
 import axios from "axios";
 
-export const getDatoGeneralUE = async () => {
+// export const getDatoGeneralUE = async () => {
+//   try {
+//     const baseUrl = import.meta.env.VITE_BASE_URL;
+//     const url = baseUrl + "/unidadeseducativas";
+//     const datosTipoColegio = await axios.get(url);
+//     return datosTipoColegio.data;
+//   } catch (error) {
+//     console.log(
+//       "Error no se pudo obtener los Datos Backend ApiServices/UnidadesEducativass",
+//       error
+//     );
+//   }
+// };
+
+
+export const getDatoGeneralUE = async (limit) => {
   try {
     const baseUrl = import.meta.env.VITE_BASE_URL;
     const url = baseUrl + "/unidadeseducativas";
-    const datosTipoColegio = await axios.get(url);
+    const params = limit ? { limit } : {};
+    const datosTipoColegio = await axios.get(url, { params });
     return datosTipoColegio.data;
   } catch (error) {
     console.log(
-      "Error no se pudo obtener los Datos Backend ApiServices/UnidadesEducativass",
+      "Error no se pudo obtener los Datos Backend ApiServices/UnidadesEducativas",
       error
     );
   }
 };
+
+
 
 export const getDatoGeneralUEid = async (id) => {
   try {

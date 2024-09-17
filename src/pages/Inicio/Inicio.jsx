@@ -11,10 +11,10 @@ import { getDatoGeneralUE } from "../../api/UnidadesEducativas";
 
 const Inicio = () => {
 
-  const [CantColegio, setCantColegio] = useState(0);
   const [cantCentroPolicial,setCantCentroPolicial] = useState(0);
   const [cantCentroMedico, setCantCentroMedico] = useState(0);
-
+  
+  const [CantColegio, setCantColegio] = useState(0);
 
 
   useEffect(() => {
@@ -87,14 +87,18 @@ const Inicio = () => {
         </section>
 
         <section className="md:flex gap-3 mt-5">
-          <section className=" md:w-2/3 border-2 border-gray-500 rounded-lg p-2">
-            <p className="text-xl font-semibold ">Denuncias</p>
-            <LinesChart/>
-            {/* <BarsChart /> */}
+          <section className="md:w-2/3 border-2 border-gray-500 rounded-lg p-2">
+            <p className="text-xl font-semibold ">Denuncias en Colegios</p>
+
+
+            {/* <LinesChart/> */}
+
+
+            <BarsChart />
             {/* <PiesChart/> */}
           </section>
           <section className=" md:w-1/3 border-2 border-gray-500 rounded-lg p-2">
-            <p className="text-xl font-semibold">Cantidad Denuncias</p>
+            <p className="text-xl font-semibold">Cantidad de Centros</p>
             <PiesChart/>
           </section>
         </section>
